@@ -17,7 +17,15 @@
   "peerDependencies": {
     "svelte": "^3.0.0"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdellacqua/custom-uikit-svelte"
+  },
+  "bugs": {
+    "url": "https://github.com/cdellacqua/custom-uikit-svelte/issues"
+  },
+  "homepage": "https://github.com/cdellacqua/custom-uikit-svelte",
+  "keywords": ["svelte", "uikit"],
   "author": "",
   "license": "MIT",
   "devDependencies": {
