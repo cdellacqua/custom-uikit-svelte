@@ -33,6 +33,8 @@
   {optional}>
   <select
     bind:this={ref}
+    on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
+    on:focus={() => (state = 'initial')}
     class="uk-select"
     {disabled}
     bind:value
