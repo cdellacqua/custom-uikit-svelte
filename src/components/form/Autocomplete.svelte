@@ -93,7 +93,7 @@ import { HtmlService } from "../../services/html";
 	let suggestedRef = null;
 	/** @param {KeyboardEvent} e */
 	function handleKeydown(e) {
-		if (suggestedRef && filteredOptions.length > 0) {
+		if (suggestedRef && filteredOptions.length > 0 && ["ArrowUp", "ArrowDown", "Enter"].includes(e.key)) {
 			e.preventDefault();
 			switch (e.key) {
 				case "ArrowUp":
