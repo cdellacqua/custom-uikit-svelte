@@ -36,6 +36,7 @@
     bind:this={ref}
     class="uk-select"
     {disabled}
+    bind:value
     uk-tooltip={tooltip}>
     {#if placeholder}
       <option value="" disabled selected>{placeholder}</option>
