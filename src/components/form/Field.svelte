@@ -31,7 +31,7 @@ import { text } from "svelte/internal";
     <div
       class:relative={hasIcon}
       class="uk-form-controls uk-form-controls-text">
-      <label for={inputId}>
+      <label for={inputId} class="uk-form-label">
         <slot />
         {label}
         {!optional ? '*' : ''}
