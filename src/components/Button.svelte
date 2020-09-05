@@ -13,6 +13,7 @@
   export let ukIcon = type === "submit" ? "newline" : "";
   /** @type {''|'small'|'large'} */
   export let size = "";
+  export let tooltip = undefined;
 
   /** @type {import("svelte/store").Readable<'initial'|'invalid'|'loading'|'error'|'success'>} */
   const formState = getContext("form") || readable("initial");
@@ -38,6 +39,7 @@
   class:uk-button={true}
   class={className}
   {type}
+  uk-tooltip={tooltip}
   on:click>
   <slot />
   {#if loading || (type === 'submit' && $formState === 'loading')}

@@ -14,6 +14,8 @@
 	export let optional = false;
 	export let value;
   export let ref = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -22,12 +24,14 @@
 <Field inputId={id} {label} {state} {className} {textIfInvalid} {textIfValid} {helperText} {optional}>
   <input
 		{id}
+    uk-tooltip={tooltip}
     bind:this={ref}
     required={!optional}
     {placeholder}
     type="email"
     bind:value
     on:change
+    {disabled}
     on:blur
     on:focus
     class="uk-input"

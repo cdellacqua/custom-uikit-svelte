@@ -14,6 +14,8 @@
   export let optional = false;
   export let value;
   export let ref = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   export let ukIcon = undefined;
   /** @type {'left'|'right'} */
@@ -52,6 +54,8 @@
   {/if}
   <input
     {id}
+    {disabled}
+    uk-tooltip={tooltip}
     bind:this={ref}
     required={!optional}
     {placeholder}

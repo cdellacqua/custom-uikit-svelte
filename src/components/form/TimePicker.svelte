@@ -14,6 +14,8 @@
   export let optional = false;
   export let value;
   export let ref = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -29,7 +31,9 @@
   {helperText}
   {optional}>
   <input
-		{id}
+    {id}
+    {disabled}
+    uk-tooltip={tooltip}
     bind:this={ref}
     required={!optional}
     {placeholder}

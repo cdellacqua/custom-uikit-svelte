@@ -17,6 +17,8 @@
   export let min = undefined;
   export let max = undefined;
   export let step = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   export let ukIcon = undefined;
   /** @type {'left'|'right'} */
@@ -55,6 +57,8 @@
     {min}
     {max}
     {step}
+    {disabled}
+    uk-tooltip={tooltip}
     bind:this={ref}
     required={!optional}
     {placeholder}

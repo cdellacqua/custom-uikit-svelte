@@ -16,6 +16,8 @@
   /** @type {{label: string; value: any}[]} */
   export let options = [];
   export let ref = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -30,12 +32,19 @@
   {textIfValid}
   {helperText}
   {optional}>
-  <select bind:this={ref} class="uk-select" bind:value>
+  <select
+    bind:this={ref}
+    class="uk-select"
+    bind:value
+    {disabled}
+    uk-tooltip={tooltip}>
     {#if placeholder}
       <option value="" disabled selected>{placeholder}</option>
     {/if}
     {#each options as option}
-      <option selected={option.value === value} value={option.value}>{option.label}</option>
+      <option selected={option.value === value} value={option.value}>
+        {option.label}
+      </option>
     {/each}
   </select>
 </Field>

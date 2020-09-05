@@ -14,6 +14,8 @@
 	export let optional = false;
 	export let value;
   export let ref = undefined;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -27,6 +29,8 @@
     {placeholder}
     type="password"
     bind:value
+    {disabled}
+    uk-tooltip={tooltip}
     on:change
     on:blur
     on:focus

@@ -10,6 +10,8 @@ import { HtmlService } from "../../services/html";
   export let label = "";
 	export let className = undefined;
 	export let textIfNoResult = "";
+	export let disabled = false;
+	export let tooltip = undefined;
   let query = "";
   let showSuggested = false;
 	let innerClick = false;
@@ -175,17 +177,19 @@ import { HtmlService } from "../../services/html";
   <div>
     <input
       class="uk-input"
-      type="search"
+			type="search"
+			uk-tooltip={tooltip}
 			{id}
 			value={query}
 			on:input={handleInput}
 			on:keydown={handleKeydown}
       required={false}
-      autocomplete="off"
+			autocomplete="off"
+			{disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions} />
   </div>
-  {#if showSuggested}
+  {#if showSuggested && !disabled}
     <div
       class="uk-grid-small uk-box-shadow-small suggested
 				uk-margin-remove-top uk-margin-remove-left uk-grid"

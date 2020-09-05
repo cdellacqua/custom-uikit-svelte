@@ -15,9 +15,13 @@
   export let value;
   export let ref = undefined;
   export let allowNegative = false;
+  export let disabled = false;
+  export let tooltip = undefined;
 </script>
 
 <NumberInput
+  {tooltip}
+  {disabled}
   {id}
   min={allowNegative ? -100 : 0}
   max={100}

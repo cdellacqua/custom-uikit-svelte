@@ -15,6 +15,8 @@
   export let value;
   export let ref = undefined;
   export let rows = 5;
+  export let disabled = false;
+  export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -30,7 +32,9 @@
   {helperText}
   {optional}>
   <textarea
-		{id}
+    {id}
+    {disabled}
+    uk-tooltip={tooltip}
     bind:this={ref}
     required={!optional}
     {placeholder}
