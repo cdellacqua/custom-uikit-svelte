@@ -16,7 +16,7 @@ function readdirFilesRecursiveSync(dir, output) {
 
 fs.writeFileSync(
 	path.join('src', 'main.js'),
-	'require("./init");\n' +
+	"import './init';\n" +
 	readdirFilesRecursiveSync(path.join('src', 'components'))
 		.map((entry) => './' + entry.substring('src/'.length))
 		.map((entry) => 'export { default as ' + entry.match(/([^/]+).svelte/)[1] + ' } from "' + entry + '";')

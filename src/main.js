@@ -1,4 +1,4 @@
-require("./init");
+import './init';
 export { default as Breadcrumb } from "./components/Breadcrumb.svelte";
 export { default as Button } from "./components/Button.svelte";
 export { default as DataTable } from "./components/DataTable.svelte";
