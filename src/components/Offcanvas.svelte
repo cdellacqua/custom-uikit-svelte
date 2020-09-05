@@ -4,6 +4,8 @@
   export let id = HtmlService.generateId();
   export let show = false;
   export let ref = undefined;
+  /** @type {'left'|'right'} */
+  export let side = 'left';
 
   import UIkit from "uikit";
   import { HtmlService } from "../services/html";
@@ -47,7 +49,7 @@
 <div
   bind:this={ref}
   {id}
-  uk-offcanvas="overlay: true; flip: false; mode: slide"
+  uk-offcanvas="overlay: true; flip: {side === 'left' ? 'false' : 'true'}; mode: slide"
   style="transition-duration: .1s">
   <div class="uk-offcanvas-bar">
     <button class="uk-offcanvas-close" type="button" uk-close />

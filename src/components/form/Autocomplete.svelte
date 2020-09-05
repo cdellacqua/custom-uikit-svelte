@@ -195,7 +195,7 @@ import { HtmlService } from "../../services/html";
 			bind:this={suggestedRef}
 		>
 			{#if filteredOptions.length > 0}
-				{#each filteredOptions as option, i (i)}
+				{#each filteredOptions as option, i (option)}
 					<label class="uk-width-1-1" class:outline={i === outlineOptionIndex} class:no-outline={i !== outlineOptionIndex}>
 						<input
 							class="uk-radio interactive-hidden"
