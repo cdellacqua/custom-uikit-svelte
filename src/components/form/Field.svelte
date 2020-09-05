@@ -15,20 +15,11 @@ import { text } from "svelte/internal";
 </script>
 
 <style lang="scss">
-  @import "uikit/src/scss/variables-theme.scss";
-
   .helper-text,
   .valid-text,
   .invalid-text {
     font-size: 0.95em;
   }
-  .valid-text {
-    color: $form-success-color;
-  }
-  .invalid-text {
-    color: $form-danger-color;
-  }
-
   .relative {
     position: relative;
   }

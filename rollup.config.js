@@ -1,7 +1,6 @@
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
 import { preprocess } from './svelte.config';
 import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
@@ -28,13 +27,7 @@ export default [{
 		format: 'umd',
 		sourcemap: true,
 		name,
-	}, {
-		file: pkg.main.replace('.js', '.min.js'),
-		format: 'iife',
-		name,
-		plugins: [terser()]
-	}
-	],
+	}],
 	plugins: [
 		replace({
 			process: JSON.stringify({

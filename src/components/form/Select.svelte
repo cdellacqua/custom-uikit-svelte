@@ -35,7 +35,6 @@
   <select
     bind:this={ref}
     class="uk-select"
-    bind:value
     {disabled}
     uk-tooltip={tooltip}>
     {#if placeholder}
