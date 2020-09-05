@@ -15,7 +15,7 @@ import { text } from "svelte/internal";
 </script>
 
 <style lang="scss">
-  @import "../../../node_modules/uikit/src/scss/variables-theme.scss";
+  @import "uikit/src/scss/variables-theme.scss";
 
   .helper-text,
   .valid-text,
