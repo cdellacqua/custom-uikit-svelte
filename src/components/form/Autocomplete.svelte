@@ -49,6 +49,8 @@ import { HtmlService } from "../../services/html";
 	
 	$: if (value) {
 		query = options.find((o) => o.value === value).label;
+	} else {
+		query = "";
 	}
 
 	function handleChangeGenerator(option) {
