@@ -1,9 +1,5 @@
-import { container } from 'tsyringe';
-import { HtmlService } from './services/html';
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
-
-container.register(HtmlService, { useValue: new HtmlService() });
 
 
 UIkit.icon.add({

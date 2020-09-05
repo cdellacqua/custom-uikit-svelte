@@ -1,8 +1,7 @@
 <script>
-  import { container } from "tsyringe";
   import { HtmlService } from "../../services/html";
 
-  export let id = container.resolve(HtmlService).generateId();
+  export let id = HtmlService.generateId();
   export let label = undefined;
   export let value = undefined;
   /** @type {{value: any; label: string}[]} */

@@ -1,9 +1,8 @@
 <script>
-import { container } from "tsyringe";
 import { HtmlService } from "../services/html";
 
   import Offcanvas from "./Offcanvas.svelte";
-  export let id = container.resolve(HtmlService).generateId();
+  export let id = HtmlService.generateId();
 </script>
 
 <Offcanvas {id}>

@@ -1,9 +1,8 @@
 <script>
-  import { container } from "tsyringe";
   import { HtmlService } from "../../services/html";
   import Field from "./Field.svelte";
 
-  export let id = container.resolve(HtmlService).generateId();
+  export let id = HtmlService.generateId();
 
   export let label = "";
   export let className = "";

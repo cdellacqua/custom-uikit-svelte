@@ -1,8 +1,7 @@
 <script>
   import { onMount } from "svelte";
-  import { container } from "tsyringe";
-
-  export let id = container.resolve(HtmlService).generateId();
+  
+  export let id = HtmlService.generateId();
   export let show = false;
   export let ref = undefined;
 

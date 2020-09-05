@@ -1,6 +1,5 @@
 <script>
   import { tick, onMount } from "svelte";
-import { container } from "tsyringe";
 import { dispatchNativeEvent } from "../../helpers/events";
 import { HtmlService } from "../../services/html";
 
@@ -16,7 +15,7 @@ import { HtmlService } from "../../services/html";
   let showSuggested = false;
 	let innerClick = false;
 
-  const id = container.resolve(HtmlService).generateId();
+  const id = HtmlService.generateId();
 
   function resetSelection() {
     value = undefined;

@@ -1,10 +1,9 @@
 <script>
   import TextInput from "./TextInput.svelte";
-  import { container } from "tsyringe";
   import { HtmlService } from "../../services/html";
   import NumberInput from "./NumberInput.svelte";
 
-  export let id = container.resolve(HtmlService).generateId();
+  export let id = HtmlService.generateId();
 
   export let label = "";
   export let className = "";

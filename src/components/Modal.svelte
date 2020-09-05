@@ -1,11 +1,9 @@
 <script>
-import { container } from "tsyringe";
 
   import { HtmlService } from "../services/html";
 import Button from "./Button.svelte";
 
-  const htmlService = container.resolve(HtmlService);
-  export const id = htmlService.generateId();
+  export const id = HtmlService.generateId();
   export let title = "";
   export let closeButton = "default";
   export let useSections = true;
