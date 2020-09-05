@@ -1,0 +1,34 @@
+<script>
+  import TextInput from "./TextInput.svelte";
+  import { container } from "tsyringe";
+  import { HtmlService } from "../../services/html";
+  import NumberInput from "./NumberInput.svelte";
+
+  export let id = container.resolve(HtmlService).generateId();
+
+  export let label = "";
+  export let className = "";
+  export let textIfInvalid = undefined;
+  export let textIfValid = undefined;
+  export let helperText = undefined;
+  export let optional = false;
+  export let value;
+  export let ref = undefined;
+  export let allowNegative = false;
+</script>
+
+<NumberInput
+  {id}
+  min={allowNegative ? -100 : 0}
+  max={100}
+  ukIcon="percentage"
+  iconPosition={"right"}
+  {label}
+  {className}
+  {textIfInvalid}
+  {textIfValid}
+  {helperText}
+  {optional}
+  on:change={() => value = ref.value.replace(',', '.')}
+  {value}
+  bind:ref />

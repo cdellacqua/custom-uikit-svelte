@@ -1,0 +1,54 @@
+<script>
+import { container } from "tsyringe";
+
+  import { HtmlService } from "../services/html";
+import Button from "./Button.svelte";
+
+  const htmlService = container.resolve(HtmlService);
+  export const id = htmlService.generateId();
+  export let title = "";
+  export let closeButton = "default";
+  export let useSections = true;
+  export let footerActions = undefined;
+  export let expand = false;
+  export let fullScreen = false;
+  export let closeable = true;
+  export let verticallyCentered = true;
+</script>
+
+<div {id} uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`} class:uk-flex-top={verticallyCentered}>
+  <div class="uk-modal-dialog" class:uk-modal-body={!useSections} class:uk-modal-container={expand} class:uk-modal-full={fullScreen} class:uk-margin-auto-vertical={verticallyCentered} uk-overflow-auto>
+    {#if closeButton}
+      <button class:uk-modal-close-default={closeButton === "default"} class:uk-modal-close-outside={closeButton === "outside"} class:uk-modal-close-full={fullScreen} type="button" uk-close></button>
+    {/if}
+    {#if useSections}
+      {#if title}
+        <div class="uk-modal-header">
+          <h2 class="uk-modal-title">{title}</h2>
+        </div>
+      {/if}
+      <div class="uk-modal-body">
+        <slot />
+      </div>
+      {#if footerActions}
+        <div class="uk-modal-footer uk-flex uk-flex-between">
+          {#each footerActions as footerAction}
+            <Button appearance={footerAction.appearance} on:click={footerAction.onClick} loading={footerAction.loading}>{footerAction.name}</Button>
+          {/each}
+        </div>
+      {/if}
+    {:else}
+      {#if title}
+        <h2 class="uk-modal-title">{title}</h2>
+      {/if}
+      <slot />
+      {#if footerActions}
+        <div class="uk-flex uk-flex-between">
+          {#each footerActions as footerAction}
+            <Button appearance={footerAction.appearance} on:click={footerAction.onClick} loading={footerAction.loading}>{footerAction.name}</Button>
+          {/each}
+        </div>
+      {/if}
+    {/if}
+  </div>
+</div>

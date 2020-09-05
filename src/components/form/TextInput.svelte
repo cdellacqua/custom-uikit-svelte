@@ -1,0 +1,74 @@
+<script>
+  import { container } from "tsyringe";
+  import { HtmlService } from "../../services/html";
+  import Field from "./Field.svelte";
+
+  export let id = container.resolve(HtmlService).generateId();
+
+  export let label = "";
+  export let className = "";
+  export let textIfInvalid = undefined;
+  export let textIfValid = undefined;
+  export let helperText = undefined;
+  export let placeholder = "";
+  export let optional = false;
+  export let value;
+  export let ref = undefined;
+
+  export let ukIcon = undefined;
+  /** @type {'left'|'right'} */
+  export let iconPosition = "left";
+
+  export let inputmode = undefined;
+  export let pattern = undefined;
+
+  /** @type {'initial'|'valid'|'invalid'} */
+  let state = "initial";
+</script>
+
+<style>
+  .uk-form-icon.right {
+    right: 0;
+    left: auto;
+  }
+
+  .paddingRight {
+    padding-right: 40px !important;
+  }
+</style>
+
+<Field
+  hasIcon={!!ukIcon}
+  inputId={id}
+  {label}
+  {state}
+  {className}
+  {textIfInvalid}
+  {textIfValid}
+  {helperText}
+  {optional}>
+  {#if iconPosition === 'left'}
+    {#if ukIcon}<span class="uk-form-icon" uk-icon="icon: {ukIcon}" />{/if}
+  {/if}
+  <input
+    {id}
+    bind:this={ref}
+    required={!optional}
+    {placeholder}
+    type="text"
+    class:paddingRight={iconPosition === 'right'}
+    {inputmode}
+    {pattern}
+    bind:value
+    on:change
+    class="uk-input"
+    class:uk-form-danger={state === 'invalid'}
+    class:uk-form-success={state === 'valid'}
+    on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
+    on:focus={() => (state = 'initial')} />
+  {#if iconPosition === 'right'}
+    {#if ukIcon}
+      <span class="uk-form-icon right" uk-icon="icon: {ukIcon}" />
+    {/if}
+  {/if}
+</Field>
