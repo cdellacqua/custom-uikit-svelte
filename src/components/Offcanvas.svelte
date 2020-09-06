@@ -32,6 +32,14 @@
       show = false;
     });
   });
+
+  let innerClick = false;
+  function closeOnOuterClick() {
+    if (!innerClick && show) {
+      show = false;
+    }
+    innerClick = false;
+  }
 </script>
 
 <style>
@@ -47,12 +55,13 @@
 </style>
 
 <div
+  on:click={closeOnOuterClick}
   bind:this={ref}
   {id}
   uk-offcanvas="overlay: true; flip: {side === 'left' ? 'false' : 'true'}; mode: slide"
 >
-  <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close" type="button" on:click={() => show = false} />
+  <div class="uk-offcanvas-bar" on:click={() => innerClick = true}>
+    <button class="uk-offcanvas-close" type="button" uk-close />
     <slot />
   </div>
 </div>
