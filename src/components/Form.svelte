@@ -58,14 +58,6 @@
   form {
     display: block;
   }
-
-  :global([slot="buttons"]) {
-    padding: 1rem 0;
-    display: flex;
-    flex-flow: row-reverse;
-    align-items: center;
-    justify-content: space-between;
-  }
 </style>
 
 <form
@@ -75,6 +67,4 @@
   on:submit|preventDefault={valid ? handleSubmit : noop}
   class:disabled={state === 'loading' || disabled}>
   <slot />
-
-  <slot name="buttons" />
 </form>
