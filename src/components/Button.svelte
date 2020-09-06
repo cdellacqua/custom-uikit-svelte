@@ -19,13 +19,6 @@
   const formState = getContext("form") || readable("initial");
 </script>
 
-<style>
-  .uk-button {
-    text-transform: lowercase;
-    font-variant: small-caps;
-  }
-</style>
-
 <button
   disabled={disabled || loading || (type === 'submit' && ['loading'].includes($formState))}
   class:uk-button-default={variant === 'default'}
