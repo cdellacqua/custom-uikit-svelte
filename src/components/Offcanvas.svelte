@@ -50,9 +50,9 @@
   bind:this={ref}
   {id}
   uk-offcanvas="overlay: true; flip: {side === 'left' ? 'false' : 'true'}; mode: slide"
-  style="transition-duration: .1s">
+>
   <div class="uk-offcanvas-bar">
-    <button class="uk-offcanvas-close" type="button" uk-close />
+    <button class="uk-offcanvas-close" type="button" on:click={() => show = false} />
     <slot />
   </div>
 </div>
