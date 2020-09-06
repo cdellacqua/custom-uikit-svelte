@@ -10,7 +10,7 @@
   export let loading = false;
   /** @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
   export let variant = type === "submit" ? "primary" : "secondary";
-  export let ukIcon = type === "submit" ? "newline" : "";
+  export let icon = type === "submit" ? "newline" : "";
   /** @type {''|'small'|'large'} */
   export let size = "";
   export let tooltip = undefined;
@@ -44,7 +44,7 @@
   <slot />
   {#if loading || (type === 'submit' && $formState === 'loading')}
     <Loader className="uk-icon" ratio={0.4} />
-  {:else if ukIcon}
-    <span class="uk-icon" uk-icon="icon: {ukIcon}; ratio: .75" />
+  {:else if icon}
+    <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
   {/if}
 </button>

@@ -24,7 +24,7 @@
   {id}
   min={allowNegative ? -100 : 0}
   max={100}
-  ukIcon="percentage"
+  icon="percentage"
   iconPosition={"right"}
   {label}
   {className}

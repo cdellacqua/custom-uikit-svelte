@@ -19,7 +19,7 @@
   export let disabled = false;
   export let tooltip = undefined;
 
-  export let ukIcon = undefined;
+  export let icon = undefined;
   /** @type {'left'|'right'} */
   export let iconPosition = "left";
 
@@ -39,7 +39,7 @@
 </style>
 
 <Field
-  hasIcon={ukIcon}
+  hasIcon={icon}
   inputId={id}
   {label}
   {state}
@@ -49,7 +49,7 @@
   {helperText}
   {optional}>
   {#if iconPosition === 'left'}
-    {#if ukIcon}<span class="uk-form-icon" uk-icon="icon: {ukIcon}" />{/if}
+    {#if icon}<span class="uk-form-icon" uk-icon="icon: {icon}" />{/if}
   {/if}
   <input
     {id}
@@ -71,8 +71,8 @@
     on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
     on:focus={() => (state = 'initial', ref.select())} />
   {#if iconPosition === 'right'}
-    {#if ukIcon}
-      <span class="uk-form-icon right" uk-icon="icon: {ukIcon}" />
+    {#if icon}
+      <span class="uk-form-icon right" uk-icon="icon: {icon}" />
     {/if}
   {/if}
 </Field>
