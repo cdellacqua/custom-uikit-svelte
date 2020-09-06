@@ -7,7 +7,6 @@ export { default as Form } from "./components/Form.svelte";
 export { default as Loader } from "./components/Loader.svelte";
 export { default as Modal } from "./components/Modal.svelte";
 export { default as Offcanvas } from "./components/Offcanvas.svelte";
-export { default as Sidebar } from "./components/Sidebar.svelte";
 export { default as Table } from "./components/Table.svelte";
 export { default as Accordion } from "./components/accordion/Accordion.svelte";
 export { default as AccordionItem } from "./components/accordion/AccordionItem.svelte";

@@ -22,9 +22,8 @@
 <ul class="uk-subnav uk-subnav-pill" {id} class:disabled uk-tooltip={tooltip}>
   {#each options as option}
     <li class:uk-active={option.value === value}>
-      <!-- svelte-ignore a11y-invalid-attribute -->
+      <!-- svelte-ignore a11y-missing-attribute -->
       <a
-        href="javascript:void(0)"
         on:click={() => {
           if (!disabled) value = option.value;
         }}>{option.label}</a>
