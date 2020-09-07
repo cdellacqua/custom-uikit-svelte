@@ -1,5 +1,5 @@
 <script>
-  import { onMount, tick } from "svelte";
+  import { createEventDispatcher, onMount, tick } from "svelte";
   import { dispatchNativeEvent } from "../../helpers/events";
   import { generateId } from "../../services/html";
 
@@ -16,7 +16,8 @@
 
   let query = "";
   let showSuggested = false;
-  let innerClick = false;
+	let innerClick = false;
+	const dispatch = createEventDispatcher();
 
   function resetSelection() {
     value = undefined;
@@ -57,7 +58,10 @@
   function handleChangeGenerator(option) {
     return function () {
       if (this.checked) {
-        value = option.value;
+				if (value !== option.value) {
+					value = option.value;
+					dispatch('change', value);
+				}
         innerClick = false;
         hideSuggested();
       }
@@ -91,10 +95,12 @@
   function handleInput(e) {
     if (query !== this.value) {
 			const newQuery = this.value;
-			value = undefined;
+			if (value !== undefined) {
+				value = undefined;
+				dispatch('change', value);
+			}
 			tick().then(() => (query = newQuery));
       showSuggested = true;
-      return;
     }
   }
 
