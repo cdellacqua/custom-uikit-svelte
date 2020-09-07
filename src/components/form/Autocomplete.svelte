@@ -49,7 +49,7 @@
       });
   }
 
-  $: if (value !== null && value !== undefined) {
+  $: if (value !== undefined) {
     query = options.find((o) => o.value === value).label;
   } else {
     query = "";
@@ -91,8 +91,7 @@
     }
   }
 
-  /** @param {KeyboardEvent} e */
-  function handleInput(e) {
+  function handleInput() {
     if (query !== this.value) {
 			const newQuery = this.value;
 			if (value !== undefined) {
