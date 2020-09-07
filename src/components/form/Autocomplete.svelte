@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
   import { dispatchNativeEvent } from "../../helpers/events";
   import { generateId } from "../../services/html";
 
@@ -89,8 +89,8 @@
   /** @param {KeyboardEvent} e */
   function handleInput(e) {
     if (query !== this.value) {
-      query = this.value;
-      value = undefined;
+			value = undefined;
+			tick().then(() => (query = this.value));
       showSuggested = true;
       return;
     }
