@@ -1,6 +1,4 @@
 <script>
-import { text } from "svelte/internal";
-
   export let inputId;
   export let hasIcon = false;
   export let label = "";

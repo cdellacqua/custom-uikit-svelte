@@ -1,5 +1,5 @@
 <script>
-  import { tick, onMount } from "svelte";
+  import { onMount } from "svelte";
 import { dispatchNativeEvent } from "../../helpers/events";
 import { HtmlService } from "../../services/html";
 

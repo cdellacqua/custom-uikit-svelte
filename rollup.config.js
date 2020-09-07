@@ -14,6 +14,13 @@ const name = pkg.name
 
 const production = !process.env.ROLLUP_WATCH;
 
+const globals = {
+	'uikit': 'UIkit',
+	'svelte': 'svelte',
+	'uikit/dist/js/uikit-icons': 'Icons',
+	'svelte/store': 'store'
+};
+
 export default [{
 	input: 'src/main.js',
 	output: [{
@@ -21,13 +28,16 @@ export default [{
 		format: 'es',
 		sourcemap: true,
 		name,
+		globals,
 	},
 	{
 		file: umd,
 		format: 'umd',
 		sourcemap: true,
 		name,
+		globals,
 	}],
+	external: Object.keys(globals),
 	plugins: [
 		replace({
 			process: JSON.stringify({
