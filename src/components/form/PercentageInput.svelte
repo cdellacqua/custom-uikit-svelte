@@ -15,6 +15,7 @@
   export let allowNegative = false;
   export let disabled = false;
   export let tooltip = undefined;
+  export let step = undefined;
 </script>
 
 <NumberInput
@@ -23,6 +24,7 @@
   {id}
   min={allowNegative ? -100 : 0}
   max={100}
+  {step}
   icon="percentage"
   iconPosition={'right'}
   {label}
