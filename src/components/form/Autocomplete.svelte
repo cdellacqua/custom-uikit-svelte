@@ -11,7 +11,8 @@
   export let className = undefined;
   export let textIfNoResult = "";
   export let disabled = false;
-  export let tooltip = undefined;
+	export let tooltip = undefined;
+	export let placeholder = undefined;
 
   let query = "";
   let showSuggested = false;
@@ -191,7 +192,8 @@
   on:click={() => (innerClick = true)}>
   <label for={id} class="uk-form-label">{label}</label>
   <div>
-    <input
+		<input
+			{placeholder}
       class="uk-input"
       type="search"
       uk-tooltip={tooltip}
