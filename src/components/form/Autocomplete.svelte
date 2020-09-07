@@ -89,8 +89,9 @@
   /** @param {KeyboardEvent} e */
   function handleInput(e) {
     if (query !== this.value) {
+			const newQuery = this.value;
 			value = undefined;
-			tick().then(() => (query = this.value));
+			tick().then(() => (query = newQuery));
       showSuggested = true;
       return;
     }
