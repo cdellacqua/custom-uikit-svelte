@@ -49,7 +49,7 @@
       });
   }
 
-  $: if (value) {
+  $: if (value !== null && value !== undefined) {
     query = options.find((o) => o.value === value).label;
   } else {
     query = "";
