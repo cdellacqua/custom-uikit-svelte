@@ -8,6 +8,6 @@
   export let ref = undefined;
 </script>
 
-<ul bind:this={ref} uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; active: {activeIndex}; transition: {transition};">
+<ul bind:this={ref} uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; active: {activeIndex}; transition: {transition}; animation: {animation}">
   <slot />
 </ul>
