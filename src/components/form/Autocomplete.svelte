@@ -97,7 +97,7 @@
 			const newQuery = this.value;
 			if (value !== undefined) {
 				value = undefined;
-				dispatch('change', value);
+				dispatch('change', null);
 			}
 			tick().then(() => (query = newQuery));
       showSuggested = true;
