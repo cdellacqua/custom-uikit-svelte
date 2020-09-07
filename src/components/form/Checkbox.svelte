@@ -1,9 +1,8 @@
 <script>
-  import { HtmlService } from "../../services/html";
+  import { generateId } from "../../services/html";
   import Field from "./Field.svelte";
 
-  export let id = HtmlService.generateId();
-
+  export let id = generateId();
   export let label = "";
   export let className = "";
   export let textIfInvalid = undefined;

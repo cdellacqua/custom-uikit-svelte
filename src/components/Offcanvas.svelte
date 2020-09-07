@@ -1,14 +1,14 @@
 <script>
+  import UIkit from "uikit";
+  import { generateId } from "../services/html";
   import { onMount } from "svelte";
-  
-  export let id = HtmlService.generateId();
+
+  export let id = generateId();
   export let show = false;
   export let ref = undefined;
   /** @type {'left'|'right'} */
-  export let side = 'left';
+  export let side = "left";
 
-  import UIkit from "uikit";
-  import { HtmlService } from "../services/html";
   let externalAssignment = true;
 
   $: if (ref) {
@@ -58,9 +58,8 @@
   on:click={closeOnOuterClick}
   bind:this={ref}
   {id}
-  uk-offcanvas="overlay: true; flip: {side === 'left' ? 'false' : 'true'}; mode: slide"
->
-  <div class="uk-offcanvas-bar" on:click={() => innerClick = true}>
+  uk-offcanvas="overlay: true; flip: {side === 'left' ? 'false' : 'true'}; mode: slide">
+  <div class="uk-offcanvas-bar" on:click={() => (innerClick = true)}>
     <button class="uk-offcanvas-close" type="button" uk-close />
     <slot />
   </div>

@@ -1,17 +1,16 @@
 <script>
-  import { HtmlService } from "../../services/html";
+  import { generateId } from "../../services/html";
   import Field from "./Field.svelte";
 
-  export let id = HtmlService.generateId();
-  
+  export let id = generateId();
   export let label = "";
   export let className = "";
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
   export let helperText = undefined;
   export let placeholder = "";
-	export let optional = false;
-	export let value;
+  export let optional = false;
+  export let value;
   export let ref = undefined;
   export let disabled = false;
   export let tooltip = undefined;
@@ -20,9 +19,17 @@
   let state = "initial";
 </script>
 
-<Field inputId={id} {label} {state} {className} {textIfInvalid} {textIfValid} {helperText} {optional}>
+<Field
+  inputId={id}
+  {label}
+  {state}
+  {className}
+  {textIfInvalid}
+  {textIfValid}
+  {helperText}
+  {optional}>
   <input
-		{id}
+    {id}
     bind:this={ref}
     required={!optional}
     {placeholder}

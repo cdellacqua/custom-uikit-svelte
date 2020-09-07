@@ -1,9 +1,8 @@
 <script>
-  import { HtmlService } from "../../services/html";
+  import { generateId } from "../../services/html";
   import Field from "./Field.svelte";
 
-  export let id = HtmlService.generateId();
-
+  export let id = generateId();
   export let label = "";
   export let className = "";
   export let textIfInvalid = undefined;
@@ -15,11 +14,9 @@
   export let ref = undefined;
   export let disabled = false;
   export let tooltip = undefined;
-
   export let icon = undefined;
   /** @type {'left'|'right'} */
   export let iconPosition = "left";
-
   export let inputmode = undefined;
   export let pattern = undefined;
 
@@ -70,8 +67,6 @@
     on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
     on:focus={() => (state = 'initial')} />
   {#if iconPosition === 'right'}
-    {#if icon}
-      <span class="uk-form-icon right" uk-icon="icon: {icon}" />
-    {/if}
+    {#if icon}<span class="uk-form-icon right" uk-icon="icon: {icon}" />{/if}
   {/if}
 </Field>

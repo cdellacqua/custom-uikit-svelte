@@ -1,7 +1,7 @@
 <script>
-  import { HtmlService } from "../../services/html";
+  import { generateId } from "../../services/html";
 
-  export let id = HtmlService.generateId();
+  export let id = generateId();
   export let label = undefined;
   export let value = undefined;
   /** @type {{value: any; label: string}[]} */

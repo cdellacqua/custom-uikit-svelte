@@ -1,9 +1,8 @@
 <script>
+  import { generateId } from "../services/html";
+  import Button from "./Button.svelte";
 
-  import { HtmlService } from "../services/html";
-import Button from "./Button.svelte";
-
-  export const id = HtmlService.generateId();
+  export const id = generateId();
   export let title = "";
   export let closeButton = "default";
   export let useSections = true;
@@ -14,10 +13,24 @@ import Button from "./Button.svelte";
   export let verticallyCentered = true;
 </script>
 
-<div {id} uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`} class:uk-flex-top={verticallyCentered}>
-  <div class="uk-modal-dialog" class:uk-modal-body={!useSections} class:uk-modal-container={expand} class:uk-modal-full={fullScreen} class:uk-margin-auto-vertical={verticallyCentered} uk-overflow-auto>
+<div
+  {id}
+  uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`}
+  class:uk-flex-top={verticallyCentered}>
+  <div
+    class="uk-modal-dialog"
+    class:uk-modal-body={!useSections}
+    class:uk-modal-container={expand}
+    class:uk-modal-full={fullScreen}
+    class:uk-margin-auto-vertical={verticallyCentered}
+    uk-overflow-auto>
     {#if closeButton}
-      <button class:uk-modal-close-default={closeButton === "default"} class:uk-modal-close-outside={closeButton === "outside"} class:uk-modal-close-full={fullScreen} type="button" uk-close></button>
+      <button
+        class:uk-modal-close-default={closeButton === 'default'}
+        class:uk-modal-close-outside={closeButton === 'outside'}
+        class:uk-modal-close-full={fullScreen}
+        type="button"
+        uk-close />
     {/if}
     {#if useSections}
       {#if title}
@@ -31,7 +44,12 @@ import Button from "./Button.svelte";
       {#if footerActions}
         <div class="uk-modal-footer uk-flex uk-flex-between">
           {#each footerActions as footerAction}
-            <Button appearance={footerAction.appearance} on:click={footerAction.onClick} loading={footerAction.loading}>{footerAction.name}</Button>
+            <Button
+              appearance={footerAction.appearance}
+              on:click={footerAction.onClick}
+              loading={footerAction.loading}>
+              {footerAction.name}
+            </Button>
           {/each}
         </div>
       {/if}
@@ -43,7 +61,12 @@ import Button from "./Button.svelte";
       {#if footerActions}
         <div class="uk-flex uk-flex-between">
           {#each footerActions as footerAction}
-            <Button appearance={footerAction.appearance} on:click={footerAction.onClick} loading={footerAction.loading}>{footerAction.name}</Button>
+            <Button
+              appearance={footerAction.appearance}
+              on:click={footerAction.onClick}
+              loading={footerAction.loading}>
+              {footerAction.name}
+            </Button>
           {/each}
         </div>
       {/if}

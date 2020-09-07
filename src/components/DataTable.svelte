@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher } from "svelte";
-
   import { identity, noop } from "../helpers/lambdas";
   import SearchInput from "./form/SearchInput.svelte";
 
@@ -14,7 +13,7 @@
   export let stickyHeader = false;
   export let placeholder = "";
 
-  let dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
   function fallbackComparator(a, b) {
     if (a < b) {
@@ -31,25 +30,21 @@
   let computedRows;
   $: if (rows) {
     filteredRows = rows.filter((row) =>
-      columns.some(
-        (col) => {
-          if (col.searchable === false) {
-            return false;
-          }
-          if (!col.render) {
-            return String(row[col.key])
-              .toLowerCase()
-              .includes(query.toLowerCase())
-          }
-          const output = col.render(row[col.key], row);
-          if (typeof output === "string") {
-            return output
-              .toLowerCase()
-              .includes(query.toLowerCase())
-          }
+      columns.some((col) => {
+        if (col.searchable === false) {
           return false;
-        },
-      )
+        }
+        if (!col.render) {
+          return String(row[col.key])
+            .toLowerCase()
+            .includes(query.toLowerCase());
+        }
+        const output = col.render(row[col.key], row);
+        if (typeof output === "string") {
+          return output.toLowerCase().includes(query.toLowerCase());
+        }
+        return false;
+      })
     );
     computedRows = [...filteredRows];
   }
@@ -131,14 +126,16 @@
     {#each computedRows as row}
       <tr on:click={() => dispatch('row-click', row)}>
         {#each columns as col}
-          <td class="{col.className}" style="text-align: {col.textAlign || 'left'}">
+          <td
+            class={col.className}
+            style="text-align: {col.textAlign || 'left'}">
             {#if !col.render}
               {row[col.key]}
-            {:else if typeof col.render(row[col.key], row) === "object"}
-              <svelte:component this={col.render(row[col.key], row).component} {...col.render(row[col.key], row).props} />
-            {:else}
-              {col.render(row[col.key], row)}
-            {/if}
+            {:else if typeof col.render(row[col.key], row) === 'object'}
+              <svelte:component
+                this={col.render(row[col.key], row).component}
+                {...col.render(row[col.key], row).props} />
+            {:else}{col.render(row[col.key], row)}{/if}
           </td>
         {/each}
       </tr>

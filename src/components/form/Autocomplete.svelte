@@ -1,21 +1,21 @@
 <script>
   import { onMount } from "svelte";
-import { dispatchNativeEvent } from "../../helpers/events";
-import { HtmlService } from "../../services/html";
+  import { dispatchNativeEvent } from "../../helpers/events";
+  import { generateId } from "../../services/html";
 
-	/** @type {{label: string; value: any}[]} */
+  export let id = generateId();
+  /** @type {{label: string; value: any}[]} */
   export let options = [];
   export let value = undefined;
   export let label = "";
-	export let className = undefined;
-	export let textIfNoResult = "";
-	export let disabled = false;
-	export let tooltip = undefined;
+  export let className = undefined;
+  export let textIfNoResult = "";
+  export let disabled = false;
+  export let tooltip = undefined;
+
   let query = "";
   let showSuggested = false;
-	let innerClick = false;
-
-  const id = HtmlService.generateId();
+  let innerClick = false;
 
   function resetSelection() {
     value = undefined;
@@ -32,7 +32,7 @@ import { HtmlService } from "../../services/html";
     innerClick = false;
   }
 
-	let filteredOptions = [];
+  let filteredOptions = [];
   $: {
     filteredOptions = [...options]
       .filter((o) => o.label.toLowerCase().includes(query.toLowerCase()))
@@ -44,94 +44,108 @@ import { HtmlService } from "../../services/html";
         } else {
           return a.label.length - b.label.length;
         }
-			});
-	}
-	
-	$: if (value) {
-		query = options.find((o) => o.value === value).label;
-	} else {
-		query = "";
-	}
+      });
+  }
 
-	function handleChangeGenerator(option) {
-		return function () {
-			if (this.checked) {
-				value = option.value;
-				innerClick = false;
-				hideSuggested();
-			}
-		};
-	}
+  $: if (value) {
+    query = options.find((o) => o.value === value).label;
+  } else {
+    query = "";
+  }
 
-	function handleOptionClickGenerator(option) {
-		return function() {
-			if (this.checked && value === option.value) {
-				hideSuggested(); 
-			}
-		};
-	}
+  function handleChangeGenerator(option) {
+    return function () {
+      if (this.checked) {
+        value = option.value;
+        innerClick = false;
+        hideSuggested();
+      }
+    };
+  }
 
-	let outlineOptionIndex = 0;
+  function handleOptionClickGenerator(option) {
+    return function () {
+      if (this.checked && value === option.value) {
+        hideSuggested();
+      }
+    };
+  }
 
-	$: if (filteredOptions) {
-		outlineOptionIndex = Math.min(filteredOptions.length - 1, Math.max(0, outlineOptionIndex));
-		if (filteredOptions.length > 0 && suggestedRef) {
-			if (suggestedRef.querySelector('label')) {
-				suggestedRef.style.maxHeight = suggestedRef.querySelector('label').offsetHeight * 5 + 'px';
-			}
-		}
-	}
+  let outlineOptionIndex = 0;
 
-	/** @param {KeyboardEvent} e */
-	function handleInput(e) {
-		if (query !== this.value) {
-			query = this.value;
-			value = undefined;
-			showSuggested = true;
-			return;
-		}
-	}
+  $: if (filteredOptions) {
+    outlineOptionIndex = Math.min(
+      filteredOptions.length - 1,
+      Math.max(0, outlineOptionIndex)
+    );
+    if (filteredOptions.length > 0 && suggestedRef) {
+      if (suggestedRef.querySelector("label")) {
+        suggestedRef.style.maxHeight =
+          suggestedRef.querySelector("label").offsetHeight * 5 + "px";
+      }
+    }
+  }
 
-	let suggestedRef = null;
-	/** @param {KeyboardEvent} e */
-	function handleKeydown(e) {
-		if (suggestedRef && filteredOptions.length > 0 && ["ArrowUp", "ArrowDown", "Enter"].includes(e.key)) {
-			e.preventDefault();
-			switch (e.key) {
-				case "ArrowUp":
-					if (outlineOptionIndex === 0) {
-						outlineOptionIndex = filteredOptions.length -1;
-					} else {
-						outlineOptionIndex--;
-					}
-					break;
-				case "ArrowDown":
-					if (outlineOptionIndex === filteredOptions.length -1) {
-						outlineOptionIndex = 0;
-					} else {
-						outlineOptionIndex++;
-					}
-					break;
-				case "Enter":
-					const input = suggestedRef.querySelectorAll('input')[outlineOptionIndex];
-					input.checked = true;
-					dispatchNativeEvent(input, 'change');
-					break;
-			}
+  /** @param {KeyboardEvent} e */
+  function handleInput(e) {
+    if (query !== this.value) {
+      query = this.value;
+      value = undefined;
+      showSuggested = true;
+      return;
+    }
+  }
 
-			switch (e.key) {
-				case "ArrowUp":
-				case "ArrowDown":
-					if (suggestedRef) {
-						if (filteredOptions.length === 0) {
-							suggestedRef.scrollTop = 0;
-						}
-						suggestedRef.scrollTop = Math.max(0, suggestedRef.scrollHeight / filteredOptions.length * (outlineOptionIndex - 3));
-					}
-					break;
-			}
-		}
-	}
+  let suggestedRef = null;
+  /** @param {KeyboardEvent} e */
+  function handleKeydown(e) {
+    if (
+      suggestedRef &&
+      filteredOptions.length > 0 &&
+      ["ArrowUp", "ArrowDown", "Enter"].includes(e.key)
+    ) {
+      e.preventDefault();
+      switch (e.key) {
+        case "ArrowUp":
+          if (outlineOptionIndex === 0) {
+            outlineOptionIndex = filteredOptions.length - 1;
+          } else {
+            outlineOptionIndex--;
+          }
+          break;
+        case "ArrowDown":
+          if (outlineOptionIndex === filteredOptions.length - 1) {
+            outlineOptionIndex = 0;
+          } else {
+            outlineOptionIndex++;
+          }
+          break;
+        case "Enter":
+          const input = suggestedRef.querySelectorAll("input")[
+            outlineOptionIndex
+          ];
+          input.checked = true;
+          dispatchNativeEvent(input, "change");
+          break;
+      }
+
+      switch (e.key) {
+        case "ArrowUp":
+        case "ArrowDown":
+          if (suggestedRef) {
+            if (filteredOptions.length === 0) {
+              suggestedRef.scrollTop = 0;
+            }
+            suggestedRef.scrollTop = Math.max(
+              0,
+              (suggestedRef.scrollHeight / filteredOptions.length) *
+                (outlineOptionIndex - 3)
+            );
+          }
+          break;
+      }
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -156,18 +170,18 @@ import { HtmlService } from "../../services/html";
     }
   }
 
-	.interactive-hidden {
-		position:absolute;
-		opacity:0;
-		pointer-events:none;
-	}
+  .interactive-hidden {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
 
-	.outline {
-		border: 1px solid currentColor;
-	}
-	.no-outline {
-		border: 1px solid transparent;
-	}
+  .outline {
+    border: 1px solid currentColor;
+  }
+  .no-outline {
+    border: 1px solid transparent;
+  }
 </style>
 
 <svelte:body on:click={hideSuggested} />
@@ -178,43 +192,46 @@ import { HtmlService } from "../../services/html";
   <div>
     <input
       class="uk-input"
-			type="search"
-			uk-tooltip={tooltip}
-			{id}
-			value={query}
-			on:input={handleInput}
-			on:keydown={handleKeydown}
+      type="search"
+      uk-tooltip={tooltip}
+      {id}
+      value={query}
+      on:input={handleInput}
+      on:keydown={handleKeydown}
       required={false}
-			autocomplete="off"
-			{disabled}
+      autocomplete="off"
+      {disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions} />
   </div>
   {#if showSuggested && !disabled}
     <div
-      class="uk-grid-small uk-box-shadow-small suggested
-				uk-margin-remove-top uk-margin-remove-left uk-grid"
-			bind:this={suggestedRef}
-		>
-			{#if filteredOptions.length > 0}
-				{#each filteredOptions as option, i (option)}
-					<label class="uk-width-1-1" class:outline={i === outlineOptionIndex} class:no-outline={i !== outlineOptionIndex}>
-						<input
-							class="uk-radio interactive-hidden"
-							type="radio"
-							name={id + '-radio'}
-							checked={option.value === value}
-							on:change={handleChangeGenerator(option)}
-							on:click={handleOptionClickGenerator(option)}
-						/>
-						{option.label}
-					</label>
-				{/each}
-			{:else if textIfNoResult}
-					<div class="uk-text-center uk-text-italic uk-width-1-1" style="padding-top: .5em; padding-bottom: .5em">
-						{textIfNoResult}
-					</div>
-			{/if}
+      class="uk-grid-small uk-box-shadow-small suggested uk-margin-remove-top
+        uk-margin-remove-left uk-grid"
+      bind:this={suggestedRef}>
+      {#if filteredOptions.length > 0}
+        {#each filteredOptions as option, i (option)}
+          <label
+            class="uk-width-1-1"
+            class:outline={i === outlineOptionIndex}
+            class:no-outline={i !== outlineOptionIndex}>
+            <input
+              class="uk-radio interactive-hidden"
+              type="radio"
+              name={id + '-radio'}
+              checked={option.value === value}
+              on:change={handleChangeGenerator(option)}
+              on:click={handleOptionClickGenerator(option)} />
+            {option.label}
+          </label>
+        {/each}
+      {:else if textIfNoResult}
+        <div
+          class="uk-text-center uk-text-italic uk-width-1-1"
+          style="padding-top: .5em; padding-bottom: .5em">
+          {textIfNoResult}
+        </div>
+      {/if}
     </div>
   {/if}
 </div>

@@ -1,10 +1,9 @@
 <script>
   import TextInput from "./TextInput.svelte";
-  import { HtmlService } from "../../services/html";
   import NumberInput from "./NumberInput.svelte";
+  import { generateId } from "../../services/html";
 
-  export let id = HtmlService.generateId();
-
+  export let id = generateId();
   export let label = "";
   export let className = "";
   export let textIfInvalid = undefined;
@@ -25,13 +24,13 @@
   min={allowNegative ? -100 : 0}
   max={100}
   icon="percentage"
-  iconPosition={"right"}
+  iconPosition={'right'}
   {label}
   {className}
   {textIfInvalid}
   {textIfValid}
   {helperText}
   {optional}
-  on:change={() => value = ref.value.replace(',', '.')}
+  on:change={() => (value = ref.value.replace(',', '.'))}
   {value}
   bind:ref />

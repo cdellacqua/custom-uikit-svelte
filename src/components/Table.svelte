@@ -1,11 +1,9 @@
 <script>
-
   export let heading = [];
   export let size = undefined;
   export let className = undefined;
   export let appearance = undefined;
   export let stickyHeader = false;
-  
 </script>
 
 <style>
@@ -16,15 +14,15 @@
   }
 </style>
 
-<table 
-  class={className ? "uk-table " + className : "uk-table"} 
-  class:uk-table-striped={appearance === "striped"}
-  class:uk-table-divider={appearance === "divider"}
-  class:uk-table-small={size === "small"}>
+<table
+  class={className ? 'uk-table ' + className : 'uk-table'}
+  class:uk-table-striped={appearance === 'striped'}
+  class:uk-table-divider={appearance === 'divider'}
+  class:uk-table-small={size === 'small'}>
   <thead>
     <tr>
       {#each heading as col}
-      <th class:sticky={stickyHeader}>{col}</th>
+        <th class:sticky={stickyHeader}>{col}</th>
       {/each}
     </tr>
   </thead>
