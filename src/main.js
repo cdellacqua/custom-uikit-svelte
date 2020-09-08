@@ -1,7 +1,14 @@
 import './init';
+export { default as Alert } from "./components/Alert.svelte";
+export { default as Article } from "./components/Article.svelte";
+export { default as Badge } from "./components/Badge.svelte";
 export { default as Breadcrumb } from "./components/Breadcrumb.svelte";
 export { default as Button } from "./components/Button.svelte";
+export { default as Card } from "./components/Card.svelte";
+export { default as Comment } from "./components/Comment.svelte";
 export { default as DataTable } from "./components/DataTable.svelte";
+export { default as DescriptionList } from "./components/DescriptionList.svelte";
+export { default as Divider } from "./components/Divider.svelte";
 export { default as Dropdown } from "./components/Dropdown.svelte";
 export { default as Form } from "./components/Form.svelte";
 export { default as Loader } from "./components/Loader.svelte";

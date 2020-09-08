@@ -1,6 +1,6 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/module.js",
@@ -8,10 +8,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && node export.js && rollup -c",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "dev": "rollup -c -w",
+    "start": "sirv public --host"
   },
   "files": [
-    "src",
+    "src/components",
+    "src/helpers",
+    "src/services",
+    "src/init.js",
+    "src/main.js",
     "dist"
   ],
   "peerDependencies": {
@@ -40,9 +46,10 @@
     "eslint": "^7.7.0",
     "postcss": "^7.0.32",
     "rollup": "^2.3.4",
-    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-livereload": "^1.3.0",
     "rollup-plugin-scss": "^2.6.0",
     "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.26.10",
     "sirv-cli": "^1.0.0",
     "svelte": "^3.0.0",
