@@ -1,4 +1,6 @@
 <script>
+import { createEventDispatcher } from "svelte";
+
   import { generateId } from "../../services/html";
 
   export let id = generateId();
@@ -9,6 +11,8 @@
   export let disabled = false;
   export let tooltip = undefined;
   export let ref = undefined;
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <style>
@@ -26,7 +30,10 @@
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         on:click={() => {
-          if (!disabled) value = option.value;
+          if (!disabled && value !== option.value) {
+            value = option.value;
+            dispatch('change', value);
+          }
         }}>{option.label}</a>
     </li>
   {/each}
