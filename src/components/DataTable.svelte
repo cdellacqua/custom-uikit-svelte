@@ -103,7 +103,6 @@
     <tr>
       {#each columns as col}
         <th
-          class:uk-text-truncate={true}
           class:sticky={stickyHeader}
           class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
           on:click={() => (col.orderable !== false ? orderBy(col) : noop())}>
@@ -127,6 +126,7 @@
       <tr on:click={() => dispatch('row-click', row)}>
         {#each columns as col}
           <td
+            class:uk-text-truncate={true}
             class={col.className}
             style="text-align: {col.textAlign || 'left'}">
             {#if !col.render}
