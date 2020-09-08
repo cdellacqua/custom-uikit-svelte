@@ -1,9 +1,11 @@
 <script>
   export let path = [];
   export let className = undefined;
+  export let ref = undefined;
 </script>
 
 <ul
+  bind:this={ref}
   class="uk-margin-small-left uk-margin-small-top uk-margin-small-bottom
     uk-breadcrumb {className}">
   {#each path.slice(0, -1) as entry}

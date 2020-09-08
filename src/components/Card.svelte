@@ -10,6 +10,7 @@
 	export let badge = undefined;
 	/** @type {string|undefined} */
 	export let style = undefined;
+  export let ref = undefined;
 
 	let headerDefaultSlot = null;
 	let footerDefaultSlot = null;
@@ -18,6 +19,7 @@
 </script>
 
 <div
+	bind:this={ref}
 	{style}
 	class={className ? "uk-card " + className : "uk-card"} 
 	class:uk-card-small={size === "small"}

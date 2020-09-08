@@ -4,6 +4,7 @@
   export let className = undefined;
   export let appearance = undefined;
   export let stickyHeader = false;
+  export let ref = undefined;
 </script>
 
 <style>
@@ -18,6 +19,7 @@
 </style>
 
 <table
+  bind:this={ref}
   class={className ? 'uk-table uk-table-middle ' + className : 'uk-table uk-table-middle'}
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}

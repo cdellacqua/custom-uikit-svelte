@@ -8,6 +8,7 @@
   export let options = [];
   export let disabled = false;
   export let tooltip = undefined;
+  export let ref = undefined;
 </script>
 
 <style>
@@ -19,7 +20,7 @@
 {#if label}
   <label class="uk-form-label" class:disabled for={id}>{label}</label>
 {/if}
-<ul class="uk-subnav uk-subnav-pill" {id} class:disabled uk-tooltip={tooltip}>
+<ul class="uk-subnav uk-subnav-pill" {id} class:disabled uk-tooltip={tooltip} bind:this={ref}>
   {#each options as option}
     <li class:uk-active={option.value === value}>
       <!-- svelte-ignore a11y-missing-attribute -->

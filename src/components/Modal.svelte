@@ -11,9 +11,11 @@
   export let fullScreen = false;
   export let closeable = true;
   export let verticallyCentered = true;
+  export let ref = undefined;
 </script>
 
 <div
+  bind:this={ref}
   {id}
   uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`}
   class:uk-flex-top={verticallyCentered}>

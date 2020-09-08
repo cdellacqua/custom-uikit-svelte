@@ -2,6 +2,7 @@
   export let className = "";
   export let ratio = 1;
   export let style = undefined;
+  export let ref = undefined;
 </script>
 
-<div class={className} {style} uk-spinner="ratio: {ratio}" />
+<div bind:this={ref} class={className} {style} uk-spinner="ratio: {ratio}" />

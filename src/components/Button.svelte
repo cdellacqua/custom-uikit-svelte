@@ -14,12 +14,14 @@
   /** @type {''|'small'|'large'} */
   export let size = "";
   export let tooltip = undefined;
+  export let ref = undefined;
 
   /** @type {import("svelte/store").Readable<'initial'|'invalid'|'loading'|'error'|'success'>} */
   const formState = getContext("form") || readable("initial");
 </script>
 
 <button
+  bind:this={ref}
   disabled={disabled || loading || (type === 'submit' && ['loading'].includes($formState))}
   class:uk-button-default={variant === 'default'}
   class:uk-button-primary={variant === 'primary'}

@@ -12,7 +12,8 @@
   export let textIfNoResult = "";
   export let disabled = false;
 	export let tooltip = undefined;
-	export let placeholder = undefined;
+  export let placeholder = undefined;
+  export let ref = undefined;
 
   let query = "";
   let showSuggested = false;
@@ -193,6 +194,7 @@
 
 <svelte:body on:click={hideSuggested} />
 <div
+  bind:this={ref}
   class={className ? 'text-wrapper ' + className : 'text-wrapper'}
   on:click={() => (innerClick = true)}>
   <label for={id} class="uk-form-label">{label}</label>

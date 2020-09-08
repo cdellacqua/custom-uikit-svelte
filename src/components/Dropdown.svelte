@@ -5,6 +5,7 @@
   export let label = "";
   export let isLabelHtml = false;
   export let appearance = "default";
+  export let ref = undefined;
 </script>
 
 <Button type="button" {appearance}>
@@ -12,6 +13,6 @@
     {@html label}
   {:else}{label}{/if}
 </Button>
-<div uk-dropdown={`mode: ${mode}`}>
+<div bind:this={ref} uk-dropdown={`mode: ${mode}`}>
   <slot />
 </div>

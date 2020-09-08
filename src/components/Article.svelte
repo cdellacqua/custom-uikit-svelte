@@ -3,8 +3,9 @@
 	export let style = undefined;
 	export let titleAsHtml = "";
 	export let articleMetaAsHtml = "";
+  export let ref = undefined;
 </script>
-<article {style} class={className ? "uk-article " + className : "uk-article"}>
+<article bind:this={ref} {style} class={className ? "uk-article " + className : "uk-article"}>
 	{#if titleAsHtml}
 		<h1 class="uk-article-title">{@html titleAsHtml}</h1>
 	{/if}

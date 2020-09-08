@@ -4,9 +4,10 @@
 	export let avatarAlt = "";
 	export let commentTitleAsHtml = "";
 	export let primary = false;
+  export let ref = undefined;
 </script>
 
-<article class="uk-comment" class:uk-comment-primary={primary}>
+<article class="uk-comment" class:uk-comment-primary={primary} bind:this={ref}>
 	<header class="uk-comment-header">
 		<slot name="comment-header">
 			<div class="uk-grid-medium uk-flex-middle" uk-grid>

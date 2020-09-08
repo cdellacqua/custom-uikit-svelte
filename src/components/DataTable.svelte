@@ -12,6 +12,7 @@
   export let appearance = "divider";
   export let stickyHeader = false;
   export let placeholder = "";
+  export let ref = undefined;
 
   const dispatch = createEventDispatcher();
 
@@ -98,6 +99,7 @@
 </form>
 
 <table
+  bind:this={ref}
   class={className ? 'uk-table uk-table-middle uk-table-hover ' + className : 'uk-table uk-table-middle uk-table-hover'}
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}

@@ -10,6 +10,7 @@
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
   export let labelWrap = false;
+  export let ref = undefined;
 </script>
 
 <style lang="scss">
@@ -24,7 +25,7 @@
 
 </style>
 
-<div class={"uk-margin-bottom " + className}>
+<div class={"uk-margin-bottom " + className} bind:this={ref}>
   {#if labelWrap}
     <div
       class:relative={hasIcon}
