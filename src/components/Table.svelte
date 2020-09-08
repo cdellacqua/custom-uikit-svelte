@@ -7,6 +7,9 @@
 </script>
 
 <style>
+  th {
+    white-space: nowrap;
+  }
   th.sticky {
     top: 0;
     position: sticky;
@@ -15,7 +18,7 @@
 </style>
 
 <table
-  class={className ? 'uk-table ' + className : 'uk-table'}
+  class={className ? 'uk-table uk-table-middle ' + className : 'uk-table uk-table-middle'}
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}
   class:uk-table-small={size === 'small'}>
