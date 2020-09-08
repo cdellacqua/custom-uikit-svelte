@@ -79,6 +79,9 @@
 </script>
 
 <style>
+  th {
+    white-space: nowrap;
+  }
   th.sticky {
     top: 0;
     position: sticky;
