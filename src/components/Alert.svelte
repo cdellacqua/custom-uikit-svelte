@@ -1,11 +1,38 @@
 <script>
+	/** 
+	 * @component This alert can be used to display success, warning and error messages
+	 * @slot {}
+	 * @dispatch {} 
+	 * @forward [] */
+
+	/** 
+	 * @description Whether the alert is dismissable
+	 * @type {boolean} */
 	export let closable = true;
-	/** @type {'primary'|'success'|'danger'|'warning'|undefined} */
+	/** 
+	 * @description Specifies the look of the component
+	 * @type {'primary'|'success'|'danger'|'warning'|undefined} */
 	export let variant = undefined;
+	/** 
+	 * @description Fade out or use the uikit Animation component
+	 * @type {boolean|string} */
 	export let animation = true;
+	/** 
+	 * @description Animation duration in milliseconds
+	 * @type {number} */
 	export let animationDuration = 150;
+	/** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
 	export let style = undefined;
+	/** 
+	 * @description A string containing any additional classes to apply to the component
+	 * @type {string|undefined} */
 	export let className = undefined;
+	/** 
+	 * @readonly
+	 * @description The HTML reference of the component
+	 * @type {HTMLDivElement} */
 	export let ref = undefined;
 </script>
 <div
