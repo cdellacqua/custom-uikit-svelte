@@ -8,9 +8,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && node export.mjs && rollup -c",
+    "build:preview": "rm -rf public/build && rollup --config rollup.preview.config.js",
     "doc": "node gendoc.mjs",
     "prepare": "npm run build",
-    "dev": "rollup -c -w",
     "start": "sirv public --host"
   },
   "files": [

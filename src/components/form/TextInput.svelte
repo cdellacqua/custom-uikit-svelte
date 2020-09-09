@@ -67,6 +67,8 @@
     {pattern}
     bind:value
     on:change
+    on:keydown
+    on:input
     class="uk-input"
     class:uk-form-danger={state === 'invalid'}
     class:uk-form-success={state === 'valid'}

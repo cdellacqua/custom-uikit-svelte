@@ -24,17 +24,23 @@ import { createEventDispatcher } from "svelte";
 {#if label}
   <label class="uk-form-label" class:disabled for={id}>{label}</label>
 {/if}
-<ul class="uk-subnav uk-subnav-pill" {id} class:disabled uk-tooltip={tooltip} bind:this={ref}>
+<div {id} class:disabled uk-tooltip={tooltip} bind:this={ref}>
   {#each options as option}
-    <li class:uk-active={option.value === value}>
-      <!-- svelte-ignore a11y-missing-attribute -->
-      <a
-        on:click={() => {
-          if (!disabled && value !== option.value) {
-            value = option.value;
-            dispatch('change', value);
-          }
-        }}>{option.label}</a>
-    </li>
+    <button
+      bind:this={ref}
+      disabled={disabled}
+      class:uk-button-default={option.value !== value}
+      class:uk-button-primary={option.value === value}
+      class:uk-button-small={true}
+      class:uk-button={true}
+      type="button"
+      on:click={() => {
+        if (!disabled && value !== option.value) {
+          value = option.value;
+          dispatch('change', value);
+        }
+      }}>
+      {option.label}
+    </button>
   {/each}
-</ul>
+</div>

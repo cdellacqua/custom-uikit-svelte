@@ -22,6 +22,7 @@ export { default as Checkbox } from "./components/form/Checkbox.svelte";
 export { default as DatePicker } from "./components/form/DatePicker.svelte";
 export { default as EmailInput } from "./components/form/EmailInput.svelte";
 export { default as Field } from "./components/form/Field.svelte";
+export { default as FixedPointInput } from "./components/form/FixedPointInput.svelte";
 export { default as NumberInput } from "./components/form/NumberInput.svelte";
 export { default as PasswordInput } from "./components/form/PasswordInput.svelte";
 export { default as PercentageInput } from "./components/form/PercentageInput.svelte";

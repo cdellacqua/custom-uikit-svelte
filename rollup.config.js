@@ -4,11 +4,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import { preprocess } from './svelte.config';
 import replace from '@rollup/plugin-replace';
 import pkg from './package.json';
-import livereload from 'rollup-plugin-livereload';
-import { terser } from 'rollup-plugin-terser';
-import scss from 'rollup-plugin-scss';
-import postcss from 'postcss';
-
 
 const { main: umd, module: es } = pkg;
 const name = pkg.name
@@ -25,28 +20,6 @@ const globals = {
 	'uikit/dist/js/uikit-icons': 'Icons',
 	'svelte/store': 'store'
 };
-
-function serve() {
-	let server;
-	
-	function toExit() {
-		if (server) server.kill(0);
-	}
-
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true
-			});
-
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		}
-	};
-}
-
 
 export default [{
 	input: 'src/main.js',
@@ -89,65 +62,6 @@ export default [{
 			dedupe: ['svelte']
 		}),
 		commonjs(),
-	]
-}, {
-	input: 'src/preview.js',
-	output: {
-		sourcemap: true,
-		format: 'iife',
-		name: 'app',
-		file: 'public/build/bundle.js'
-	},
-	plugins: [
-		replace({
-			process: JSON.stringify({
-				env: {
-					NODE_ENV: production ? "production" : "development"
-				}
-			})
-		}),
-		svelte({
-			// enable run-time checks when not in production
-			dev: !production,
-			preprocess,
-			// we'll extract any component CSS out into
-			// a separate file - better for performance
-			css: css => {
-				css.write('public/build/bundle.css');
-			}
-		}),
-		scss({
-			output: 'public/build/main.css',
-			failOnError: true,
-			sass: require('sass'),
-			processor: css => postcss([require('autoprefixer')])
-				.process(css, { from: undefined })
-				.then(result => result.css),
-			watch: 'src/style'
-		}),
-
-		// If you have external dependencies installed from
-		// npm, you'll most likely need these plugins. In
-		// some cases you'll need additional configuration -
-		// consult the documentation for details:
-		// https://github.com/rollup/plugins/tree/master/packages/commonjs
-		resolve({
-			browser: true,
-			dedupe: ['svelte']
-		}),
-		commonjs(),
-
-		// In dev mode, call `npm run start` once
-		// the bundle has been generated
-		!production && serve(),
-
-		// Watch the `public` directory and refresh the
-		// browser on changes when not in production
-		!production && livereload('public'),
-
-		// If we're building for production (npm run build
-		// instead of npm run dev), minify
-		production && terser()
 	],
 	watch: {
 		clearScreen: false
