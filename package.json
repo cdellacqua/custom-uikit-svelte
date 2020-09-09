@@ -11,7 +11,8 @@
     "build:preview": "rm -rf public/build && rollup --config rollup.preview.config.js",
     "doc": "node gendoc.mjs",
     "prepare": "npm run build",
-    "start": "sirv public --host"
+    "start": "sirv public --host",
+    "dev": "rollup --config rollup.preview.config.js -w"
   },
   "files": [
     "src/components",
