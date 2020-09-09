@@ -1,8 +1,11 @@
 <script>
+import { tick } from "svelte";
+
   import { generateId } from "../../services/html";
   import TextInput from "./TextInput.svelte";
 
   export let id = generateId();
+  /** @type {'.'|','} */
   export let decimalSeparator = Number(.1).toLocaleString().replace(/\d/g, '');
   export let decimalPlaces = 2;
   export let inhibitDecimalSeparatorKey = false;
@@ -65,14 +68,12 @@
     value = displayDigits.join('');
   }
 
-  const allowedKeys = ['Backspace', 'Delete', 'Escape', decimalSeparator, ...new Array(10).fill(0).map((_, index) => index.toString())];
+  const passthroughKeys = ['Enter', 'Tab'];
+  const allowedKeys = ['Backspace', 'Delete', 'Escape', decimalSeparator, '.', ...new Array(10).fill(0).map((_, index) => index.toString())];
   
-  /** @param {KeyboardEvent} e */
-  function handleKeydown(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (allowedKeys.includes(e.key)) {
-      switch (e.key) {
+  function handleKey({key, location}) {
+    if (allowedKeys.includes(key)) {
+      switch (key) {
         case 'Backspace':
           digits.pop();
           break;
@@ -81,18 +82,49 @@
           digits = [];
           break;
         case decimalSeparator:
-          if (!inhibitDecimalSeparatorKey) {
+        case '.':
+          if (!inhibitDecimalSeparatorKey && ((key === '.' && location === 3) || key === decimalSeparator)){
             digits.push(...new Array(decimalPlaces).fill('0'));
           }
           break;
         default:
-          digits.push(e.key);
+          digits.push(key);
           break;
       }
       while (digits[0] === '0') {
         digits.shift();
       }
       updateValue();
+      setTimeout(() => ref.setSelectionRange(value.length + 1, value.length + 1), 1); // Evil virtual keyboards...
+    }
+  }
+
+  /** @param {KeyboardEvent} e */
+  function handleKeydown(e) {
+    if (e.key !== "Unidentified" && !passthroughKeys.includes(e.key)) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleKey(e);
+    }
+  }
+
+  function handleInput(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (ref.value.length > value.length) {
+      const key = ref.value.slice(-1);
+      ref.value = ref.value.slice(0, -1);
+
+      handleKey({key, location: 3});
+    } else if (ref.value.length < value.length) {
+      const delta = value.length - ref.value.length;
+      for (let i = 0; i < delta; i++) {
+        handleKey({key: 'Backspace', location: 3});
+      }
+      setTimeout(() => { // Evil virtual keyboards...
+        ref.setSelectionRange(value.length + 1, value.length + 1);
+        ref.value = value;
+      }, 1);
     }
   }
 </script>
@@ -113,4 +145,5 @@
   bind:ref
   inputmode="numeric"
   on:keydown={handleKeydown}
-  pattern={`[0-9]+${'\\'+decimalSeparator}[0-9]+`} />
+  on:input={handleInput}
+  pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
