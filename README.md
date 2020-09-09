@@ -27,6 +27,7 @@ Components
 - [DatePicker](###DatePicker)
 - [EmailInput](###EmailInput)
 - [Field](###Field)
+- [FixedPointInput](###FixedPointInput)
 - [NumberInput](###NumberInput)
 - [PasswordInput](###PasswordInput)
 - [PercentageInput](###PercentageInput)
@@ -55,11 +56,11 @@ A breadcrumb can be added to the page to help the user find where they are in th
 
 
 ### Button
-No description
+This component represents a general purpose button, which can be customized according to its usage 
 
 
 ### Card
-No description
+The card component allows you to create nice box layouts
 
 
 ### Comment
@@ -71,7 +72,7 @@ No description
 
 
 ### DescriptionList
-No description
+Create an already styled description list, perfect for describing key-value properties
 
 
 ### Divider
@@ -127,6 +128,10 @@ No description
 
 
 ### Field
+No description
+
+
+### FixedPointInput
 No description
 
 
