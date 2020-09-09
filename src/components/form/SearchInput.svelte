@@ -19,6 +19,9 @@
   export let iconPosition = "left";
   export let inputmode = undefined;
   export let pattern = undefined;
+  export let autocapitalize = undefined;
+  export let autocomplete = undefined;
+  export let autocorrect = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -49,6 +52,9 @@
     {#if icon}<span class="uk-form-icon" uk-icon="icon: {icon}" />{/if}
   {/if}
   <input
+    {autocapitalize}
+    {autocomplete}
+    {autocorrect}
     {id}
     {disabled}
     uk-tooltip={tooltip}

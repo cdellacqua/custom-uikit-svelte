@@ -14,6 +14,9 @@
   export let ref = undefined;
   export let disabled = false;
   export let tooltip = undefined;
+  export let autocapitalize = undefined;
+  export let autocomplete = undefined;
+  export let autocorrect = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   let state = "initial";
@@ -29,6 +32,9 @@
   {helperText}
   {optional}>
   <input
+    {autocapitalize}
+    {autocomplete}
+    {autocorrect}
     {id}
     uk-tooltip={tooltip}
     bind:this={ref}

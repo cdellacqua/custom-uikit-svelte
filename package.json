@@ -1,13 +1,14 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "1.0.36",
+  "version": "1.0.37",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "svelte": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && node export.js && rollup -c",
+    "build": "rm -rf dist && node export.mjs && rollup -c",
+    "doc": "node gendoc.mjs",
     "prepare": "npm run build",
     "dev": "rollup -c -w",
     "start": "sirv public --host"

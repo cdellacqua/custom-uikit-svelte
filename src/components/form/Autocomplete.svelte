@@ -14,6 +14,9 @@
 	export let tooltip = undefined;
   export let placeholder = undefined;
   export let ref = undefined;
+  export let autocapitalize = undefined;
+  export let autocomplete = undefined;
+  export let autocorrect = undefined;
 
   let query = "";
   let showSuggested = false;
@@ -200,6 +203,9 @@
   <label for={id} class="uk-form-label">{label}</label>
   <div>
 		<input
+      {autocapitalize}
+      {autocomplete}
+      {autocorrect}
 			{placeholder}
       class="uk-input"
       type="search"
@@ -209,7 +215,6 @@
       on:input={handleInput}
       on:keydown={handleKeydown}
       required={false}
-      autocomplete="off"
       {disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions} />
