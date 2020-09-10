@@ -6,7 +6,6 @@ import { createEventDispatcher } from "svelte";
 
   export let id = generateId();
   /** @type {'.'|','} */
-  export let decimalSeparator = Number(.1).toLocaleString().replace(/\d/g, '');
   export let decimalPlaces = 2;
   export let inhibitDecimalSeparatorKey = false;
   export let label = "";
@@ -29,6 +28,8 @@ import { createEventDispatcher } from "svelte";
   export let state = "initial";
 
   const dispatch = createEventDispatcher();
+  let localeValue = '';
+  let decimalSeparator = Number(.1).toLocaleString().replace(/\d/g, '');
 
   if (decimalPlaces <= 0) {
     throw new Error('cannot create a fixed point input without decimal places');
@@ -43,13 +44,11 @@ import { createEventDispatcher } from "svelte";
     if (!value) {
       value = "";
     } else if (typeof value === "number") {
-      value = value.toString().replace('.', decimalSeparator);
+      value = value.toString();
     } else if (typeof value === "string") {
-      if (Number.isNaN(Number(value.replace(decimalSeparator, '.')))) {
+      if (Number.isNaN(Number(value))) {
         throw new Error('invalid string format');
       }
-      // Temporary store the value with a standard format
-      value = value.replace(decimalSeparator, '.');
     } else {
       value = ""; // unable to convert
     }
@@ -57,12 +56,12 @@ import { createEventDispatcher } from "svelte";
       while (value[0] === '0') {
         value = value.substring(1); // trim leading 0s
       }
-      if (value.includes(decimalSeparator) && value.length - value.indexOf(decimalSeparator) - 1 > decimalPlaces) {
-        value = value.substring(0, value.indexOf(decimalSeparator) + decimalPlaces + 1);
+      if (value.includes('.') && value.length - value.indexOf('.') - 1 > decimalPlaces) {
+        value = value.substring(0, value.indexOf('.') + decimalPlaces + 1);
       }
       digits = [
-        ...value.replace(decimalSeparator, '').split(''),
-        ...new Array(decimalPlaces - (value.includes(decimalSeparator) ? value.length - value.indexOf(decimalSeparator) - 1 : 0)).fill('0')
+        ...value.replace('.', '').split(''),
+        ...new Array(decimalPlaces - (value.includes('.') ? value.length - value.indexOf('.') - 1 : 0)).fill('0')
       ];
     } else {
       digits = [];
@@ -73,10 +72,15 @@ import { createEventDispatcher } from "svelte";
     }
   }
 
-  function updateValue() {
+  function digitsToValue() {
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
-    displayDigits.splice(displayDigits.length - decimalPlaces, 0, decimalSeparator);
-    value = displayDigits.join('');
+    displayDigits.splice(displayDigits.length - decimalPlaces, 0, '.');
+    return displayDigits.join('');
+  }
+
+  function updateValue() {
+    value = digitsToValue();
+    localeValue = Number(value).toLocaleString(undefined, { minimumFractionDigits: decimalPlaces, maximumFractionDigits: decimalPlaces });
     updateState();
   }
 
@@ -111,13 +115,16 @@ import { createEventDispatcher } from "svelte";
           break;
         default:
           digits.push(key);
+          if (Number(digitsToValue()).toString().slice(-1) !== key) { // Over maximum admitted value by the Number type
+            digits.pop();
+          }
           break;
       }
       while (digits[0] === '0') {
         digits.shift();
       }
       updateValue();
-      setTimeout(() => ref.setSelectionRange(value.length + 1, value.length + 1), 1); // Evil virtual keyboards...
+      setTimeout(() => ref.setSelectionRange(localeValue.length + 1, localeValue.length + 1), 1); // Evil virtual keyboards...
     }
   }
 
@@ -144,8 +151,8 @@ import { createEventDispatcher } from "svelte";
         handleKey({key: 'Backspace', location: 3});
       }
       setTimeout(() => { // Evil virtual keyboards...
-        ref.setSelectionRange(value.length + 1, value.length + 1);
-        ref.value = value;
+        ref.setSelectionRange(localeValue.length + 1, localeValue.length + 1);
+        ref.value = localeValue;
       }, 1);
     }
   }
@@ -153,15 +160,15 @@ import { createEventDispatcher } from "svelte";
   function handleBlur() {
     if (referenceValue !== value) {
       referenceValue = value;
-      dispatch('change', value.replace(decimalSeparator, '.')); // Default JS decimal separator
+      dispatch('change', value);
     }
   }
 
   function updateState() {
     if (ref) {
-      if (max !== undefined && Number(value.replace(decimalSeparator, '.')) > max) {
+      if (max !== undefined && Number(value) > max) {
         ref.setCustomValidity(textIfInvalid || `Value must be less than or equal to ${max}`);
-      } else if (min !== undefined && Number(value.replace(decimalSeparator, '.')) < min) {
+      } else if (min !== undefined && Number(value) < min) {
         ref.setCustomValidity(textIfInvalid || `Value must be greater than or equal to ${min}`);
       } else {
         ref.setCustomValidity('');
@@ -182,7 +189,7 @@ import { createEventDispatcher } from "svelte";
   {optional}
   {disabled}
   {tooltip}
-  {value}
+  value={localeValue}
   bind:state
   bind:ref
   inputmode="numeric"
