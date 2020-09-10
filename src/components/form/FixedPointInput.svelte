@@ -69,7 +69,7 @@
   }
 
   const passthroughKeys = ['Enter', 'Tab'];
-  const allowedKeys = ['Backspace', 'Delete', 'Escape', decimalSeparator, '.', ...new Array(10).fill(0).map((_, index) => index.toString())];
+  const allowedKeys = ['Backspace', 'Space', 'Delete', 'Escape', decimalSeparator, '.', ...new Array(10).fill(0).map((_, index) => index.toString())];
   
   function handleKey({key, location}) {
     if (allowedKeys.includes(key)) {
@@ -79,6 +79,7 @@
           break;
         case 'Delete':
         case 'Escape':
+        case 'Space':
           digits = [];
           break;
         case decimalSeparator:
@@ -115,7 +116,7 @@
       const key = ref.value.slice(-1);
       ref.value = ref.value.slice(0, -1);
 
-      handleKey({key, location: 3});
+      handleKey({ key: key === ' ' ? 'Space' : key, location: 3});
     } else if (ref.value.length < value.length) {
       const delta = value.length - ref.value.length;
       for (let i = 0; i < delta; i++) {
