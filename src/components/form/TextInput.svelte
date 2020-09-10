@@ -74,7 +74,8 @@
     class:uk-form-success={state === 'valid'}
     on:blur
     on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
-    on:focus={() => (state = 'initial')} />
+    on:focus={() => (state = 'initial')}
+    on:focus />
   {#if iconPosition === 'right'}
     {#if icon}<span class="uk-form-icon right" uk-icon="icon: {icon}" />{/if}
   {/if}

@@ -78,11 +78,20 @@ import { createEventDispatcher } from "svelte";
     updateState();
   }
 
+  let clearBeforeInput = true;
+  function handleFocus() {
+    clearBeforeInput = true;
+  }
+
   const passthroughKeys = ['Enter', 'Tab'];
   const allowedKeys = ['Backspace', 'Space', 'Delete', 'Escape', decimalSeparator, '.', ...new Array(10).fill(0).map((_, index) => index.toString())];
   
   function handleKey({key, location}) {
     if (allowedKeys.includes(key)) {
+      if (clearBeforeInput) {
+        digits = [];
+        clearBeforeInput = false;
+      }
       switch (key) {
         case 'Backspace':
           digits.pop();
@@ -182,4 +191,5 @@ import { createEventDispatcher } from "svelte";
   on:blur={updateState}
   on:blur={handleBlur}
   on:blur
+  on:focus={handleFocus}
   pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
