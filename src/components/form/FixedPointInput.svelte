@@ -1,4 +1,6 @@
 <script>
+import { createEventDispatcher } from "svelte";
+
   import { generateId } from "../../services/html";
   import TextInput from "./TextInput.svelte";
 
@@ -26,9 +28,13 @@
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
 
+  const dispatch = createEventDispatcher();
+
   if (decimalPlaces <= 0) {
     throw new Error('cannot create a fixed point input without decimal places');
   }
+
+  let referenceValue = undefined;
 
   /** @type {string[]} */
   let digits;
@@ -60,6 +66,9 @@
       digits = [];
     }
     updateValue();
+    if (referenceValue === undefined) {
+      referenceValue = value;
+    }
   }
 
   function updateValue() {
@@ -130,6 +139,13 @@
     }
   }
 
+  function handleBlur() {
+    if (referenceValue !== value) {
+      referenceValue = value;
+      dispatch('change', value.replace(decimalSeparator, '.')); // Default JS decimal separator
+    }
+  }
+
   function updateState() {
     if (ref) {
       if (max !== undefined && Number(value.replace(decimalSeparator, '.')) > max) {
@@ -163,7 +179,7 @@
   on:input={handleInput}
   on:input
   on:change={updateState}
-  on:change
   on:blur={updateState}
+  on:blur={handleBlur}
   on:blur
   pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
