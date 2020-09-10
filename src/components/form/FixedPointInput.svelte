@@ -161,6 +161,9 @@
   inputmode="numeric"
   on:keydown={handleKeydown}
   on:input={handleInput}
+  on:input
   on:change={updateState}
+  on:change
   on:blur={updateState}
+  on:blur
   pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
