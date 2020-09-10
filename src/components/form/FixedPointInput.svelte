@@ -66,6 +66,7 @@
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
     displayDigits.splice(displayDigits.length - decimalPlaces, 0, decimalSeparator);
     value = displayDigits.join('');
+    updateState();
   }
 
   const passthroughKeys = ['Enter', 'Tab'];
@@ -129,8 +130,7 @@
     }
   }
 
-  function handleChange() {
-    console.log('ehm');
+  function updateState() {
     if (ref) {
       if (max !== undefined && Number(value.replace(decimalSeparator, '.')) > max) {
         ref.setCustomValidity(textIfInvalid || `Value must be less than or equal to ${max}`);
@@ -161,6 +161,6 @@
   inputmode="numeric"
   on:keydown={handleKeydown}
   on:input={handleInput}
-  on:change={handleChange}
-  on:blur={handleChange}
+  on:change={updateState}
+  on:blur={updateState}
   pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
