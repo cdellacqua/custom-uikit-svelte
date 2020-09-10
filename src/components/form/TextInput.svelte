@@ -72,6 +72,7 @@
     class="uk-input"
     class:uk-form-danger={state === 'invalid'}
     class:uk-form-success={state === 'valid'}
+    on:blur
     on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
     on:focus={() => (state = 'initial')} />
   {#if iconPosition === 'right'}

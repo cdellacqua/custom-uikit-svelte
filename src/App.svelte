@@ -17,5 +17,5 @@ import { Accordion, AccordionItem, Radio, FixedPointInput, Form, NumberInput } f
 
 <Form>
 <NumberInput  />
-<FixedPointInput value={0.023} decimalPlaces={2} decimalSeparator="," />
+<FixedPointInput value={0.023} decimalPlaces={2} decimalSeparator="," min={10} max={20} textIfInvalid={"oh no"} />
 <NumberInput  /></Form>
