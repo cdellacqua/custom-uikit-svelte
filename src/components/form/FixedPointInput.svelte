@@ -48,6 +48,8 @@ import { createEventDispatcher } from "svelte";
       if (Number.isNaN(Number(value.replace(decimalSeparator, '.')))) {
         throw new Error('invalid string format');
       }
+      // Temporary store the value with a standard format
+      value = value.replace(decimalSeparator, '.');
     } else {
       value = ""; // unable to convert
     }
