@@ -16,7 +16,7 @@
   export let tooltip = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
-  let state = "initial";
+  export let state = "initial";
 </script>
 
 <Field

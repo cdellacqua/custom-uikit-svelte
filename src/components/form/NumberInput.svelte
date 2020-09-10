@@ -22,7 +22,7 @@
   export let iconPosition = "left";
 
   /** @type {'initial'|'valid'|'invalid'} */
-  let state = "initial";
+  export let state = "initial";
 </script>
 
 <style>

@@ -1,6 +1,4 @@
 <script>
-import { tick } from "svelte";
-
   import { generateId } from "../../services/html";
   import TextInput from "./TextInput.svelte";
 
@@ -16,6 +14,8 @@ import { tick } from "svelte";
   export let helperText = undefined;
   export let optional = false;
   export let value;
+  export let min = undefined;
+  export let max = undefined;
   export let ref = undefined;
   export let disabled = false;
   export let tooltip = undefined;
@@ -24,7 +24,7 @@ import { tick } from "svelte";
   export let iconPosition = "left";
 
   /** @type {'initial'|'valid'|'invalid'} */
-  let state = "initial";
+  export let state = "initial";
 
   if (decimalPlaces <= 0) {
     throw new Error('cannot create a fixed point input without decimal places');
@@ -66,6 +66,14 @@ import { tick } from "svelte";
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
     displayDigits.splice(displayDigits.length - decimalPlaces, 0, decimalSeparator);
     value = displayDigits.join('');
+    if (max !== undefined && Number(value.replace(decimalSeparator, '.')) > max) {
+      ref.setCustomValidity(textIfInvalid || `Value must be less than or equal to ${max}`);
+    } else if (min !== undefined && Number(value.replace(decimalSeparator, '.')) < min) {
+      ref.setCustomValidity(textIfInvalid || `Value must be greater than or equal to ${min}`);
+    } else {
+      ref.setCustomValidity('');
+    }
+    
   }
 
   const passthroughKeys = ['Enter', 'Tab'];
@@ -142,6 +150,7 @@ import { tick } from "svelte";
   {disabled}
   {tooltip}
   {value}
+  bind:state
   bind:ref
   inputmode="numeric"
   on:keydown={handleKeydown}
