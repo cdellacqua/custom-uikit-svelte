@@ -75,7 +75,6 @@ import { createEventDispatcher } from "svelte";
   function digitsToValue() {
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
     displayDigits.splice(displayDigits.length - decimalPlaces, 0, '.');
-    console.log(displayDigits);
     return displayDigits.join('');
   }
 
