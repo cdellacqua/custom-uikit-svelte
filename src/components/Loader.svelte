@@ -1,5 +1,5 @@
 <script>
-  export let className = "";
+  export let className = undefined;
   export let ratio = 1;
   export let style = undefined;
   export let ref = undefined;

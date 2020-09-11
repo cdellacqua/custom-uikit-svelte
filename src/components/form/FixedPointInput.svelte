@@ -9,7 +9,7 @@ import { createEventDispatcher } from "svelte";
   export let decimalPlaces = 2;
   export let inhibitDecimalSeparatorKey = false;
   export let label = "";
-  export let className = "";
+  export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
   export let helperText = undefined;

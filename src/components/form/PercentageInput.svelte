@@ -5,7 +5,7 @@
 
   export let id = generateId();
   export let label = "";
-  export let className = "";
+  export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
   export let helperText = undefined;

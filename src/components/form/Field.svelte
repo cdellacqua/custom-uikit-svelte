@@ -2,7 +2,7 @@
   export let inputId;
   export let hasIcon = false;
   export let label = "";
-  export let className = "";
+  export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
   export let helperText = undefined;
@@ -25,7 +25,7 @@
 
 </style>
 
-<div class={"uk-margin-bottom " + className} bind:this={ref}>
+<div class={className} class:uk-margin-bottom={true} bind:this={ref}>
   {#if labelWrap}
     <div
       class:relative={hasIcon}

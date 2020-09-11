@@ -9,7 +9,9 @@
   export let state = "initial";
   export let valid = true;
   export let ref = undefined;
-  export let className = "";
+  export let className = undefined;
+  /** @type {'stacked'|'horizontal'} */
+  export let variant = "stacked";
 
   async function handleSubmit() {
     if (submitAsync) {
@@ -61,7 +63,9 @@
 </style>
 
 <form
-  class="uk-form-stacked {className}"
+  class={className}
+  class:uk-form-horizontal={variant === 'horizontal'}
+  class:uk-form-stacked={variant === 'stacked'}
   bind:this={ref}
   on:change={() => (valid = ref.checkValidity())}
   on:submit|preventDefault={valid ? handleSubmit : noop}
