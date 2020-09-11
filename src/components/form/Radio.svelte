@@ -27,7 +27,7 @@ import { createEventDispatcher } from "svelte";
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>{label}</label>
   {/if}
-  <div {id} class:disabled uk-tooltip={tooltip} bind:this={ref}>
+  <div {id} class:disabled uk-tooltip={tooltip} bind:this={ref} uk-grid class="uk-child-width-expand uk-grid-collapse">
     {#each options as option}
       <button
         bind:this={ref}
