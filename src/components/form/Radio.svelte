@@ -11,6 +11,8 @@ import { createEventDispatcher } from "svelte";
   export let disabled = false;
   export let tooltip = undefined;
   export let ref = undefined;
+  /** @type {undefined|'small'|'large'} */
+  export let size = undefined;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -32,7 +34,8 @@ import { createEventDispatcher } from "svelte";
         disabled={disabled}
         class:uk-button-default={option.value !== value}
         class:uk-button-primary={option.value === value}
-        class:uk-button-small={true}
+        class:uk-button-small={size === "small"}
+        class:uk-button-large={size === "large"}
         class:uk-button={true}
         type="button"
         on:click={() => {
