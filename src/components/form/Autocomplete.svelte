@@ -166,7 +166,6 @@
   .text-wrapper {
     position: relative;
     .suggested {
-      background-color: #fff;
       z-index: 10;
       position: absolute;
       width: 100%;
@@ -176,9 +175,6 @@
       label {
         padding: 10px;
         cursor: pointer;
-        &:hover {
-          background-color: whitesmoke;
-        }
       }
     }
   }
@@ -191,7 +187,6 @@
 
   .outline {
     border: 1px solid currentColor;
-    background-color: whitesmoke;
   }
   .no-outline {
     border: 1px solid transparent;
@@ -225,14 +220,16 @@
   </div>
   {#if showSuggested && !disabled}
     <div
-      class="uk-grid-small uk-box-shadow-small suggested uk-margin-remove-top
+      class="uk-grid-small uk-box-shadow-small suggested uk-background-default uk-margin-remove-top
         uk-margin-remove-left uk-grid"
       bind:this={suggestedRef}>
       {#if filteredOptions.length > 0}
         {#each filteredOptions as option, i (option)}
           <label
             class="uk-width-1-1"
+            class:uk-background-muted={i === outlineOptionIndex}
             class:outline={i === outlineOptionIndex}
+            class:uk-background-default={i !== outlineOptionIndex}
             class:no-outline={i !== outlineOptionIndex}>
             <input
               class="uk-radio interactive-hidden"

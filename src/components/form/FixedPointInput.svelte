@@ -109,7 +109,7 @@ import { createEventDispatcher } from "svelte";
           break;
         case decimalSeparator:
         case '.':
-          if (!inhibitDecimalSeparatorKey && ((key === '.' && location === 3) || key === decimalSeparator)){
+          if (!inhibitDecimalSeparatorKey){
             digits.push(...new Array(decimalPlaces).fill('0'));
           }
           break;
