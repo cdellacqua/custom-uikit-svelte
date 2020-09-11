@@ -166,7 +166,7 @@
   .text-wrapper {
     position: relative;
     .suggested {
-      background-color: whitesmoke;
+      background-color: #fff;
       z-index: 10;
       position: absolute;
       width: 100%;
@@ -192,6 +192,7 @@
 
   .outline {
     border: 1px solid currentColor;
+    background-color: whitesmoke;
   }
   .no-outline {
     border: 1px solid transparent;
