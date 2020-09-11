@@ -53,10 +53,13 @@
       });
   }
 
-  $: if (value !== undefined) {
-    query = options.find((o) => o.value === value).label;
-  } else {
-    query = "";
+  $: {
+    if (value !== undefined) {
+      query = options.find((o) => o.value === value).label;
+    } else {
+      query = "";
+    }
+    outlineOptionIndex = 0;
   }
 
   function handleChangeGenerator(option) {
@@ -163,7 +166,7 @@
   .text-wrapper {
     position: relative;
     .suggested {
-      background-color: #fff;
+      background-color: whitesmoke;
       z-index: 10;
       position: absolute;
       width: 100%;
@@ -199,6 +202,7 @@
 <div
   bind:this={ref}
   class={className ? 'text-wrapper ' + className : 'text-wrapper'}
+  class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
   <label for={id} class="uk-form-label">{label}</label>
   <div>
