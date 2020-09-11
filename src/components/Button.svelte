@@ -32,7 +32,7 @@
   /** 
    * @description This property is used to style the button with one of the base uikit classes for button appearance
    * @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
-  export let variant = type === "submit" ? "primary" : "secondary";
+  export let variant = type === "submit" ? "primary" : "default";
   /**
    * @description If present, the uikit icon with the given name will be added next to the text of the button
    * @type {string|undefined} */
