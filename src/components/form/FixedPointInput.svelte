@@ -75,6 +75,7 @@ import { createEventDispatcher } from "svelte";
   function digitsToValue() {
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
     displayDigits.splice(displayDigits.length - decimalPlaces, 0, '.');
+    console.log(displayDigits);
     return displayDigits.join('');
   }
 
@@ -115,7 +116,8 @@ import { createEventDispatcher } from "svelte";
           break;
         default:
           digits.push(key);
-          if (Number(digitsToValue()).toString().slice(-1) !== key) { // Over maximum admitted value by the Number type
+          
+          if (Number(digitsToValue()).toFixed(decimalPlaces).slice(-1) !== key) { // Over maximum admitted value by the Number type
             digits.pop();
           }
           break;
