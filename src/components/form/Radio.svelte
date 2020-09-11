@@ -19,13 +19,9 @@ import { createEventDispatcher } from "svelte";
   .disabled {
     opacity: 0.7;
   }
-  .radio-wrapper {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
 </style>
 
-<div class="radio-wrapper">
+<div class="uk-margin-bottom">
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>{label}</label>
   {/if}
