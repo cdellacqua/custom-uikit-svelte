@@ -13,6 +13,7 @@ import { createEventDispatcher } from "svelte";
   export let ref = undefined;
   /** @type {undefined|'small'|'large'} */
   export let size = undefined;
+  export let className = undefined;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -23,7 +24,7 @@ import { createEventDispatcher } from "svelte";
   }
 </style>
 
-<div class="uk-margin-bottom">
+<div class={className} class:uk-margin-bottom={true}>
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>{label}</label>
   {/if}
