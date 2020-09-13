@@ -1,5 +1,5 @@
 # custom-uikit-svelte
-&nbsp;
+
 Unofficial Svelte Component Library for the UIkit framework
 &nbsp;
 &nbsp;
@@ -113,9 +113,7 @@ A breadcrumb can be added to the page to help the user find where they are in th
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|path|Array.<{href: string, label: string}>|-|An array containing the various steps composing the path of the current page. Each step should have an href property, 
-which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the
-current page and its href property will be ignored|
+|path|Array.<{href: string, label: string}>|-|An array containing the various steps composing the path of the current page. Each step should have an href property,  which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the current page and its href property will be ignored|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |ref (readonly)|HTMLUListElement|-|The HTML reference of the component|
@@ -209,8 +207,8 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-|undefined|
-|rows|Array.<Record.<string, any>>|-|undefined|
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|rows|Array.<Record.<string, any>>|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -259,8 +257,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-|undefined|
-|variant|'stacked'\|'horizontal'|-|undefined|
+|state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
+|variant|'stacked'\|'horizontal'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -286,7 +284,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|side|'left'\|'right'|-|undefined|
+|side|'left'\|'right'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -319,7 +317,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|options|Array.<{label: string, value: any}>|-|undefined|
+|options|Array.<{label: string, value: any}>|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -331,7 +329,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -343,7 +341,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -355,7 +353,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -367,7 +365,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -379,9 +377,9 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|decimalPlaces|'.'\|','|-|undefined|
-|iconPosition|'left'\|'right'|-|undefined|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|decimalPlaces|'.'\|','|-||
+|iconPosition|'left'\|'right'|-||
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -393,8 +391,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|iconPosition|'left'\|'right'|-|undefined|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|iconPosition|'left'\|'right'|-||
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -406,7 +404,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -425,8 +423,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|options|Array.<{value: any, label: string}>|-|undefined|
-|size|undefined\|'small'\|'large'|-|undefined|
+|options|Array.<{value: any, label: string}>|-||
+|size|undefined\|'small'\|'large'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -438,8 +436,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|iconPosition|'left'\|'right'|-|undefined|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|iconPosition|'left'\|'right'|-||
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -451,8 +449,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|options|Array.<{label: string, value: any}>|-|undefined|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|options|Array.<{label: string, value: any}>|-||
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -464,8 +462,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|iconPosition|'left'\|'right'|-|undefined|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|iconPosition|'left'\|'right'|-||
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -477,7 +475,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
 &nbsp;
@@ -489,4 +487,4 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|state|'initial'\|'valid'\|'invalid'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-||

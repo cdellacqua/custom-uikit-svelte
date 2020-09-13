@@ -4,7 +4,7 @@ const components = require('./components-data');
 
 const docLines = [
 	`# custom-uikit-svelte`,
-	`&nbsp;`,
+	``,
 	`Unofficial Svelte Component Library for the UIkit framework`,
 	`&nbsp;`,
 	`&nbsp;`,
@@ -42,7 +42,7 @@ for (const component of components) {
 		);
 		for (const name of Object.keys(component.slots)) {
 			docLines.push(
-				`|${name === 'default' ? '-' : name}|${component.slots[name]}|`
+				`|${name === 'default' ? '-' : name}|${component.slots[name].replace(/\n/g, ' ')}|`
 			);
 		}
 	}
@@ -50,12 +50,12 @@ for (const component of components) {
 		docLines.push(
 			`&nbsp;`,
 			`### Custom Events`,
-			`|name|description|type|`,
+			`|name|type|description|`,
 			`|--|--|--|`,
 		);
 		for (const name of Object.keys(component.dispatch)) {
 			docLines.push(
-				`|${name}|${component.dispatch[name].description}|${component.dispatch[name].type || 'any'}|`
+				`|${name}|${component.dispatch[name].type || 'any'}|${component.dispatch[name].description.replace(/\n/g, ' ')}|`
 			);
 		}
 	}
@@ -86,7 +86,7 @@ for (const component of components) {
 			);
 		}
 		docLines.push(
-			`|${block.name}${block.readonly ? ' (readonly)' : ''}|${block.type.replace(/\|/g, '\\|')}|${block.default || '-'}|${block.description}|`
+			`|${block.name}${block.readonly ? ' (readonly)' : ''}|${block.type.replace(/\|/g, '\\|')}|${block.default || '-'}|${(block.description || '').replace(/\n/g, ' ')}|`
 		);
 	}
 }

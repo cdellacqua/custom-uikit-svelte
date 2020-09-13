@@ -67,8 +67,8 @@ for (const component of components) {
 			`\t\t\t<thead>`,
 			`\t\t\t\t<tr>`,
 			`\t\t\t\t\t<th>name</th>`,
-			`\t\t\t\t\t<th>description</th>`,
 			`\t\t\t\t\t<th>type</th>`,
+			`\t\t\t\t\t<th>description</th>`,
 			`\t\t\t\t</tr>`,
 			`\t\t\t</thead>`,
 			`\t\t\t<tbody>`,
@@ -77,8 +77,8 @@ for (const component of components) {
 			docLines.push(
 				`\t\t\t\t<tr>`,
 				`\t\t\t\t\t<td>${name}</td>`,
-				`\t\t\t\t\t<td>${component.dispatch[name].description}</td>`,
 				`\t\t\t\t\t<td>${(component.dispatch[name].type || 'any').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/{/g, '&lbrace;').replace(/}/g, '&rbrace;')}</td>`,
+				`\t\t\t\t\t<td>${component.dispatch[name].description}</td>`,
 				`\t\t\t\t</tr>`,
 			);
 		}
