@@ -7,7 +7,7 @@
 	 * 	"comment-body": "The body of the comment"
 	 * } 
 	 * @dispatch {}
-	 * @forward [] */
+	 * @forward {} */
 
 	/**
 	 * @description The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored

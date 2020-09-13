@@ -3,7 +3,7 @@
 	 * @component This component can be used as a notification badge or as a general purpose chip
 	 * @slot {"default": "The content of the badge"} 
 	 * @dispatch {}
-	 * @forward ["click"] */
+	 * @forward {"click": "HTMLSpanElement"} */
 
 	/** 
 	 * @description A string containing any additional classes to apply to the component

@@ -7,7 +7,7 @@
    * @component This component represents a general purpose button, which can be customized according to its usage 
    * @slot {"default": "The content of the button"}
    * @dispatch {}
-   * @forward ["click"] */
+   * @forward {"click": "HTMLButtonElement"} */
 
   /** 
 	 * @description A string containing any additional classes to apply to the component
@@ -51,7 +51,7 @@
 	 * @type {HTMLButtonElement} */
   export let ref = undefined;
 
-  /** @type {import("svelte/store").Readable<'initial'|'invalid'|'loading'|'error'|'success'>} */
+  /** @type {Readable<'initial'|'invalid'|'loading'|'error'|'success'>} */
   const formState = getContext("form") || readable("initial");
 </script>
 

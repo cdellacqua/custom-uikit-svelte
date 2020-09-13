@@ -6,7 +6,7 @@ import { createEventDispatcher } from "svelte";
   export let id = generateId();
   export let label = undefined;
   export let value = undefined;
-  /** @type {{value: any; label: string}[]} */
+  /** @type {Array<{value: any, label: string}>} */
   export let options = [];
   export let disabled = false;
   export let tooltip = undefined;

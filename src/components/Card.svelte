@@ -5,13 +5,13 @@
 	 * @slot {
 	 * 	"header": "The content to be put inside the header ('uk-card-header') of the card. Leave empty if no header is wanted",
 	 * 	"media-top": "The content to be put inside the 'uk-card-media-top' class. This is useful if you want to add an image to your card which is supposed to take up the top half of the card. Leave empty if you don't want the card to have this layout",
-	 * 	"horizontal-media": "For more complex layouts (e.g. an horizontal card with an image to the right/left) you can use this slot, which is placed before the card body. Leave empty if this is not needed"
-	 * 	"content": "The content of the card",
+	 * 	"horizontal-media": "For more complex layouts (e.g. an horizontal card with an image to the right/left) you can use this slot, which is placed before the card body. Leave empty if this is not needed",
+	 * 	"default": "The content of the card",
 	 * 	"media-bottom": "The content to be put inside the 'uk-card-media-bottom' class. This is useful if you want to add an image to your card which is supposed to take up the bottom half of the card. Leave empty if you don't want the card to have this layout",
 	 * 	"footer": "Fill this slot if you want your card to have a footer. The content will be put inside the 'uk-card-footer' section"
 	 * }
 	 * @dispatch {}
-	 * @forward [] */
+	 * @forward {} */
 
 	/** 
 	 * @description Used to style the card. If set to hover, the card will appear flat unless it's being hovered
@@ -81,7 +81,7 @@
 		{#if badge}
 			<div class="uk-card-badge uk-label">{badge}</div>
 		{/if}
-		<slot name="content" />
+		<slot />
 	</div>
 	<div class:uk-card-media-bottom={!mediaBottomDefaultSlot}>
 		<slot name="media-bottom">

@@ -1,8 +1,8 @@
 # custom-uikit-svelte
-
+&nbsp;
 Unofficial Svelte Component Library for the UIkit framework
-
-
+&nbsp;
+&nbsp;
 Components
 - [Alert](###Alert)
 - [Article](###Article)
@@ -37,4 +37,461 @@ Components
 - [TextInput](###TextInput)
 - [Textarea](###Textarea)
 - [TimePicker](###TimePicker)
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Alert
+This alert can be used to display success, warning and error messages
+&nbsp;
+&nbsp;
+&nbsp;
+### Custom Events
+|name|description|type|
+|--|--|--|
+|name|desc|string|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|closable|boolean|-|Whether the alert is dismissable|
+|variant|'primary'\|'success'\|'danger'\|'warning'\|undefined|-|Specifies the look of the component|
+|animation|boolean\|string|-|Fade out or use the uikit Animation component|
+|animationDuration|number|-|Animation duration in milliseconds|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Article
+Useful to display content such as blog entries or articles
+&nbsp;
+&nbsp;
+&nbsp;
+### Slots
+|name|description|
+|--|--|
+|-|The content of the article|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|titleAsHtml|string\|undefined|-|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
+|articleMetaAsHtml|string\|undefined|-|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
+|ref (readonly)|HTMLElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Badge
+This component can be used as a notification badge or as a general purpose chip
+&nbsp;
+&nbsp;
+&nbsp;
+### Slots
+|name|description|
+|--|--|
+|-|The content of the badge|
+&nbsp;
+### Forwarded Events
+|name|source|
+|--|--|
+|click|HTMLSpanElement|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|ref (readonly)|HTMLSpanElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Breadcrumb
+A breadcrumb can be added to the page to help the user find where they are in the website and easily go back and forth between pages
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|path|Array.<{href: string, label: string}>|-|An array containing the various steps composing the path of the current page. Each step should have an href property, 
+which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the
+current page and its href property will be ignored|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|ref (readonly)|HTMLUListElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Button
+This component represents a general purpose button, which can be customized according to its usage
+&nbsp;
+&nbsp;
+&nbsp;
+### Slots
+|name|description|
+|--|--|
+|-|The content of the button|
+&nbsp;
+### Forwarded Events
+|name|source|
+|--|--|
+|click|HTMLButtonElement|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|type|'button'\|'submit'|-|The type property of the native HTML button|
+|disabled|boolean|-|The disabled property of the native HTML button|
+|loading|boolean|-|Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled|
+|variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|-|This property is used to style the button with one of the base uikit classes for button appearance|
+|icon|string\|undefined|-|If present, the uikit icon with the given name will be added next to the text of the button|
+|size|undefined\|'small'\|'large'|-|Specifies the size of the button. If undefined, the button will be of regular size|
+|tooltip|string\|undefined|-|Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button|
+|ref (readonly)|HTMLButtonElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Card
+The card component allows you to create nice box layouts
+&nbsp;
+&nbsp;
+&nbsp;
+### Slots
+|name|description|
+|--|--|
+|header|The content to be put inside the header ('uk-card-header') of the card. Leave empty if no header is wanted|
+|media-top|The content to be put inside the 'uk-card-media-top' class. This is useful if you want to add an image to your card which is supposed to take up the top half of the card. Leave empty if you don't want the card to have this layout|
+|horizontal-media|For more complex layouts (e.g. an horizontal card with an image to the right/left) you can use this slot, which is placed before the card body. Leave empty if this is not needed|
+|-|The content of the card|
+|media-bottom|The content to be put inside the 'uk-card-media-bottom' class. This is useful if you want to add an image to your card which is supposed to take up the bottom half of the card. Leave empty if you don't want the card to have this layout|
+|footer|Fill this slot if you want your card to have a footer. The content will be put inside the 'uk-card-footer' section|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|variant|'default'\|'primary'\|'secondary'\|'hover'|-|Used to style the card. If set to hover, the card will appear flat unless it's being hovered|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|hover|boolean|-|Add a hover animation to the card|
+|size|'small'\|'large'\|undefined|-|Defines the padding of the card. In undefined, default values will be applied|
+|title|string\|undefined|-|The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property|
+|badge|string\|undefined|-|The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Comment
 
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|avatarSource|string\|undefined|-|The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored|
+|avatarSize|number|-|Change the size of the avatar.|
+|avatarAlt|string|-|The alt property of the avatar image|
+|commentTitleAsHtml|string|-|The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header|
+|primary|boolean|-|True to add a different style to this comment (e.g. if it's made by the author)|
+|ref (readonly)|HTMLElement|-|The HTML reference of the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## DataTable
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-|undefined|
+|rows|Array.<Record.<string, any>>|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## DescriptionList
+Create an already styled description list, perfect for describing key-value properties
+&nbsp;
+&nbsp;
+&nbsp;
+### Slots
+|name|description|
+|--|--|
+|-|If you need to add components in the titles or descriptions, use the default slot to specify the content of the description terms and description details|
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|showDivider|boolean|-|If true a divider will be shown between two items|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|ref (readonly)|HTMLDListElement|-|The HTML reference of the component|
+|termsAreHtml|boolean|-|Whether the terms of your list should be treated as HTML|
+|detailsAreHtml|boolean|-|Whether the details of your list should be treated as HTML|
+|list|Array.<{term: string, details: string}>|-|An array containing the term-details pairs of the description list. Can be text only or html|
+&nbsp;
+&nbsp;
+&nbsp;
+## Divider
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Dropdown
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Form
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-|undefined|
+|variant|'stacked'\|'horizontal'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Loader
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Modal
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Offcanvas
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|side|'left'\|'right'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Table
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Accordion
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## AccordionItem
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Autocomplete
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|options|Array.<{label: string, value: any}>|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Checkbox
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## DatePicker
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## EmailInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Field
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## FixedPointInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|decimalPlaces|'.'\|','|-|undefined|
+|iconPosition|'left'\|'right'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## NumberInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|iconPosition|'left'\|'right'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## PasswordInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## PercentageInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## Radio
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|options|Array.<{value: any, label: string}>|-|undefined|
+|size|undefined\|'small'\|'large'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## SearchInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|iconPosition|'left'\|'right'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Select
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|options|Array.<{label: string, value: any}>|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## TextInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|iconPosition|'left'\|'right'|-|undefined|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## Textarea
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|
+&nbsp;
+&nbsp;
+&nbsp;
+## TimePicker
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|state|'initial'\|'valid'\|'invalid'|-|undefined|

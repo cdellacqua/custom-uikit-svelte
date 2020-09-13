@@ -3,7 +3,7 @@
 	 * @component Create an already styled description list, perfect for describing key-value properties
 	 * @slot {"default": "If you need to add components in the titles or descriptions, use the default slot to specify the content of the description terms and description details"}
 	 * @dispatch {}
-	 * @forward [] */
+	 * @forward {} */
 
 	/**
 	 * @description If true a divider will be shown between two items
@@ -32,7 +32,7 @@
 	export let detailsAreHtml = false;
 	/** 
 	 * @description An array containing the term-details pairs of the description list. Can be text only or html 
-	 * @type {{term: string, details: string}[]} */
+	 * @type {Array<{term: string, details: string}>} */
 	export let list = [];
 </script>
 <dl bind:this={ref} {style} class={className ? "uk-description-list " + className : "uk-description-list"} class:uk-description-list-divider={showDivider}>

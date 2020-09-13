@@ -3,7 +3,7 @@
 	 * @component Useful to display content such as blog entries or articles 
 	 * @slot {"default": "The content of the article"}
 	 * @dispatch {}
-	 * @forward [] */
+	 * @forward {} */
 
 	/** 
 	 * @description A string containing any additional classes to apply to the component

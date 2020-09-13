@@ -3,13 +3,13 @@
    * @component A breadcrumb can be added to the page to help the user find where they are in the website and easily go back and forth between pages 
    * @slot {} 
    * @dispatch {}
-   * @forward [] */
+   * @forward {} */
 
   /** 
    * @description An array containing the various steps composing the path of the current page. Each step should have an href property, 
    * which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the
    * current page and its href property will be ignored
-   * @type {{href: string, label: string}[]} */
+   * @type {Array<{href: string, label: string}>} */
   export let path = [];
   /** 
 	 * @description A string containing any additional classes to apply to the component

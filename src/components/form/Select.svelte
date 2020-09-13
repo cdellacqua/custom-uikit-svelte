@@ -11,7 +11,7 @@
   export let placeholder = "";
   export let optional = false;
   export let value;
-  /** @type {{label: string; value: any}[]} */
+  /** @type {Array<{label: string, value: any}>} */
   export let options = [];
   export let ref = undefined;
   export let disabled = false;

@@ -26,9 +26,8 @@
     }
   }
 
-  /** @type {(state: 'initial'|'invalid'|'valid'|'loading'|'error'|'success') => void} */
   let setState = noop;
-  /** @type {import("svelte/store").Readable<'initial'|'invalid'|'valid'|'loading'|'error'|'success'>} */
+  /** @type {Readable<'initial'|'invalid'|'valid'|'loading'|'error'|'success'>} */
   let stateStore = readable("initial", (set) => {
     setState = (state) => {
       set(state);

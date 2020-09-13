@@ -3,9 +3,23 @@
   import { identity, noop } from "../helpers/lambdas";
   import SearchInput from "./form/SearchInput.svelte";
 
-  /** @type {{label: string; key: string; className?: string; textAlign?: 'center'|'right'|'left'; orderable?: boolean|((v1, v2) => -1|1|0); searchable?: boolean; render?: (value: any, row: any) => string|object}[]} */
+  /**
+   * @callback Comparator
+   * @param v1
+   * @param v2
+   * @return {number}
+   */
+
+  /**
+   * @callback Renderer
+   * @param value
+   * @param row
+   * @return {string|object}
+   */
+
+  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
   export let columns = [];
-  /** @type {Record<string, any>[]} */
+  /** @type {Array<Record<string, any>>} */
   export let rows = [];
   export let size = undefined;
   export let className = undefined;

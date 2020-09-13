@@ -4,7 +4,7 @@
   import { generateId } from "../../services/html";
 
   export let id = generateId();
-  /** @type {{label: string; value: any}[]} */
+  /** @type {Array<{label: string, value: any}>} */
   export let options = [];
   export let value = undefined;
   export let label = "";
