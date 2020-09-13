@@ -14,7 +14,7 @@ const docLines = [
 
 for (const component of components) {
 	docLines.push(
-		`- [${component.name}](#${component.name})`,
+		`- [${component.name}](#${component.name.toLowerCase()})`,
 	);
 }
 
