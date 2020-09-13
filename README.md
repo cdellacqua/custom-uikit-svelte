@@ -47,11 +47,6 @@ This alert can be used to display success, warning and error messages
 &nbsp;
 &nbsp;
 &nbsp;
-### Custom Events
-|name|description|type|
-|--|--|--|
-|name|desc|string|
-&nbsp;
 ### Props
 |name|type|default|description|
 |--|--|--|--|

@@ -7,10 +7,9 @@
   "svelte": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && node export.js && rollup -c",
-    "build:doc": "node gendocmd.js && node gendocsvelte.js && node gentypes.js",
+    "build": "rm -rf dist && node export.js && rollup -c && node gentypes.js",
+    "build:doc": "node gendocmd.js && node gendocsvelte.js",
     "build:preview": "rm -rf public/build && rollup --config rollup.preview.config.js",
-    "doc": "node gendoc.js",
     "prepare": "npm run build",
     "start": "sirv public --host",
     "dev": "rollup --config rollup.preview.config.js -w"

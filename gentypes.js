@@ -18,8 +18,13 @@ components.forEach((component) => {
 	component.exports.forEach((prop) => {
 		$$prop_def.push(
 			"\t\t/**",
-			`\t\t * ${prop.description}`,
 		);
+
+		if (prop.description !== undefined) {
+			$$prop_def.push(
+				`\t\t * ${prop.description.replace(/\n/g, '\n\t\t * ')}`,
+			);
+		}
 
 		if (prop.default !== undefined) {
 			$$prop_def.push(`\t\t * @default ${prop.default}`);

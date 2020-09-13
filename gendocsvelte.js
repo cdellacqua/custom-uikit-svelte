@@ -23,94 +23,94 @@ docLines.push(
 
 for (const component of components) {
 	docLines.push(
-		`<h2 class="uk-heading-divider">${component.name}</h2>`,
-		`<p>${component.description || ''}</p>`,
+		`\t\t<h2 class="uk-heading-divider">${component.name}</h2>`,
+		`\t\t<p>${component.description || ''}</p>`,
 	);
 
 	const demoFile = demoFiles.find(entry => entry.endsWith(component.name + 'Demo.svelte'));
 	if (demoFile) {
 		docLines.push(
-			`\t\t<${demoFile.match(/([^/]+).svelte/)[1]} />`,
-			`\t<hr class="uk-divider-icon">`,
+			`\t\t\t\t<${demoFile.match(/([^/]+).svelte/)[1]} />`,
+			`\t\t\t<hr class="uk-divider-icon">`,
 		);
 	}
 
 	if (Object.keys(component.slots).length > 0) {
 		docLines.push(
-			`<h3>Slots</h3>`,
-			`<table class="uk-table">`,
-			`\t<thead>`,
-			`\t\t<tr>`,
-			`\t\t\t<th>name</th>`,
-			`\t\t\t<th>description</th>`,
-			`\t\t</tr>`,
-			`\t</thead>`,
-			`\t<tbody>`,
+			`\t\t<h3>Slots</h3>`,
+			`\t\t<table class="uk-table">`,
+			`\t\t\t<thead>`,
+			`\t\t\t\t<tr>`,
+			`\t\t\t\t\t<th>name</th>`,
+			`\t\t\t\t\t<th>description</th>`,
+			`\t\t\t\t</tr>`,
+			`\t\t\t</thead>`,
+			`\t\t\t<tbody>`,
 		);
 		for (const name of Object.keys(component.slots)) {
 			docLines.push(
-				`\t\t<tr>`,
-				`\t\t\t<td>${name === 'default' ? '-' : name}</td>`,
-				`\t\t\t<td>${component.slots[name]}</td>`,
-				`\t\t</tr>`,
+				`\t\t\t\t<tr>`,
+				`\t\t\t\t\t<td>${name === 'default' ? '-' : name}</td>`,
+				`\t\t\t\t\t<td>${component.slots[name]}</td>`,
+				`\t\t\t\t</tr>`,
 			);
 		}
 		docLines.push(
-			`\t</tbody>`,
-			`</table>`,
+			`\t\t\t</tbody>`,
+			`\t\t</table>`,
 		);
 	}
 	if (Object.keys(component.dispatch).length > 0) {
 		docLines.push(
-			`<h3>Custom Events</h3>`,
-			`<table class="uk-table">`,
-			`\t<thead>`,
-			`\t\t<tr>`,
-			`\t\t\t<th>name</th>`,
-			`\t\t\t<th>description</th>`,
-			`\t\t\t<th>type</th>`,
-			`\t\t</tr>`,
-			`\t</thead>`,
-			`\t<tbody>`,
+			`\t\t<h3>Custom Events</h3>`,
+			`\t\t<table class="uk-table">`,
+			`\t\t\t<thead>`,
+			`\t\t\t\t<tr>`,
+			`\t\t\t\t\t<th>name</th>`,
+			`\t\t\t\t\t<th>description</th>`,
+			`\t\t\t\t\t<th>type</th>`,
+			`\t\t\t\t</tr>`,
+			`\t\t\t</thead>`,
+			`\t\t\t<tbody>`,
 		);
 		for (const name of Object.keys(component.dispatch)) {
 			docLines.push(
-				`\t\t<tr>`,
-				`\t\t\t<td>${name}</td>`,
-				`\t\t\t<td>${component.dispatch[name].description}</td>`,
-				`\t\t\t<td>${(component.dispatch[name].type || 'any').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/{/g, '&lbrace;').replace(/}/g, '&rbrace;')}</td>`,
-				`\t\t</tr>`,
+				`\t\t\t\t<tr>`,
+				`\t\t\t\t\t<td>${name}</td>`,
+				`\t\t\t\t\t<td>${component.dispatch[name].description}</td>`,
+				`\t\t\t\t\t<td>${(component.dispatch[name].type || 'any').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/{/g, '&lbrace;').replace(/}/g, '&rbrace;')}</td>`,
+				`\t\t\t\t</tr>`,
 			);
 		}
 		docLines.push(
-			`\t</tbody>`,
-			`</table>`,
+			`\t\t\t</tbody>`,
+			`\t\t</table>`,
 		);
 	}
 
 	if (Object.keys(component.forward).length > 0) {
 		docLines.push(
-			`<h3>Forwarded Events</h3>`,
-			`<table class="uk-table">`,
-			`\t<thead>`,
-			`\t\t<tr>`,
-			`\t\t\t<th>name</th>`,
-			`\t\t\t<th>source</th>`,
-			`\t\t</tr>`,
-			`\t</thead>`,
-			`\t<tbody>`,
+			`\t\t<h3>Forwarded Events</h3>`,
+			`\t\t<table class="uk-table">`,
+			`\t\t\t<thead>`,
+			`\t\t\t\t<tr>`,
+			`\t\t\t\t\t<th>name</th>`,
+			`\t\t\t\t\t<th>source</th>`,
+			`\t\t\t\t</tr>`,
+			`\t\t\t</thead>`,
+			`\t\t\t<tbody>`,
 		);
 		for (const name of Object.keys(component.forward)) {
 			docLines.push(
-				`\t\t<tr>`,
-				`\t\t\t<td>${name}</td>`,
-				`\t\t\t<td>${component.forward[name]}</td>`,
-				`\t\t</tr>`,
+				`\t\t\t\t<tr>`,
+				`\t\t\t\t\t<td>${name}</td>`,
+				`\t\t\t\t\t<td>${component.forward[name]}</td>`,
+				`\t\t\t\t</tr>`,
 			);
 		}
 		docLines.push(
-			`\t</tbody>`,
-			`</table>`,
+			`\t\t\t</tbody>`,
+			`\t\t</table>`,
 		);
 	}
 	let firstProp = true;
@@ -119,33 +119,33 @@ for (const component of components) {
 			firstProp = false;
 
 			docLines.push(
-				`<h3>Props</h3>`,
-				`<table class="uk-table">`,
-				`\t<thead>`,
-				`\t\t<tr>`,
-				`\t\t\t<th>name</th>`,
-				`\t\t\t<th>type</th>`,
-				`\t\t\t<th>default</th>`,
-				`\t\t\t<th>description</th>`,
-				`\t\t</tr>`,
-				`\t</thead>`,
-				`\t<tbody>`,
+				`\t\t<h3>Props</h3>`,
+				`\t\t<table class="uk-table">`,
+				`\t\t\t<thead>`,
+				`\t\t\t\t<tr>`,
+				`\t\t\t\t\t<th>name</th>`,
+				`\t\t\t\t\t<th>type</th>`,
+				`\t\t\t\t\t<th>default</th>`,
+				`\t\t\t\t\t<th>description</th>`,
+				`\t\t\t\t</tr>`,
+				`\t\t\t</thead>`,
+				`\t\t\t<tbody>`,
 			);
 		}
 		docLines.push(
-			`\t\t<tr>`,
-			`\t\t\t<td>${block.name}${block.readonly ? ' (readonly)' : ''}</td>`,
-			`\t\t\t<td>${block.type.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/{/g, '&lbrace;').replace(/}/g, '&rbrace;')}</td>`,
-			`\t\t\t<td>${block.default || '-'}</td>`,
-			`\t\t\t<td>${block.description}</td>`,
-			`\t\t</tr>`,
+			`\t\t\t\t<tr>`,
+			`\t\t\t\t\t<td>${block.name}${block.readonly ? ' (readonly)' : ''}</td>`,
+			`\t\t\t\t\t<td>${block.type.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/{/g, '&lbrace;').replace(/}/g, '&rbrace;')}</td>`,
+			`\t\t\t\t\t<td>${block.default || '-'}</td>`,
+			`\t\t\t\t\t<td>${block.description}</td>`,
+			`\t\t\t\t</tr>`,
 		);
 	}
 	if (!firstProp) {
 
 		docLines.push(
-			`\t</tbody>`,
-			`</table>`,
+			`\t\t\t</tbody>`,
+			`\t\t</table>`,
 		);
 	}
 }
