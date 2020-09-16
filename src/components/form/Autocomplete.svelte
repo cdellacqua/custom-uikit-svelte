@@ -4,18 +4,53 @@
   import { generateId } from "../../services/html";
 
   export let id = generateId();
-  /** @type {Array<{label: string, value: any}>} */
+  /**
+   * Autocomplete options, the value must be unique
+   * @type {Array<{label: string, value: any}>} */
   export let options = [];
+  /**
+   * The current selected value or undefined if no value is selected
+   * @type {any} */
   export let value = undefined;
+  /**
+   * Label of this component
+   * @type {string} */
   export let label = "";
+  /** 
+	 * @description A string containing any additional classes to apply to the component
+	 * @type {string|undefined} */
   export let className = undefined;
+  /** 
+	 * @description Text to show when the applied filter doesn't return any result
+	 * @type {string} */
   export let textIfNoResult = "";
+  /** 
+	 * @description Control whether the component is disabled or not
+	 * @type {boolean} */
   export let disabled = false;
+  /** 
+	 * @description UIkit tooltip
+	 * @type {string|undefined} */
 	export let tooltip = undefined;
+  /** 
+	 * @description Input placeholder
+	 * @type {string|undefined} */
   export let placeholder = undefined;
+  /** 
+	 * @description Reference to the div that wraps this component
+	 * @type {HTMLDivElement} */
   export let ref = undefined;
+  /** 
+	 * @description Autocapitalize setting of the input tag
+	 * @type {string|undefined} */
   export let autocapitalize = undefined;
+  /** 
+	 * @description Autocomplete setting of the input tag
+	 * @type {string|undefined} */
   export let autocomplete = undefined;
+  /** 
+	 * @description Autocorrect setting of the input tag
+	 * @type {string|undefined} */
   export let autocorrect = undefined;
 
   let query = "";

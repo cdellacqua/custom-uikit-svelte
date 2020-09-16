@@ -145,7 +145,6 @@
       <tr on:click={() => dispatch('row-click', row)}>
         {#each columns as col}
           <td
-            class:uk-text-truncate={true}
             class={col.className}
             style="text-align: {col.textAlign || 'left'}">
             {#if !col.render}
