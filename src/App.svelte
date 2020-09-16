@@ -1,5 +1,5 @@
 <script>
-	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, Modal, Offcanvas, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
+	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 </script>
 <div uk-grid class="uk-flex-center uk-padding-small">
@@ -646,12 +646,50 @@ current page and its href property will be ignored</td>
 				</tr>
 			</tbody>
 		</table>
+		<h2 class="uk-heading-divider">Switcher</h2>
+		<p></p>
 		<h2 class="uk-heading-divider">Table</h2>
 		<p></p>
 		<h2 class="uk-heading-divider">Accordion</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
 				<AccordionDemo />
-			<hr class="uk-divider-icon">
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre><code>&lt;script&gt;</code>
+<code>import &lbrace; Accordion, AccordionItem, Checkbox, Button &rbrace; from &quot;../main&quot;;</code>
+<code>export let className = undefined;</code>
+<code>let multi = false;</code>
+<code>let collapsible = true;</code>
+<code>let duration = 200;</code>
+<code></code>
+<code>function increaseDuration() &lbrace;</code>
+<code>&nbsp;&nbsp;duration = Math.min(2500, duration + 50);</code>
+<code>&rbrace;</code>
+<code>function decreaseDuration() &lbrace;</code>
+<code>&nbsp;&nbsp;duration = Math.max(duration - 50, 50);</code>
+<code>&rbrace;</code>
+<code>&lt;/script&gt;</code>
+<code>&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;</code>
+<code>&nbsp;&nbsp;&lt;Checkbox bind:value=&lbrace;multi&rbrace; label=&quot;Multi&quot; optional className=&quot;uk-margin-right uk-margin-remove-bottom&quot; /&gt;</code>
+<code>&nbsp;&nbsp;&lt;Checkbox bind:value=&lbrace;collapsible&rbrace; label=&quot;Collapsible&quot; className=&quot;uk-margin-right uk-margin-remove-bottom&quot; optional /&gt;</code>
+<code>&nbsp;&nbsp;&lt;Button size=&quot;small&quot; on:click=&lbrace;increaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;+ duration&lt;/Button&gt;</code>
+<code>&nbsp;&nbsp;&lt;Button size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace;&gt;- duration&lt;/Button&gt;</code>
+<code>&lt;/div&gt;</code>
+<code>&lt;Accordion &lbrace;className&rbrace; &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace;&gt;</code>
+<code>&nbsp;&nbsp;&lt;AccordionItem title=&quot;First&quot;&gt;</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;</code>
+<code>&nbsp;&nbsp;&lt;/AccordionItem&gt;</code>
+<code>&nbsp;&nbsp;&lt;AccordionItem title=&quot;Second&quot;&gt;</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Some content&lt;/p&gt;</code>
+<code>&nbsp;&nbsp;&lt;/AccordionItem&gt;</code>
+<code>&nbsp;&nbsp;&lt;AccordionItem title=&quot;Title &lt;span class='uk-text-primary'&gt;with &lt;i&gt;HTML&lt;/i&gt;&lt;/span&gt;&quot; isTitleHtml&gt;</code>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Other content&lt;/p&gt;</code>
+<code>&nbsp;&nbsp;&lt;/AccordionItem&gt;</code>
+<code>&lt;/Accordion&gt;</code></pre></li>
+		</Switcher>
 		<h2 class="uk-heading-divider">AccordionItem</h2>
 		<p></p>
 		<h2 class="uk-heading-divider">Autocomplete</h2>

@@ -30,8 +30,28 @@ for (const component of components) {
 	const demoFile = demoFiles.find(entry => entry.endsWith(component.name + 'Demo.svelte'));
 	if (demoFile) {
 		docLines.push(
+			"\t\t<Switcher titles={['Output', 'Code']}>",
+			`\t\t\t<li>`,
+			`\t\t\t\t<hr class="uk-divider-icon">`,
 			`\t\t\t\t<${demoFile.match(/([^/]+).svelte/)[1]} />`,
-			`\t\t\t<hr class="uk-divider-icon">`,
+			`\t\t\t\t<hr class="uk-divider-icon">`,
+			`\t\t\t</li>`,
+			`\t\t\t<li><pre>${
+				fs
+					.readFileSync(path.join('src', 'demo', demoFile))
+					.toString()
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;')
+					.replace(/{/g, '&lbrace;')
+					.replace(/}/g, '&rbrace;')
+					.replace(/\t/g, '&nbsp;&nbsp;')
+					.split('\n')
+					.map(line => `<code>${line}</code>`)
+					.join('\n')
+			}</pre></li>`,
+			"\t\t</Switcher>",
 		);
 	}
 

@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && node export.js && rollup -c && node gentypes.js",
     "build:doc": "node gendocmd.js && node gendocsvelte.js",
-    "build:preview": "rm -rf public/build && rollup --config rollup.preview.config.js",
+    "build:preview": "node gendocsvelte.js && rm -rf public/build && rollup --config rollup.preview.config.js",
     "prepare": "npm run build && npm run build:doc",
     "start": "sirv public --host",
     "dev": "rollup --config rollup.preview.config.js -w"

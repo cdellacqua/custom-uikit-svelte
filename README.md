@@ -5,39 +5,40 @@ Unofficial Svelte Component Library for the UIkit framework
 &nbsp;
 &nbsp;
 Components
-- [Alert](#Alert)
-- [Article](#Article)
-- [Badge](#Badge)
-- [Breadcrumb](#Breadcrumb)
-- [Button](#Button)
-- [Card](#Card)
-- [Comment](#Comment)
-- [DataTable](#DataTable)
-- [DescriptionList](#DescriptionList)
-- [Divider](#Divider)
-- [Dropdown](#Dropdown)
-- [Form](#Form)
-- [Loader](#Loader)
-- [Modal](#Modal)
-- [Offcanvas](#Offcanvas)
-- [Table](#Table)
-- [Accordion](#Accordion)
-- [AccordionItem](#AccordionItem)
-- [Autocomplete](#Autocomplete)
-- [Checkbox](#Checkbox)
-- [DatePicker](#DatePicker)
-- [EmailInput](#EmailInput)
-- [Field](#Field)
-- [FixedPointInput](#FixedPointInput)
-- [NumberInput](#NumberInput)
-- [PasswordInput](#PasswordInput)
-- [PercentageInput](#PercentageInput)
-- [Radio](#Radio)
-- [SearchInput](#SearchInput)
-- [Select](#Select)
-- [TextInput](#TextInput)
-- [Textarea](#Textarea)
-- [TimePicker](#TimePicker)
+- [Alert](#alert)
+- [Article](#article)
+- [Badge](#badge)
+- [Breadcrumb](#breadcrumb)
+- [Button](#button)
+- [Card](#card)
+- [Comment](#comment)
+- [DataTable](#datatable)
+- [DescriptionList](#descriptionlist)
+- [Divider](#divider)
+- [Dropdown](#dropdown)
+- [Form](#form)
+- [Loader](#loader)
+- [Modal](#modal)
+- [Offcanvas](#offcanvas)
+- [Switcher](#switcher)
+- [Table](#table)
+- [Accordion](#accordion)
+- [AccordionItem](#accordionitem)
+- [Autocomplete](#autocomplete)
+- [Checkbox](#checkbox)
+- [DatePicker](#datepicker)
+- [EmailInput](#emailinput)
+- [Field](#field)
+- [FixedPointInput](#fixedpointinput)
+- [NumberInput](#numberinput)
+- [PasswordInput](#passwordinput)
+- [PercentageInput](#percentageinput)
+- [Radio](#radio)
+- [SearchInput](#searchinput)
+- [Select](#select)
+- [TextInput](#textinput)
+- [Textarea](#textarea)
+- [TimePicker](#timepicker)
 &nbsp;
 &nbsp;
 &nbsp;
@@ -286,6 +287,13 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |side|'left'\|'right'|-||
+&nbsp;
+&nbsp;
+&nbsp;
+## Switcher
+
+&nbsp;
+&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
