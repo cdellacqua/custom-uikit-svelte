@@ -206,5 +206,4 @@ import { createEventDispatcher } from "svelte";
   on:blur={updateState}
   on:blur={handleBlur}
   on:blur
-  on:focus={handleFocus}
-  pattern={`[0-9]+${decimalSeparator === '.' ? '\\' + decimalSeparator : decimalSeparator}[0-9]+`} />
+  on:focus={handleFocus} />
