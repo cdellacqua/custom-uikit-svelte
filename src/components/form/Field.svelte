@@ -2,6 +2,10 @@
   export let inputId;
   export let hasIcon = false;
   export let label = "";
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
   export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
@@ -25,7 +29,7 @@
 
 </style>
 
-<div class={className} class:uk-margin-bottom={true} bind:this={ref}>
+<div {style} class={className} class:uk-margin-bottom={true} bind:this={ref}>
   {#if labelWrap}
     <div
       class:relative={hasIcon}

@@ -23,6 +23,10 @@
   export let rows = [];
   export let size = undefined;
   export let className = undefined;
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
   export let appearance = "divider";
   export let stickyHeader = false;
   export let placeholder = "";
@@ -114,7 +118,11 @@
 
 <table
   bind:this={ref}
-  class={className ? 'uk-table uk-table-middle uk-table-hover ' + className : 'uk-table uk-table-middle uk-table-hover'}
+  {style}
+  class:uk-table={true}
+  class:uk-table-middle={true}
+  class:uk-table-hover={true}
+  class={className}
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}
   class:uk-table-small={size === 'small'}>

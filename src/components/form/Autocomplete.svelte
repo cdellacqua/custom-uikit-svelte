@@ -21,6 +21,10 @@
 	 * @type {string|undefined} */
   export let className = undefined;
   /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
+  /** 
 	 * @description Text to show when the applied filter doesn't return any result
 	 * @type {string} */
   export let textIfNoResult = "";
@@ -231,7 +235,9 @@
 <svelte:body on:click={hideSuggested} />
 <div
   bind:this={ref}
-  class={className ? 'text-wrapper ' + className : 'text-wrapper'}
+  {style}
+  class:text-wrapper={true}
+  class={className}
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
   <label for={id} class="uk-form-label">{label}</label>

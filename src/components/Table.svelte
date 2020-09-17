@@ -2,6 +2,7 @@
   export let heading = [];
   export let size = undefined;
   export let className = undefined;
+  export let style = undefined;
   export let appearance = undefined;
   export let stickyHeader = false;
   export let ref = undefined;
@@ -20,10 +21,13 @@
 
 <table
   bind:this={ref}
-  class={className ? 'uk-table uk-table-middle ' + className : 'uk-table uk-table-middle'}
+  class:uk-table={true}
+  class:uk-table-middle={true}
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}
-  class:uk-table-small={size === 'small'}>
+  class:uk-table-small={size === 'small'}
+  class={className}
+  {style}>
   {#if heading && heading.length > 0}
     <thead>
       <tr>

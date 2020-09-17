@@ -4,6 +4,10 @@
 
   export let id = generateId();
   export let label = "";
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
   export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
@@ -43,6 +47,7 @@
   inputId={id}
   {label}
   {state}
+  {style}
   {className}
   {textIfInvalid}
   {textIfValid}

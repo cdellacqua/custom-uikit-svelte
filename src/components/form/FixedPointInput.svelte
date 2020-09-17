@@ -9,6 +9,10 @@ import { createEventDispatcher } from "svelte";
   export let decimalPlaces = 2;
   export let inhibitDecimalSeparatorKey = false;
   export let label = "";
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
   export let className = undefined;
   export let textIfInvalid = undefined;
   export let textIfValid = undefined;
@@ -188,6 +192,7 @@ import { createEventDispatcher } from "svelte";
   {icon}
   {iconPosition}
   {label}
+  {style}
   {className}
   {textIfInvalid}
   {textIfValid}

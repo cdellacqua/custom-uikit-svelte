@@ -9,6 +9,10 @@
   export let state = "initial";
   export let valid = true;
   export let ref = undefined;
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
   export let className = undefined;
   /** @type {'stacked'|'horizontal'} */
   export let variant = "stacked";
@@ -62,6 +66,7 @@
 </style>
 
 <form
+  {style}
   class={className}
   class:uk-form-horizontal={variant === 'horizontal'}
   class:uk-form-stacked={variant === 'stacked'}
