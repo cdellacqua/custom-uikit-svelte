@@ -326,7 +326,18 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|options|Array.<{label: string, value: any}>|-||
+|options|Array.<{label: string, value: any}>|-|Autocomplete options, the value must be unique|
+|value|any|-|The current selected value or undefined if no value is selected|
+|label|string|-|Label of this component|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
+|disabled|boolean|-|Control whether the component is disabled or not|
+|tooltip|string\|undefined|-|UIkit tooltip|
+|placeholder|string\|undefined|-|Input placeholder|
+|ref|HTMLDivElement|-|Reference to the div that wraps this component|
+|autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
+|autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
+|autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
 &nbsp;
 &nbsp;
 &nbsp;

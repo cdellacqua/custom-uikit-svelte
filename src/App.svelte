@@ -709,7 +709,73 @@ current page and its href property will be ignored</td>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>Autocomplete options, the value must be unique</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>any</td>
+					<td>-</td>
+					<td>The current selected value or undefined if no value is selected</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Label of this component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
+				<tr>
+					<td>textIfNoResult</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the applied filter doesn't return any result</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>Control whether the component is disabled or not</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>UIkit tooltip</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>Reference to the div that wraps this component</td>
+				</tr>
+				<tr>
+					<td>autocapitalize</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocapitalize setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocomplete</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocomplete setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocorrect</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocorrect setting of the input tag</td>
 				</tr>
 			</tbody>
 		</table>
