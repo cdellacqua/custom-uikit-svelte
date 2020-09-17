@@ -24,13 +24,15 @@
   class:uk-table-striped={appearance === 'striped'}
   class:uk-table-divider={appearance === 'divider'}
   class:uk-table-small={size === 'small'}>
-  <thead>
-    <tr>
-      {#each heading as col}
-        <th class:sticky={stickyHeader}>{col}</th>
-      {/each}
-    </tr>
-  </thead>
+  {#if heading && heading.length > 0}
+    <thead>
+      <tr>
+        {#each heading as col}
+          <th class:sticky={stickyHeader}>{col}</th>
+        {/each}
+      </tr>
+    </thead>
+  {/if}
   <tbody>
     <slot />
   </tbody>
