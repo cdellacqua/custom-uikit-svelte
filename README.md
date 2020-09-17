@@ -211,6 +211,7 @@ The card component allows you to create nice box layouts
 |--|--|--|--|
 |columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
 |rows|Array.<Record.<string, any>>|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 &nbsp;
 &nbsp;
 &nbsp;
@@ -260,6 +261,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |variant|'stacked'\|'horizontal'|-||
 &nbsp;
 &nbsp;
@@ -294,6 +296,11 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 &nbsp;
 &nbsp;
 &nbsp;
@@ -330,6 +337,7 @@ Create an already styled description list, perfect for describing key-value prop
 |value|any|-|The current selected value or undefined if no value is selected|
 |label|string|-|Label of this component|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
 |disabled|boolean|-|Control whether the component is disabled or not|
 |tooltip|string\|undefined|-|UIkit tooltip|
@@ -349,6 +357,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -361,6 +370,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -373,6 +383,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -385,6 +396,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -398,6 +410,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |decimalPlaces|'.'\|','|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |iconPosition|'left'\|'right'|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
@@ -411,6 +424,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |iconPosition|'left'\|'right'|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
@@ -424,6 +438,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -432,6 +447,11 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 &nbsp;
 &nbsp;
 &nbsp;
@@ -445,6 +465,7 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |options|Array.<{value: any, label: string}>|-||
 |size|undefined\|'small'\|'large'|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 &nbsp;
 &nbsp;
 &nbsp;
@@ -456,6 +477,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |iconPosition|'left'\|'right'|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
@@ -469,6 +491,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |options|Array.<{label: string, value: any}>|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
@@ -482,6 +505,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |iconPosition|'left'\|'right'|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
@@ -495,6 +519,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
 &nbsp;
 &nbsp;
@@ -507,4 +532,5 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
