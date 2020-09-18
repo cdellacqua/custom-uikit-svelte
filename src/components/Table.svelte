@@ -6,6 +6,7 @@
   export let appearance = undefined;
   export let stickyHeader = false;
   export let ref = undefined;
+  export let caption = undefined;
 </script>
 
 <style>
@@ -28,6 +29,9 @@
   class:uk-table-small={size === 'small'}
   class={className}
   {style}>
+  {#if caption}
+    <caption>{caption}</caption>
+  {/if}
   {#if heading && heading.length > 0}
     <thead>
       <tr>
