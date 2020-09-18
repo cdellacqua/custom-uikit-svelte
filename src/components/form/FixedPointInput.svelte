@@ -137,6 +137,7 @@ import { createEventDispatcher } from "svelte";
       e.stopPropagation();
       handleKey(e);
     } else if (e.key === 'Enter') {
+      updateState();
       if (referenceValue !== value) {
         referenceValue = value;
         dispatch('change', value);

@@ -59,7 +59,7 @@ import { createEventDispatcher } from "svelte";
     {#if placeholder}
       <option value="" disabled selected>{placeholder}</option>
     {/if}
-    {#each options as option, i}
+    {#each options as option, i (option)}
       <option selected={option.value === value} value={i} disabled={option.disabled || false}>
         {option.label}
       </option>

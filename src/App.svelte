@@ -1164,11 +1164,12 @@ current page and its href property will be ignored</td>
 <code>  import &lbrace; Select &rbrace; from &quot;../main&quot;;</code>
 <code></code>
 <code>  let status = [];</code>
+<code>  let obj = &lbrace; test: 1 &rbrace;;</code>
 <code>&lt;/script&gt;</code>
 <code></code>
 <code>&lt;Select</code>
-<code>  value=&lbrace;undefined&rbrace;</code>
-<code>  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: 3 &rbrace;]&rbrace;</code>
+<code>  value=&lbrace;obj&rbrace;</code>
+<code>  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;]&rbrace;</code>
 <code>  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;</code>
 <code>    status = [...status, 'Change: ' + JSON.stringify(detail)];</code>
 <code>  &rbrace;&rbrace; /&gt;</code>
