@@ -1,4 +1,6 @@
 <script>
+import { createEventDispatcher } from "svelte";
+
   import { generateId } from "../../services/html";
   import Field from "./Field.svelte";
 
@@ -23,6 +25,9 @@
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
+
+  const dispatch = createEventDispatcher();
+  let referenceValue = value;
 </script>
 
 <Field
@@ -37,7 +42,13 @@
   {optional}>
   <select
     bind:this={ref}
-    on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
+    on:blur={() => {
+      state = ref.checkValidity() ? 'valid' : 'invalid';
+      if (referenceValue !== value) {
+        referenceValue = value;
+        dispatch('change', value);
+      }
+    }}
     on:focus={() => (state = 'initial')}
     class="uk-select"
     {disabled}
