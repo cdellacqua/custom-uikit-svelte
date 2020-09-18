@@ -1,6 +1,7 @@
 <script>
 	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
+	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 </script>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
@@ -939,6 +940,39 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">FixedPointInput</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<FixedPointInputDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre><code>&lt;script&gt;</code>
+<code>  import &lbrace;</code>
+<code>    Accordion,</code>
+<code>    AccordionItem,</code>
+<code>    Checkbox,</code>
+<code>    Button,</code>
+<code>    FixedPointInput,</code>
+<code>  &rbrace; from &quot;../main&quot;;</code>
+<code></code>
+<code>  let decimalPlaces = 2;</code>
+<code>  function increasePrecision() &lbrace;</code>
+<code>    decimalPlaces = Math.min(100, decimalPlaces + 1);</code>
+<code>  &rbrace;</code>
+<code>  function decreasePrecision() &lbrace;</code>
+<code>    decimalPlaces = Math.max(decimalPlaces - 1, 0);</code>
+<code>  &rbrace;</code>
+<code>&lt;/script&gt;</code>
+<code></code>
+<code>&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;</code>
+<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;increasePrecision&rbrace; className=&quot;uk-margin-right&quot;&gt;</code>
+<code>    + precision</code>
+<code>  &lt;/Button&gt;</code>
+<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreasePrecision&rbrace;&gt;- precision&lt;/Button&gt;</code>
+<code>&lt;/div&gt;</code>
+<code>&lt;FixedPointInput &lbrace;decimalPlaces&rbrace; value=&lbrace;10.33&rbrace; /&gt;</code>
+<code></code></pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -950,12 +984,6 @@ current page and its href property will be ignored</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>decimalPlaces</td>
-					<td>'.'|','</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>

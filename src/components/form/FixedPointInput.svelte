@@ -5,7 +5,6 @@ import { createEventDispatcher } from "svelte";
   import TextInput from "./TextInput.svelte";
 
   export let id = generateId();
-  /** @type {'.'|','} */
   export let decimalPlaces = 2;
   export let inhibitDecimalSeparatorKey = false;
   export let label = "";
@@ -34,10 +33,6 @@ import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   let localeValue = '';
   let decimalSeparator = Number(.1).toLocaleString().replace(/\d/g, '');
-
-  if (decimalPlaces <= 0) {
-    throw new Error('cannot create a fixed point input without decimal places');
-  }
 
   let referenceValue = undefined;
 
@@ -78,7 +73,9 @@ import { createEventDispatcher } from "svelte";
 
   function digitsToValue() {
     const displayDigits = [...new Array(Math.max(0, decimalPlaces + 1 - digits.length)).fill('0'), ...digits];
-    displayDigits.splice(displayDigits.length - decimalPlaces, 0, '.');
+    if (displayDigits.length - decimalPlaces < displayDigits.length) {
+      displayDigits.splice(displayDigits.length - decimalPlaces, 0, '.');
+    }
     return displayDigits.join('');
   }
 
