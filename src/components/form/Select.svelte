@@ -15,7 +15,7 @@
   export let placeholder = "";
   export let optional = false;
   export let value;
-  /** @type {Array<{label: string, value: any}>} */
+  /** @type {Array<{label: string, value: any, disabled: boolean|undefined}>} */
   export let options = [];
   export let ref = undefined;
   export let disabled = false;
@@ -47,7 +47,7 @@
       <option value="" disabled selected>{placeholder}</option>
     {/if}
     {#each options as option}
-      <option selected={option.value === value} value={option.value}>
+      <option selected={option.value === value} value={option.value} disabled={option.disabled || false}>
         {option.label}
       </option>
     {/each}
