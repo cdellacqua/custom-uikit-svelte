@@ -1,5 +1,5 @@
 <script>
-import { createEventDispatcher } from "svelte";
+import { createEventDispatcher, onMount } from "svelte";
 
   import { generateId } from "../../services/html";
   import TextInput from "./TextInput.svelte";
@@ -183,6 +183,10 @@ import { createEventDispatcher } from "svelte";
       }
     }
   }
+
+  onMount(() => {
+    updateState();
+  });
 </script>
 
 <TextInput
