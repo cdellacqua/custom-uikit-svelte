@@ -27,7 +27,9 @@ import { createEventDispatcher } from "svelte";
   export let state = "initial";
 
   const dispatch = createEventDispatcher();
-  let referenceValue = value;
+
+  let referenceValue;
+  $: referenceValue = value;
 </script>
 
 <Field
@@ -42,23 +44,23 @@ import { createEventDispatcher } from "svelte";
   {optional}>
   <select
     bind:this={ref}
-    on:blur={() => {
-      state = ref.checkValidity() ? 'valid' : 'invalid';
+    on:change={(e) => {
+      value = options[Number(e.target.value)].value;
       if (referenceValue !== value) {
         referenceValue = value;
         dispatch('change', value);
       }
     }}
+    on:blur={() => (state = ref.checkValidity() ? 'valid' : 'invalid')}
     on:focus={() => (state = 'initial')}
     class="uk-select"
     {disabled}
-    bind:value
     uk-tooltip={tooltip}>
     {#if placeholder}
       <option value="" disabled selected>{placeholder}</option>
     {/if}
-    {#each options as option}
-      <option selected={option.value === value} value={option.value} disabled={option.disabled || false}>
+    {#each options as option, i}
+      <option selected={option.value === value} value={i} disabled={option.disabled || false}>
         {option.label}
       </option>
     {/each}

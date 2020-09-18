@@ -2,6 +2,7 @@
 	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
+	import SelectDemo from './demo/SelectDemo.svelte';
 </script>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
@@ -1153,6 +1154,27 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Select</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<SelectDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre><code>&lt;script&gt;</code>
+<code>  import &lbrace; Select &rbrace; from &quot;../main&quot;;</code>
+<code></code>
+<code>  let status = [];</code>
+<code>&lt;/script&gt;</code>
+<code></code>
+<code>&lt;Select</code>
+<code>  value=&lbrace;undefined&rbrace;</code>
+<code>  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: 3 &rbrace;]&rbrace;</code>
+<code>  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;</code>
+<code>    status = [...status, 'Change: ' + JSON.stringify(detail)];</code>
+<code>  &rbrace;&rbrace; /&gt;</code>
+<code>&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;</code>
+<code></code></pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
