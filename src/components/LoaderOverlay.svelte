@@ -1,9 +1,11 @@
 <script>
   import { onMount, onDestroy } from "svelte";
+import Loader from "./Loader.svelte";
 
   export let className = undefined;
   export let ratio = 1;
   export let style = undefined;
+  export let ref = undefined;
 
   let originalWrapperRef;
   onMount(() => {

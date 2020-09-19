@@ -12,6 +12,8 @@ export { default as Divider } from "./components/Divider.svelte";
 export { default as Dropdown } from "./components/Dropdown.svelte";
 export { default as Form } from "./components/Form.svelte";
 export { default as Loader } from "./components/Loader.svelte";
+export { default as LoaderOverlay } from "./components/LoaderOverlay.svelte";
+export { default as LoaderWrapper } from "./components/LoaderWrapper.svelte";
 export { default as Modal } from "./components/Modal.svelte";
 export { default as Offcanvas } from "./components/Offcanvas.svelte";
 export { default as Switcher } from "./components/Switcher.svelte";
