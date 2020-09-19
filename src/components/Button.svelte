@@ -37,6 +37,10 @@
    * @description If present, the uikit icon with the given name will be added next to the text of the button
    * @type {string|undefined} */
   export let icon = type === "submit" ? "newline" : undefined;
+  /**
+   * @description If the icon is set, this property let you decide its position, left or right
+   * @type {'right'|'left'} */
+  export let iconPosition = 'right';
   /** 
    * @description Specifies the size of the button. If undefined, the button will be of regular size
    * @type {undefined|'small'|'large'} */
@@ -72,10 +76,19 @@
   {style}
   uk-tooltip={tooltip}
   on:click>
+  {#if iconPosition === 'left'}
+    {#if loading || (type === 'submit' && $formState === 'loading')}
+      <Loader className="uk-icon" ratio={0.4} />
+    {:else if icon}
+      <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
+    {/if}
+  {/if}
   <slot />
-  {#if loading || (type === 'submit' && $formState === 'loading')}
-    <Loader className="uk-icon" ratio={0.4} />
-  {:else if icon}
-    <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
+  {#if iconPosition === 'right'}
+    {#if loading || (type === 'submit' && $formState === 'loading')}
+      <Loader className="uk-icon" ratio={0.4} />
+    {:else if icon}
+      <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
+    {/if}
   {/if}
 </button>
