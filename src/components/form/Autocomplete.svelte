@@ -2,6 +2,7 @@
   import { createEventDispatcher, onMount, tick } from "svelte";
   import { dispatchNativeEvent } from "../../helpers/events";
   import { generateId } from "../../services/html";
+  import { fade, fly } from "svelte/transition";
 
   export let id = generateId();
   /**
@@ -16,55 +17,55 @@
    * Label of this component
    * @type {string} */
   export let label = "";
-  /** 
-	 * @description A string containing any additional classes to apply to the component
-	 * @type {string|undefined} */
+  /**
+   * @description A string containing any additional classes to apply to the component
+   * @type {string|undefined} */
   export let className = undefined;
-  /** 
-	 * @description A string specifying custom style properties for the component
-	 * @type {string|undefined} */
-	export let style = undefined;
-  /** 
-	 * @description Text to show when the applied filter doesn't return any result
-	 * @type {string} */
+  /**
+   * @description A string specifying custom style properties for the component
+   * @type {string|undefined} */
+  export let style = undefined;
+  /**
+   * @description Text to show when the applied filter doesn't return any result
+   * @type {string} */
   export let textIfNoResult = "";
-  /** 
-	 * @description Control whether the component is disabled or not
-	 * @type {boolean} */
+  /**
+   * @description Control whether the component is disabled or not
+   * @type {boolean} */
   export let disabled = false;
-  /** 
-	 * @description UIkit tooltip
-	 * @type {string|undefined} */
-	export let tooltip = undefined;
-  /** 
-	 * @description Input placeholder
-	 * @type {string|undefined} */
+  /**
+   * @description UIkit tooltip
+   * @type {string|undefined} */
+  export let tooltip = undefined;
+  /**
+   * @description Input placeholder
+   * @type {string|undefined} */
   export let placeholder = undefined;
-  /** 
-	 * @description Reference to the div that wraps this component
-	 * @type {HTMLDivElement} */
+  /**
+   * @description Reference to the div that wraps this component
+   * @type {HTMLDivElement} */
   export let ref = undefined;
-  /** 
-	 * @description Autocapitalize setting of the input tag
-	 * @type {string|undefined} */
+  /**
+   * @description Autocapitalize setting of the input tag
+   * @type {string|undefined} */
   export let autocapitalize = undefined;
-  /** 
-	 * @description Autocomplete setting of the input tag
-	 * @type {string|undefined} */
+  /**
+   * @description Autocomplete setting of the input tag
+   * @type {string|undefined} */
   export let autocomplete = undefined;
-  /** 
-	 * @description Autocorrect setting of the input tag
-	 * @type {string|undefined} */
+  /**
+   * @description Autocorrect setting of the input tag
+   * @type {string|undefined} */
   export let autocorrect = undefined;
+  /**
+   * @description In/Out fly animation duration (in milliseconds)
+   * @type {number} */
+  export let animationDuration = 100;
 
   let query = "";
   let showSuggested = false;
-	let innerClick = false;
-	const dispatch = createEventDispatcher();
-
-  function resetSelection() {
-    value = undefined;
-  }
+  let innerClick = false;
+  const dispatch = createEventDispatcher();
 
   function showSuggestedOptions(e) {
     showSuggested = true;
@@ -104,10 +105,10 @@
   function handleChangeGenerator(option) {
     return function () {
       if (this.checked) {
-				if (value !== option.value) {
-					value = option.value;
-					dispatch('change', value);
-				}
+        if (value !== option.value) {
+          value = option.value;
+          dispatch('change', value);
+        }
         innerClick = false;
         hideSuggested();
       }
@@ -139,12 +140,8 @@
 
   function handleInput() {
     if (query !== this.value) {
-			const newQuery = this.value;
-			if (value !== undefined) {
-				value = undefined;
-				dispatch('change', null);
-			}
-			tick().then(() => (query = newQuery));
+      const newQuery = this.value;
+      tick().then(() => (query = newQuery));
       showSuggested = true;
     }
   }
@@ -152,7 +149,9 @@
   let suggestedRef = null;
   /** @param {KeyboardEvent} e */
   function handleKeydown(e) {
-    if (
+    if (e.key === "Escape") {
+      showSuggested = false;
+    } else if (
       suggestedRef &&
       filteredOptions.length > 0 &&
       ["ArrowUp", "ArrowDown", "Enter"].includes(e.key)
@@ -241,12 +240,12 @@
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
   <label for={id} class="uk-form-label">{label}</label>
-  <div>
-		<input
+  <div style="position: relative">
+    <input
       {autocapitalize}
       {autocomplete}
       {autocorrect}
-			{placeholder}
+      {placeholder}
       class="uk-input"
       type="search"
       uk-tooltip={tooltip}
@@ -258,11 +257,23 @@
       {disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions} />
+    {#if value !== undefined}
+      <!-- svelte-ignore a11y-missing-attribute -->
+      <a
+        role="button"
+        class="uk-form-icon uk-form-icon-flip"
+        uk-icon="icon: close"
+        on:click={() => {
+          value = undefined;
+          dispatch('change', null);
+        }} />
+    {/if}
   </div>
   {#if showSuggested && !disabled}
     <div
-      class="uk-grid-small uk-box-shadow-small suggested uk-background-default uk-margin-remove-top
-        uk-margin-remove-left uk-grid"
+      transition:fly={{ y: 50, duration: animationDuration }}
+      class="uk-grid-small uk-box-shadow-small suggested uk-background-default
+        uk-margin-remove-top uk-margin-remove-left uk-grid"
       bind:this={suggestedRef}>
       {#if filteredOptions.length > 0}
         {#each filteredOptions as option, i (option)}
@@ -279,6 +290,9 @@
               checked={option.value === value}
               on:change={handleChangeGenerator(option)}
               on:click={handleOptionClickGenerator(option)} />
+            {#if option.value === value}
+              <span class="uk-icon" uk-icon="icon: check; ratio: .75" />
+            {/if}
             {option.label}
           </label>
         {/each}

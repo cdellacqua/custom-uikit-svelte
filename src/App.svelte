@@ -1,9 +1,15 @@
 <script>
 	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, LoaderOverlay, LoaderWrapper, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
+	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 </script>
+<style>
+	code {
+		white-space: pre;
+	}
+</style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
 		<h2 class="uk-heading-divider">Alert</h2>
@@ -701,55 +707,87 @@ current page and its href property will be ignored</td>
 				<AccordionDemo />
 				<hr class="uk-divider-icon">
 			</li>
-			<li><pre><code>&lt;script&gt;</code>
-<code>  import &lbrace; Accordion, AccordionItem, Checkbox, Button &rbrace; from &quot;../main&quot;;</code>
-<code>  let multi = false;</code>
-<code>  let collapsible = true;</code>
-<code>  let duration = 200;</code>
-<code></code>
-<code>  function increaseDuration() &lbrace;</code>
-<code>    duration = Math.min(2500, duration + 50);</code>
-<code>  &rbrace;</code>
-<code>  function decreaseDuration() &lbrace;</code>
-<code>    duration = Math.max(duration - 50, 50);</code>
-<code>  &rbrace;</code>
-<code>&lt;/script&gt;</code>
-<code></code>
-<code>&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;</code>
-<code>  &lt;Checkbox</code>
-<code>    bind:value=&lbrace;multi&rbrace;</code>
-<code>    label=&quot;Multi&quot;</code>
-<code>    optional</code>
-<code>    className=&quot;uk-margin-right uk-margin-remove-bottom&quot; /&gt;</code>
-<code>  &lt;Checkbox</code>
-<code>    bind:value=&lbrace;collapsible&rbrace;</code>
-<code>    label=&quot;Collapsible&quot;</code>
-<code>    className=&quot;uk-margin-right uk-margin-remove-bottom&quot;</code>
-<code>    optional /&gt;</code>
-<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;increaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;</code>
-<code>    + duration</code>
-<code>  &lt;/Button&gt;</code>
-<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace;&gt;- duration&lt;/Button&gt;</code>
-<code>&lt;/div&gt;</code>
-<code>&lt;Accordion &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace;&gt;</code>
-<code>  &lt;AccordionItem title=&quot;First&quot;&gt;</code>
-<code>    &lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;</code>
-<code>  &lt;/AccordionItem&gt;</code>
-<code>  &lt;AccordionItem title=&quot;Second&quot;&gt;</code>
-<code>    &lt;p&gt;Some content&lt;/p&gt;</code>
-<code>  &lt;/AccordionItem&gt;</code>
-<code>  &lt;AccordionItem</code>
-<code>    title=&quot;Title &lt;span class='uk-text-primary'&gt;with &lt;i&gt;HTML&lt;/i&gt;&lt;/span&gt;&quot;</code>
-<code>    isTitleHtml&gt;</code>
-<code>    &lt;p&gt;Other content&lt;/p&gt;</code>
-<code>  &lt;/AccordionItem&gt;</code>
-<code>&lt;/Accordion&gt;</code>
-<code></code></pre></li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Accordion, AccordionItem, Checkbox, Button &rbrace; from &quot;../main&quot;;
+  let multi = false;
+  let collapsible = true;
+  let duration = 200;
+
+  function increaseDuration() &lbrace;
+    duration = Math.min(2500, duration + 50);
+  &rbrace;
+  function decreaseDuration() &lbrace;
+    duration = Math.max(duration - 50, 50);
+  &rbrace;
+&lt;/script&gt;
+
+&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
+  &lt;Checkbox
+    bind:value=&lbrace;multi&rbrace;
+    label=&quot;Multi&quot;
+    optional
+    className=&quot;uk-margin-right uk-margin-remove-bottom&quot; /&gt;
+  &lt;Checkbox
+    bind:value=&lbrace;collapsible&rbrace;
+    label=&quot;Collapsible&quot;
+    className=&quot;uk-margin-right uk-margin-remove-bottom&quot;
+    optional /&gt;
+  &lt;Button size=&quot;small&quot; on:click=&lbrace;increaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;
+    + duration
+  &lt;/Button&gt;
+  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace;&gt;- duration&lt;/Button&gt;
+&lt;/div&gt;
+&lt;Accordion &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace;&gt;
+  &lt;AccordionItem title=&quot;First&quot;&gt;
+    &lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+  &lt;AccordionItem title=&quot;Second&quot;&gt;
+    &lt;p&gt;Some content&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+  &lt;AccordionItem
+    title=&quot;Title &lt;span class='uk-text-primary'&gt;with &lt;i&gt;HTML&lt;/i&gt;&lt;/span&gt;&quot;
+    isTitleHtml&gt;
+    &lt;p&gt;Other content&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;
+</pre></li>
 		</Switcher>
 		<h2 class="uk-heading-divider">AccordionItem</h2>
 		<p></p>
 		<h2 class="uk-heading-divider">Autocomplete</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AutocompleteDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Autocomplete, Select &rbrace; from &quot;../main&quot;;
+
+  const options = [
+    &lbrace;
+      label: 'Ananas',
+      value: 1
+    &rbrace;,
+    &lbrace;
+      label: 'Banana',
+      value: &lbrace; kg: '3.14' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Bananana',
+      value: &lbrace; kg: '6.28' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Strawberry',
+      value: 'strawberry'
+    &rbrace;,
+  ];
+&lt;/script&gt;
+
+&lt;Autocomplete &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; /&gt;
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -838,6 +876,12 @@ current page and its href property will be ignored</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>Autocorrect setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>animationDuration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>In/Out fly animation duration (in milliseconds)</td>
 				</tr>
 			</tbody>
 		</table>
@@ -957,32 +1001,32 @@ current page and its href property will be ignored</td>
 				<FixedPointInputDemo />
 				<hr class="uk-divider-icon">
 			</li>
-			<li><pre><code>&lt;script&gt;</code>
-<code>  import &lbrace;</code>
-<code>    Accordion,</code>
-<code>    AccordionItem,</code>
-<code>    Checkbox,</code>
-<code>    Button,</code>
-<code>    FixedPointInput,</code>
-<code>  &rbrace; from &quot;../main&quot;;</code>
-<code></code>
-<code>  let decimalPlaces = 2;</code>
-<code>  function increasePrecision() &lbrace;</code>
-<code>    decimalPlaces = Math.min(100, decimalPlaces + 1);</code>
-<code>  &rbrace;</code>
-<code>  function decreasePrecision() &lbrace;</code>
-<code>    decimalPlaces = Math.max(decimalPlaces - 1, 0);</code>
-<code>  &rbrace;</code>
-<code>&lt;/script&gt;</code>
-<code></code>
-<code>&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;</code>
-<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;increasePrecision&rbrace; className=&quot;uk-margin-right&quot;&gt;</code>
-<code>    + precision</code>
-<code>  &lt;/Button&gt;</code>
-<code>  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreasePrecision&rbrace;&gt;- precision&lt;/Button&gt;</code>
-<code>&lt;/div&gt;</code>
-<code>&lt;FixedPointInput &lbrace;decimalPlaces&rbrace; value=&lbrace;10.33&rbrace; /&gt;</code>
-<code></code></pre></li>
+			<li><pre>&lt;script&gt;
+  import &lbrace;
+    Accordion,
+    AccordionItem,
+    Checkbox,
+    Button,
+    FixedPointInput,
+  &rbrace; from &quot;../main&quot;;
+
+  let decimalPlaces = 2;
+  function increasePrecision() &lbrace;
+    decimalPlaces = Math.min(100, decimalPlaces + 1);
+  &rbrace;
+  function decreasePrecision() &lbrace;
+    decimalPlaces = Math.max(decimalPlaces - 1, 0);
+  &rbrace;
+&lt;/script&gt;
+
+&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
+  &lt;Button size=&quot;small&quot; on:click=&lbrace;increasePrecision&rbrace; className=&quot;uk-margin-right&quot;&gt;
+    + precision
+  &lt;/Button&gt;
+  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreasePrecision&rbrace;&gt;- precision&lt;/Button&gt;
+&lt;/div&gt;
+&lt;FixedPointInput &lbrace;decimalPlaces&rbrace; value=&lbrace;10.33&rbrace; /&gt;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -1170,21 +1214,21 @@ current page and its href property will be ignored</td>
 				<SelectDemo />
 				<hr class="uk-divider-icon">
 			</li>
-			<li><pre><code>&lt;script&gt;</code>
-<code>  import &lbrace; Select &rbrace; from &quot;../main&quot;;</code>
-<code></code>
-<code>  let status = [];</code>
-<code>  let obj = &lbrace; test: 1 &rbrace;;</code>
-<code>&lt;/script&gt;</code>
-<code></code>
-<code>&lt;Select</code>
-<code>  value=&lbrace;obj&rbrace;</code>
-<code>  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;]&rbrace;</code>
-<code>  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;</code>
-<code>    status = [...status, 'Change: ' + JSON.stringify(detail)];</code>
-<code>  &rbrace;&rbrace; /&gt;</code>
-<code>&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;</code>
-<code></code></pre></li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Select &rbrace; from &quot;../main&quot;;
+
+  let status = [];
+  let obj = &lbrace; test: 1 &rbrace;;
+&lt;/script&gt;
+
+&lt;Select
+  value=&lbrace;obj&rbrace;
+  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;]&rbrace;
+  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
+    status = [...status, 'Change: ' + JSON.stringify(detail)];
+  &rbrace;&rbrace; /&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">

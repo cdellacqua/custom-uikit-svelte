@@ -16,6 +16,12 @@ for (const entry of demoFiles) {
 }
 docLines.push(`</script>`);
 
+docLines.push('<style>');
+docLines.push('\tcode {');
+docLines.push('\t\twhite-space: pre;');
+docLines.push('\t}');
+docLines.push('</style>');
+
 docLines.push(
 	`<div uk-grid class="uk-flex-center uk-padding-small">`,
 	`\t<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">`,
@@ -48,7 +54,6 @@ for (const component of components) {
 					.replace(/}/g, '&rbrace;')
 					.replace(/\t/g, '&nbsp;&nbsp;')
 					.split('\n')
-					.map(line => `<code>${line}</code>`)
 					.join('\n')
 			}</pre></li>`,
 			"\t\t</Switcher>",
