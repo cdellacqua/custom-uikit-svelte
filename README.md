@@ -51,6 +51,17 @@ This alert can be used to display success, warning and error messages
 &nbsp;
 &nbsp;
 &nbsp;
+### Slots
+|name|description|
+|--|--|
+|-|The content of the alert|
+&nbsp;
+### Custom Events
+|name|type|description|
+|--|--|--|
+|hide|Array.<UIkitComponent>|Fires after the alert is hidden|
+|beforehide|Array.<UIkitComponent>|Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden|
+&nbsp;
 ### Props
 |name|type|default|description|
 |--|--|--|--|

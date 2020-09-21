@@ -1,9 +1,10 @@
 <script>
 	/** 
 	 * @component This alert can be used to display success, warning and error messages
-	 * @slot {}
-	 * @dispatch {} 
-	 * @forward [] */
+	 * @slot {"default": "The content of the alert"}
+	 * @dispatch {"hide": {"type": "Array.<UIkitComponent>", "description": "Fires after the alert is hidden"}, 
+	 * 						"beforehide": {"type": "Array.<UIkitComponent>", "description": "Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden"}} 
+	 * @forward {} */
 
 	/** 
 	 * @description Whether the alert is dismissable
@@ -36,6 +37,8 @@
 	export let ref = undefined;
 </script>
 <div
+	on:hide
+	on:beforehide
 	bind:this={ref}
 	{style}
 	class={className}
@@ -47,4 +50,5 @@
 	{#if closable}
 		<button class="uk-alert-close" uk-close></button>
 	{/if}
+	<slot />
 </div>

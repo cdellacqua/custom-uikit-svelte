@@ -1,6 +1,7 @@
 <script>
 	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, LoaderOverlay, LoaderWrapper, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
+	import AlertDemo from './demo/AlertDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
@@ -14,6 +15,106 @@
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
 		<h2 class="uk-heading-divider">Alert</h2>
 		<p>This alert can be used to display success, warning and error messages</p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AlertDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+import UIKit from &quot;uikit&quot;;
+
+import &lbrace; Alert, Button, Checkbox, Select &rbrace; from &quot;../main&quot;;
+
+let variant = undefined;
+let closable = false;
+let ref;
+let duration = 150;
+function increaseDuration() &lbrace;
+  duration = Math.min(2500, duration + 50);
+&rbrace;
+function decreaseDuration() &lbrace;
+  duration = Math.max(duration - 50, 50);
+&rbrace;
+
+function showAlert() &lbrace;
+  document.querySelector('#demo-alert-wrapper').appendChild(ref);
+  ref.hidden = false;
+  ref.style.opacity = 1;
+  ref.setAttribute('aria-hidden', false);
+  UIKit.alert(ref);
+&rbrace;
+&lt;/script&gt;
+
+&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
+  &lt;Select 
+    options=&lbrace;[
+      &lbrace;label: &quot;None&quot;, value: undefined&rbrace;, 
+      &lbrace;label: &quot;Primary&quot;, value: &quot;primary&quot;&rbrace;, 
+      &lbrace;label: &quot;Success&quot;, value: &quot;success&quot;&rbrace;, 
+      &lbrace;label: &quot;Danger&quot;, value: &quot;danger&quot;&rbrace;, 
+      &lbrace;label: &quot;Warning&quot;, value: &quot;warning&quot;&rbrace;]
+    &rbrace; 
+    bind:value=&lbrace;variant&rbrace;
+    label=&quot;Variant&quot;
+    className=&quot;uk-margin-right&quot;
+  /&gt;
+  &lt;Checkbox
+    bind:value=&lbrace;closable&rbrace;
+    label=&quot;Closable&quot;
+    optional
+    className=&quot;uk-margin-right uk-margin-remove-bottom&quot;
+  /&gt;
+  &lt;Button type=&quot;button&quot; size=&quot;small&quot; on:click=&lbrace;increaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;
+    + duration
+  &lt;/Button&gt;
+  &lt;Button type=&quot;button&quot; size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;- duration&lt;/Button&gt;
+  &lt;Button type=&quot;button&quot; on:click=&lbrace;showAlert&rbrace; size=&quot;small&quot; variant=&quot;secondary&quot;&gt;Show again&lt;/Button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;demo-alert-wrapper&quot;&gt;
+  &lt;Alert bind:ref &lbrace;variant&rbrace; &lbrace;closable&rbrace; animationDuration=&lbrace;duration&rbrace;&gt;
+    This is an alert
+  &lt;/Alert&gt;
+&lt;/div&gt;
+</pre></li>
+		</Switcher>
+		<h3>Slots</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>-</td>
+					<td>The content of the alert</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Custom Events</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>hide</td>
+					<td>Array.&lt;UIkitComponent&gt;</td>
+					<td>Fires after the alert is hidden</td>
+				</tr>
+				<tr>
+					<td>beforehide</td>
+					<td>Array.&lt;UIkitComponent&gt;</td>
+					<td>Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden</td>
+				</tr>
+			</tbody>
+		</table>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
