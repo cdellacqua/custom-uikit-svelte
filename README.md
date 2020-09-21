@@ -363,6 +363,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
+|animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 &nbsp;
 &nbsp;
 &nbsp;
