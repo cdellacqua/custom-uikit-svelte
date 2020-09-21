@@ -67,7 +67,7 @@ for (const entry of componentFiles) {
 				readonly: !!block.readonly,
 				name: block.name,
 				type: block.type.names.join('|'),
-				default: block.default,
+				default: block.defaultvalue,
 				description: block.description
 			});
 		}

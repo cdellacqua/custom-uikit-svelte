@@ -65,12 +65,12 @@ This alert can be used to display success, warning and error messages
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|closable|boolean|-|Whether the alert is dismissable|
-|variant|'primary'\|'success'\|'danger'\|'warning'\|undefined|-|Specifies the look of the component|
-|animation|boolean\|string|-|Fade out or use the uikit Animation component|
-|animationDuration|number|-|Animation duration in milliseconds|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|closable|boolean|true|Whether the alert is dismissable|
+|variant|'primary'\|'success'\|'danger'\|'warning'\|undefined|undefined|Specifies the look of the component|
+|animation|boolean\|string|true|Fade out or use the uikit Animation component|
+|animationDuration|number|150|Animation duration in milliseconds|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
 &nbsp;
 &nbsp;
@@ -88,10 +88,10 @@ Useful to display content such as blog entries or articles
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|titleAsHtml|string\|undefined|-|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
-|articleMetaAsHtml|string\|undefined|-|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|titleAsHtml|string\|undefined|""|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
+|articleMetaAsHtml|string\|undefined|""|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
 &nbsp;
 &nbsp;
@@ -114,8 +114,8 @@ This component can be used as a notification badge or as a general purpose chip
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
 |ref (readonly)|HTMLSpanElement|-|The HTML reference of the component|
 &nbsp;
 &nbsp;
@@ -128,10 +128,10 @@ A breadcrumb can be added to the page to help the user find where they are in th
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|path|Array.<{href: string, label: string}>|-|An array containing the various steps composing the path of the current page. Each step should have an href property,  which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the current page and its href property will be ignored|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|ref (readonly)|HTMLUListElement|-|The HTML reference of the component|
+|path|Array.<{href: string, label: string}>|[]|An array containing the various steps composing the path of the current page. Each step should have an href property,  which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the current page and its href property will be ignored|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|ref (readonly)|HTMLUListElement|undefined|The HTML reference of the component|
 &nbsp;
 &nbsp;
 &nbsp;
@@ -153,16 +153,16 @@ This component represents a general purpose button, which can be customized acco
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|type|'button'\|'submit'|-|The type property of the native HTML button|
-|disabled|boolean|-|The disabled property of the native HTML button|
-|loading|boolean|-|Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled|
-|variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|-|This property is used to style the button with one of the base uikit classes for button appearance|
-|icon|string\|undefined|-|If present, the uikit icon with the given name will be added next to the text of the button|
-|iconPosition|'right'\|'left'|-|If the icon is set, this property let you decide its position, left or right|
-|size|undefined\|'small'\|'large'|-|Specifies the size of the button. If undefined, the button will be of regular size|
-|tooltip|string\|undefined|-|Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|type|'button'\|'submit'|"button"|The type property of the native HTML button|
+|disabled|boolean|false|The disabled property of the native HTML button|
+|loading|boolean|false|Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled|
+|variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|"default"|This property is used to style the button with one of the base uikit classes for button appearance|
+|icon|string\|undefined|undefined|If present, the uikit icon with the given name will be added next to the text of the button|
+|iconPosition|'right'\|'left'|"right"|If the icon is set, this property let you decide its position, left or right|
+|size|undefined\|'small'\|'large'|undefined|Specifies the size of the button. If undefined, the button will be of regular size|
+|tooltip|string\|undefined|undefined|Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button|
 |ref (readonly)|HTMLButtonElement|-|The HTML reference of the component|
 &nbsp;
 &nbsp;
@@ -185,13 +185,13 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|variant|'default'\|'primary'\|'secondary'\|'hover'|-|Used to style the card. If set to hover, the card will appear flat unless it's being hovered|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
-|hover|boolean|-|Add a hover animation to the card|
-|size|'small'\|'large'\|undefined|-|Defines the padding of the card. In undefined, default values will be applied|
-|title|string\|undefined|-|The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property|
-|badge|string\|undefined|-|The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
+|variant|'default'\|'primary'\|'secondary'\|'hover'|"default"|Used to style the card. If set to hover, the card will appear flat unless it's being hovered|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|hover|boolean|false|Add a hover animation to the card|
+|size|'small'\|'large'\|undefined|undefined|Defines the padding of the card. In undefined, default values will be applied|
+|title|string\|undefined|undefined|The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property|
+|badge|string\|undefined|undefined|The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
 &nbsp;
 &nbsp;
@@ -204,14 +204,14 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|avatarSource|string\|undefined|-|The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored|
-|avatarSize|number|-|Change the size of the avatar.|
-|avatarAlt|string|-|The alt property of the avatar image|
-|commentTitleAsHtml|string|-|The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header|
-|primary|boolean|-|True to add a different style to this comment (e.g. if it's made by the author)|
+|avatarSource|string\|undefined|undefined|The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored|
+|avatarSize|number|80|Change the size of the avatar.|
+|avatarAlt|string|""|The alt property of the avatar image|
+|commentTitleAsHtml|string|""|The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header|
+|primary|boolean|false|True to add a different style to this comment (e.g. if it's made by the author)|
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 &nbsp;
 &nbsp;
 &nbsp;

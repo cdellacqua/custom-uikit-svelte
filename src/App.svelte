@@ -129,37 +129,37 @@ function showAlert() &lbrace;
 				<tr>
 					<td>closable</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>Whether the alert is dismissable</td>
 				</tr>
 				<tr>
 					<td>variant</td>
 					<td>'primary'|'success'|'danger'|'warning'|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Specifies the look of the component</td>
 				</tr>
 				<tr>
 					<td>animation</td>
 					<td>boolean|string</td>
-					<td>-</td>
+					<td>true</td>
 					<td>Fade out or use the uikit Animation component</td>
 				</tr>
 				<tr>
 					<td>animationDuration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>150</td>
 					<td>Animation duration in milliseconds</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
@@ -201,25 +201,25 @@ function showAlert() &lbrace;
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>titleAsHtml</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>""</td>
 					<td>A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed</td>
 				</tr>
 				<tr>
 					<td>articleMetaAsHtml</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>""</td>
 					<td>A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed</td>
 				</tr>
 				<tr>
@@ -276,13 +276,13 @@ function showAlert() &lbrace;
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
@@ -309,7 +309,7 @@ function showAlert() &lbrace;
 				<tr>
 					<td>path</td>
 					<td>Array.&lt;&lbrace;href: string, label: string&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>An array containing the various steps composing the path of the current page. Each step should have an href property, 
 which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the
 current page and its href property will be ignored</td>
@@ -317,19 +317,19 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLUListElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -380,61 +380,61 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>type</td>
 					<td>'button'|'submit'</td>
-					<td>-</td>
+					<td>"button"</td>
 					<td>The type property of the native HTML button</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>The disabled property of the native HTML button</td>
 				</tr>
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled</td>
 				</tr>
 				<tr>
 					<td>variant</td>
 					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>This property is used to style the button with one of the base uikit classes for button appearance</td>
 				</tr>
 				<tr>
 					<td>icon</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>If present, the uikit icon with the given name will be added next to the text of the button</td>
 				</tr>
 				<tr>
 					<td>iconPosition</td>
 					<td>'right'|'left'</td>
-					<td>-</td>
+					<td>"right"</td>
 					<td>If the icon is set, this property let you decide its position, left or right</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>undefined|'small'|'large'</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Specifies the size of the button. If undefined, the button will be of regular size</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button</td>
 				</tr>
 				<tr>
@@ -496,43 +496,43 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>variant</td>
 					<td>'default'|'primary'|'secondary'|'hover'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>Used to style the card. If set to hover, the card will appear flat unless it's being hovered</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>hover</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Add a hover animation to the card</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>'small'|'large'|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Defines the padding of the card. In undefined, default values will be applied</td>
 				</tr>
 				<tr>
 					<td>title</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property</td>
 				</tr>
 				<tr>
 					<td>badge</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
@@ -559,31 +559,31 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>avatarSource</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored</td>
 				</tr>
 				<tr>
 					<td>avatarSize</td>
 					<td>number</td>
-					<td>-</td>
+					<td>80</td>
 					<td>Change the size of the avatar.</td>
 				</tr>
 				<tr>
 					<td>avatarAlt</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>The alt property of the avatar image</td>
 				</tr>
 				<tr>
 					<td>commentTitleAsHtml</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header</td>
 				</tr>
 				<tr>
 					<td>primary</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>True to add a different style to this comment (e.g. if it's made by the author)</td>
 				</tr>
 				<tr>
@@ -595,13 +595,13 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 			</tbody>
