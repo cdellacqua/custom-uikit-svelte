@@ -1,5 +1,5 @@
 <script>
-	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
+	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, LoaderOverlay, LoaderWrapper, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
@@ -311,6 +311,12 @@ current page and its href property will be ignored</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>If present, the uikit icon with the given name will be added next to the text of the button</td>
+				</tr>
+				<tr>
+					<td>iconPosition</td>
+					<td>'right'|'left'</td>
+					<td>-</td>
+					<td>If the icon is set, this property let you decide its position, left or right</td>
 				</tr>
 				<tr>
 					<td>size</td>
@@ -636,6 +642,10 @@ current page and its href property will be ignored</td>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Loader</h2>
+		<p></p>
+		<h2 class="uk-heading-divider">LoaderOverlay</h2>
+		<p></p>
+		<h2 class="uk-heading-divider">LoaderWrapper</h2>
 		<p></p>
 		<h2 class="uk-heading-divider">Modal</h2>
 		<p></p>

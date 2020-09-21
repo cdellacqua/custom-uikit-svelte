@@ -18,6 +18,8 @@ Components
 - [Dropdown](#dropdown)
 - [Form](#form)
 - [Loader](#loader)
+- [LoaderOverlay](#loaderoverlay)
+- [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
 - [Switcher](#switcher)
@@ -147,6 +149,7 @@ This component represents a general purpose button, which can be customized acco
 |loading|boolean|-|Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled|
 |variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|-|This property is used to style the button with one of the base uikit classes for button appearance|
 |icon|string\|undefined|-|If present, the uikit icon with the given name will be added next to the text of the button|
+|iconPosition|'right'\|'left'|-|If the icon is set, this property let you decide its position, left or right|
 |size|undefined\|'small'\|'large'|-|Specifies the size of the button. If undefined, the button will be of regular size|
 |tooltip|string\|undefined|-|Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button|
 |ref (readonly)|HTMLButtonElement|-|The HTML reference of the component|
@@ -267,6 +270,20 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 ## Loader
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## LoaderOverlay
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+## LoaderWrapper
 
 &nbsp;
 &nbsp;
