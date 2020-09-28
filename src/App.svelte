@@ -1259,7 +1259,9 @@ current page and its href property will be ignored</td>
 
 &lt;Radio
   value=&lbrace;obj&rbrace;
-  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;]&rbrace;
+  options=&lbrace;[
+    &lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2 with a long text', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;,
+  ]&rbrace;
   on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
     status = [...status, 'Change: ' + JSON.stringify(detail)];
   &rbrace;&rbrace; /&gt;

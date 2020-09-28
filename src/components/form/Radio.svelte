@@ -46,12 +46,13 @@
     bind:this={ref}
     class:uk-flex={true}
     class:uk-width-1-1={true}
-    class:uk-flex-stretch={true}
+    class:uk-flex-wrap={true}
   >
     {#each options as option}
     <div class="uk-flex-1">
       <button
         {disabled}
+        class:uk-text-nowrap={true}
         class:uk-width-1-1={true}
         class:uk-height-1-1={true}
         class:uk-button-default={option.value !== value}
