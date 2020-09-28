@@ -10,42 +10,52 @@
    * @forward {"click": "HTMLButtonElement"} */
 
   /** 
+   * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
   export let className = undefined;
   /** 
+   * @default undefined
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
    export let style = undefined;
   /** 
+   * @default "button"
    * @description The type property of the native HTML button
    * @type {'button'|'submit'} */
   export let type = "button";
   /**
+   * @default false
    * @description The disabled property of the native HTML button
    * @type {boolean} */
   export let disabled = false;
   /**
+   * @default false
    * @description Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled
    * @type {boolean} */
   export let loading = false;
   /** 
+   * @default "default"
    * @description This property is used to style the button with one of the base uikit classes for button appearance
    * @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
   export let variant = type === "submit" ? "primary" : "default";
   /**
+   * @default undefined
    * @description If present, the uikit icon with the given name will be added next to the text of the button
    * @type {string|undefined} */
   export let icon = type === "submit" ? "newline" : undefined;
   /**
+   * @default "right"
    * @description If the icon is set, this property let you decide its position, left or right
    * @type {'right'|'left'} */
   export let iconPosition = 'right';
   /** 
+   * @default undefined
    * @description Specifies the size of the button. If undefined, the button will be of regular size
    * @type {undefined|'small'|'large'} */
   export let size = undefined;
   /**
+   * @default undefined
    * @description Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button
    * @type {string|undefined} */
   export let tooltip = undefined;
