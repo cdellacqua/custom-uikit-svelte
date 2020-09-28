@@ -266,7 +266,7 @@
         on:click={() => {
           value = undefined;
           dispatch('change', null);
-        }} />
+        }}>&ZeroWidthSpace;</a>
     {/if}
   </div>
   {#if showSuggested && !disabled}
