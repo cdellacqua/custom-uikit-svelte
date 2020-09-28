@@ -1299,7 +1299,7 @@ current page and its href property will be ignored</td>
 				</tr>
 				<tr>
 					<td>options</td>
-					<td>Array.&lt;&lbrace;value: any, label: string&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;value: any, label: string, disabled: (boolean|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

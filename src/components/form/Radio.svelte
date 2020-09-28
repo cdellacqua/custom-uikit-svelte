@@ -9,7 +9,7 @@
   export let label = undefined;
   /** @type {any|undefined} */
   export let value = undefined;
-  /** @type {Array<{value: any, label: string}>} */
+  /** @type {Array<{value: any, label: string, disabled: boolean|undefined}>} */
   export let options = [];
   /** @type {boolean} */
   export let disabled = false;
@@ -51,7 +51,7 @@
     {#each options as option}
     <div class="uk-flex-1">
       <button
-        {disabled}
+        disabled={disabled || option.disabled}
         class:uk-text-nowrap={true}
         class:uk-width-1-1={true}
         class:uk-height-1-1={true}

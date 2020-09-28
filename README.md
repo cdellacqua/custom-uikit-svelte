@@ -494,7 +494,7 @@ Create an already styled description list, perfect for describing key-value prop
 |id|string|-||
 |label|string\|undefined|-||
 |value|any\|undefined|-||
-|options|Array.<{value: any, label: string}>|-||
+|options|Array.<{value: any, label: string, disabled: (boolean\|undefined)}>|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
 |ref|HTMLDivElement|-||
