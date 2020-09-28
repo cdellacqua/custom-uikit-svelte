@@ -491,8 +491,15 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string|-||
+|label|string\|undefined|-||
+|value|any\|undefined|-||
 |options|Array.<{value: any, label: string}>|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|ref|HTMLDivElement|-||
 |size|undefined\|'small'\|'large'|-||
+|className|string\|undefined|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 &nbsp;
 &nbsp;

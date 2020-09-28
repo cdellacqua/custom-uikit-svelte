@@ -4,6 +4,7 @@
 	import AlertDemo from './demo/AlertDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
+	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 </script>
 <style>
@@ -1243,6 +1244,28 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Radio</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<RadioDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Radio &rbrace; from &quot;../main&quot;;
+
+  let status = [];
+  let obj = &lbrace; test: 1 &rbrace;;
+&lt;/script&gt;
+
+&lt;Radio
+  value=&lbrace;obj&rbrace;
+  options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;]&rbrace;
+  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
+    status = [...status, 'Change: ' + JSON.stringify(detail)];
+  &rbrace;&rbrace; /&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -1255,14 +1278,56 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>any|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;value: any, label: string&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>size</td>
 					<td>undefined|'small'|'large'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
