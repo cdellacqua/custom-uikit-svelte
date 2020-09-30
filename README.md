@@ -23,6 +23,7 @@ Components
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
 - [Switcher](#switcher)
+- [Tab](#tab)
 - [Table](#table)
 - [Accordion](#accordion)
 - [AccordionItem](#accordionitem)
@@ -321,6 +322,18 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 ## Switcher
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+&nbsp;
+&nbsp;
+&nbsp;
+## Tab
 
 &nbsp;
 &nbsp;

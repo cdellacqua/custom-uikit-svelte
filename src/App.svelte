@@ -1,5 +1,5 @@
 <script>
-	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, LoaderOverlay, LoaderWrapper, Modal, Offcanvas, Switcher, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
+	import { Alert, Article, Badge, Breadcrumb, Button, Card, Comment, DataTable, DescriptionList, Divider, Dropdown, Form, Loader, LoaderOverlay, LoaderWrapper, Modal, Offcanvas, Switcher, Tab, Table, Accordion, AccordionItem, Autocomplete, Checkbox, DatePicker, EmailInput, Field, FixedPointInput, NumberInput, PasswordInput, PercentageInput, Radio, SearchInput, Select, TextInput, Textarea, TimePicker } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
@@ -779,6 +779,27 @@ current page and its href property will be ignored</td>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Switcher</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">Tab</h2>
 		<p></p>
 		<h3>Props</h3>
 		<table class="uk-table">
