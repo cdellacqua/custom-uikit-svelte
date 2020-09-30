@@ -42,18 +42,6 @@
   }
 </script>
 
-<style>
-  :global(.uk-offcanvas-bar-animation) {
-    transition: left 0.15s ease-out;
-  }
-  :global(.uk-offcanvas-container) {
-    transition: left 0.15s ease-out;
-  }
-  :global(.uk-offcanvas-reveal) {
-    transition: width 0.15s ease-out;
-  }
-</style>
-
 <div
   on:click={closeOnOuterClick}
   bind:this={ref}
