@@ -106,6 +106,10 @@
     position: sticky;
     background-color: #fff;
   }
+
+  .orderable {
+    cursor: row-resize;
+  }
 </style>
 
 <form on:submit|preventDefault={() => searchInput.blur()}>
@@ -132,7 +136,8 @@
         <th
           class:sticky={stickyHeader}
           class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
-          on:click={() => (col.orderable !== false ? orderBy(col) : noop())}>
+          on:click={() => (col.orderable !== false ? orderBy(col) : noop())}
+          class:orderable={col.orderable !== false}>
           {col.label}
           {#if ordering[col.key] === 1}
             <span class="uk-icon" uk-icon="icon: chevron-up" />
