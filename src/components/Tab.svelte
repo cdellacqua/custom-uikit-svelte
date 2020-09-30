@@ -1,7 +1,7 @@
 <script>
-  import UIkit from "uikit";
-  import { createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher } from "svelte";
 
+  import UIkit from "uikit";
 
   export let tab = "";
   /** 
@@ -11,22 +11,32 @@
   export let className = undefined;
   export let titles = [];
   export let htmlTitle = false;
-  /** @type {HTMLUListElement} */
+  /** @type {HTMLDivElement} */
   export let ref = undefined;
+  export let index = 0;  
+  
+  let switcherRef = undefined;
+  let externalAssignment = true;
+  $: if (ref) {
+    if (externalAssignment) {
+      UIkit.tab(ref).show(index);
+    }
+    externalAssignment = true;
+  }
 
   const dispatch = createEventDispatcher();
 
-  onMount(() => {
-    UIkit.util.on(ref, "show", function (e) {
-      dispatch('show', e);
-    });
-  });
+  function handleShow(e) {
+    externalAssignment = false;
+    index = [...switcherRef.children].indexOf(e.target);
+    dispatch('show', index);
+  }
 </script>
 
 <ul bind:this={ref} {style} class={className} uk-tab={tab}>
   {#each titles as title}
     <li>
-			<!-- svelte-ignore a11y-missing-attribute -->
+      <!-- svelte-ignore a11y-missing-attribute -->
       <a role="button">
         {#if htmlTitle}
           {@html title}
@@ -36,6 +46,6 @@
   {/each}
 </ul>
 
-<ul class="uk-switcher">
+<ul class="uk-switcher" on:show={handleShow} bind:this={switcherRef}>
   <slot />
 </ul>

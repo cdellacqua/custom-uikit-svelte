@@ -6,6 +6,8 @@
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
+	import SwitcherDemo from './demo/SwitcherDemo.svelte';
+	import TabDemo from './demo/TabDemo.svelte';
 </script>
 <style>
 	code {
@@ -780,6 +782,36 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Switcher</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<SwitcherDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Switcher &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let index = 2;
+  function handleTabShow(e) &lbrace;
+    status = [...status, 'show item, current index ' + index];
+  &rbrace;
+&lt;/script&gt;
+
+&lt;Switcher bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Item 1', 'Item 2', 'Item 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
+  &lt;div&gt;
+    Item 1 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Item 2 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Item 3 Content
+  &lt;/div&gt;
+&lt;/Switcher&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -807,6 +839,36 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Tab</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<TabDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Tab &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let index = 2;
+  function handleTabShow(e) &lbrace;
+    status = [...status, 'show tab, current index ' + index];
+  &rbrace;
+&lt;/script&gt;
+
+&lt;Tab bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Tab 1', 'Tab 2', 'Tab 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
+  &lt;div&gt;
+    Tab 1 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Tab 2 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Tab 3 Content
+  &lt;/div&gt;
+&lt;/Tab&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -826,7 +888,7 @@ current page and its href property will be ignored</td>
 				</tr>
 				<tr>
 					<td>ref</td>
-					<td>HTMLUListElement</td>
+					<td>HTMLDivElement</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

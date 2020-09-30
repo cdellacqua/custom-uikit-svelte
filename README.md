@@ -343,7 +343,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-|ref|HTMLUListElement|-||
+|ref|HTMLDivElement|-||
 &nbsp;
 &nbsp;
 &nbsp;
