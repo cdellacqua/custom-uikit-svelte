@@ -797,6 +797,12 @@ current page and its href property will be ignored</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Tab</h2>
@@ -817,6 +823,12 @@ current page and its href property will be ignored</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>

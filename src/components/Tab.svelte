@@ -1,4 +1,8 @@
 <script>
+  import UIkit from "uikit";
+  import { createEventDispatcher, onMount } from "svelte";
+
+
   export let tab = "";
   /** 
 	 * @description A string specifying custom style properties for the component
@@ -7,9 +11,19 @@
   export let className = undefined;
   export let titles = [];
   export let htmlTitle = false;
+  /** @type {HTMLUListElement} */
+  export let ref = undefined;
+
+  const dispatch = createEventDispatcher();
+
+  onMount(() => {
+    UIkit.util.on(ref, "show", function (e) {
+      dispatch('show', e);
+    });
+  });
 </script>
 
-<ul {style} class={className} uk-tab={tab}>
+<ul bind:this={ref} {style} class={className} uk-tab={tab}>
   {#each titles as title}
     <li>
 			<!-- svelte-ignore a11y-missing-attribute -->
