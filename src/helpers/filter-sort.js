@@ -18,7 +18,12 @@ export function filterAndSort(search, objects, stringExtractor) {
 		value: stringExtractor(o).toLowerCase(),
 	}))
 		.filter((d) => d.distance < d.value.length)
-		.sort((a, b) => a.distance - b.distance);
+		.sort((a, b) => {
+			if (a.distance - b.distance === 0) {
+				return a.value.localeCompare(b.value);
+			}
+			return a.distance - b.distance;
+		});
 	const filteredAndSorted = new Array(distances.length);
 	for (let i = 0; i < distances.length; i++) {
 		filteredAndSorted[i] = objects[distances[i].index];
