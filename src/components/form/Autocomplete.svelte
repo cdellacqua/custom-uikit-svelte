@@ -2,7 +2,8 @@
   import { createEventDispatcher, onMount, tick } from "svelte";
   import { dispatchNativeEvent } from "../../helpers/events";
   import { generateId } from "../../services/html";
-  import { fade, fly } from "svelte/transition";
+  import { fly } from "svelte/transition";
+  import { filterAndSort } from '../../helpers/filter-sort';
 
   export let id = generateId();
   /**
@@ -79,18 +80,9 @@
   }
 
   let filteredOptions = [];
-  $: {
-    filteredOptions = [...options]
-      .filter((o) => o.label.toLowerCase().includes(query.toLowerCase()))
-      .sort((a, b) => {
-        const indexOfA = a.label.toLowerCase().indexOf(query.toLowerCase());
-        const indexOfB = b.label.toLowerCase().indexOf(query.toLowerCase());
-        if (indexOfA !== indexOfB) {
-          return indexOfA - indexOfB;
-        } else {
-          return a.label.length - b.label.length;
-        }
-      });
+  $: {    
+    filteredOptions = filterAndSort(query.toLowerCase(), options, (o) => o.label.toLowerCase());
+    outlineOptionIndex = 0;
   }
 
   $: {
@@ -124,6 +116,18 @@
   }
 
   let outlineOptionIndex = 0;
+
+  $: if (suggestedRef) {
+    if (filteredOptions.length === 0) {
+      suggestedRef.scrollTop = 0;
+    } else {
+      suggestedRef.scrollTop = Math.max(
+        0,
+        (suggestedRef.scrollHeight / filteredOptions.length) *
+          (outlineOptionIndex - 3)
+      );
+    }
+  }
 
   $: if (filteredOptions) {
     outlineOptionIndex = Math.min(
@@ -180,22 +184,6 @@
           dispatchNativeEvent(input, "change");
           break;
       }
-
-      switch (e.key) {
-        case "ArrowUp":
-        case "ArrowDown":
-          if (suggestedRef) {
-            if (filteredOptions.length === 0) {
-              suggestedRef.scrollTop = 0;
-            }
-            suggestedRef.scrollTop = Math.max(
-              0,
-              (suggestedRef.scrollHeight / filteredOptions.length) *
-                (outlineOptionIndex - 3)
-            );
-          }
-          break;
-      }
     }
   }
 </script>
@@ -213,6 +201,9 @@
       label {
         padding: 10px;
         cursor: pointer;
+        &:hover {
+          border: 1px solid currentColor;
+        }
       }
     }
   }
