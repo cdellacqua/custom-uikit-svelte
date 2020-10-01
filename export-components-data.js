@@ -76,4 +76,4 @@ for (const entry of componentFiles) {
 	components.push(componentData);
 }
 
-module.exports = components;
+fs.writeFileSync(path.join(__dirname, 'components-data.json'), JSON.stringify(components));

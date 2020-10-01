@@ -352,6 +352,18 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|heading|Array.<(string\|{label: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined)})>|-||
+|size|'small'\|undefined|-||
+|className|string\|undefined|-||
+|style|string\|undefined|-||
+|appearance|'divider'\|'striped'\|undefined|-||
+|stickyHeader|boolean|-||
+|ref|HTMLTableElement|-||
+|caption|string\|undefined|-||
+&nbsp;
 &nbsp;
 &nbsp;
 ## Accordion

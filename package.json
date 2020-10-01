@@ -1,15 +1,16 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "1.1.33",
+  "version": "1.1.34",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/module.js",
   "svelte": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist && node export.js && rollup -c && node gentypes.js",
-    "build:doc": "node gendocmd.js && node gendocsvelte.js",
-    "build:preview": "node gendocsvelte.js && rm -rf public/build && rollup --config rollup.preview.config.js",
+    "cache:components-data": "node export-components-data.js",
+    "build": "npm run build:doc && rm -rf dist && node export.js && rollup -c && node gentypes.js",
+    "build:doc": "npm run cache:components-data && node gendocmd.js && node gendocsvelte.js",
+    "build:preview": "rm -rf public/build && rollup --config rollup.preview.config.js",
     "prepare": "npm run build && npm run build:doc",
     "start": "sirv public --host",
     "dev": "rollup --config rollup.preview.config.js -w"

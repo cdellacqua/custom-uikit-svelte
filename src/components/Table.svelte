@@ -1,11 +1,19 @@
 <script>
+  /** @type {Array.<string|{label: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined}>} */
   export let heading = [];
+  /** @type {'small'|undefined} */
   export let size = undefined;
+  /** @type {string|undefined} */
   export let className = undefined;
+  /** @type {string|undefined} */
   export let style = undefined;
+  /** @type {'divider'|'striped'|undefined} */
   export let appearance = undefined;
+  /** @type {boolean} */
   export let stickyHeader = false;
+  /** @type {HTMLTableElement} */
   export let ref = undefined;
+  /** @type {string|undefined} */
   export let caption = undefined;
 </script>
 
@@ -36,7 +44,11 @@
     <thead>
       <tr>
         {#each heading as col}
-          <th class:sticky={stickyHeader}>{col}</th>
+          <th
+            class={typeof col === 'object' ? col.className : undefined}
+            style="text-align: {typeof col === 'object' ? (col.textAlign || 'left') : 'left'}"
+            class:sticky={stickyHeader}
+          >{typeof col === 'object' ? col.label : col}</th>
         {/each}
       </tr>
     </thead>

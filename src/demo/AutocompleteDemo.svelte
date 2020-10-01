@@ -1,5 +1,5 @@
 <script>
-  import { Autocomplete, Select } from "../main";
+  import { Autocomplete } from "../main";
 
   const options = [
     {

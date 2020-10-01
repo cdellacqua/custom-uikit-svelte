@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const components = require('./components-data');
+const components = require('./components-data.json');
 
 let output = [
 	`export class SvelteComponent {`,

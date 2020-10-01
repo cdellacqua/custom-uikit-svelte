@@ -8,6 +8,7 @@
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
+	import TableDemo from './demo/TableDemo.svelte';
 </script>
 <style>
 	code {
@@ -896,6 +897,88 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Table</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<TableDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Table &rbrace; from &quot;../main&quot;;
+&lt;/script&gt;
+
+&lt;Table appearance=&quot;striped&quot; heading=&lbrace;[&lbrace;label: 'First', textAlign: 'center'&rbrace;, 'Second', &lbrace;label: 'Third', textAlign: 'right', className: 'uk-text-italic'&rbrace;]&rbrace;&gt;
+  &lbrace;#each [1,2,3,4,5] as n&rbrace;
+    &lt;tr&gt;
+      &lt;td&gt;&lbrace;n&rbrace; First&lt;/td&gt;
+      &lt;td&gt;Second&lt;/td&gt;
+      &lt;td&gt;Third&lt;/td&gt;
+    &lt;/tr&gt;
+  &lbrace;/each&rbrace;
+&lt;/Table&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>heading</td>
+					<td>Array.&lt;(string|&lbrace;label: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined)&rbrace;)&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>size</td>
+					<td>'small'|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>appearance</td>
+					<td>'divider'|'striped'|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>stickyHeader</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLTableElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>caption</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Accordion</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -960,7 +1043,7 @@ current page and its href property will be ignored</td>
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Autocomplete, Select &rbrace; from &quot;../main&quot;;
+  import &lbrace; Autocomplete &rbrace; from &quot;../main&quot;;
 
   const options = [
     &lbrace;
