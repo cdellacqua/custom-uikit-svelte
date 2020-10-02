@@ -46,6 +46,7 @@ for (const component of components) {
 				`|${name === 'default' ? '-' : name}|${component.slots[name].replace(/\n/g, ' ')}|`
 			);
 		}
+		docLines.push('');
 	}
 	if (Object.keys(component.dispatch).length > 0) {
 		docLines.push(
@@ -58,7 +59,7 @@ for (const component of components) {
 			docLines.push(
 				`|${name}|${component.dispatch[name].type || 'any'}|${component.dispatch[name].description.replace(/\n/g, ' ')}|`
 			);
-		}
+		}docLines.push('');
 	}
 
 	if (Object.keys(component.forward).length > 0) {
@@ -73,6 +74,7 @@ for (const component of components) {
 				`|${name}|${component.forward[name]}|`
 			);
 		}
+		docLines.push('');
 	}
 	let firstProp = true;
 	for (const block of component.exports) {
@@ -89,6 +91,7 @@ for (const component of components) {
 		docLines.push(
 			`|${block.name}${block.readonly ? ' (readonly)' : ''}|${block.type.replace(/\|/g, '\\|')}|${block.default || '-'}|${(block.description || '').replace(/\n/g, ' ')}|`
 		);
+		docLines.push('');
 	}
 }
 
