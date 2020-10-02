@@ -115,6 +115,10 @@
     max-width: 100%;
     overflow-x: auto;
   }
+
+  th .uk-icon {
+    width: 20px;
+  }
 </style>
 
 <form on:submit|preventDefault={() => searchInput.blur()}>
