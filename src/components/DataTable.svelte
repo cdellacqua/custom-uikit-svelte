@@ -110,6 +110,11 @@
   .orderable {
     cursor: row-resize;
   }
+
+  .table-hscroll-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
 </style>
 
 <form on:submit|preventDefault={() => searchInput.blur()}>
@@ -120,56 +125,58 @@
     optional />
 </form>
 
-<table
-  bind:this={ref}
-  {style}
-  class:uk-table={true}
-  class:uk-table-middle={true}
-  class:uk-table-hover={true}
-  class={className}
-  class:uk-table-striped={appearance === 'striped'}
-  class:uk-table-divider={appearance === 'divider'}
-  class:uk-table-small={size === 'small'}>
-  <thead>
-    <tr>
-      {#each columns as col}
-        <th
-          class:sticky={stickyHeader}
-          class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
-          on:click={() => (col.orderable !== false ? orderBy(col) : noop())}
-          class:orderable={col.orderable !== false}>
-          {col.label}
-          {#if ordering[col.key] === 1}
-            <span class="uk-icon" uk-icon="icon: chevron-up" />
-          {:else if ordering[col.key] === -1}
-            <span class="uk-icon" uk-icon="icon: chevron-down" />
-          {:else if col.orderable !== false}
-            <span
-              style="visibility: hidden"
-              class="uk-icon"
-              uk-icon="icon: chevron-down" />
-          {/if}
-        </th>
-      {/each}
-    </tr>
-  </thead>
-  <tbody>
-    {#each computedRows as row}
-      <tr on:click={() => dispatch('row-click', row)}>
+<div class="table-hscroll-wrapper">
+  <table
+    bind:this={ref}
+    {style}
+    class:uk-table={true}
+    class:uk-table-middle={true}
+    class:uk-table-hover={true}
+    class={className}
+    class:uk-table-striped={appearance === 'striped'}
+    class:uk-table-divider={appearance === 'divider'}
+    class:uk-table-small={size === 'small'}>
+    <thead>
+      <tr>
         {#each columns as col}
-          <td
-            class={col.className}
-            style="text-align: {col.textAlign || 'left'}">
-            {#if !col.render}
-              {row[col.key]}
-            {:else if typeof col.render(row[col.key], row) === 'object'}
-              <svelte:component
-                this={col.render(row[col.key], row).component}
-                {...col.render(row[col.key], row).props} />
-            {:else}{col.render(row[col.key], row)}{/if}
-          </td>
+          <th
+            class:sticky={stickyHeader}
+            class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
+            on:click={() => (col.orderable !== false ? orderBy(col) : noop())}
+            class:orderable={col.orderable !== false}>
+            {col.label}
+            {#if ordering[col.key] === 1}
+              <span class="uk-icon" uk-icon="icon: chevron-up" />
+            {:else if ordering[col.key] === -1}
+              <span class="uk-icon" uk-icon="icon: chevron-down" />
+            {:else if col.orderable !== false}
+              <span
+                style="visibility: hidden"
+                class="uk-icon"
+                uk-icon="icon: chevron-down" />
+            {/if}
+          </th>
         {/each}
       </tr>
-    {/each}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {#each computedRows as row}
+        <tr on:click={() => dispatch('row-click', row)}>
+          {#each columns as col}
+            <td
+              class={col.className}
+              style="text-align: {col.textAlign || 'left'}">
+              {#if !col.render}
+                {row[col.key]}
+              {:else if typeof col.render(row[col.key], row) === 'object'}
+                <svelte:component
+                  this={col.render(row[col.key], row).component}
+                  {...col.render(row[col.key], row).props} />
+              {:else}{col.render(row[col.key], row)}{/if}
+            </td>
+          {/each}
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+</div>
