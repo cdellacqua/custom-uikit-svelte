@@ -69,17 +69,11 @@ This alert can be used to display success, warning and error messages
 |name|type|default|description|
 |--|--|--|--|
 |closable|boolean|true|Whether the alert is dismissable|
-
 |variant|'primary'\|'success'\|'danger'\|'warning'\|undefined|undefined|Specifies the look of the component|
-
 |animation|boolean\|string|true|Fade out or use the uikit Animation component|
-
 |animationDuration|number|150|Animation duration in milliseconds|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
 
 &nbsp;
@@ -100,13 +94,9 @@ Useful to display content such as blog entries or articles
 |name|type|default|description|
 |--|--|--|--|
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |titleAsHtml|string\|undefined|""|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
-
 |articleMetaAsHtml|string\|undefined|""|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
-
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
 
 &nbsp;
@@ -133,9 +123,7 @@ This component can be used as a notification badge or as a general purpose chip
 |name|type|default|description|
 |--|--|--|--|
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |ref (readonly)|HTMLSpanElement|-|The HTML reference of the component|
 
 &nbsp;
@@ -150,11 +138,8 @@ A breadcrumb can be added to the page to help the user find where they are in th
 |name|type|default|description|
 |--|--|--|--|
 |path|Array.<{href: string, label: string}>|[]|An array containing the various steps composing the path of the current page. Each step should have an href property,  which is the URL to which the user will be redirected, and a label property, which is displayed. The last element of the array represents the current page and its href property will be ignored|
-
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |ref (readonly)|HTMLUListElement|undefined|The HTML reference of the component|
 
 &nbsp;
@@ -181,27 +166,16 @@ This component represents a general purpose button, which can be customized acco
 |name|type|default|description|
 |--|--|--|--|
 |id|string\|undefined|-||
-
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |type|'button'\|'submit'|"button"|The type property of the native HTML button|
-
 |disabled|boolean|false|The disabled property of the native HTML button|
-
 |loading|boolean|false|Whether the button has been used to retrieve some content that is still being loaded. If true, an icon with a spinner will appear next to the text and the button will also be temporarily disabled|
-
 |variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|"default"|This property is used to style the button with one of the base uikit classes for button appearance|
-
 |icon|string\|undefined|undefined|If present, the uikit icon with the given name will be added next to the text of the button|
-
 |iconPosition|'right'\|'left'|"right"|If the icon is set, this property let you decide its position, left or right|
-
 |size|undefined\|'small'\|'large'|undefined|Specifies the size of the button. If undefined, the button will be of regular size|
-
 |tooltip|string\|undefined|undefined|Specifies the uk-tooltip attribute. If undefined, no tooltip will be added to the button|
-
 |ref (readonly)|HTMLButtonElement|-|The HTML reference of the component|
 
 &nbsp;
@@ -227,19 +201,12 @@ The card component allows you to create nice box layouts
 |name|type|default|description|
 |--|--|--|--|
 |variant|'default'\|'primary'\|'secondary'\|'hover'|"default"|Used to style the card. If set to hover, the card will appear flat unless it's being hovered|
-
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
-
 |hover|boolean|false|Add a hover animation to the card|
-
 |size|'small'\|'large'\|undefined|undefined|Defines the padding of the card. In undefined, default values will be applied|
-
 |title|string\|undefined|undefined|The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property|
-
 |badge|string\|undefined|undefined|The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
 
 &nbsp;
@@ -254,19 +221,12 @@ The card component allows you to create nice box layouts
 |name|type|default|description|
 |--|--|--|--|
 |avatarSource|string\|undefined|undefined|The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored|
-
 |avatarSize|number|80|Change the size of the avatar.|
-
 |avatarAlt|string|""|The alt property of the avatar image|
-
 |commentTitleAsHtml|string|""|The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header|
-
 |primary|boolean|false|True to add a different style to this comment (e.g. if it's made by the author)|
-
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
-
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
-
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 
 &nbsp;
@@ -281,9 +241,7 @@ The card component allows you to create nice box layouts
 |name|type|default|description|
 |--|--|--|--|
 |columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
-
 |rows|Array.<Record.<string, any>>|-||
-
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 
 &nbsp;
@@ -304,17 +262,11 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |showDivider|boolean|-|If true a divider will be shown between two items|
-
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |ref (readonly)|HTMLDListElement|-|The HTML reference of the component|
-
 |termsAreHtml|boolean|-|Whether the terms of your list should be treated as HTML|
-
 |detailsAreHtml|boolean|-|Whether the details of your list should be treated as HTML|
-
 |list|Array.<{term: string, details: string}>|-|An array containing the term-details pairs of the description list. Can be text only or html|
 
 &nbsp;
@@ -324,6 +276,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -331,6 +284,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -343,9 +297,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
-
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |variant|'stacked'\|'horizontal'|-||
 
 &nbsp;
@@ -355,6 +307,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -362,6 +315,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -369,6 +323,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -376,6 +331,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -401,7 +357,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |ref|HTMLUListElement|-||
 
 &nbsp;
@@ -416,7 +371,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |ref|HTMLDivElement|-||
 
 &nbsp;
@@ -431,19 +385,12 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |heading|Array.<(string\|{label: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined)})>|-||
-
 |size|'small'\|undefined|-||
-
 |className|string\|undefined|-||
-
 |style|string\|undefined|-||
-
 |appearance|'divider'\|'striped'\|undefined|-||
-
 |stickyHeader|boolean|-||
-
 |ref|HTMLTableElement|-||
-
 |caption|string\|undefined|-||
 
 &nbsp;
@@ -453,6 +400,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -460,6 +408,7 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
 &nbsp;
 &nbsp;
 &nbsp;
@@ -472,31 +421,18 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |options|Array.<{label: string, value: any}>|-|Autocomplete options, the value must be unique|
-
 |value|any|-|The current selected value or undefined if no value is selected|
-
 |label|string|-|Label of this component|
-
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
-
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
-
 |disabled|boolean|-|Control whether the component is disabled or not|
-
 |tooltip|string\|undefined|-|UIkit tooltip|
-
 |placeholder|string\|undefined|-|Input placeholder|
-
 |ref|HTMLDivElement|-|Reference to the div that wraps this component|
-
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
-
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
-
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
-
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 
 &nbsp;
@@ -511,7 +447,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -526,7 +461,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -541,7 +475,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -556,7 +489,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -571,9 +503,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |iconPosition|'left'\|'right'|-||
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -588,9 +518,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |iconPosition|'left'\|'right'|-||
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -605,7 +533,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -633,23 +560,14 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |id|string|-||
-
 |label|string\|undefined|-||
-
 |value|any\|undefined|-||
-
 |options|Array.<{value: any, label: string, disabled: (boolean\|undefined)}>|-||
-
 |disabled|boolean|-||
-
 |tooltip|string\|undefined|-||
-
 |ref|HTMLDivElement|-||
-
 |size|undefined\|'small'\|'large'|-||
-
 |className|string\|undefined|-||
-
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 
 &nbsp;
@@ -664,9 +582,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |iconPosition|'left'\|'right'|-||
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -681,9 +597,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |options|Array.<{label: string, value: any, disabled: (boolean\|undefined)}>|-||
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -698,9 +612,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |iconPosition|'left'\|'right'|-||
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -715,7 +627,6 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -730,5 +641,4 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
-
 |state|'initial'\|'valid'\|'invalid'|-||

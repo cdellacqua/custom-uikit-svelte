@@ -91,8 +91,8 @@ for (const component of components) {
 		docLines.push(
 			`|${block.name}${block.readonly ? ' (readonly)' : ''}|${block.type.replace(/\|/g, '\\|')}|${block.default || '-'}|${(block.description || '').replace(/\n/g, ' ')}|`
 		);
-		docLines.push('');
 	}
+	docLines.push('');
 }
 
 fs.writeFileSync(path.join('README.md'), docLines.join('\n'));
