@@ -154,6 +154,7 @@ This component represents a general purpose button, which can be customized acco
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
 |className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 |style|string\|undefined|undefined|A string specifying custom style properties for the component|
 |type|'button'\|'submit'|"button"|The type property of the native HTML button|

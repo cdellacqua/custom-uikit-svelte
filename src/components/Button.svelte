@@ -9,6 +9,9 @@
    * @dispatch {}
    * @forward {"click": "HTMLButtonElement"} */
 
+  /** @type {string|undefined} */
+  export let id = undefined;
+
   /** 
    * @default undefined
 	 * @description A string containing any additional classes to apply to the component
@@ -70,6 +73,7 @@
 </script>
 
 <button
+  {id}
   bind:this={ref}
   disabled={disabled || loading || (type === 'submit' && ['loading'].includes($formState))}
   class:uk-button-default={variant === 'default'}

@@ -382,6 +382,12 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
 					<td>undefined</td>
