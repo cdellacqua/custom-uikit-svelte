@@ -140,6 +140,7 @@
       <tr>
         {#each columns as col}
           <th
+            style="text-align: {col.textAlign || 'left'}"
             class:sticky={stickyHeader}
             class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
             on:click={() => (col.orderable !== false ? orderBy(col) : noop())}
