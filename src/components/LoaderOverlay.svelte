@@ -16,15 +16,15 @@
   export let loading = true;
 
   let originalWrapperRef;
-  onMount(() => {
-    originalWrapperRef.removeChild(ref);
-    document.body.appendChild(ref);
-  });
-
-  onDestroy(() => {
-    document.body.removeChild(ref);
-    originalWrapperRef.appendChild(ref);
-  });
+  $: if (originalWrapperRef) {
+    if (loading) {
+      originalWrapperRef.removeChild(ref);
+      document.body.appendChild(ref);
+    } else {
+      document.body.removeChild(ref);
+      originalWrapperRef.appendChild(ref);
+    }
+  }
 </script>
 
 <style lang="scss">
