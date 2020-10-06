@@ -315,6 +315,16 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-||
+|ratio|number|-||
+|style|string\|undefined|-||
+|ref|HTMLDivElement|-||
+|opacity|number|-||
+|loading|boolean|-||
 
 &nbsp;
 &nbsp;
@@ -323,6 +333,15 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|loading|boolean|-||
+|className|string\|undefined|-||
+|ratio|number|-||
+|style|string\|undefined|-||
+|ref|HTMLDivElement|-||
 
 &nbsp;
 &nbsp;

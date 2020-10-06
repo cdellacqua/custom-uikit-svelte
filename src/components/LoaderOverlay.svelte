@@ -2,11 +2,18 @@
   import { onMount, onDestroy } from "svelte";
   import Loader from "./Loader.svelte";
 
+  /** @type {string|undefined} */
   export let className = undefined;
+  /** @type {number} */
   export let ratio = 1;
+  /** @type {string|undefined} */
   export let style = undefined;
+  /** @type {HTMLDivElement} */
   export let ref = undefined;
+  /** @type {number} */
   export let opacity = 0.8;
+  /** @type {boolean} */
+  export let loading = true;
 
   let originalWrapperRef;
   onMount(() => {
@@ -38,15 +45,17 @@
   }
 </style>
 
-<div bind:this={originalWrapperRef}>
-  <div
-    class="overlay"
-    bind:this={ref}
-    {className}
-    {style}>
-    <div class="uk-background-muted" style="opacity: {opacity}"></div>
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <Loader {ratio} />
+{#if loading}
+  <div bind:this={originalWrapperRef}>
+    <div
+      class="overlay"
+      bind:this={ref}
+      {className}
+      {style}>
+      <div class="uk-background-muted" style="opacity: {opacity}"></div>
+      <div class="uk-flex uk-flex-middle uk-flex-center">
+        <Loader {ratio} />
+      </div>
     </div>
   </div>
-</div>
+{/if}
