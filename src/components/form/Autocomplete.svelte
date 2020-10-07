@@ -262,7 +262,7 @@
   </div>
   {#if showSuggested && !disabled}
     <div
-      transition:fly={{ y: 50, duration: animationDuration }}
+      in:fly={{ y: 50, duration: animationDuration }}
       class="uk-grid-small uk-box-shadow-small suggested uk-background-default
         uk-margin-remove-top uk-margin-remove-left uk-grid"
       bind:this={suggestedRef}>
