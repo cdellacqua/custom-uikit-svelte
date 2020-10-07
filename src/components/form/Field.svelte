@@ -53,11 +53,11 @@
   {/if}
   {#if helperText || textIfInvalid || textIfValid}
     {#if state === 'initial'}
-      <div class="helper-text">{helperText || '\240'}</div>
+      <div class="helper-text">{helperText || '\xA0'}</div>
     {:else if state === 'valid'}
-      <div class="valid-text">{textIfValid || '\240'}</div>
+      <div class="valid-text">{textIfValid || '\xA0'}</div>
     {:else if state === 'invalid'}
-      <div class="invalid-text">{textIfInvalid || '\240'}</div>
+      <div class="invalid-text">{textIfInvalid || '\xA0'}</div>
     {/if}
   {/if}
 </div>
