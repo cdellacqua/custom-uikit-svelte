@@ -465,7 +465,19 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|optional|boolean|-||
+|value|boolean|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -479,7 +491,20 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -493,7 +518,23 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -536,7 +577,24 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|min|number\|string|-||
+|max|number\|string|-||
+|step|number\|string|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|icon|string\|undefined|-||
 |iconPosition|'left'\|'right'|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
@@ -551,7 +609,20 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -600,8 +671,27 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|icon|string\|undefined|-||
 |iconPosition|'left'\|'right'|-||
+|inputmode|string\|undefined|-||
+|pattern|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -630,8 +720,27 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string\|undefined|-||
+|label|string\|undefined|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|icon|string\|undefined|-||
 |iconPosition|'left'\|'right'|-||
+|inputmode|string\|undefined|-||
+|pattern|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -659,5 +768,18 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|id|string|-||
+|label|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
