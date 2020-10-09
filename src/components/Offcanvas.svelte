@@ -3,8 +3,11 @@
   import { generateId } from "../services/html";
   import { onMount } from "svelte";
 
+  /** @type {string} */
   export let id = generateId();
+  /** @type {boolean} */
   export let show = false;
+  /** @type {HTMLDivElement} */
   export let ref = undefined;
   /** @type {'left'|'right'} */
   export let side = "left";

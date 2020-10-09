@@ -2,9 +2,9 @@
   import { generateId } from "../../services/html";
   import Field from "./Field.svelte";
 
-  /** @type {string|undefined} */
+  /** @type {string} */
   export let id = generateId();
-  /** @type {string|undefined} */
+  /** @type {string} */
   export let label = "";
   /** 
 	 * @description A string specifying custom style properties for the component

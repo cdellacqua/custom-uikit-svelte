@@ -5,6 +5,7 @@
   import { fly } from "svelte/transition";
   import { filterAndSort } from '../../helpers/filter-sort';
 
+  /** @type {string} */
   export let id = generateId();
   /**
    * Autocomplete options, the value must be unique

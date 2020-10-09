@@ -21,15 +21,21 @@
   export let columns = [];
   /** @type {Array<Record<string, any>>} */
   export let rows = [];
+  /** @type {undefined|'small'} */
   export let size = undefined;
+  /** @type {undefined|string} */
   export let className = undefined;
   /** 
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
-	export let style = undefined;
+  export let style = undefined;
+  /** @type {'divider'|'striped'} */
   export let appearance = "divider";
+  /** @type {boolean} */
   export let stickyHeader = false;
+  /** @type {string} */
   export let placeholder = "";
+  /** @type {HTMLTableElement} */
   export let ref = undefined;
 
   const dispatch = createEventDispatcher();

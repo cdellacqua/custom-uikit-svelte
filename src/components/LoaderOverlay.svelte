@@ -1,5 +1,4 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
   import Loader from "./Loader.svelte";
 
   /** @type {string|undefined} */

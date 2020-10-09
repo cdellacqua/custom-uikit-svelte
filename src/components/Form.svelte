@@ -3,16 +3,26 @@
   import { readable } from "svelte/store";
   import { noop } from "../helpers/lambdas";
 
+  /**
+   * @callback SubmitCallback
+   * @return {Promise}
+   */
+
+  /** @type {SubmitCallback} */
   export let submitAsync;
+  /** @type {boolean} */
   export let disabled = false;
   /** @type {'initial'|'invalid'|'valid'|'loading'|'error'|'success'} */
   export let state = "initial";
+  /** @type {boolean} */
   export let valid = true;
+  /** @type {HTMLFormElement} */
   export let ref = undefined;
   /** 
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
-	export let style = undefined;
+  export let style = undefined;
+  /** @type {string|undefined} */
   export let className = undefined;
   /** @type {'stacked'|'horizontal'} */
   export let variant = "stacked";

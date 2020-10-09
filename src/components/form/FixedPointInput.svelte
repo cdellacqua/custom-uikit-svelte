@@ -4,25 +4,41 @@ import { createEventDispatcher, onMount } from "svelte";
   import { generateId } from "../../services/html";
   import TextInput from "./TextInput.svelte";
 
+  /** @type {string} */
   export let id = generateId();
+  /** @type {number} */
   export let decimalPlaces = 2;
+  /** @type {boolean} */
   export let inhibitDecimalSeparatorKey = false;
+  /** @type {string} */
   export let label = "";
   /** 
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
-	export let style = undefined;
+  export let style = undefined;
+  /** @type {string|undefined} */
   export let className = undefined;
+  /** @type {string|undefined} */
   export let textIfInvalid = undefined;
+  /** @type {string|undefined} */
   export let textIfValid = undefined;
+  /** @type {string|undefined} */
   export let helperText = undefined;
+  /** @type {boolean} */
   export let optional = false;
+  /** @type {string} */
   export let value;
+  /** @type {string|number} */
   export let min = undefined;
+  /** @type {string|number} */
   export let max = undefined;
+  /** @type {HTMLInputElement} */
   export let ref = undefined;
+  /** @type {boolean} */
   export let disabled = false;
+  /** @type {string|undefined} */
   export let tooltip = undefined;
+  /** @type {string|undefined} */
   export let icon = undefined;
   /** @type {'left'|'right'} */
   export let iconPosition = "left";

@@ -2,16 +2,21 @@
   import { createEventDispatcher } from "svelte";
   import UIkit from "uikit";
 
+  /** @type {string} */
   export let switcher = "";
   /**
    * @description A string specifying custom style properties for the component
    * @type {string|undefined} */
   export let style = undefined;
+  /** @type {string|undefined} */
   export let className = undefined;
+  /** @type {Array.<string>} */
   export let titles = [];
+  /** @type {boolean} */
   export let htmlTitle = false;
   /** @type {HTMLUListElement} */
   export let ref = undefined;
+  /** @type {number} */
   export let index = 0;
   
   let switcherRef = undefined;

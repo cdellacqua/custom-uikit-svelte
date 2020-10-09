@@ -1,9 +1,15 @@
 <script>
+	/** @type {boolean} */
 	export let withIcon = false;
+	/** @type {boolean} */
 	export let small = false;
+	/** @type {boolean} */
 	export let vertical = false;
-  export let ref = undefined;
+	/** @type {HTMLHRElement} */
+	export let ref = undefined;
+	/** @type {string|undefined} */
 	export let style = undefined;
+	/** @type {string|undefined} */
 	export let className = undefined;
 </script>
 

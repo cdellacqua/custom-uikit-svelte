@@ -642,10 +642,46 @@ current page and its href property will be ignored</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>size</td>
+					<td>undefined|'small'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>undefined|string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>appearance</td>
+					<td>'divider'|'striped'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>stickyHeader</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLTableElement</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>
@@ -723,8 +759,100 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Divider</h2>
 		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>withIcon</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>small</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>vertical</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLHRElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Dropdown</h2>
 		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>mode</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>isLabelHtml</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>variant</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Form</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -739,8 +867,32 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>submitAsync</td>
+					<td>SubmitCallback</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>state</td>
 					<td>'initial'|'invalid'|'valid'|'loading'|'error'|'success'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>valid</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLFormElement</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -749,6 +901,12 @@ current page and its href property will be ignored</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>variant</td>
@@ -760,6 +918,43 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">Loader</h2>
 		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ratio</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">LoaderOverlay</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -872,6 +1067,24 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>show</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>side</td>
 					<td>'left'|'right'</td>
 					<td>-</td>
@@ -923,14 +1136,44 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>switcher</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>titles</td>
+					<td>Array.&lt;string&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>htmlTitle</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>ref</td>
 					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>index</td>
+					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -980,14 +1223,44 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>tab</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>titles</td>
+					<td>Array.&lt;string&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>htmlTitle</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>index</td>
+					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1130,6 +1403,73 @@ current page and its href property will be ignored</td>
 &lt;/Accordion&gt;
 </pre></li>
 		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>index</td>
+					<td>number|false</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>collapsible</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>duration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>multi</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>transition</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">AccordionItem</h2>
 		<p></p>
 		<h2 class="uk-heading-divider">Autocomplete</h2>
@@ -1177,6 +1517,12 @@ current page and its href property will be ignored</td>
 				</tr>
 			</thead>
 			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 				<tr>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
@@ -1278,7 +1624,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1377,7 +1723,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1482,7 +1828,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1664,10 +2010,106 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>decimalPlaces</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>inhibitDecimalSeparatorKey</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfInvalid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfValid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>helperText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>min</td>
+					<td>string|number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>max</td>
+					<td>string|number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLInputElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>icon</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>iconPosition</td>
@@ -1698,7 +2140,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1833,7 +2275,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -2058,7 +2500,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -2226,14 +2668,86 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfInvalid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfValid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>helperText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;label: string, value: any, disabled: (boolean|undefined)&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLSelectElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -2260,13 +2774,13 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>id</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
-					<td>string|undefined</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -2406,10 +2920,88 @@ current page and its href property will be ignored</td>
 			</thead>
 			<tbody>
 				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfInvalid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfValid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>helperText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLTextAreaElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>rows</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
