@@ -1,6 +1,7 @@
 <script>
+  import { createEventDispatcher, onMount } from "svelte";
+  import Form from "./Form.svelte";
   import UIkit from "uikit";
-  import { createEventDispatcher } from "svelte";
 
   /** @type {string|undefined} */
   export let id = undefined;
@@ -24,8 +25,34 @@
   export let ref = undefined;
   /** @type {boolean} */
   export let show = false;
-  /** @type {boolean} @readonly */
+  /** @type {boolean} */
   export let shown = false;
+
+  // FORM PROPS
+
+  /**
+   * @callback SubmitCallback
+   * @return {Promise}
+   */
+
+  /** @type {SubmitCallback} */
+  export let formSubmitAsync;
+  /** @type {boolean} */
+  export let formDisabled = false;
+  /** @type {'initial'|'invalid'|'valid'|'loading'|'error'|'success'} */
+  export let formState = "initial";
+  /** @type {boolean} */
+  export let formValid = true;
+  /** @type {HTMLFormElement} */
+  export let formRef = undefined;
+  /**
+   * @description A string specifying custom style properties for the component
+   * @type {string|undefined} */
+  export let formStyle = undefined;
+  /** @type {string|undefined} */
+  export let formClassName = undefined;
+  /** @type {'stacked'|'horizontal'} */
+  export let formVariant = "stacked";
 
   const dispatch = createEventDispatcher();
 
@@ -68,12 +95,15 @@
   {id}
   uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`}
   class:uk-flex-top={verticallyCentered}>
-  <div
-    class="uk-modal-dialog"
-    class:uk-modal-container={expand}
-    class:uk-modal-full={fullScreen}
-    class:uk-margin-auto-vertical={verticallyCentered}
-    uk-overflow-auto>
+  <Form
+    submitAsync={formSubmitAsync}
+    disabled={formDisabled}
+    bind:state={formState}
+    bind:valid={formValid}
+    bind:ref={formRef}
+    style={formStyle}
+    className="uk-modal-dialog {expand ? 'uk-modal-container' : ''} {fullScreen ? 'uk-modal-full' : ''} {verticallyCentered ? 'uk-margin-auto-vertical' : ''} {formClassName}"
+    variant={formVariant}>
     {#if closeable && closeButton}
       <button
         class:uk-modal-close-default={closeButton === 'default'}
@@ -93,7 +123,7 @@
         </slot>
       </div>
     {/if}
-    <div class="uk-modal-body">
+    <div class="uk-modal-body" uk-overflow-auto>
       <slot />
     </div>
     <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''}>
@@ -101,5 +131,5 @@
         <div bind:this={noFooter} />
       </slot>
     </div>
-  </div>
+  </Form>
 </div>

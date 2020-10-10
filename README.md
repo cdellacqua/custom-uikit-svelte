@@ -17,6 +17,7 @@ Components
 - [Divider](#divider)
 - [Dropdown](#dropdown)
 - [Form](#form)
+- [FormModal](#formmodal)
 - [Loader](#loader)
 - [LoaderOverlay](#loaderoverlay)
 - [LoaderWrapper](#loaderwrapper)
@@ -333,6 +334,38 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+## FormModal
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string\|undefined|-||
+|style|string\|undefined|-||
+|className|string\|undefined|-||
+|title|string\|undefined|-||
+|expand|boolean|-||
+|fullScreen|boolean|-||
+|closeable|boolean|-||
+|closeButton|'default'\|'outside'|-||
+|verticallyCentered|boolean|-||
+|ref|HTMLDivElement|-||
+|show|boolean|-||
+|shown|boolean|-||
+|formSubmitAsync|SubmitCallback|-||
+|formDisabled|boolean|-||
+|formState|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
+|formValid|boolean|-||
+|formRef|HTMLFormElement|-||
+|formStyle|string\|undefined|-|A string specifying custom style properties for the component|
+|formClassName|string\|undefined|-||
+|formVariant|'stacked'\|'horizontal'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
 ## Loader
 
 &nbsp;
@@ -388,6 +421,22 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string\|undefined|-||
+|style|string\|undefined|-||
+|className|string\|undefined|-||
+|title|string\|undefined|-||
+|expand|boolean|-||
+|fullScreen|boolean|-||
+|closeable|boolean|-||
+|closeButton|'default'\|'outside'|-||
+|verticallyCentered|boolean|-||
+|ref|HTMLDivElement|-||
+|show|boolean|-||
+|shown|boolean|-|@readonly|
 
 &nbsp;
 &nbsp;
