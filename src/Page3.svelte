@@ -878,7 +878,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<h2 class="uk-heading-divider">NumberInput</h2>
+		<h2 class="uk-heading-divider">MonthPicker</h2>
 		<p></p>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -964,24 +964,6 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>min</td>
-					<td>number|string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>max</td>
-					<td>number|string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>step</td>
-					<td>number|string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
 					<td>-</td>
@@ -990,18 +972,6 @@
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>icon</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>iconPosition</td>
-					<td>'left'|'right'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
