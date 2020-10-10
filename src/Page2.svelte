@@ -420,6 +420,12 @@ import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>center</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Modal</h2>

@@ -415,6 +415,7 @@ Create an already styled description list, perfect for describing key-value prop
 |ratio|number|-||
 |style|string\|undefined|-||
 |ref|HTMLDivElement|-||
+|center|boolean|-||
 
 &nbsp;
 &nbsp;
