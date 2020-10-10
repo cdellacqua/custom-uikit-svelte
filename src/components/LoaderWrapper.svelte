@@ -11,10 +11,14 @@ import Loader from "./Loader.svelte";
   export let style = undefined;
   /** @type {HTMLDivElement} */
   export let ref = undefined;
+  /** @type {boolean} */
+  export let center = true;
 </script>
 
 {#if loading}
-  <Loader {className} {ratio} {style} bind:ref />
+  <div class:uk-flex={center} class:uk-flex-center={center}>
+    <Loader {className} {ratio} {style} bind:ref />
+  </div>
 {:else}
   <slot />
 {/if}
