@@ -90,6 +90,7 @@
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
   bind:this={ref}
+  class:uk-modal-full={fullScreen}
   class={className}
   {style}
   {id}
@@ -102,7 +103,7 @@
     bind:valid={formValid}
     bind:ref={formRef}
     style={formStyle}
-    className="uk-modal-dialog {expand ? 'uk-modal-container' : ''} {fullScreen ? 'uk-modal-full' : ''} {verticallyCentered ? 'uk-margin-auto-vertical' : ''} {formClassName}"
+    className="uk-modal-dialog {expand ? 'uk-modal-container' : ''} {verticallyCentered ? 'uk-margin-auto-vertical' : ''} {formClassName}"
     variant={formVariant}>
     {#if closeable && closeButton}
       <button

@@ -63,6 +63,7 @@
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
   bind:this={ref}
+  class:uk-modal-full={fullScreen}
   class={className}
   {style}
   {id}
@@ -71,7 +72,6 @@
   <div
     class="uk-modal-dialog"
     class:uk-modal-container={expand}
-    class:uk-modal-full={fullScreen}
     class:uk-margin-auto-vertical={verticallyCentered}
     uk-overflow-auto>
     {#if closeable && closeButton}
