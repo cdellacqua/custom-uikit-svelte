@@ -35,6 +35,7 @@ export { default as PercentageInput } from "./components/form/PercentageInput.sv
 export { default as Radio } from "./components/form/Radio.svelte";
 export { default as SearchInput } from "./components/form/SearchInput.svelte";
 export { default as Select } from "./components/form/Select.svelte";
+export { default as TelInput } from "./components/form/TelInput.svelte";
 export { default as TextInput } from "./components/form/TextInput.svelte";
 export { default as Textarea } from "./components/form/Textarea.svelte";
 export { default as TimePicker } from "./components/form/TimePicker.svelte";

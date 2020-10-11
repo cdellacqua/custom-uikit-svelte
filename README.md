@@ -41,6 +41,7 @@ Components
 - [Radio](#radio)
 - [SearchInput](#searchinput)
 - [Select](#select)
+- [TelInput](#telinput)
 - [TextInput](#textinput)
 - [Textarea](#textarea)
 - [TimePicker](#timepicker)
@@ -879,6 +880,36 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLSelectElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|state|'initial'\|'valid'\|'invalid'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## TelInput
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string|-||
+|label|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
