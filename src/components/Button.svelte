@@ -91,7 +91,7 @@
   uk-tooltip={tooltip}
   on:click>
   {#if iconPosition === 'left'}
-    {#if loading || (type === 'submit' && $formState === 'loading')}
+  {#if !disabled && (loading || (type === 'submit' && $formState === 'loading'))}
       <Loader className="uk-icon" ratio={0.4} />
     {:else if icon}
       <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
@@ -99,7 +99,7 @@
   {/if}
   <slot />
   {#if iconPosition === 'right'}
-    {#if loading || (type === 'submit' && $formState === 'loading')}
+    {#if !disabled && (loading || (type === 'submit' && $formState === 'loading'))}
       <Loader className="uk-icon" ratio={0.4} />
     {:else if icon}
       <span class="uk-icon" uk-icon="icon: {icon}; ratio: .75" />
