@@ -1,9 +1,13 @@
 <script>
-import { Button, FormModal, TextInput } from "../main";
+import { Button, FormModal, TextInput, Modal } from "../main";
   let showModal = false;
+  let showOther = false;
   let shownModal = false;
   async function handleSubmit() {
-    await new Promise(res => setTimeout(res, 10000));
+    await new Promise(res => setTimeout(res, 1000));
+    showOther = true;
+    await new Promise(res => setTimeout(res, 5000));
+    showOther = false;
     showModal = false;
   }
 </script>
@@ -19,3 +23,6 @@ import { Button, FormModal, TextInput } from "../main";
     <Button type="submit">Submit</Button>
   </div>
 </FormModal>
+<Modal bind:show={showOther} stack>
+  Example of stacked modal
+</Modal>

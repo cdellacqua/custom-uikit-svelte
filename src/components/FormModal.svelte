@@ -25,8 +25,10 @@
   export let ref = undefined;
   /** @type {boolean} */
   export let show = false;
-  /** @type {boolean} */
+  /** @type {boolean} @readonly */
   export let shown = false;
+  /** @type {boolean} */
+  export let stack = false;
 
   // FORM PROPS
 
@@ -87,7 +89,11 @@
 <div
   on:show={handleShow}
   on:hide={handleHide}
-  on:beforehide={(e) => formState === 'loading' && e.preventDefault()}
+  on:beforehide={(e) => {
+    if (!externalAssignment && formState === 'loading') {
+      e.preventDefault();
+    }
+  }}
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
   bind:this={ref}
@@ -95,7 +101,7 @@
   class={className}
   {style}
   {id}
-  uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`}
+  uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}; stack: ${stack}`}
   class:uk-flex-top={verticallyCentered}>
   <Form
     submitAsync={formSubmitAsync}

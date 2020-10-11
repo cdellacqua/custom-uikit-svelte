@@ -26,6 +26,8 @@
   export let show = false;
   /** @type {boolean} @readonly */
   export let shown = false;
+  /** @type {boolean} */
+  export let stack = false;
 
   const dispatch = createEventDispatcher();
 
@@ -67,7 +69,7 @@
   class={className}
   {style}
   {id}
-  uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}`}
+  uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}; stack: ${stack}`}
   class:uk-flex-top={verticallyCentered}>
   <div
     class="uk-modal-dialog"
