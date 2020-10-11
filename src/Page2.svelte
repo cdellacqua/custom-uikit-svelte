@@ -136,11 +136,15 @@
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
+import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&quot;;
   let showModal = false;
+  let showOther = false;
   let shownModal = false;
   async function handleSubmit() &lbrace;
-    await new Promise(res =&gt; setTimeout(res, 10000));
+    await new Promise(res =&gt; setTimeout(res, 1000));
+    showOther = true;
+    await new Promise(res =&gt; setTimeout(res, 5000));
+    showOther = false;
     showModal = false;
   &rbrace;
 &lt;/script&gt;
@@ -156,7 +160,9 @@ import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
   &lt;/div&gt;
 &lt;/FormModal&gt;
-</pre></li>
+&lt;Modal bind:show=&lbrace;showOther&rbrace; stack&gt;
+  Example of stacked modal
+&lt;/Modal&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -237,6 +243,12 @@ import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
 				</tr>
 				<tr>
 					<td>shown</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>stack</td>
 					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
@@ -539,6 +551,12 @@ let shownModal = false;
 					<td>boolean</td>
 					<td>-</td>
 					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>stack</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>

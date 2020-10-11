@@ -356,7 +356,8 @@ Create an already styled description list, perfect for describing key-value prop
 |verticallyCentered|boolean|-||
 |ref|HTMLDivElement|-||
 |show|boolean|-||
-|shown|boolean|-||
+|shown|boolean|-|@readonly|
+|stack|boolean|-||
 |formSubmitAsync|SubmitCallback|-||
 |formDisabled|boolean|-||
 |formState|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
@@ -441,6 +442,7 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLDivElement|-||
 |show|boolean|-||
 |shown|boolean|-|@readonly|
+|stack|boolean|-||
 
 &nbsp;
 &nbsp;
