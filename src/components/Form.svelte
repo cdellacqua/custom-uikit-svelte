@@ -67,22 +67,11 @@
 <style>
   .disabled {
     pointer-events: none;
+    opacity: .8;
   }
 
   form {
-    position: relative;
     display: block;
-  }
-
-  .disabled > .disabled-overlay {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 100000;
-    background-color: gray;
-    opacity: .05;
   }
 </style>
 
@@ -96,5 +85,4 @@
   on:submit|preventDefault={valid ? handleSubmit : noop}
   class:disabled={state === 'loading' || disabled}>
   <slot />
-  <div class="disabled-overlay"></div>
 </form>
