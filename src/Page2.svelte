@@ -139,6 +139,10 @@
 import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
   let showModal = false;
   let shownModal = false;
+  async function handleSubmit() &lbrace;
+    await new Promise(res =&gt; setTimeout(res, 10000));
+    showModal = false;
+  &rbrace;
 &lt;/script&gt;
 
 &lt;Button on:click=&lbrace;() =&gt; (showModal = true)&rbrace; disabled=&lbrace;showModal&rbrace;&gt;
@@ -146,7 +150,7 @@ import &lbrace; Button, FormModal, TextInput &rbrace; from &quot;../main&quot;;
 &lt;/Button&gt;
 &lt;p&gt;Status: &lbrace;!showModal ? 'Closed' : 'Open'&rbrace;&lt;/p&gt;
 &lt;p&gt;Status (including animation time): &lbrace;!shownModal ? 'Closed' : 'Open'&rbrace;&lt;/p&gt;
-&lt;FormModal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace; formSubmitAsync=&lbrace;() =&gt; showModal = false&rbrace;&gt;
+&lt;FormModal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace; formSubmitAsync=&lbrace;handleSubmit&rbrace;&gt;
   &lt;TextInput placeholder=&quot;I'm required&quot;&gt;&lt;/TextInput&gt;
   &lt;div slot=&quot;footer&quot;&gt;
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
