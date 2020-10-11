@@ -87,6 +87,7 @@
 <div
   on:show={handleShow}
   on:hide={handleHide}
+  on:beforehide={(e) => formState === 'loading' && e.preventDefault()}
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
   bind:this={ref}
