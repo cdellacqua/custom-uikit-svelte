@@ -11,7 +11,7 @@
     someNumericValue: null,
   },{
     column1: new Date("2020-05-01"),
-    column2: 'B string',
+    column2: 'C string',
     someNumericValue: null,
   },{
     column1: new Date("2020-01-11"),
@@ -45,5 +45,7 @@
 <DataTable
   {columns}
   rows={data}
+  on:query={({ detail }) => console.log(detail)}
+  on:sort={({ detail }) => console.log(detail)}
   instantSearch={false}
 />
