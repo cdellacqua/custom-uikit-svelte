@@ -137,7 +137,7 @@
         ordering[0].key !== key
       ) {
         ordering = [{ key: key, direction: "asc" }];
-      } else if (ordering[0].key === key && ordering[0].direction === "asc") {
+      } else if (ordering[0].direction === "asc") {
         ordering = [{ key: key, direction: "desc" }];
       } else {
         ordering = [];

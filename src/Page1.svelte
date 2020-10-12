@@ -640,7 +640,7 @@ current page and its href property will be ignored</td>
     someNumericValue: null,
   &rbrace;,&lbrace;
     column1: new Date(&quot;2020-05-01&quot;),
-    column2: 'B string',
+    column2: 'C string',
     someNumericValue: null,
   &rbrace;,&lbrace;
     column1: new Date(&quot;2020-01-11&quot;),
@@ -674,6 +674,8 @@ current page and its href property will be ignored</td>
 &lt;DataTable
   &lbrace;columns&rbrace;
   rows=&lbrace;data&rbrace;
+  on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch=&lbrace;false&rbrace;
 /&gt;</pre></li>
 		</Switcher>
