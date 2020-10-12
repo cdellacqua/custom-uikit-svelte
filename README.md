@@ -254,6 +254,7 @@ The card component allows you to create nice box layouts
 |placeholder|string|-||
 |noResultText|string\|undefined|-||
 |ref|HTMLTableElement|-||
+|instantSearch|boolean|-|@default true|
 
 &nbsp;
 &nbsp;

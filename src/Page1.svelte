@@ -636,11 +636,11 @@ current page and its href property will be ignored</td>
     someNumericValue: 10.1,
   &rbrace;,&lbrace;
     column1: new Date(&quot;2020-07-06&quot;),
-    column2: 'B string',
+    column2: 'C string',
     someNumericValue: null,
   &rbrace;,&lbrace;
     column1: new Date(&quot;2020-05-01&quot;),
-    column2: 'C string',
+    column2: 'B string',
     someNumericValue: null,
   &rbrace;,&lbrace;
     column1: new Date(&quot;2020-01-11&quot;),
@@ -651,14 +651,14 @@ current page and its href property will be ignored</td>
   let columns = [&lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 1',
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column1',
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render: (data) =&gt; data.toLocaleString(),
+      render: (data) =&gt; data.toLocaleString(),
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column2',
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: __('Nullable numeric value'),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Nullable numeric value',
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: (v1, v2) =&gt; &lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1 &amp;&amp; v2) &lbrace;
@@ -672,7 +672,9 @@ current page and its href property will be ignored</td>
 &lt;/script&gt;
 
 &lt;DataTable
-
+  &lbrace;columns&rbrace;
+  rows=&lbrace;data&rbrace;
+  instantSearch=&lbrace;false&rbrace;
 /&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
@@ -745,6 +747,12 @@ current page and its href property will be ignored</td>
 					<td>HTMLTableElement</td>
 					<td>-</td>
 					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>instantSearch</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
 				</tr>
 			</tbody>
 		</table>
