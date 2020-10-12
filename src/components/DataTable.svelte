@@ -1,6 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { identity, noop } from "../helpers/lambdas";
+import Button from "./Button.svelte";
+import Form from "./Form.svelte";
   import SearchInput from "./form/SearchInput.svelte";
 
   /**
@@ -39,6 +41,8 @@
   export let noResultText = undefined;
   /** @type {HTMLTableElement} */
   export let ref = undefined;
+  /** @type {boolean} @default true */
+  export let instantSearch = true;
 
   const dispatch = createEventDispatcher();
 
@@ -59,7 +63,7 @@
     filteredRows = rows.filter((row) =>
       columns.some((col) => {
         if (col.searchable === false) {
-          return false;
+          return query.length === 0;
         }
         if (!col.render) {
           return String(row[col.key])
@@ -129,13 +133,31 @@
   }
 </style>
 
-<form on:submit|preventDefault={() => searchInput.blur()}>
-  <SearchInput
-    bind:ref={searchInput}
-    {placeholder}
-    bind:value={query}
-    optional />
-</form>
+{#if columns.some((c) => c.searchable !== false)}
+  <form on:submit|preventDefault={() => {
+    if (!instantSearch) {
+      query = searchInput.value;
+    }
+    searchInput.blur();
+  }} class="uk-flex uk-width-1-1">
+    {#if instantSearch}
+      <SearchInput
+        className="uk-width-expand"
+        bind:ref={searchInput}
+        {placeholder}
+        bind:value={query}
+        optional />
+    {:else}
+      <SearchInput
+        className="uk-width-expand"
+        bind:ref={searchInput}
+        {placeholder}
+        value={query}
+        optional />
+    {/if}
+    <Button type="search" icon="search" className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom"></Button>
+  </form>
+{/if}
 
 <div class="table-hscroll-wrapper">
   <table

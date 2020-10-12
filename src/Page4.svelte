@@ -3,6 +3,7 @@
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
+	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';

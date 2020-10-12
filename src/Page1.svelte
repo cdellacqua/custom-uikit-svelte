@@ -3,6 +3,7 @@
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
+	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
@@ -620,6 +621,60 @@ current page and its href property will be ignored</td>
 		</table>
 		<h2 class="uk-heading-divider">DataTable</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<DataTableDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; DataTable &rbrace; from '../main';
+
+  let data = [&lbrace;
+    column1: new Date(),
+    column2: 'A string',
+    someNumericValue: 10.1,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-07-06&quot;),
+    column2: 'B string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-05-01&quot;),
+    column2: 'C string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,]
+
+  let columns = [&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 1',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column1',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render: (data) =&gt; data.toLocaleString(),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column2',
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: __('Nullable numeric value'),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: (v1, v2) =&gt; &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1 &amp;&amp; v2) &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return v1 - v2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1) return -1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
+&lt;/script&gt;
+
+&lt;DataTable
+
+/&gt;</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
