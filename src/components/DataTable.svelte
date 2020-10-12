@@ -35,6 +35,8 @@
   export let stickyHeader = false;
   /** @type {string} */
   export let placeholder = "";
+  /** @type {string|undefined} */
+  export let noResultText = undefined;
   /** @type {HTMLTableElement} */
   export let ref = undefined;
 
@@ -171,23 +173,31 @@
       </tr>
     </thead>
     <tbody>
-      {#each computedRows as row}
-        <tr on:click={() => dispatch('row-click', row)}>
-          {#each columns as col}
-            <td
-              class={col.className}
-              style="text-align: {col.textAlign || 'left'}">
-              {#if !col.render}
-                {row[col.key]}
-              {:else if typeof col.render(row[col.key], row) === 'object'}
-                <svelte:component
-                  this={col.render(row[col.key], row).component}
-                  {...col.render(row[col.key], row).props} />
-              {:else}{col.render(row[col.key], row)}{/if}
-            </td>
-          {/each}
+      {#if computedRows.length === 0 && noResultText}
+        <tr>
+          <td colspan={columns.length} style="font-style: italic; text-align: center">
+            {noResultText}
+          </td>
         </tr>
-      {/each}
+      {:else}
+        {#each computedRows as row}
+          <tr on:click={() => dispatch('row-click', row)}>
+            {#each columns as col}
+              <td
+                class={col.className}
+                style="text-align: {col.textAlign || 'left'}">
+                {#if !col.render}
+                  {row[col.key]}
+                {:else if typeof col.render(row[col.key], row) === 'object'}
+                  <svelte:component
+                    this={col.render(row[col.key], row).component}
+                    {...col.render(row[col.key], row).props} />
+                {:else}{col.render(row[col.key], row)}{/if}
+              </td>
+            {/each}
+          </tr>
+        {/each}
+      {/if}
     </tbody>
   </table>
 </div>

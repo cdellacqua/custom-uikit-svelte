@@ -252,6 +252,7 @@ The card component allows you to create nice box layouts
 |appearance|'divider'\|'striped'|-||
 |stickyHeader|boolean|-||
 |placeholder|string|-||
+|noResultText|string\|undefined|-||
 |ref|HTMLTableElement|-||
 
 &nbsp;

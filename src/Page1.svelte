@@ -680,6 +680,12 @@ current page and its href property will be ignored</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>noResultText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>ref</td>
 					<td>HTMLTableElement</td>
 					<td>-</td>
