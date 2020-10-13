@@ -161,9 +161,12 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
   &lt;/div&gt;
 &lt;/FormModal&gt;
-&lt;Modal bind:show=&lbrace;showOther&rbrace; stack&gt;
+&lt;FormModal bind:show=&lbrace;showOther&rbrace; formSubmitAsync=&lbrace;handleSubmit&rbrace;&gt;
   Example of stacked modal
-&lt;/Modal&gt;</pre></li>
+  &lt;div slot=&quot;footer&quot;&gt;
+    &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
+  &lt;/div&gt;
+&lt;/FormModal&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
