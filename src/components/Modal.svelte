@@ -1,6 +1,6 @@
 <script>
   import UIkit from "uikit";
-  import { createEventDispatcher } from "svelte";
+  import { createEventDispatcher, onDestroy } from "svelte";
 
   /** @type {string|undefined} */
   export let id = undefined;
@@ -42,6 +42,12 @@
     }
     externalAssignment = true;
   }
+
+  onDestroy(() => {
+    if (show && document.querySelectorAll('.uk-modal.uk-open').length === 1) {
+      document.documentElement.classList.remove('uk-modal-page');
+    }
+  });
 
   function handleShow() {
     externalAssignment = false;

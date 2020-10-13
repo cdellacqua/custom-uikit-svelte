@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, onMount } from "svelte";
+  import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import Form from "./Form.svelte";
   import UIkit from "uikit";
 
@@ -69,6 +69,12 @@
     }
     externalAssignment = true;
   }
+
+  onDestroy(() => {
+    if (show && document.querySelectorAll('.uk-modal.uk-open').length === 1) {
+      document.documentElement.classList.remove('uk-modal-page');
+    }
+  });
 
   function handleShow() {
     externalAssignment = false;
