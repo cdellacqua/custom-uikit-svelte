@@ -457,18 +457,30 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 import &lbrace; Button, Modal &rbrace; from &quot;../main&quot;;
 let showModal = false;
 let shownModal = false;
+let mounted = true;
+function toggleMountState() &lbrace;
+  mounted = !mounted;
+&rbrace;
 &lt;/script&gt;
 
 &lt;Button on:click=&lbrace;() =&gt; showModal = true&rbrace; disabled=&lbrace;showModal&rbrace;&gt;Show modal&lt;/Button&gt;
+&lt;Button on:click=&lbrace;() =&gt; mounted = true&rbrace; disabled=&lbrace;mounted&rbrace;&gt;Mount modal&lt;/Button&gt;
 &lt;p&gt;
   Status: &lbrace;!showModal ? 'Closed' : 'Open'&rbrace;
 &lt;/p&gt;
 &lt;p&gt;
   Status (including animation time): &lbrace;!shownModal ? 'Closed' : 'Open'&rbrace;
 &lt;/p&gt;
-&lt;Modal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace;&gt;
-  Example!
-&lt;/Modal&gt;</pre></li>
+&lbrace;#if mounted&rbrace;
+  &lt;Modal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace;&gt;
+    Example!
+    &lt;div&gt;
+      A modal can safely be unmounted from the document
+    &lt;/div&gt;
+    &lt;Button on:click=&lbrace;() =&gt; toggleMountState()&rbrace;&gt;Unmount modal&lt;/Button&gt;
+  &lt;/Modal&gt;
+&lbrace;/if&rbrace;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
