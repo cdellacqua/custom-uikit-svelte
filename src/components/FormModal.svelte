@@ -61,9 +61,9 @@
   let externalAssignment = true;
   $: if (ref) {
     if (externalAssignment) {
-      if (show) {
+      if (show && !ref.classList.contains('uk-open')) {
         UIkit.modal(ref).show();
-      } else {
+      } else if (!show && ref.classList.contains('uk-open')) {
         UIkit.modal(ref).hide();
       }
     }

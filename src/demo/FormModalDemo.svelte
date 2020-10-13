@@ -23,6 +23,9 @@ import { Button, FormModal, TextInput, Modal } from "../main";
     <Button type="submit">Submit</Button>
   </div>
 </FormModal>
-<Modal bind:show={showOther} stack>
+<FormModal bind:show={showOther} formSubmitAsync={handleSubmit}>
   Example of stacked modal
-</Modal>
+  <div slot="footer">
+    <Button type="submit">Submit</Button>
+  </div>
+</FormModal>
