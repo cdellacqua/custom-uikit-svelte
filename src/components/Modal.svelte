@@ -70,6 +70,10 @@
   on:hide={handleHide}
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
+  on:show
+  on:hide
+  on:shown
+  on:hidden
   bind:this={ref}
   class:uk-modal-full={fullScreen}
   class={className}
