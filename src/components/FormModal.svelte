@@ -28,7 +28,7 @@
   /** @type {boolean} @readonly */
   export let shown = false;
   /** @type {boolean} */
-  export let stack = false;
+  export let stack = true;
 
   // FORM PROPS
 
