@@ -14,7 +14,7 @@
    * @callback Renderer
    * @param value
    * @param row
-   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function}}
+   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function, textContent: string|undefined}}
    */
 
   /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
@@ -288,7 +288,7 @@
                       }
                     }}
                   >
-                    {col.render(row[col.key], row).slot || ''}
+                    {col.render(row[col.key], row).textContent || ''}
                   </svelte:component>
                 {:else}{col.render(row[col.key], row)}{/if}
               </td>
