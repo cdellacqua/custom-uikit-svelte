@@ -280,8 +280,16 @@
                   <svelte:component
                     this={col.render(row[col.key], row).component}
                     {...(col.render(row[col.key], row).props || {})}
-                    on:click={col.render(row[col.key], row).onClick}
-                  >{col.render(row[col.key], row).slot || ''}</svelte:component>
+                    on:click={(e) => {
+                      const onClick = col.render(row[col.key], row).onClick;
+                      if (onClick) {
+                        e.stopPropagation();
+                        onClick(e);
+                      }
+                    }}
+                  >
+                    {col.render(row[col.key], row).slot || ''}
+                  </svelte:component>
                 {:else}{col.render(row[col.key], row)}{/if}
               </td>
             {/each}

@@ -51,7 +51,7 @@
           variant: 'primary',
         },
         onClick: () => alert(n),
-        slot: 'I\'m a button'
+        slot: 'I\'m a button',
       }),
 		}];
 </script>
@@ -62,4 +62,5 @@
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}
   instantSearch={false}
+  on:row-click={({ detail }) => console.log(detail)}
 />
