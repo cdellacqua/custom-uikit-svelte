@@ -629,7 +629,7 @@ current page and its href property will be ignored</td>
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; DataTable &rbrace; from '../main';
+  import &lbrace; Button, DataTable &rbrace; from '../main';
 
   let data = [&lbrace;
     column1: new Date(),
@@ -669,6 +669,20 @@ current page and its href property will be ignored</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Button',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+      orderable: false,
+      searchable: false,
+      render: (n) =&gt; (&lbrace;
+        component: Button,
+        props: &lbrace;
+          variant: 'primary',
+        &rbrace;,
+        onClick: () =&gt; alert(n),
+        slot: 'I\'m a button'
+      &rbrace;),
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
 &lt;/script&gt;
 
