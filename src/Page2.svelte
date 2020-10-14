@@ -7,6 +7,7 @@
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
+	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
@@ -578,6 +579,62 @@ function toggleMountState() &lbrace;
 		</table>
 		<h2 class="uk-heading-divider">Offcanvas</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<OffcanvasDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Offcanvas, Button &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let showSidebar = false;
+  function handleOffcanvasEvent(eventName) &lbrace;
+    status = [...status, eventName];
+  &rbrace;
+  const menu = [
+    &lbrace;
+      href: &quot;/#_1&quot;,
+      label: &quot;Link 1&quot;,
+    &rbrace;,
+    &lbrace;
+      href: &quot;/#_2&quot;,
+      label: &quot;Link 2&quot;,
+    &rbrace;,
+    &lbrace;
+      href: &quot;/#_3&quot;,
+      label: &quot;Link 3&quot;,
+    &rbrace;,
+  ];
+&lt;/script&gt;
+
+&lt;Offcanvas
+  bind:show=&lbrace;showSidebar&rbrace;
+  on:show=&lbrace;() =&gt; handleOffcanvasEvent('show')&rbrace;
+  on:hide=&lbrace;() =&gt; handleOffcanvasEvent('hide')&rbrace;
+  on:shown=&lbrace;() =&gt; handleOffcanvasEvent('shown')&rbrace;
+  on:hidden=&lbrace;() =&gt; handleOffcanvasEvent('hidden')&rbrace;
+&gt;
+  &lt;ul class=&quot;uk-nav uk-nav-default sidebar-list&quot;&gt;
+    &lt;li class=&quot;uk-nav-header&quot; /&gt;
+    &lbrace;#each menu as item&rbrace;
+      &lt;li class=&quot;uk-nav-header&quot;&gt;
+        &lt;a
+          href=&lbrace;item.href&rbrace;
+          on:click=&lbrace;() =&gt; (showSidebar = false)&rbrace;&gt;&lbrace;item.label&rbrace;&lt;/a&gt;
+      &lt;/li&gt;
+    &lbrace;/each&rbrace;
+  &lt;/ul&gt;
+&lt;/Offcanvas&gt;
+&lt;Button on:click=&lbrace;() =&gt; (showSidebar = !showSidebar)&rbrace; disabled=&lbrace;showSidebar&rbrace;&gt;
+  Show offcanvas
+&lt;/Button&gt;
+&lt;div&gt;
+  &lbrace;@html status.join('&lt;br /&gt;')&rbrace;
+&lt;/div&gt;
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -600,6 +657,12 @@ function toggleMountState() &lbrace;
 					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>shown</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>ref</td>

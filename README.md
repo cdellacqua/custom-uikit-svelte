@@ -459,6 +459,7 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |id|string|-||
 |show|boolean|-||
+|shown|boolean|-|@readonly|
 |ref|HTMLDivElement|-||
 |side|'left'\|'right'|-||
 
