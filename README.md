@@ -821,6 +821,7 @@ Create an already styled description list, perfect for describing key-value prop
 |value|any\|undefined|-||
 |options|Array.<{value: any, label: string, disabled: (boolean\|undefined)}>|-||
 |disabled|boolean|-||
+|optional|boolean|-||
 |tooltip|string\|undefined|-||
 |ref|HTMLDivElement|-||
 |size|undefined\|'small'\|'large'|-||

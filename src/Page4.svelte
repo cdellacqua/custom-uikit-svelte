@@ -291,21 +291,28 @@
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Radio &rbrace; from &quot;../main&quot;;
+  import &lbrace; Radio, Form, Button &rbrace; from &quot;../main&quot;;
 
   let status = [];
-  let obj = &lbrace; test: 1 &rbrace;;
+  let obj = '';
+
+  function handleSubmit() &lbrace;
+    console.log(obj);
+  &rbrace;
 &lt;/script&gt;
 
-&lt;Radio
-  value=&lbrace;obj&rbrace;
-  options=&lbrace;[
-    &lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2 with a long text', value: 2, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: obj &rbrace;,
-  ]&rbrace;
-  on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
-    status = [...status, 'Change: ' + JSON.stringify(detail)];
-  &rbrace;&rbrace; /&gt;
-&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+&lt;Form submitAsync=&lbrace;handleSubmit&rbrace;&gt;
+  &lt;Radio
+    bind:value=&lbrace;obj&rbrace;
+    options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2 with a long text', value: 0, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: '' &rbrace;, &lbrace; label: 'Label obj', value: &lbrace; prop: 2 &rbrace; &rbrace;, &lbrace; label: 'Label true', value: true &rbrace;, &lbrace; label: 'Label false', value: false &rbrace;]&rbrace;
+    on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
+      status = [...status, 'Change: ' + JSON.stringify(detail)];
+    &rbrace;&rbrace; /&gt;
+  &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
+  &lt;div&gt;
+    &lbrace;@html status.join('&lt;br /&gt;')&rbrace;
+  &lt;/div&gt;
+&lt;/Form&gt;
 </pre></li>
 		</Switcher>
 		<h3>Props</h3>
@@ -351,6 +358,12 @@
 				</tr>
 				<tr>
 					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optional</td>
 					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
