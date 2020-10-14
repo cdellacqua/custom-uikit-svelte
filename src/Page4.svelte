@@ -332,6 +332,12 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>name</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>value</td>
 					<td>any|undefined</td>
 					<td>-</td>
