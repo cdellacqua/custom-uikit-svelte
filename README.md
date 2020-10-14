@@ -964,6 +964,7 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |id|string|-||
 |label|string|-||
+|name|string\|undefined|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |className|string\|undefined|-||
 |textIfInvalid|string\|undefined|-||

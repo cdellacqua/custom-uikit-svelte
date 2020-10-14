@@ -951,6 +951,12 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>name</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>
