@@ -6,6 +6,8 @@
   export let id = generateId();
   /** @type {string} */
   export let label = "";
+  /** @type {string|undefined} */
+  export let name = undefined;
   /** 
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
@@ -40,6 +42,7 @@
 <Field
   inputId={id}
   {label}
+  {name}
   {state}
   {style}
   {className}
