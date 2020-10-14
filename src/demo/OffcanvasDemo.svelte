@@ -1,0 +1,48 @@
+<script>
+  import { Offcanvas, Button } from "../main";
+  let status = [];
+
+  let showSidebar = false;
+  function handleOffcanvasEvent(eventName) {
+    status = [...status, eventName];
+  }
+  const menu = [
+    {
+      href: "/#_1",
+      label: "Link 1",
+    },
+    {
+      href: "/#_2",
+      label: "Link 2",
+    },
+    {
+      href: "/#_3",
+      label: "Link 3",
+    },
+  ];
+</script>
+
+<Offcanvas
+  bind:show={showSidebar}
+  on:show={() => handleOffcanvasEvent('show')}
+  on:hide={() => handleOffcanvasEvent('hide')}
+  on:shown={() => handleOffcanvasEvent('shown')}
+  on:hidden={() => handleOffcanvasEvent('hidden')}
+>
+  <ul class="uk-nav uk-nav-default sidebar-list">
+    <li class="uk-nav-header" />
+    {#each menu as item}
+      <li class="uk-nav-header">
+        <a
+          href={item.href}
+          on:click={() => (showSidebar = false)}>{item.label}</a>
+      </li>
+    {/each}
+  </ul>
+</Offcanvas>
+<Button on:click={() => (showSidebar = !showSidebar)} disabled={showSidebar}>
+  Show offcanvas
+</Button>
+<div>
+  {@html status.join('<br />')}
+</div>

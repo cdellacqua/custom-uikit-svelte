@@ -56,8 +56,6 @@
   /** @type {'stacked'|'horizontal'} */
   export let formVariant = "stacked";
 
-  const dispatch = createEventDispatcher();
-
   let externalAssignment = true;
   $: if (ref) {
     if (externalAssignment) {
@@ -79,13 +77,11 @@
   function handleShow() {
     externalAssignment = false;
     show = true;
-    dispatch("show");
   }
 
   function handleHide() {
     externalAssignment = false;
     show = false;
-    dispatch("hide");
   }
 
   let noHeader;
