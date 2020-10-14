@@ -681,7 +681,7 @@ current page and its href property will be ignored</td>
           variant: 'primary',
         &rbrace;,
         onClick: () =&gt; alert(n),
-        slot: 'I\'m a button'
+        slot: 'I\'m a button',
       &rbrace;),
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
 &lt;/script&gt;
@@ -692,6 +692,7 @@ current page and its href property will be ignored</td>
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch=&lbrace;false&rbrace;
+  on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
 /&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
