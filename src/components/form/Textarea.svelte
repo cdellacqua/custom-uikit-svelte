@@ -42,7 +42,6 @@
 <Field
   inputId={id}
   {label}
-  {name}
   {state}
   {style}
   {className}
@@ -52,6 +51,7 @@
   {optional}>
   <textarea
     {id}
+    {name}
     {disabled}
     uk-tooltip={tooltip}
     bind:this={ref}

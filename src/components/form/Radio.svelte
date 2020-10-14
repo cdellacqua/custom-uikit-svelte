@@ -7,6 +7,8 @@
   export let id = generateId();
   /** @type {string|undefined} */
   export let label = undefined;
+  /** @type {string|undefined} */
+  export let name = undefined;
   /** @type {any|undefined} */
   export let value = undefined;
   /** @type {Array<{value: any, label: string, disabled: boolean|undefined}>} */
@@ -36,6 +38,7 @@
 </style>
 
 <div {style} class={className} class:uk-margin-bottom={true}>
+  <input type="hidden" {name} {value} />
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>{label}</label>
   {/if}
