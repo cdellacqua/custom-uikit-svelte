@@ -1,5 +1,5 @@
 <script>
-  import { DataTable } from '../main';
+  import { Button, DataTable } from '../main';
 
   let data = [{
     column1: new Date(),
@@ -39,6 +39,20 @@
 				if (v2) return 1;
 				return 0;
 			},
+		},
+		{
+			label: 'Button',
+			key: 'someNumericValue',
+      orderable: false,
+      searchable: false,
+      render: (n) => ({
+        component: Button,
+        props: {
+          variant: 'primary',
+        },
+        onClick: () => alert(n),
+        slot: 'I\'m a button'
+      }),
 		}];
 </script>
 

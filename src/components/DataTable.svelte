@@ -14,7 +14,7 @@
    * @callback Renderer
    * @param value
    * @param row
-   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, slot: string|undefined}}
+   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function}}
    */
 
   /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
@@ -279,7 +279,9 @@
                 {:else if typeof col.render(row[col.key], row) === 'object'}
                   <svelte:component
                     this={col.render(row[col.key], row).component}
-                    {...(col.render(row[col.key], row).props || {})}>{col.render(row[col.key], row).slot || ''}</svelte:component>
+                    {...(col.render(row[col.key], row).props || {})}
+                    on:click={col.render(row[col.key], row).onClick}
+                  >{col.render(row[col.key], row).slot || ''}</svelte:component>
                 {:else}{col.render(row[col.key], row)}{/if}
               </td>
             {/each}
