@@ -14,7 +14,7 @@
    * @callback Renderer
    * @param value
    * @param row
-   * @return {string|object}
+   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, slot: string|undefined}}
    */
 
   /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
@@ -279,7 +279,7 @@
                 {:else if typeof col.render(row[col.key], row) === 'object'}
                   <svelte:component
                     this={col.render(row[col.key], row).component}
-                    {...col.render(row[col.key], row).props} />
+                    {...(col.render(row[col.key], row).props || {})}>{col.render(row[col.key], row).slot || ''}</svelte:component>
                 {:else}{col.render(row[col.key], row)}{/if}
               </td>
             {/each}
