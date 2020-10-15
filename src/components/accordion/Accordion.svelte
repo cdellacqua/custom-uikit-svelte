@@ -46,7 +46,6 @@
 </script>
 
 <ul class={className}
-  on:show={(e) => handleEvent(e, 'show')}
   on:hide|stopPropagation={(e) => handleEvent(e, 'hide')}
   on:show|stopPropagation={(e) => handleEvent(e, 'show')}
   on:hidden|stopPropagation={(e) => handleEvent(e, 'hidden')}

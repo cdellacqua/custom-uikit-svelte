@@ -57,8 +57,7 @@
 </ul>
 
 <ul class="uk-switcher"
-  on:show={handleShow}
-  on:show|stopPropagation
+  on:show|stopPropagation={handleShow}
   on:hide|stopPropagation
   on:shown|stopPropagation
   on:hidden|stopPropagation
