@@ -150,6 +150,7 @@
 <RemoteDataTable
   {dataProvider}
   {columns}
+  paginationShortcuts={4}
   ordering={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}

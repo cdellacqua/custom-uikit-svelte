@@ -58,6 +58,8 @@ import { noop } from "../helpers/lambdas";
   /** @type {number} */
   export let recordsPerPage = 25;
   /** @type {number} */
+  export let paginationShortcuts = 4;
+  /** @type {number} */
   export let pageIndex = 0;
 
   const dispatch = createEventDispatcher();
@@ -307,11 +309,11 @@ import { noop } from "../helpers/lambdas";
   <ul class="uk-pagination uk-flex-center" uk-margin>
       {#if pageIndex > 0}
         <!-- svelte-ignore a11y-missing-attribute -->
-        <li><a role="button" tabindex="0" on:click={() => pageIndex = Math.max(0, pageIndex -1)}><span uk-pagination-previous></span></a></li>
+        <li><a role="button" tabindex="0" on:click={() => pageIndex = Math.max(0, pageIndex - 1)}><span uk-pagination-previous></span></a></li>
       {:else}
         <li class="uk-disabled"><span><span uk-pagination-previous></span></span></li>
       {/if}
-      {#each new Array(Math.min(3, Math.ceil(total / recordsPerPage))).fill(0) as _, index}
+      {#each new Array(Math.min(paginationShortcuts, Math.ceil(total / recordsPerPage))).fill(0) as _, index}
         {#if index === pageIndex}
           <li class="uk-active"><span>{index + 1}</span></li>
         {:else}
@@ -319,20 +321,20 @@ import { noop } from "../helpers/lambdas";
           <li><a role="button" tabindex="0" on:click={() => pageIndex = index}>{index + 1}</a></li>
         {/if}
       {/each}
-      {#if Math.ceil(total / recordsPerPage) > 6}
-        {#if pageIndex + 1 > 3 && pageIndex + 1 <= Math.ceil(total / recordsPerPage) - 3}
-          {#if pageIndex + 1 > 3 + 1}
-            <li class="uk-disabled"><span>...</span></li>
+      {#if Math.ceil(total / recordsPerPage) > paginationShortcuts * 2}
+        {#if pageIndex + 1 > paginationShortcuts && pageIndex + 1 <= Math.ceil(total / recordsPerPage) - paginationShortcuts}
+          {#if pageIndex + 1 > paginationShortcuts + 1}
+            <li class="uk-disabled"><span>..</span></li>
           {/if}
           <li class="uk-active"><span>{pageIndex + 1}</span></li>
-          {#if pageIndex + 1 < Math.ceil(total / recordsPerPage) - 3}
-            <li class="uk-disabled"><span>...</span></li>
+          {#if pageIndex + 1 < Math.ceil(total / recordsPerPage) - paginationShortcuts}
+            <li class="uk-disabled"><span>..</span></li>
           {/if}
         {:else}
-          <li class="uk-disabled"><span>...</span></li>
+          <li class="uk-disabled"><span>..</span></li>
         {/if}
       {/if}
-      {#each new Array(Math.min(3, Math.max(0, Math.ceil(total / recordsPerPage) - 3))).fill(Math.max(3, Math.max(0, Math.ceil(total / recordsPerPage) - 3))) as offset, index}
+      {#each new Array(Math.min(paginationShortcuts, Math.max(0, Math.ceil(total / recordsPerPage) - paginationShortcuts))).fill(Math.max(paginationShortcuts, Math.max(0, Math.ceil(total / recordsPerPage) - paginationShortcuts))) as offset, index}
         {#if offset + index === pageIndex}
           <li class="uk-active"><span>{offset + index + 1}</span></li>
         {:else}
