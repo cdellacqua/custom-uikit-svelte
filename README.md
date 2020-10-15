@@ -7,6 +7,7 @@ Unofficial Svelte Component Library for the UIkit framework
 Components
 - [Alert](#alert)
 - [Article](#article)
+- [AsyncDataTable](#asyncdatatable)
 - [Badge](#badge)
 - [Breadcrumb](#breadcrumb)
 - [Button](#button)
@@ -24,7 +25,6 @@ Components
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
-- [RemoteDataTable](#remotedatatable)
 - [Switcher](#switcher)
 - [Tab](#tab)
 - [Table](#table)
@@ -104,6 +104,38 @@ Useful to display content such as blog entries or articles
 |titleAsHtml|string\|undefined|""|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
 |articleMetaAsHtml|string\|undefined|""|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
+
+&nbsp;
+&nbsp;
+&nbsp;
+## AsyncDataTable
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|size|undefined\|'small'|-||
+|className|undefined\|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|appearance|'divider'\|'striped'|-||
+|stickyHeader|boolean|-||
+|placeholder|string|-||
+|noResultText|string\|undefined|-||
+|ref|HTMLTableElement|-||
+|instantSearch|boolean|-|@default true|
+|query|string|-||
+|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|horizontalScroll|boolean|-|@default true|
+|dataProvider|DataProvider|-||
+|dataProviderErrorHandler|function|-||
+|recordsPerPage|number|-||
+|paginationShortcuts|number|-||
+|pageIndex|number|-||
+|total|number|-|@readonly|
+|filtered|number|-|@readonly|
 
 &nbsp;
 &nbsp;
@@ -485,36 +517,6 @@ Create an already styled description list, perfect for describing key-value prop
 |shown|boolean|-|@readonly|
 |ref|HTMLDivElement|-||
 |side|'left'\|'right'|-||
-
-&nbsp;
-&nbsp;
-&nbsp;
-## RemoteDataTable
-
-&nbsp;
-&nbsp;
-&nbsp;
-### Props
-|name|type|default|description|
-|--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
-|size|undefined\|'small'|-||
-|className|undefined\|string|-||
-|style|string\|undefined|-|A string specifying custom style properties for the component|
-|appearance|'divider'\|'striped'|-||
-|stickyHeader|boolean|-||
-|placeholder|string|-||
-|noResultText|string\|undefined|-||
-|ref|HTMLTableElement|-||
-|instantSearch|boolean|-|@default true|
-|query|string|-||
-|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
-|horizontalScroll|boolean|-|@default true|
-|dataProvider|DataProvider|-||
-|dataProviderErrorHandler|function|-||
-|recordsPerPage|number|-||
-|paginationShortcuts|number|-||
-|pageIndex|number|-||
 
 &nbsp;
 &nbsp;

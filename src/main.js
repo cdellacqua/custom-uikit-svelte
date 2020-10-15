@@ -1,6 +1,7 @@
 import './init';
 export { default as Alert } from "./components/Alert.svelte";
 export { default as Article } from "./components/Article.svelte";
+export { default as AsyncDataTable } from "./components/AsyncDataTable.svelte";
 export { default as Badge } from "./components/Badge.svelte";
 export { default as Breadcrumb } from "./components/Breadcrumb.svelte";
 export { default as Button } from "./components/Button.svelte";
@@ -18,7 +19,6 @@ export { default as LoaderOverlayScoped } from "./components/LoaderOverlayScoped
 export { default as LoaderWrapper } from "./components/LoaderWrapper.svelte";
 export { default as Modal } from "./components/Modal.svelte";
 export { default as Offcanvas } from "./components/Offcanvas.svelte";
-export { default as RemoteDataTable } from "./components/RemoteDataTable.svelte";
 export { default as Switcher } from "./components/Switcher.svelte";
 export { default as Tab } from "./components/Tab.svelte";
 export { default as Table } from "./components/Table.svelte";

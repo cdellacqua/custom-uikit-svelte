@@ -2,6 +2,7 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
@@ -9,7 +10,6 @@
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
-	import RemoteDataTableDemo from './demo/RemoteDataTableDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
@@ -236,6 +236,308 @@ function showAlert() &lbrace;
 					<td>HTMLElement</td>
 					<td>-</td>
 					<td>The HTML reference of the component</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">AsyncDataTable</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AsyncDataTableDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+
+  import &lbrace; Button, RemoteDataTable &rbrace; from '../main';
+
+  let data = [&lbrace;
+    column1: new Date(),
+    column2: 'A string',
+    someNumericValue: 10.1,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-07-06&quot;),
+    column2: 'C string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-05-01&quot;),
+    column2: 'C string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,];
+
+  async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
+    const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
+      .sort((d1, d2) =&gt; &lbrace;
+        if (ordering.length &gt; 0) &lbrace;
+          const multiplier = ordering[0].direction === 'asc' ? 1 : -1;
+          if (d1[ordering[0].key] &gt; d2[ordering[0].key]) &lbrace;
+            return multiplier * -1;
+          &rbrace;
+          if (d1[ordering[0].key] &lt; d2[ordering[0].key]) &lbrace;
+            return multiplier * 1;
+          &rbrace;
+          return 0;
+        &rbrace;
+      &rbrace;);
+    await new Promise(res =&gt; setTimeout(res, 200));
+    return &lbrace;
+      records: filtered.slice(pageIndex * recordsPerPage, pageIndex * recordsPerPage + recordsPerPage),
+      total: data.length,
+      filtered: filtered.length,
+    &rbrace;
+  &rbrace;
+
+  let columns = [&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 1',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column1',
+      render: (data) =&gt; data.toLocaleString(),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column2',
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Nullable numeric value',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: (v1, v2) =&gt; &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1 &amp;&amp; v2) &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return v1 - v2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1) return -1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Button',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+      orderable: false,
+      searchable: false,
+      render: (n) =&gt; (&lbrace;
+        component: Button,
+        props: &lbrace;
+          variant: 'primary',
+        &rbrace;,
+        onClick: () =&gt; alert(n),
+        textContent: 'I\'m a button',
+      &rbrace;),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
+&lt;/script&gt;
+
+&lt;RemoteDataTable
+  &lbrace;dataProvider&rbrace;
+  &lbrace;columns&rbrace;
+  paginationShortcuts=&lbrace;4&rbrace;
+  ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
+  on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  recordsPerPage=&lbrace;2&rbrace;
+  instantSearch
+  on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+/&gt;</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>columns</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>size</td>
+					<td>undefined|'small'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>undefined|string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>appearance</td>
+					<td>'divider'|'striped'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>stickyHeader</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>noResultText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLTableElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>instantSearch</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ordering</td>
+					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>horizontalScroll</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>dataProvider</td>
+					<td>DataProvider</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProviderErrorHandler</td>
+					<td>function</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>recordsPerPage</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>paginationShortcuts</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>pageIndex</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>total</td>
+					<td>number</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>filtered</td>
+					<td>number</td>
+					<td>-</td>
+					<td>@readonly</td>
 				</tr>
 			</tbody>
 		</table>
@@ -863,57 +1165,6 @@ current page and its href property will be ignored</td>
 					<td>Array.&lt;&lbrace;term: string, details: string&rbrace;&gt;</td>
 					<td>-</td>
 					<td>An array containing the term-details pairs of the description list. Can be text only or html</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Divider</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>withIcon</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>small</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>vertical</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLHRElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>
