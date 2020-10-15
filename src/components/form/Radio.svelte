@@ -52,9 +52,16 @@
   }
 </style>
 
-<div {style} class={className} class:uk-margin-bottom={true} class:radio-wrapper={true}>
+<div
+  {style}
+  class={className}
+  class:uk-margin-bottom={true}
+  class:radio-wrapper={true}>
   {#if label}
-    <label class="uk-form-label" class:disabled for={id}>{label}</label>
+    <label class="uk-form-label" class:disabled for={id}>
+      {label}
+      {!optional ? '*' : ''}
+    </label>
   {/if}
   <div
     {id}
@@ -88,15 +95,13 @@
       </div>
     {/each}
   </div>
-  <select
-    tabindex="-1"
-    required={!optional}
-    {disabled}
-    {name}
-  >
-    <option selected disaled value=""></option>
+  <select tabindex="-1" required={!optional} {disabled} {name}>
+    <option selected disaled value="" />
     {#each options as option, i (option)}
-      <option selected={option.value === value} value={i} disabled={option.disabled || false}>
+      <option
+        selected={option.value === value}
+        value={i}
+        disabled={option.disabled || false}>
         {option.label}
       </option>
     {/each}
