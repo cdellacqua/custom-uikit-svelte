@@ -1,6 +1,6 @@
 <script>
 
-  import { Button, RemoteDataTable } from '../main';
+  import { Button, AsyncDataTable } from '../main';
 
   let data = [{
     column1: new Date(),
@@ -147,7 +147,7 @@
 		}];
 </script>
 
-<RemoteDataTable
+<AsyncDataTable
   {dataProvider}
   {columns}
   paginationShortcuts={4}
