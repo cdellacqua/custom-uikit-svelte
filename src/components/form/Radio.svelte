@@ -71,8 +71,8 @@
           class:uk-text-nowrap={true}
           class:uk-width-1-1={true}
           class:uk-height-1-1={true}
-          class:uk-button-default={option.value === '' || option.value !== value}
-          class:uk-button-primary={option.value !== '' && option.value === value}
+          class:uk-button-default={option.value !== value}
+          class:uk-button-primary={option.value === value}
           class:uk-button-small={size === 'small'}
           class:uk-button-large={size === 'large'}
           class:uk-button={true}
@@ -93,11 +93,12 @@
     required={!optional}
     {disabled}
     {name}
-    {value}
   >
     <option selected disaled value=""></option>
-    {#each options as option (option)}
-      <option value={option.value}>{option.label}</option>
+    {#each options as option, i (option)}
+      <option selected={option.value === value} value={i} disabled={option.disabled || false}>
+        {option.label}
+      </option>
     {/each}
   </select>
 </div>
