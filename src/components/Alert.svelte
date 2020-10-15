@@ -43,8 +43,8 @@
 	export let ref = undefined;
 </script>
 <div
-	on:hide
-	on:beforehide
+	on:hide|stopPropagation
+	on:beforehide|stopPropagation
 	bind:this={ref}
 	{style}
 	class={className}

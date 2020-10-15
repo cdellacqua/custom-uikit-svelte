@@ -18,6 +18,16 @@
     {@html label}
   {:else}{label}{/if}
 </Button>
-<div bind:this={ref} uk-dropdown={`mode: ${mode}`}>
+<div
+  on:toggle|stopPropagation
+  on:beforeshow|stopPropagation
+  on:show|stopPropagation
+  on:shown|stopPropagation
+  on:beforehide|stopPropagation
+  on:hide|stopPropagation
+  on:hidden|stopPropagation
+  on:stack|stopPropagation
+  bind:this={ref} uk-dropdown={`mode: ${mode}`}
+>
   <slot />
 </div>

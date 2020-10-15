@@ -4,6 +4,8 @@
   let collapsible = true;
   let duration = 200;
 
+  let index = false;
+
   function increaseDuration() {
     duration = Math.min(2500, duration + 50);
   }
@@ -28,14 +30,14 @@
   </Button>
   <Button size="small" on:click={decreaseDuration}>- duration</Button>
 </div>
-<Accordion {multi} {collapsible} {duration}>
+<Accordion {multi} {collapsible} {duration} bind:index on:show={() => console.log(index)}>
   <AccordionItem title="First">
     <p>Use the options above to see how the accordion can be customized.</p>
   </AccordionItem>
-  <AccordionItem title="Second">
+  <AccordionItem title="Second" open>
     <p>Some content</p>
   </AccordionItem>
-  <AccordionItem
+  <AccordionItem open
     title="Title <span class='uk-text-primary'>with <i>HTML</i></span>"
     isTitleHtml>
     <p>Other content</p>

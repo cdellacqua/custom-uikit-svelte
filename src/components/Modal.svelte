@@ -66,10 +66,12 @@
   on:hide={handleHide}
   on:shown={() => (shown = true)}
   on:hidden={() => (shown = false)}
-  on:show
-  on:hide
-  on:shown
-  on:hidden
+  on:show|stopPropagation
+  on:hide|stopPropagation
+  on:shown|stopPropagation
+  on:hidden|stopPropagation
+  on:beforeshow|stopPropagation
+  on:beforehide|stopPropagation
   bind:this={ref}
   class:uk-modal-full={fullScreen}
   class={className}

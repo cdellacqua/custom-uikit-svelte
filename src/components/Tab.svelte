@@ -51,6 +51,14 @@
   {/each}
 </ul>
 
-<ul class="uk-switcher" on:show={handleShow} bind:this={switcherRef}>
+<ul class="uk-switcher"
+  on:show={handleShow}
+  on:show|stopPropagation
+  on:hide|stopPropagation
+  on:shown|stopPropagation
+  on:hidden|stopPropagation
+  on:beforeshow|stopPropagation
+  on:beforehide|stopPropagation
+  bind:this={switcherRef}>
   <slot />
 </ul>
