@@ -51,6 +51,8 @@
   on:shown|stopPropagation
   on:beforehide|stopPropagation
   on:beforeshow|stopPropagation
-  {style} bind:this={ref} uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; active: {index}; transition: {transition}; animation: {animation}">
+  {style}
+  bind:this={ref}
+  uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; transition: {transition}; animation: {animation}">
   <slot />
 </ul>
