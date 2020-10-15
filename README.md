@@ -474,7 +474,11 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|switcher|string|-||
+|connect|string|-||
+|toggle|string|-||
+|animation|string\|false|-||
+|duration|number|-||
+|swiping|boolean|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |className|string\|undefined|-||
 |titles|Array.<string>|-||
@@ -493,7 +497,12 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|tab|string|-||
+|connect|string|-||
+|toggle|string|-||
+|animation|string\|false|-||
+|duration|number|-||
+|swiping|boolean|-||
+|media|number\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |className|string\|undefined|-||
 |titles|Array.<string>|-||

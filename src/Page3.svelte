@@ -119,7 +119,7 @@
   let collapsible = true;
   let duration = 200;
 
-  let index = false;
+  let index = 2;
 
   function increaseDuration() &lbrace;
     duration = Math.min(2500, duration + 50);

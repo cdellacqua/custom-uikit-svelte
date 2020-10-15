@@ -691,7 +691,7 @@ function toggleMountState() &lbrace;
   let status = [];
 
   let index = 2;
-  function handleTabShow(e) &lbrace;
+  function handleTabShow() &lbrace;
     status = [...status, 'show item, current index ' + index];
   &rbrace;
 &lt;/script&gt;
@@ -722,8 +722,32 @@ function toggleMountState() &lbrace;
 			</thead>
 			<tbody>
 				<tr>
-					<td>switcher</td>
+					<td>connect</td>
 					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>toggle</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>string|false</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>duration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>swiping</td>
+					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -778,7 +802,7 @@ function toggleMountState() &lbrace;
   let status = [];
 
   let index = 2;
-  function handleTabShow(e) &lbrace;
+  function handleTabShow() &lbrace;
     status = [...status, 'show tab, current index ' + index];
   &rbrace;
 &lt;/script&gt;
@@ -809,8 +833,38 @@ function toggleMountState() &lbrace;
 			</thead>
 			<tbody>
 				<tr>
-					<td>tab</td>
+					<td>connect</td>
 					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>toggle</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>string|false</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>duration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>swiping</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>media</td>
+					<td>number|string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
