@@ -784,15 +784,15 @@ function toggleMountState() &lbrace;
 &lt;/script&gt;
 
 &lt;Tab bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Tab 1', 'Tab 2', 'Tab 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
-  &lt;div&gt;
+  &lt;li&gt;
     Tab 1 Content
-  &lt;/div&gt;
-  &lt;div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
     Tab 2 Content
-  &lt;/div&gt;
-  &lt;div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
     Tab 3 Content
-  &lt;/div&gt;
+  &lt;/li&gt;
 &lt;/Tab&gt;
 &lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
 </pre></li>

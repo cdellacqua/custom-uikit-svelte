@@ -119,6 +119,8 @@
   let collapsible = true;
   let duration = 200;
 
+  let index = false;
+
   function increaseDuration() &lbrace;
     duration = Math.min(2500, duration + 50);
   &rbrace;
@@ -143,7 +145,7 @@
   &lt;/Button&gt;
   &lt;Button size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace;&gt;- duration&lt;/Button&gt;
 &lt;/div&gt;
-&lt;Accordion &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace;&gt;
+&lt;Accordion &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace; bind:index on:show=&lbrace;() =&gt; console.log(index)&rbrace;&gt;
   &lt;AccordionItem title=&quot;First&quot;&gt;
     &lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;
   &lt;/AccordionItem&gt;

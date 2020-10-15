@@ -34,10 +34,10 @@
   <AccordionItem title="First">
     <p>Use the options above to see how the accordion can be customized.</p>
   </AccordionItem>
-  <AccordionItem title="Second" open>
+  <AccordionItem title="Second">
     <p>Some content</p>
   </AccordionItem>
-  <AccordionItem open
+  <AccordionItem
     title="Title <span class='uk-text-primary'>with <i>HTML</i></span>"
     isTitleHtml>
     <p>Other content</p>

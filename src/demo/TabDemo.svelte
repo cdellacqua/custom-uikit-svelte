@@ -8,9 +8,6 @@
   }
 </script>
 
-<div
-  on:show={(e) => console.log(e)}
->
 <Tab bind:index className="uk-child-width-expand" titles={['Tab 1', 'Tab 2', 'Tab 3']} on:show={handleTabShow}>
   <li>
     Tab 1 Content
@@ -23,4 +20,3 @@
   </li>
 </Tab>
 <div>{@html status.join('<br />')}</div>
-</div>
