@@ -3,7 +3,7 @@
   let status = [];
 
   let index = 2;
-  function handleTabShow(e) {
+  function handleTabShow() {
     status = [...status, 'show item, current index ' + index];
   }
 </script>

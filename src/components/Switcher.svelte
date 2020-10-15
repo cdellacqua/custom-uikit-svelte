@@ -3,7 +3,15 @@
   import UIkit from "uikit";
 
   /** @type {string} */
-  export let switcher = "";
+  export let connect = "~.uk-switcher";
+  /** @type {string} */
+  export let toggle = "> * > :first-child";
+  /** @type {string|false} */
+  export let animation = false;
+  /** @type {number} */
+  export let duration = 200;
+  /** @type {boolean} */
+  export let swiping = true;
   /**
    * @description A string specifying custom style properties for the component
    * @type {string|undefined} */
@@ -42,7 +50,7 @@
   class={className}
   class:uk-subnav={true}
   class:uk-subnav-pill={true}
-  uk-switcher={switcher}>
+  uk-switcher={`connect: ${connect}; toggle: ${toggle}; animation: ${animation}; duration: ${duration}; swiping: ${swiping}`}>
   {#each titles as title}
     <li>
       <!-- svelte-ignore a11y-missing-attribute -->

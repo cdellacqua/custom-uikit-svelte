@@ -3,8 +3,19 @@
 
   import UIkit from "uikit";
 
+
   /** @type {string} */
-  export let tab = "";
+  export let connect = "~.uk-switcher";
+  /** @type {string} */
+  export let toggle = "> *";
+  /** @type {string|false} */
+  export let animation = false;
+  /** @type {number} */
+  export let duration = 200;
+  /** @type {boolean} */
+  export let swiping = true;
+  /** @type {number|string} */
+  export let media = 200;
   /** 
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
@@ -37,7 +48,8 @@
   }
 </script>
 
-<ul bind:this={ref} {style} class={className} uk-tab={tab}>
+<ul bind:this={ref} {style} class={className}
+uk-tab={`connect: ${connect}; toggle: ${toggle}; animation: ${animation}; duration: ${duration}; swiping: ${swiping}; media: ${media}`}>
   {#each titles as title}
     <li>
       <!-- svelte-ignore a11y-missing-attribute -->
