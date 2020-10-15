@@ -41,6 +41,8 @@
   export let ref = undefined;
   /** @type {boolean} @default true */
   export let instantSearch = true;
+  /** @type {boolean} @default true */
+  export let horizontalScroll = true;
 
   const dispatch = createEventDispatcher();
 
@@ -212,7 +214,7 @@
   </form>
 {/if}
 
-<div class="table-hscroll-wrapper">
+<div class:table-hscroll-wrapper={horizontalScroll}>
   <table
     bind:this={ref}
     {style}
@@ -225,7 +227,7 @@
     class:uk-table-small={size === 'small'}>
     <thead>
       <tr>
-        {#each columns as col}
+        {#each columns as col (col)}
           <th
             style="text-align: {col.textAlign || 'left'}"
             class:sticky={stickyHeader}
@@ -268,7 +270,7 @@
           </td>
         </tr>
       {:else}
-        {#each computedRows as row}
+        {#each computedRows as row (row)}
           <tr on:click={() => dispatch('row-click', row)}>
             {#each columns as col}
               <td

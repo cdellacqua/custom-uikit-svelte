@@ -43,7 +43,7 @@
   {#if heading && heading.length > 0}
     <thead>
       <tr>
-        {#each heading as col}
+        {#each heading as col (col)}
           <th
             class={typeof col === 'object' ? col.className : undefined}
             style="text-align: {typeof col === 'object' ? (col.textAlign || 'left') : 'left'}"

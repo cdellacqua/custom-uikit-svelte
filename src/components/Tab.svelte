@@ -50,7 +50,7 @@
 
 <ul bind:this={ref} {style} class={className}
 uk-tab={`connect: ${connect}; toggle: ${toggle}; animation: ${animation}; duration: ${duration}; swiping: ${swiping}; media: ${media}`}>
-  {#each titles as title}
+  {#each titles as title (title)}
     <li>
       <!-- svelte-ignore a11y-missing-attribute -->
       <a role="button">
