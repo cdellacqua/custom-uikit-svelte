@@ -9,6 +9,7 @@
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
+	import RemoteDataTableDemo from './demo/RemoteDataTableDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
@@ -681,7 +682,7 @@ current page and its href property will be ignored</td>
           variant: 'primary',
         &rbrace;,
         onClick: () =&gt; alert(n),
-        slot: 'I\'m a button',
+        textContent: 'I\'m a button',
       &rbrace;),
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
 &lt;/script&gt;
@@ -689,6 +690,7 @@ current page and its href property will be ignored</td>
 &lt;DataTable
   &lbrace;columns&rbrace;
   rows=&lbrace;data&rbrace;
+  ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch=&lbrace;false&rbrace;
@@ -768,6 +770,24 @@ current page and its href property will be ignored</td>
 				</tr>
 				<tr>
 					<td>instantSearch</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ordering</td>
+					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>horizontalScroll</td>
 					<td>boolean</td>
 					<td>-</td>
 					<td>@default true</td>

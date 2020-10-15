@@ -9,6 +9,7 @@
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
+	import RemoteDataTableDemo from './demo/RemoteDataTableDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
@@ -398,6 +399,57 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				</tr>
 			</tbody>
 		</table>
+		<h2 class="uk-heading-divider">LoaderOverlayScoped</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ratio</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>opacity</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>loading</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">LoaderWrapper</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -678,37 +730,173 @@ function toggleMountState() &lbrace;
 				</tr>
 			</tbody>
 		</table>
-		<h2 class="uk-heading-divider">Switcher</h2>
+		<h2 class="uk-heading-divider">RemoteDataTable</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
 			<li>
 				<hr class="uk-divider-icon">
-				<SwitcherDemo />
+				<RemoteDataTableDemo />
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Switcher &rbrace; from &quot;../main&quot;;
-  let status = [];
 
-  let index = 2;
-  function handleTabShow() &lbrace;
-    status = [...status, 'show item, current index ' + index];
+  import &lbrace; Button, RemoteDataTable &rbrace; from '../main';
+
+  let data = [&lbrace;
+    column1: new Date(),
+    column2: 'A string',
+    someNumericValue: 10.1,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-07-06&quot;),
+    column2: 'C string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-05-01&quot;),
+    column2: 'C string',
+    someNumericValue: null,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,&lbrace;
+    column1: new Date(&quot;2020-01-11&quot;),
+    column2: 'D string',
+    someNumericValue: 8,
+  &rbrace;,];
+
+  async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
+    const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
+      .sort((d1, d2) =&gt; &lbrace;
+        if (ordering.length &gt; 0) &lbrace;
+          const multiplier = ordering[0].direction === 'asc' ? 1 : -1;
+          if (d1[ordering[0].key] &gt; d2[ordering[0].key]) &lbrace;
+            return multiplier * -1;
+          &rbrace;
+          if (d1[ordering[0].key] &lt; d2[ordering[0].key]) &lbrace;
+            return multiplier * 1;
+          &rbrace;
+          return 0;
+        &rbrace;
+      &rbrace;);
+    await new Promise(res =&gt; setTimeout(res, 200));
+    return &lbrace;
+      records: filtered.slice(pageIndex * recordsPerPage, pageIndex * recordsPerPage + recordsPerPage),
+      total: data.length,
+      filtered: filtered.length,
+    &rbrace;
   &rbrace;
+
+  let columns = [&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 1',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column1',
+      render: (data) =&gt; data.toLocaleString(),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column2',
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Nullable numeric value',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: (v1, v2) =&gt; &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1 &amp;&amp; v2) &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return v1 - v2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1) return -1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Button',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+      orderable: false,
+      searchable: false,
+      render: (n) =&gt; (&lbrace;
+        component: Button,
+        props: &lbrace;
+          variant: 'primary',
+        &rbrace;,
+        onClick: () =&gt; alert(n),
+        textContent: 'I\'m a button',
+      &rbrace;),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
 &lt;/script&gt;
 
-&lt;Switcher bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Item 1', 'Item 2', 'Item 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
-  &lt;div&gt;
-    Item 1 Content
-  &lt;/div&gt;
-  &lt;div&gt;
-    Item 2 Content
-  &lt;/div&gt;
-  &lt;div&gt;
-    Item 3 Content
-  &lt;/div&gt;
-&lt;/Switcher&gt;
-&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
-</pre></li>
+&lt;RemoteDataTable
+  &lbrace;dataProvider&rbrace;
+  &lbrace;columns&rbrace;
+  ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
+  on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  recordsPerPage=&lbrace;2&rbrace;
+  instantSearch
+  on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+/&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -722,32 +910,20 @@ function toggleMountState() &lbrace;
 			</thead>
 			<tbody>
 				<tr>
-					<td>connect</td>
-					<td>string</td>
+					<td>columns</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>toggle</td>
-					<td>string</td>
+					<td>size</td>
+					<td>undefined|'small'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>animation</td>
-					<td>string|false</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>duration</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>swiping</td>
-					<td>boolean</td>
+					<td>className</td>
+					<td>undefined|string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -758,148 +934,79 @@ function toggleMountState() &lbrace;
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
+					<td>appearance</td>
+					<td>'divider'|'striped'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>titles</td>
-					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>htmlTitle</td>
+					<td>stickyHeader</td>
 					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>ref</td>
-					<td>HTMLUListElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>index</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Tab</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<TabDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace; Tab &rbrace; from &quot;../main&quot;;
-  let status = [];
-
-  let index = 2;
-  function handleTabShow() &lbrace;
-    status = [...status, 'show tab, current index ' + index];
-  &rbrace;
-&lt;/script&gt;
-
-&lt;Tab bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Tab 1', 'Tab 2', 'Tab 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
-  &lt;li&gt;
-    Tab 1 Content
-  &lt;/li&gt;
-  &lt;li&gt;
-    Tab 2 Content
-  &lt;/li&gt;
-  &lt;li&gt;
-    Tab 3 Content
-  &lt;/li&gt;
-&lt;/Tab&gt;
-&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
-</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>connect</td>
+					<td>placeholder</td>
 					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>toggle</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>animation</td>
-					<td>string|false</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>duration</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>swiping</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>media</td>
-					<td>number|string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
+					<td>noResultText</td>
 					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>titles</td>
-					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>htmlTitle</td>
-					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
-					<td>HTMLDivElement</td>
+					<td>HTMLTableElement</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>index</td>
+					<td>instantSearch</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ordering</td>
+					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>horizontalScroll</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>dataProvider</td>
+					<td>DataProvider</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProviderErrorHandler</td>
+					<td>function</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>recordsPerPage</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>pageIndex</td>
 					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>

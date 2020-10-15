@@ -20,9 +20,11 @@ Components
 - [FormModal](#formmodal)
 - [Loader](#loader)
 - [LoaderOverlay](#loaderoverlay)
+- [LoaderOverlayScoped](#loaderoverlayscoped)
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
+- [RemoteDataTable](#remotedatatable)
 - [Switcher](#switcher)
 - [Tab](#tab)
 - [Table](#table)
@@ -255,6 +257,9 @@ The card component allows you to create nice box layouts
 |noResultText|string\|undefined|-||
 |ref|HTMLTableElement|-||
 |instantSearch|boolean|-|@default true|
+|query|string|-||
+|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|horizontalScroll|boolean|-|@default true|
 
 &nbsp;
 &nbsp;
@@ -406,6 +411,24 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+## LoaderOverlayScoped
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-||
+|ratio|number|-||
+|style|string\|undefined|-||
+|ref|HTMLDivElement|-||
+|opacity|number|-||
+|loading|boolean|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
 ## LoaderWrapper
 
 &nbsp;
@@ -462,6 +485,35 @@ Create an already styled description list, perfect for describing key-value prop
 |shown|boolean|-|@readonly|
 |ref|HTMLDivElement|-||
 |side|'left'\|'right'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## RemoteDataTable
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|size|undefined\|'small'|-||
+|className|undefined\|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|appearance|'divider'\|'striped'|-||
+|stickyHeader|boolean|-||
+|placeholder|string|-||
+|noResultText|string\|undefined|-||
+|ref|HTMLTableElement|-||
+|instantSearch|boolean|-|@default true|
+|query|string|-||
+|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|horizontalScroll|boolean|-|@default true|
+|dataProvider|DataProvider|-||
+|dataProviderErrorHandler|function|-||
+|recordsPerPage|number|-||
+|pageIndex|number|-||
 
 &nbsp;
 &nbsp;
