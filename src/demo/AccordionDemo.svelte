@@ -4,7 +4,7 @@
   let collapsible = true;
   let duration = 200;
 
-  let index = 2;
+  let index = false;
 
   function increaseDuration() {
     duration = Math.min(2500, duration + 50);

@@ -54,7 +54,7 @@
   {#each titles as title (title)}
     <li>
       <!-- svelte-ignore a11y-missing-attribute -->
-      <a role="button">
+      <a role="button" tabindex="0">
         {#if htmlTitle}
           {@html title}
         {:else}{title}{/if}

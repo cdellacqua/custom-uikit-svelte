@@ -253,6 +253,7 @@
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         role="button"
+        tabindex="0"
         class="uk-form-icon uk-form-icon-flip"
         uk-icon="icon: close"
         on:click={() => {

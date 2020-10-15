@@ -51,7 +51,7 @@
           variant: 'primary',
         },
         onClick: () => alert(n),
-        slot: 'I\'m a button',
+        textContent: 'I\'m a button',
       }),
 		}];
 </script>
@@ -59,6 +59,7 @@
 <DataTable
   {columns}
   rows={data}
+  ordering={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}
   instantSearch={false}
