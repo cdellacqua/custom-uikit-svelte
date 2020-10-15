@@ -890,6 +890,7 @@ function toggleMountState() &lbrace;
 &lt;RemoteDataTable
   &lbrace;dataProvider&rbrace;
   &lbrace;columns&rbrace;
+  paginationShortcuts=&lbrace;4&rbrace;
   ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
@@ -1001,6 +1002,12 @@ function toggleMountState() &lbrace;
 				</tr>
 				<tr>
 					<td>recordsPerPage</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>paginationShortcuts</td>
 					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>

@@ -61,6 +61,10 @@ import { noop } from "../helpers/lambdas";
   export let paginationShortcuts = 4;
   /** @type {number} */
   export let pageIndex = 0;
+  /** @type {number} @readonly */
+  export let total = 0;
+  /** @type {number} @readonly */
+  export let filtered = 0;
 
   const dispatch = createEventDispatcher();
   
@@ -102,9 +106,6 @@ import { noop } from "../helpers/lambdas";
     }
     externalAssignment = true;
   }
-
-  let total = 0;
-  let filtered = 0;
 
   let rows = null;
   let lastQuery = null;
@@ -212,7 +213,6 @@ import { noop } from "../helpers/lambdas";
       className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom" />
   </form>
 {/if}
-
 <div style="position: relative">
   <div class:table-hscroll-wrapper={horizontalScroll}>
     <table

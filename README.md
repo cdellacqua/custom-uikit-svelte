@@ -513,6 +513,7 @@ Create an already styled description list, perfect for describing key-value prop
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
 |recordsPerPage|number|-||
+|paginationShortcuts|number|-||
 |pageIndex|number|-||
 
 &nbsp;
