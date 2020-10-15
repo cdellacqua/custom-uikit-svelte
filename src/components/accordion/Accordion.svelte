@@ -33,25 +33,24 @@
     externalAssignment = true;
   }
   
-  function handleEvent(e) {
-    if (name === 'show' || name === 'hide') {
-      externalAssignment = false;
-      index = [...ref.children].findIndex((c) => c.classList.contains('uk-open'));
-      if (index === -1) {
-        index = false;
-      }
+  function handleToggle() {
+    externalAssignment = false;
+    index = [...ref.children].findIndex((c) => c.classList.contains('uk-open'));
+    if (index === -1) {
+      index = false;
     }
-    dispatch(name, index);
   }
 </script>
 
 <ul class={className}
-  on:hide|stopPropagation={(e) => handleEvent(e, 'hide')}
-  on:show|stopPropagation={(e) => handleEvent(e, 'show')}
-  on:hidden|stopPropagation={(e) => handleEvent(e, 'hidden')}
-  on:shown|stopPropagation={(e) => handleEvent(e, 'shown')}
-  on:beforehide|stopPropagation={(e) => handleEvent(e, 'beforehide')}
-  on:beforeshow|stopPropagation={(e) => handleEvent(e, 'beforeshow')}
+  on:show={handleToggle}
+  on:hide={handleToggle}
+  on:hide|stopPropagation
+  on:show|stopPropagation
+  on:hidden|stopPropagation
+  on:shown|stopPropagation
+  on:beforehide|stopPropagation
+  on:beforeshow|stopPropagation
   {style} bind:this={ref} uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; active: {index}; transition: {transition}; animation: {animation}">
   <slot />
 </ul>

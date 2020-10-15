@@ -34,7 +34,6 @@
   function handleShow(e) {
     externalAssignment = false;
     index = [...switcherRef.children].indexOf(e.target);
-    dispatch('show', index);
   }
 </script>
 
@@ -52,7 +51,8 @@
 </ul>
 
 <ul class="uk-switcher"
-  on:show|stopPropagation={handleShow}
+  on:show={handleShow}
+  on:show|stopPropagation
   on:hide|stopPropagation
   on:shown|stopPropagation
   on:hidden|stopPropagation
