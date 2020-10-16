@@ -89,7 +89,6 @@ import Select from '../components/form/Select.svelte';
     column2: 'D string',
     someNumericValue: 8,
   },];
-  console.log(data.length);
 
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) {
     const filtered = data.filter((d) => JSON.stringify(d).includes(query))

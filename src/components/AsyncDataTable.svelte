@@ -66,6 +66,8 @@
   export let total = 0;
   /** @type {number} @readonly */
   export let filtered = 0;
+  /** @type {boolean} @readonly */
+  export let loading = false;
 
   const dispatch = createEventDispatcher();
 
@@ -113,32 +115,35 @@
   let lastOrdering = null;
   let lastRecordsPerPage = null;
   let lastPageIndex = null;
-  let refreshing = false;
   async function refresh() {
     if (
-      !refreshing &&
+      !loading &&
       (query !== lastQuery ||
         JSON.stringify(ordering) !== JSON.stringify(lastOrdering) ||
         lastRecordsPerPage !== recordsPerPage ||
         lastPageIndex !== pageIndex)
     ) {
-      refreshing = true;
+      loading = true;
       try {
-        if (recordsPerPage !== lastRecordsPerPage) {
-          pageIndex = Math.floor(
-            (lastPageIndex * lastRecordsPerPage) / recordsPerPage
-          );
-        }
-        if (query !== lastQuery) {
-          pageIndex = 0;
-        }
-
-        let providerQuery;
+        let providerQuery = lastQuery;
+        let providerRecordsPerPage = lastRecordsPerPage;
         let data;
         do {
+          if (recordsPerPage !== providerRecordsPerPage) {
+            pageIndex = Math.floor(
+              (lastPageIndex * providerRecordsPerPage) / recordsPerPage
+            );
+          }
+          if (query !== providerQuery) {
+            pageIndex = 0;
+          }
           providerQuery = query;
+          providerRecordsPerPage = recordsPerPage;
           data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
-        } while (providerQuery !== query);
+        } while (
+          providerQuery !== query ||
+          providerRecordsPerPage !== recordsPerPage
+        );
 
         rows = data.records;
         total = data.total;
@@ -153,7 +158,7 @@
       } catch (err) {
         dataProviderErrorHandler(err);
       } finally {
-        refreshing = false;
+        loading = false;
       }
     }
   }
@@ -329,7 +334,7 @@
     {pageIndex}
     {numbersPerSide}
     on:page-click={({ detail }) => (pageIndex = detail)} />
-  {#if refreshing}
+  {#if loading}
     <LoaderOverlayScoped opacity={0.2} />
   {/if}
 </div>

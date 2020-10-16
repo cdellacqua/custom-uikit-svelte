@@ -73,6 +73,8 @@ import Loader from "../Loader.svelte";
 	export let dataProvider;
 	/** @type {Function} */
 	export let dataProviderErrorHandler = noop;
+  /** @type {boolean} @readonly */
+  export let loading = false;
 
 	let externalAssignment = true;
 	$: if (query.length >= 0) {
@@ -88,10 +90,9 @@ import Loader from "../Loader.svelte";
 	 * @type {Array<{label: string, value: any}>} */
 	let options = [];
 	let lastQuery = null;
-	let refreshing = false;
 	async function refresh() {
-		if (!refreshing && query !== lastQuery) {
-			refreshing = true;
+		if (!loading && query !== lastQuery) {
+			loading = true;
 			try {
 				let providerQuery;
 				let data;
@@ -106,7 +107,7 @@ import Loader from "../Loader.svelte";
 			} catch (err) {
 				dataProviderErrorHandler(err);
 			} finally {
-				refreshing = false;
+				loading = false;
 			}
 		}
 	}
@@ -286,7 +287,7 @@ import Loader from "../Loader.svelte";
       {disabled}
       on:focus={showSuggestedOptions}
 			on:click={showSuggestedOptions} />
-		{#if refreshing && showSuggested}
+		{#if loading && showSuggested}
 			<Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
     {:else if value !== undefined}
       <!-- svelte-ignore a11y-missing-attribute -->
