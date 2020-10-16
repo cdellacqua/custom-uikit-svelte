@@ -2,10 +2,11 @@
   import { createEventDispatcher, onMount } from "svelte";
   import Button from "./Button.svelte";
   import SearchInput from "./form/SearchInput.svelte";
-import Loader from "./Loader.svelte";
-import LoaderOverlayScoped from "./LoaderOverlayScoped.svelte";
-import { debounce } from 'debounce';
-import { noop } from "../helpers/lambdas";
+  import Loader from "./Loader.svelte";
+  import LoaderOverlayScoped from "./LoaderOverlayScoped.svelte";
+  import { debounce } from "debounce";
+  import { noop } from "../helpers/lambdas";
+  import Pagination from "./Pagination.svelte";
 
   /**
    * @callback Renderer
@@ -58,7 +59,7 @@ import { noop } from "../helpers/lambdas";
   /** @type {number} */
   export let recordsPerPage = 25;
   /** @type {number} */
-  export let paginationShortcuts = 4;
+  export let numbersPerSide = 4;
   /** @type {number} */
   export let pageIndex = 0;
   /** @type {number} @readonly */
@@ -67,7 +68,7 @@ import { noop } from "../helpers/lambdas";
   export let filtered = 0;
 
   const dispatch = createEventDispatcher();
-  
+
   $: dispatch("query", query);
 
   function orderBy(key, append) {
@@ -99,7 +100,7 @@ import { noop } from "../helpers/lambdas";
   }
 
   let externalAssignment = true;
-  $: if (ordering || pageIndex >= 0) {
+  $: if (ordering || pageIndex >= 0 || recordsPerPage >= 0) {
     if (externalAssignment) {
       debouncedRefresh.clear();
       debouncedRefresh();
@@ -115,28 +116,40 @@ import { noop } from "../helpers/lambdas";
   let refreshing = false;
   async function refresh() {
     if (
-      !refreshing && (
-        query !== lastQuery
-        || JSON.stringify(ordering) !== JSON.stringify(lastOrdering)
-        || lastRecordsPerPage !== recordsPerPage
-        || lastPageIndex !== pageIndex
-      )
+      !refreshing &&
+      (query !== lastQuery ||
+        JSON.stringify(ordering) !== JSON.stringify(lastOrdering) ||
+        lastRecordsPerPage !== recordsPerPage ||
+        lastPageIndex !== pageIndex)
     ) {
       refreshing = true;
       try {
-        lastQuery = query;
-        lastOrdering = ordering.map((o) => ({ ...o }));
-        lastRecordsPerPage = recordsPerPage;
-        lastPageIndex = pageIndex;
-        const data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
+        if (recordsPerPage !== lastRecordsPerPage) {
+          pageIndex = Math.floor(lastPageIndex * lastRecordsPerPage / recordsPerPage);
+        }
+        if (query !== lastQuery) {
+          pageIndex = 0;
+        }
+
+        const data = await dataProvider(
+          query,
+          ordering,
+          recordsPerPage,
+          pageIndex
+        );
         rows = data.records;
         total = data.total;
         filtered = data.filtered;
+
+        lastQuery = query;
+        lastRecordsPerPage = recordsPerPage;
+        lastOrdering = ordering.map((o) => ({ ...o }));
+        lastPageIndex = pageIndex;
+
         externalAssignment = false;
       } catch (err) {
         dataProviderErrorHandler(err);
-      }
-      finally {
+      } finally {
         refreshing = false;
       }
     }
@@ -193,7 +206,10 @@ import { noop } from "../helpers/lambdas";
         bind:ref={searchInput}
         {placeholder}
         bind:value={query}
-        on:input={() => {debouncedRefresh.clear(); debouncedRefresh()}}
+        on:input={() => {
+          debouncedRefresh.clear();
+          debouncedRefresh();
+        }}
         optional />
     {:else}
       <SearchInput
@@ -263,8 +279,7 @@ import { noop } from "../helpers/lambdas";
       <tbody>
         {#if !rows}
           <tr>
-            <td colspan={columns.length} class:uk-text-center={true}>
-            </td>
+            <td colspan={columns.length} class:uk-text-center={true} />
           </tr>
         {:else if rows.length === 0 && noResultText}
           <tr>
@@ -286,15 +301,14 @@ import { noop } from "../helpers/lambdas";
                   {:else if typeof col.render(row[col.key], row) === 'object'}
                     <svelte:component
                       this={col.render(row[col.key], row).component}
-                      {...(col.render(row[col.key], row).props || {})}
+                      {...col.render(row[col.key], row).props || {}}
                       on:click={(e) => {
                         const onClick = col.render(row[col.key], row).onClick;
                         if (onClick) {
                           e.stopPropagation();
                           onClick(e);
                         }
-                      }}
-                    >
+                      }}>
                       {col.render(row[col.key], row).textContent || ''}
                     </svelte:component>
                   {:else}{col.render(row[col.key], row)}{/if}
@@ -306,50 +320,13 @@ import { noop } from "../helpers/lambdas";
       </tbody>
     </table>
   </div>
-  <ul class="uk-pagination uk-flex-center" uk-margin>
-      {#if pageIndex > 0}
-        <!-- svelte-ignore a11y-missing-attribute -->
-        <li><a role="button" tabindex="0" on:click={() => pageIndex = Math.max(0, pageIndex - 1)}><span uk-pagination-previous></span></a></li>
-      {:else}
-        <li class="uk-disabled"><span><span uk-pagination-previous></span></span></li>
-      {/if}
-      {#each new Array(Math.min(paginationShortcuts, Math.ceil(total / recordsPerPage))).fill(0) as _, index}
-        {#if index === pageIndex}
-          <li class="uk-active"><span>{index + 1}</span></li>
-        {:else}
-          <!-- svelte-ignore a11y-missing-attribute -->
-          <li><a role="button" tabindex="0" on:click={() => pageIndex = index}>{index + 1}</a></li>
-        {/if}
-      {/each}
-      {#if Math.ceil(total / recordsPerPage) > paginationShortcuts * 2}
-        {#if pageIndex + 1 > paginationShortcuts && pageIndex + 1 <= Math.ceil(total / recordsPerPage) - paginationShortcuts}
-          {#if pageIndex + 1 > paginationShortcuts + 1}
-            <li class="uk-disabled"><span>..</span></li>
-          {/if}
-          <li class="uk-active"><span>{pageIndex + 1}</span></li>
-          {#if pageIndex + 1 < Math.ceil(total / recordsPerPage) - paginationShortcuts}
-            <li class="uk-disabled"><span>..</span></li>
-          {/if}
-        {:else}
-          <li class="uk-disabled"><span>..</span></li>
-        {/if}
-      {/if}
-      {#each new Array(Math.min(paginationShortcuts, Math.max(0, Math.ceil(total / recordsPerPage) - paginationShortcuts))).fill(Math.max(paginationShortcuts, Math.max(0, Math.ceil(total / recordsPerPage) - paginationShortcuts))) as offset, index}
-        {#if offset + index === pageIndex}
-          <li class="uk-active"><span>{offset + index + 1}</span></li>
-        {:else}
-          <!-- svelte-ignore a11y-missing-attribute -->
-          <li><a role="button" tabindex="0" on:click={() => pageIndex = offset + index}>{offset + index + 1}</a></li>
-        {/if}
-      {/each}
-      {#if pageIndex + 1 < Math.ceil(total / recordsPerPage)}
-        <!-- svelte-ignore a11y-missing-attribute -->
-        <li><a role="button" tabindex="0" on:click={() => pageIndex = Math.min(Math.ceil(total / recordsPerPage) - 1, pageIndex + 1)}><span uk-pagination-next></span></a></li>
-      {:else}
-        <li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
-      {/if}
-  </ul>
+  <Pagination
+    center
+    numberOfPages={Math.ceil(filtered / recordsPerPage)}
+    {pageIndex}
+    {numbersPerSide}
+    on:page-click={({ detail }) => (pageIndex = detail)} />
   {#if refreshing}
-    <LoaderOverlayScoped opacity={.2} />
+    <LoaderOverlayScoped opacity={0.2} />
   {/if}
 </div>

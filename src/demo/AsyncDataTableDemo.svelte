@@ -1,4 +1,6 @@
 <script>
+import Select from '../components/form/Select.svelte';
+
 
   import { Button, AsyncDataTable } from '../main';
 
@@ -87,6 +89,7 @@
     column2: 'D string',
     someNumericValue: 8,
   },];
+  console.log(data.length);
 
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) {
     const filtered = data.filter((d) => JSON.stringify(d).includes(query))
@@ -144,17 +147,24 @@
         onClick: () => alert(n),
         textContent: 'I\'m a button',
       }),
-		}];
+    }];
+    let recordsPerPage = 5;
 </script>
-
+<Select
+  options={new Array(5).fill(0).map((_, i) => ({
+    label: (i + 1) * 5,
+    value: (i + 1) * 5
+  }))}
+  bind:value={recordsPerPage}
+/>
 <AsyncDataTable
+  {recordsPerPage}
   {dataProvider}
   {columns}
-  paginationShortcuts={4}
+  numbersPerSide={4}
   ordering={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}
-  recordsPerPage={2}
   instantSearch
   on:row-click={({ detail }) => console.log(detail)}
 />
