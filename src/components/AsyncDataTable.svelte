@@ -125,18 +125,21 @@
       refreshing = true;
       try {
         if (recordsPerPage !== lastRecordsPerPage) {
-          pageIndex = Math.floor(lastPageIndex * lastRecordsPerPage / recordsPerPage);
+          pageIndex = Math.floor(
+            (lastPageIndex * lastRecordsPerPage) / recordsPerPage
+          );
         }
         if (query !== lastQuery) {
           pageIndex = 0;
         }
 
-        const data = await dataProvider(
-          query,
-          ordering,
-          recordsPerPage,
-          pageIndex
-        );
+        let providerQuery;
+        let data;
+        do {
+          providerQuery = query;
+          data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
+        } while (providerQuery !== query);
+
         rows = data.records;
         total = data.total;
         filtered = data.filtered;
