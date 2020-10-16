@@ -140,6 +140,7 @@ Useful to display content such as blog entries or articles
 |total|number|-|@readonly|
 |filtered|number|-|@readonly|
 |loading|boolean|-|@readonly|
+|debounceMs|number|-||
 
 &nbsp;
 &nbsp;
@@ -682,6 +683,7 @@ Create an already styled description list, perfect for describing key-value prop
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
 |loading|boolean|-|@readonly|
+|debounceMs|number|-||
 
 &nbsp;
 &nbsp;

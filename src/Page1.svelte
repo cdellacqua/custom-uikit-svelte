@@ -341,7 +341,11 @@ import Select from '../components/form/Select.svelte';
     someNumericValue: 8,
   &rbrace;,];
 
+  let callCount = 0;
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
+    callCount++;
+    let currentCount = callCount;
+    console.log('data-provider call #' + currentCount);
     const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
       .sort((d1, d2) =&gt; &lbrace;
         if (ordering.length &gt; 0) &lbrace;
@@ -356,6 +360,8 @@ import Select from '../components/form/Select.svelte';
         &rbrace;
       &rbrace;);
     await new Promise(res =&gt; setTimeout(res, 200));
+    
+    console.log('data-provider call #' + currentCount + ' responded');
     return &lbrace;
       records: filtered.slice(pageIndex * recordsPerPage, pageIndex * recordsPerPage + recordsPerPage),
       total: data.length,
@@ -555,6 +561,12 @@ import Select from '../components/form/Select.svelte';
 					<td>boolean</td>
 					<td>-</td>
 					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>debounceMs</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>

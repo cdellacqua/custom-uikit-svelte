@@ -90,7 +90,11 @@ import Select from '../components/form/Select.svelte';
     someNumericValue: 8,
   },];
 
+  let callCount = 0;
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) {
+    callCount++;
+    let currentCount = callCount;
+    console.log('data-provider call #' + currentCount);
     const filtered = data.filter((d) => JSON.stringify(d).includes(query))
       .sort((d1, d2) => {
         if (ordering.length > 0) {
@@ -105,6 +109,8 @@ import Select from '../components/form/Select.svelte';
         }
       });
     await new Promise(res => setTimeout(res, 200));
+    
+    console.log('data-provider call #' + currentCount + ' responded');
     return {
       records: filtered.slice(pageIndex * recordsPerPage, pageIndex * recordsPerPage + recordsPerPage),
       total: data.length,

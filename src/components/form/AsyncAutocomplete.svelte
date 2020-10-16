@@ -1,120 +1,152 @@
 <script>
-	/**
-	 * @callback DataProvider
-	 * @param {string} query
-	 * @return {Promise.<Array.<{label: string, value: any}>>}
-	 */
+  /**
+   * @callback DataProvider
+   * @param {string} query
+   * @return {Promise.<Array.<{label: string, value: any}>>}
+   */
 
-	import { debounce } from "debounce";
-	import { generateId } from "../../services/html";
-	import { noop } from "../../helpers/lambdas";
-	import { tick, createEventDispatcher } from "svelte";
-	import { fly } from "svelte/transition";
-import { dispatchNativeEvent } from "../../helpers/events";
-import Loader from "../Loader.svelte";
+  import { debounce } from "debounce";
+  import { generateId } from "../../services/html";
+  import { noop } from "../../helpers/lambdas";
+  import { tick, createEventDispatcher } from "svelte";
+  import { fly } from "svelte/transition";
+  import { dispatchNativeEvent } from "../../helpers/events";
+  import Loader from "../Loader.svelte";
 
-	/** @type {string} */
-	export let id = generateId();
-	/**
-	 * The current selected value or undefined if no value is selected
-	 * @type {any} */
-	export let value = undefined;
-	/**
-	 * Label of this component
-	 * @type {string} */
-	export let label = "";
-	/**
-	 * @description A string containing any additional classes to apply to the component
-	 * @type {string|undefined} */
-	export let className = undefined;
-	/**
-	 * @description A string specifying custom style properties for the component
-	 * @type {string|undefined} */
-	export let style = undefined;
-	/**
-	 * @description Text to show when the applied filter doesn't return any result
-	 * @type {string} */
-	export let textIfNoResult = "";
-	/**
-	 * @description Control whether the component is disabled or not
-	 * @type {boolean} */
-	export let disabled = false;
-	/**
-	 * @description UIkit tooltip
-	 * @type {string|undefined} */
-	export let tooltip = undefined;
-	/**
-	 * @description Input placeholder
-	 * @type {string|undefined} */
-	export let placeholder = undefined;
-	/**
-	 * @description Reference to the div that wraps this component
-	 * @type {HTMLDivElement} */
-	export let ref = undefined;
-	/**
-	 * @description Autocapitalize setting of the input tag
-	 * @type {string|undefined} */
-	export let autocapitalize = undefined;
-	/**
-	 * @description Autocomplete setting of the input tag
-	 * @type {string|undefined} */
-	export let autocomplete = undefined;
-	/**
-	 * @description Autocorrect setting of the input tag
-	 * @type {string|undefined} */
-	export let autocorrect = undefined;
-	/**
-	 * @description In/Out fly animation duration (in milliseconds)
-	 * @type {number} */
-	export let animationDuration = 100;
-	/** @type {string} */
-	export let query = "";
-	/** @type {DataProvider} */
-	export let dataProvider;
-	/** @type {Function} */
-	export let dataProviderErrorHandler = noop;
+  /** @type {string} */
+  export let id = generateId();
+  /**
+   * The current selected value or undefined if no value is selected
+   * @type {any} */
+  export let value = undefined;
+  /**
+   * Label of this component
+   * @type {string} */
+  export let label = "";
+  /**
+   * @description A string containing any additional classes to apply to the component
+   * @type {string|undefined} */
+  export let className = undefined;
+  /**
+   * @description A string specifying custom style properties for the component
+   * @type {string|undefined} */
+  export let style = undefined;
+  /**
+   * @description Text to show when the applied filter doesn't return any result
+   * @type {string} */
+  export let textIfNoResult = "";
+  /**
+   * @description Control whether the component is disabled or not
+   * @type {boolean} */
+  export let disabled = false;
+  /**
+   * @description UIkit tooltip
+   * @type {string|undefined} */
+  export let tooltip = undefined;
+  /**
+   * @description Input placeholder
+   * @type {string|undefined} */
+  export let placeholder = undefined;
+  /**
+   * @description Reference to the div that wraps this component
+   * @type {HTMLDivElement} */
+  export let ref = undefined;
+  /**
+   * @description Autocapitalize setting of the input tag
+   * @type {string|undefined} */
+  export let autocapitalize = undefined;
+  /**
+   * @description Autocomplete setting of the input tag
+   * @type {string|undefined} */
+  export let autocomplete = undefined;
+  /**
+   * @description Autocorrect setting of the input tag
+   * @type {string|undefined} */
+  export let autocorrect = undefined;
+  /**
+   * @description In/Out fly animation duration (in milliseconds)
+   * @type {number} */
+  export let animationDuration = 100;
+  /** @type {string} */
+  export let query = "";
+  /** @type {DataProvider} */
+  export let dataProvider;
+  /** @type {Function} */
+  export let dataProviderErrorHandler = noop;
   /** @type {boolean} @readonly */
   export let loading = false;
+  /** @type {number} */
+  export let debounceMs = 200;
 
-	let externalAssignment = true;
-	$: if (query.length >= 0) {
-		if (externalAssignment) {
-			debouncedRefresh.clear();
-			debouncedRefresh();
-		}
-		externalAssignment = true;
-	}
+  let externalAssignment = true;
+  $: if (query.length >= 0) {
+    if (externalAssignment) {
+      debouncedRefresh.clear();
+      debouncedRefresh();
+    }
+    externalAssignment = true;
+  }
 
-	/**
-	 * Autocomplete options, the value must be unique
-	 * @type {Array<{label: string, value: any}>} */
-	let options = [];
-	let lastQuery = null;
-	async function refresh() {
-		if (!loading && query !== lastQuery) {
-			loading = true;
-			try {
-				let providerQuery;
-				let data;
-				do {
-					providerQuery = query;
-					data = await dataProvider(providerQuery);
-				} while (providerQuery !== query);
-				options = data;
+  /**
+   * Autocomplete options, the value must be unique
+   * @type {Array<{label: string, value: any}>} */
+  let options = [];
+  let lastQuery = null;
+  let forceUpdate = false;
+  async function refresh() {
+    if (!loading && (forceUpdate || query !== lastQuery)) {
+      loading = true;
+      try {
+        let providerQuery;
+        let data;
 
-				lastQuery = query;
-				externalAssignment = false;
-			} catch (err) {
-				dataProviderErrorHandler(err);
-			} finally {
-				loading = false;
-			}
-		}
-	}
+        let debounce = false;
 
-	const debouncedRefresh = debounce(refresh, 200);
+        function updateProviderArgs() {
+          providerQuery = query;
+        }
 
-	let showSuggested = false;
+        function providerArgsChanged() {
+          return (
+            providerQuery !== query ||
+            forceUpdate
+          );
+        }
+
+        do {
+          do {
+            forceUpdate = false;
+            updateProviderArgs();
+            if (debounce) {
+              await sleep(debounceMs);
+            }
+          } while (providerArgsChanged());
+
+          data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
+
+          debounce = true;
+        } while (providerArgsChanged());
+
+        options = data;
+
+        lastQuery = query;
+        externalAssignment = false;
+      } catch (err) {
+        dataProviderErrorHandler(err);
+      } finally {
+        loading = false;
+      }
+    }
+  }
+
+  export function reload() {
+    forceUpdate = true;
+    _reload();
+  }
+
+  const debouncedRefresh = debounce(refresh, debounceMs);
+
+  let showSuggested = false;
   let innerClick = false;
   const dispatch = createEventDispatcher();
 
@@ -133,9 +165,9 @@ import Loader from "../Loader.svelte";
     return function () {
       if (this.checked) {
         if (value !== option.value) {
-					value = option.value;
-					query = option.label;
-          dispatch('change', value);
+          value = option.value;
+          query = option.label;
+          dispatch("change", value);
         }
         innerClick = false;
         hideSuggested();
@@ -159,8 +191,7 @@ import Loader from "../Loader.svelte";
     } else {
       suggestedRef.scrollTop = Math.max(
         0,
-        (suggestedRef.scrollHeight / options.length) *
-          (outlineOptionIndex - 3)
+        (suggestedRef.scrollHeight / options.length) * (outlineOptionIndex - 3)
       );
     }
   }
@@ -183,7 +214,7 @@ import Loader from "../Loader.svelte";
       const newQuery = this.value;
       tick().then(() => {
         query = newQuery;
-        dispatch('query', newQuery);
+        dispatch("query", newQuery);
       });
       showSuggested = true;
     }
@@ -286,9 +317,9 @@ import Loader from "../Loader.svelte";
       required={false}
       {disabled}
       on:focus={showSuggestedOptions}
-			on:click={showSuggestedOptions} />
-		{#if loading && showSuggested}
-			<Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
+      on:click={showSuggestedOptions} />
+    {#if loading && showSuggested}
+      <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
     {:else if value !== undefined}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
@@ -297,8 +328,8 @@ import Loader from "../Loader.svelte";
         class="uk-form-icon uk-form-icon-flip"
         uk-icon="icon: close"
         on:click={() => {
-					value = undefined;
-					query = '';
+          value = undefined;
+          query = '';
           dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
@@ -311,8 +342,8 @@ import Loader from "../Loader.svelte";
       bind:this={suggestedRef}>
       {#if options.length > 0}
         {#each options as option, i (option)}
-					<label
-						in:fly={{y: -10, duration: animationDuration}}
+          <label
+            in:fly={{ y: -10, duration: animationDuration }}
             class="uk-width-1-1"
             class:uk-background-muted={i === outlineOptionIndex}
             class:outline={i === outlineOptionIndex}

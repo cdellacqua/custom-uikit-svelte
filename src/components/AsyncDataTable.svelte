@@ -7,6 +7,7 @@
   import { debounce } from "debounce";
   import { noop } from "../helpers/lambdas";
   import Pagination from "./Pagination.svelte";
+  import { sleep } from "../helpers/time";
 
   /**
    * @callback Renderer
@@ -68,6 +69,8 @@
   export let filtered = 0;
   /** @type {boolean} @readonly */
   export let loading = false;
+  /** @type {number} */
+  export let debounceMs = 200;
 
   const dispatch = createEventDispatcher();
 
@@ -115,10 +118,12 @@
   let lastOrdering = null;
   let lastRecordsPerPage = null;
   let lastPageIndex = null;
-  async function refresh() {
+  let forceUpdate = false;
+  async function _reload() {
     if (
       !loading &&
-      (query !== lastQuery ||
+      (forceUpdate ||
+        query !== lastQuery ||
         JSON.stringify(ordering) !== JSON.stringify(lastOrdering) ||
         lastRecordsPerPage !== recordsPerPage ||
         lastPageIndex !== pageIndex)
@@ -127,23 +132,50 @@
       try {
         let providerQuery = lastQuery;
         let providerRecordsPerPage = lastRecordsPerPage;
+        let providerOrdering = lastOrdering;
+        let providerPageIndex = lastPageIndex;
         let data;
-        do {
-          if (recordsPerPage !== providerRecordsPerPage) {
-            pageIndex = Math.floor(
-              (lastPageIndex * providerRecordsPerPage) / recordsPerPage
-            );
-          }
-          if (query !== providerQuery) {
-            pageIndex = 0;
-          }
+        let debounce = false;
+
+        function updateProviderArgs() {
           providerQuery = query;
           providerRecordsPerPage = recordsPerPage;
+          providerOrdering = ordering.map((o) => ({ ...o }));
+          providerPageIndex = pageIndex;
+        }
+
+        function providerArgsChanged() {
+          return (
+            providerQuery !== query ||
+            providerRecordsPerPage !== recordsPerPage ||
+            JSON.stringify(providerOrdering) !== JSON.stringify(ordering) ||
+            providerPageIndex !== pageIndex ||
+            forceUpdate
+          );
+        }
+
+        do {
+          do {
+            if (recordsPerPage !== providerRecordsPerPage) {
+              pageIndex = Math.floor(
+                (lastPageIndex * providerRecordsPerPage) / recordsPerPage
+              );
+            }
+            if (query !== providerQuery) {
+              pageIndex = 0;
+            }
+
+            forceUpdate = false;
+            updateProviderArgs();
+            if (debounce) {
+              await sleep(debounceMs);
+            }
+          } while (providerArgsChanged());
+
           data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
-        } while (
-          providerQuery !== query ||
-          providerRecordsPerPage !== recordsPerPage
-        );
+
+          debounce = true;
+        } while (providerArgsChanged());
 
         rows = data.records;
         total = data.total;
@@ -163,10 +195,25 @@
     }
   }
 
-  const debouncedRefresh = debounce(refresh, 200);
+  export function reload() {
+    forceUpdate = true;
+    _reload();
+  }
+
+  const debouncedRefresh = debounce(_reload, debounceMs);
 
   /** @type {HTMLInputElement} */
   let searchInput;
+
+  let loaderTop = 0;
+  let loaderHeight = 0;
+
+  function updateLoaderTop() {
+    loaderTop = ref.querySelector('th').offsetHeight;
+  }
+  onMount(() => {
+    updateLoaderTop();
+  });
 </script>
 
 <style>
@@ -196,6 +243,10 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+  }
+
+  .inhibit {
+    pointer-events: none;
   }
 </style>
 
@@ -230,16 +281,15 @@
     <Button
       type="search"
       icon="search"
-      on:click={() => {
-        lastQuery = null; // forces refresh
-        refresh();
-      }}
+      on:click={() => reload()}
       className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom" />
   </form>
 {/if}
+<svelte:window on:resize={() => updateLoaderTop()} />
 <div style="position: relative">
   <div class:table-hscroll-wrapper={horizontalScroll}>
     <table
+      class:uk-margin-remove={true}
       bind:this={ref}
       {style}
       class:uk-table={true}
@@ -284,7 +334,7 @@
           {/each}
         </tr>
       </thead>
-      <tbody>
+      <tbody class:inhibit={loading} bind:offsetHeight={loaderHeight}>
         {#if !rows}
           <tr>
             <td colspan={columns.length} class:uk-text-center={true} />
@@ -327,6 +377,11 @@
         {/if}
       </tbody>
     </table>
+    {#if loading}
+      <div style={`position: absolute; left: 0; right: 0; height: ${loaderHeight}px; top: ${loaderTop}px; z-index: 999999`}>
+        <LoaderOverlayScoped opacity={0.2} />
+      </div>
+    {/if}
   </div>
   <Pagination
     center
@@ -334,7 +389,4 @@
     {pageIndex}
     {numbersPerSide}
     on:page-click={({ detail }) => (pageIndex = detail)} />
-  {#if loading}
-    <LoaderOverlayScoped opacity={0.2} />
-  {/if}
 </div>

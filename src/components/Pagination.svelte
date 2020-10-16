@@ -2,7 +2,7 @@
 import { createEventDispatcher } from "svelte";
 
 	/** @type {string|undefined} */
-	export let className = undefined;
+	export let className = "";
 	/** @type {string|undefined} */
 	export let style = undefined;
 	/** @type {boolean} */
@@ -21,7 +21,7 @@ import { createEventDispatcher } from "svelte";
 	}
 </script>
 
-<ul class="uk-pagination {className}" uk-margin class:uk-flex-center={center} {style}>
+<ul class={className} class:uk-pagination={true} class:uk-margin={true} class:uk-flex-center={center} {style}>
 	{#if pageIndex > 0}
 		<!-- svelte-ignore a11y-missing-attribute -->
 		<li><a role="button" tabindex="0" on:click={() => goToIndex(pageIndex - 1)}><span uk-pagination-previous></span></a></li>
