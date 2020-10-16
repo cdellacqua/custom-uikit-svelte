@@ -24,5 +24,17 @@ UIkit.icon.add({
 			<line fill="none" stroke="currentColor" stroke-width="1.1" x1="16" y1="3.5" x2="4" y2="16.5"></line>
 		</svg>
 	`,
+	'chevron-double-up': `
+		<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="chevron-double-up">
+			<polyline fill="none" stroke="#000" stroke-width="1.03" points="4 10 10 4 16 10"></polyline>
+			<polyline fill="none" stroke="#000" stroke-width="1.03" points="4 16 10 10 16 16"></polyline>
+		</svg>
+	`,
+	'chevron-double-down': `
+	<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="chevron-double-down">
+		<polyline fill="none" stroke="#000" stroke-width="1.03" points="16 4 10 10 4 4"></polyline>
+		<polyline fill="none" stroke="#000" stroke-width="1.03" points="16 10 10 16 4 10"></polyline>
+	</svg>
+	`,
 });
 UIkit.use(Icons);

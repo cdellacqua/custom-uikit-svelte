@@ -10,6 +10,7 @@
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
+	import OrderableListDemo from './demo/OrderableListDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';

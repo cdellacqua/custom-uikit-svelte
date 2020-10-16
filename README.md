@@ -25,6 +25,7 @@ Components
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
+- [OrderableList](#orderablelist)
 - [Pagination](#pagination)
 - [Switcher](#switcher)
 - [Tab](#tab)
@@ -520,6 +521,23 @@ Create an already styled description list, perfect for describing key-value prop
 |shown|boolean|-|@readonly|
 |ref|HTMLDivElement|-||
 |side|'left'\|'right'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## OrderableList
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|items|Array.<{text: (string\|undefined), html: (string\|undefined), props: (Record.<string, any>\|undefined), type: (SvelteComponent\|undefined)}>|-||
+|type|SvelteComponent\|undefined|-||
+|ref|HTMLUListElement|-|@readonly|
+|animationDuration|number|-||
+|moveToBoundaries|boolean|-|Whether to show or hide the move-to-top and move-to-bottom buttons|
 
 &nbsp;
 &nbsp;

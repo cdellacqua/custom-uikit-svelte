@@ -10,6 +10,7 @@
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
+	import OrderableListDemo from './demo/OrderableListDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
@@ -23,6 +24,77 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">OrderableList</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<OrderableListDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+
+import &lbrace; Button, DescriptionList &rbrace; from &quot;../main&quot;;
+
+import &lbrace; OrderableList &rbrace; from &quot;../main&quot;;
+
+let items = [&lbrace;
+&nbsp;&nbsp;props: &lbrace; variant: 'primary'&rbrace;,
+&nbsp;&nbsp;text: 'Hello.',
+&nbsp;&nbsp;type: Button
+&rbrace;, &lbrace;
+&nbsp;&nbsp;props: &lbrace; list: [&lbrace; term: 'first', details: 'description one'&rbrace;, &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;] &rbrace;,
+&nbsp;&nbsp;type: DescriptionList,
+&rbrace;, &lbrace;
+&nbsp;&nbsp;text: &quot;I'm just some plain text&quot;
+&rbrace;];
+
+&lt;/script&gt;
+&lt;OrderableList &lbrace;items&rbrace;&gt;&lt;/OrderableList&gt;</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>items</td>
+					<td>Array.&lt;&lbrace;text: (string|undefined), html: (string|undefined), props: (Record.&lt;string, any&gt;|undefined), type: (SvelteComponent|undefined)&rbrace;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>type</td>
+					<td>SvelteComponent|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>animationDuration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>moveToBoundaries</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>Whether to show or hide the move-to-top and move-to-bottom buttons</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Pagination</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -879,111 +951,6 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 				<tr>
 					<td>value</td>
 					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">DatePicker</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>placeholder</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
