@@ -32,6 +32,10 @@
   export let disabled = false;
   /** @type {string|undefined} */
   export let tooltip = undefined;
+  /** @type {string|undefined} */
+  export let min = undefined;
+  /** @type {string|undefined} */
+  export let max = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -57,6 +61,8 @@
     type="date"
     {disabled}
     bind:value
+    {min}
+    {max}
     on:change
     on:blur
     on:focus
