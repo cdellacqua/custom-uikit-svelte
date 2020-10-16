@@ -25,11 +25,13 @@ Components
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
+- [Pagination](#pagination)
 - [Switcher](#switcher)
 - [Tab](#tab)
 - [Table](#table)
 - [Accordion](#accordion)
 - [AccordionItem](#accordionitem)
+- [AsyncAutocomplete](#asyncautocomplete)
 - [Autocomplete](#autocomplete)
 - [Checkbox](#checkbox)
 - [DatePicker](#datepicker)
@@ -132,7 +134,7 @@ Useful to display content such as blog entries or articles
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
 |recordsPerPage|number|-||
-|paginationShortcuts|number|-||
+|numbersPerSide|number|-||
 |pageIndex|number|-||
 |total|number|-|@readonly|
 |filtered|number|-|@readonly|
@@ -521,6 +523,24 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+## Pagination
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-||
+|style|string\|undefined|-||
+|center|boolean|-||
+|pageIndex|number|-||
+|numberOfPages|number|-||
+|numbersPerSide|number|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
 ## Switcher
 
 &nbsp;
@@ -613,6 +633,35 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
+## AsyncAutocomplete
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string|-||
+|value|any|-|The current selected value or undefined if no value is selected|
+|label|string|-|Label of this component|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
+|disabled|boolean|-|Control whether the component is disabled or not|
+|tooltip|string\|undefined|-|UIkit tooltip|
+|placeholder|string\|undefined|-|Input placeholder|
+|ref|HTMLDivElement|-|Reference to the div that wraps this component|
+|autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
+|autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
+|autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
+|animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
+|query|string|-||
+|dataProvider|DataProvider|-||
+|dataProviderErrorHandler|function|-||
 
 &nbsp;
 &nbsp;

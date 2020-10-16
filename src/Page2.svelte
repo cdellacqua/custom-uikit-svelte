@@ -2,6 +2,7 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
 	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';

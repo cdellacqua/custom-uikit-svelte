@@ -2,6 +2,7 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
 	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
@@ -248,8 +249,10 @@ function showAlert() &lbrace;
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
+import Select from '../components/form/Select.svelte';
 
-  import &lbrace; Button, RemoteDataTable &rbrace; from '../main';
+
+  import &lbrace; Button, AsyncDataTable &rbrace; from '../main';
 
   let data = [&lbrace;
     column1: new Date(),
@@ -336,6 +339,7 @@ function showAlert() &lbrace;
     column2: 'D string',
     someNumericValue: 8,
   &rbrace;,];
+  console.log(data.length);
 
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
     const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
@@ -393,17 +397,24 @@ function showAlert() &lbrace;
         onClick: () =&gt; alert(n),
         textContent: 'I\'m a button',
       &rbrace;),
-&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
+    &rbrace;];
+    let recordsPerPage = 5;
 &lt;/script&gt;
-
-&lt;RemoteDataTable
+&lt;Select
+  options=&lbrace;new Array(5).fill(0).map((_, i) =&gt; (&lbrace;
+    label: (i + 1) * 5,
+    value: (i + 1) * 5
+  &rbrace;))&rbrace;
+  bind:value=&lbrace;recordsPerPage&rbrace;
+/&gt;
+&lt;AsyncDataTable
+  &lbrace;recordsPerPage&rbrace;
   &lbrace;dataProvider&rbrace;
   &lbrace;columns&rbrace;
-  paginationShortcuts=&lbrace;4&rbrace;
+  numbersPerSide=&lbrace;4&rbrace;
   ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
-  recordsPerPage=&lbrace;2&rbrace;
   instantSearch
   on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
 /&gt;</pre></li>
@@ -516,7 +527,7 @@ function showAlert() &lbrace;
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>paginationShortcuts</td>
+					<td>numbersPerSide</td>
 					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>

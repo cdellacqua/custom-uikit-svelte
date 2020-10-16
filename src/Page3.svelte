@@ -2,6 +2,7 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
 	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
@@ -22,6 +23,57 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">Pagination</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>center</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>pageIndex</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>numberOfPages</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>numbersPerSide</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Switcher</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -458,6 +510,162 @@
 		</table>
 		<h2 class="uk-heading-divider">AccordionItem</h2>
 		<p></p>
+		<h2 class="uk-heading-divider">AsyncAutocomplete</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AsyncAutocompleteDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&quot;;
+
+  import &lbrace; Autocomplete &rbrace; from &quot;../main&quot;;
+
+  const options = [
+    &lbrace;
+      label: 'Ananas',
+      value: 1
+    &rbrace;,
+    &lbrace;
+      label: 'Banana',
+      value: &lbrace; kg: '3.14' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Bananana',
+      value: &lbrace; kg: '6.28' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Strawberry',
+      value: 'strawberry'
+    &rbrace;,
+  ];
+
+  async function dataProvider(query) &lbrace;
+    await new Promise(res =&gt; setTimeout(res, 200));
+    return options.filter((o) =&gt; o.label.toLowerCase().includes(query.toLowerCase()));
+  &rbrace;
+&lt;/script&gt;
+
+&lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; /&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>any</td>
+					<td>-</td>
+					<td>The current selected value or undefined if no value is selected</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Label of this component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>textIfNoResult</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the applied filter doesn't return any result</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>Control whether the component is disabled or not</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>UIkit tooltip</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>Reference to the div that wraps this component</td>
+				</tr>
+				<tr>
+					<td>autocapitalize</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocapitalize setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocomplete</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocomplete setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocorrect</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocorrect setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>animationDuration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>In/Out fly animation duration (in milliseconds)</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProvider</td>
+					<td>DataProvider</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProviderErrorHandler</td>
+					<td>function</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Autocomplete</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -790,156 +998,6 @@
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">EmailInput</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>placeholder</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocapitalize</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocomplete</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocorrect</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Field</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>state</td>

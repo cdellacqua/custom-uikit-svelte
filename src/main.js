@@ -19,11 +19,13 @@ export { default as LoaderOverlayScoped } from "./components/LoaderOverlayScoped
 export { default as LoaderWrapper } from "./components/LoaderWrapper.svelte";
 export { default as Modal } from "./components/Modal.svelte";
 export { default as Offcanvas } from "./components/Offcanvas.svelte";
+export { default as Pagination } from "./components/Pagination.svelte";
 export { default as Switcher } from "./components/Switcher.svelte";
 export { default as Tab } from "./components/Tab.svelte";
 export { default as Table } from "./components/Table.svelte";
 export { default as Accordion } from "./components/accordion/Accordion.svelte";
 export { default as AccordionItem } from "./components/accordion/AccordionItem.svelte";
+export { default as AsyncAutocomplete } from "./components/form/AsyncAutocomplete.svelte";
 export { default as Autocomplete } from "./components/form/Autocomplete.svelte";
 export { default as Checkbox } from "./components/form/Checkbox.svelte";
 export { default as DatePicker } from "./components/form/DatePicker.svelte";
