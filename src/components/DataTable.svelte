@@ -44,7 +44,7 @@
   /** @type {string} */
   export let query = "";
   /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
-  export let ordering = [];
+  export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
 
@@ -86,7 +86,7 @@
   $: dispatch("query", query);
 
   function sort() {
-    if (ordering.length === 0) {
+    if (orderBy.length === 0) {
       computedRows = [...filteredRows];
     } else {
       const orderedRows = [...filteredRows];
@@ -95,7 +95,7 @@
         return a;
       }, {});
       orderedRows.sort((r1, r2) => {
-        for (const columnSort of ordering) {
+        for (const columnSort of orderBy) {
           let comparison = 0;
           if (typeof columnsByKey[columnSort.key].orderable === "function") {
             comparison =
@@ -116,38 +116,38 @@
       });
       computedRows = orderedRows;
     }
-    dispatch("sort", ordering);
+    dispatch("sort", orderBy);
   }
 
-  function orderBy(key, append) {
+  function changeOrderBy(key, append) {
     if (append) {
-      const existingSortIndex = ordering.findIndex((o) => o.key === key);
+      const existingSortIndex = orderBy.findIndex((o) => o.key === key);
       if (existingSortIndex > -1) {
-        if (ordering[existingSortIndex].direction === "asc") {
-          ordering[existingSortIndex].direction = "desc";
+        if (orderBy[existingSortIndex].direction === "asc") {
+          orderBy[existingSortIndex].direction = "desc";
         } else {
-          ordering.splice(existingSortIndex, 1);
-          ordering = [...ordering];
+          orderBy.splice(existingSortIndex, 1);
+          orderBy = [...orderBy];
         }
       } else {
-        ordering = [...ordering, { key: key, direction: "asc" }];
+        orderBy = [...orderBy, { key: key, direction: "asc" }];
       }
     } else {
       if (
-        ordering.length === 0 ||
-        ordering.length > 1 ||
-        ordering[0].key !== key
+        orderBy.length === 0 ||
+        orderBy.length > 1 ||
+        orderBy[0].key !== key
       ) {
-        ordering = [{ key: key, direction: "asc" }];
-      } else if (ordering[0].direction === "asc") {
-        ordering = [{ key: key, direction: "desc" }];
+        orderBy = [{ key: key, direction: "asc" }];
+      } else if (orderBy[0].direction === "asc") {
+        orderBy = [{ key: key, direction: "desc" }];
       } else {
-        ordering = [];
+        orderBy = [];
       }
     }
   }
 
-  $: if (ordering) {
+  $: if (orderBy) {
     sort();
   }
 
@@ -233,24 +233,24 @@
           <th
             style="text-align: {col.textAlign || 'left'}"
             class:sticky={stickyHeader}
-            class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
+            class:descending={Object.keys(orderBy).some((key) => key === col.key && orderBy[key] === -1)}
             on:click={(e) => {
               if (col.orderable !== false) {
-                orderBy(col.key, e.shiftKey);
+                changeOrderBy(col.key, e.shiftKey);
               }
             }}
             on:contextmenu={(e) => {
               if (col.orderable !== false) {
                 e.preventDefault();
-                orderBy(col.key, true);
+                changeOrderBy(col.key, true);
                 window.navigator.vibrate?.(50);
               }
             }}
             class:orderable={col.orderable !== false}>
             {col.label}
-            {#if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'asc'}
+            {#if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'asc'}
               <span class="uk-icon" uk-icon="icon: chevron-up" />
-            {:else if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'desc'}
+            {:else if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'desc'}
               <span class="uk-icon" uk-icon="icon: chevron-down" />
             {:else if col.orderable !== false}
               <span

@@ -19,7 +19,7 @@
   /**
    * @callback DataProvider
    * @param {string} query
-   * @param {Array.<{key: string, direction: 'asc'|'desc'}>} ordering
+   * @param {Array.<{key: string, direction: 'asc'|'desc'}>} orderBy
    * @param {number} recordsPerPage
    * @param {number} pageIndex
    * @return {Promise.<{total: number, filtered: number, records: Array.<Record.<string, any>>}>}
@@ -50,7 +50,7 @@
   /** @type {string} */
   export let query = "";
   /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
-  export let ordering = [];
+  export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
   /** @type {DataProvider} */
@@ -76,36 +76,36 @@
 
   $: dispatch("query", query);
 
-  function orderBy(key, append) {
+  function changeOrderBy(key, append) {
     if (append) {
-      const existingSortIndex = ordering.findIndex((o) => o.key === key);
+      const existingSortIndex = orderBy.findIndex((o) => o.key === key);
       if (existingSortIndex > -1) {
-        if (ordering[existingSortIndex].direction === "asc") {
-          ordering[existingSortIndex].direction = "desc";
+        if (orderBy[existingSortIndex].direction === "asc") {
+          orderBy[existingSortIndex].direction = "desc";
         } else {
-          ordering.splice(existingSortIndex, 1);
-          ordering = [...ordering];
+          orderBy.splice(existingSortIndex, 1);
+          orderBy = [...orderBy];
         }
       } else {
-        ordering = [...ordering, { key: key, direction: "asc" }];
+        orderBy = [...orderBy, { key: key, direction: "asc" }];
       }
     } else {
       if (
-        ordering.length === 0 ||
-        ordering.length > 1 ||
-        ordering[0].key !== key
+        orderBy.length === 0 ||
+        orderBy.length > 1 ||
+        orderBy[0].key !== key
       ) {
-        ordering = [{ key: key, direction: "asc" }];
-      } else if (ordering[0].direction === "asc") {
-        ordering = [{ key: key, direction: "desc" }];
+        orderBy = [{ key: key, direction: "asc" }];
+      } else if (orderBy[0].direction === "asc") {
+        orderBy = [{ key: key, direction: "desc" }];
       } else {
-        ordering = [];
+        orderBy = [];
       }
     }
   }
 
   let externalAssignment = true;
-  $: if (ordering || pageIndex >= 0 || recordsPerPage >= 0) {
+  $: if (orderBy || pageIndex >= 0 || recordsPerPage >= 0) {
     if (externalAssignment) {
       debouncedRefresh.clear();
       debouncedRefresh();
@@ -115,7 +115,7 @@
 
   let rows = null;
   let lastQuery = null;
-  let lastOrdering = null;
+  let lastOrderBy = null;
   let lastRecordsPerPage = null;
   let lastPageIndex = null;
   let forceUpdate = false;
@@ -124,7 +124,7 @@
       !loading &&
       (forceUpdate ||
         query !== lastQuery ||
-        JSON.stringify(ordering) !== JSON.stringify(lastOrdering) ||
+        JSON.stringify(orderBy) !== JSON.stringify(lastOrderBy) ||
         lastRecordsPerPage !== recordsPerPage ||
         lastPageIndex !== pageIndex)
     ) {
@@ -132,7 +132,7 @@
       try {
         let providerQuery = lastQuery;
         let providerRecordsPerPage = lastRecordsPerPage;
-        let providerOrdering = lastOrdering;
+        let providerOrderBy = lastOrderBy;
         let providerPageIndex = lastPageIndex;
         let data;
         let debounce = false;
@@ -140,7 +140,7 @@
         function updateProviderArgs() {
           providerQuery = query;
           providerRecordsPerPage = recordsPerPage;
-          providerOrdering = ordering.map((o) => ({ ...o }));
+          providerOrderBy = orderBy.map((o) => ({ ...o }));
           providerPageIndex = pageIndex;
         }
 
@@ -148,7 +148,7 @@
           return (
             providerQuery !== query ||
             providerRecordsPerPage !== recordsPerPage ||
-            JSON.stringify(providerOrdering) !== JSON.stringify(ordering) ||
+            JSON.stringify(providerOrderBy) !== JSON.stringify(orderBy) ||
             providerPageIndex !== pageIndex ||
             forceUpdate
           );
@@ -172,7 +172,7 @@
             }
           } while (providerArgsChanged());
 
-          data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
+          data = await dataProvider(query, orderBy, recordsPerPage, pageIndex);
 
           debounce = true;
         } while (providerArgsChanged());
@@ -183,7 +183,7 @@
 
         lastQuery = query;
         lastRecordsPerPage = recordsPerPage;
-        lastOrdering = ordering.map((o) => ({ ...o }));
+        lastOrderBy = orderBy.map((o) => ({ ...o }));
         lastPageIndex = pageIndex;
 
         externalAssignment = false;
@@ -305,24 +305,24 @@
             <th
               style="text-align: {col.textAlign || 'left'}"
               class:sticky={stickyHeader}
-              class:descending={Object.keys(ordering).some((key) => key === col.key && ordering[key] === -1)}
+              class:descending={Object.keys(orderBy).some((key) => key === col.key && orderBy[key] === -1)}
               on:click={(e) => {
                 if (col.orderable !== false) {
-                  orderBy(col.key, e.shiftKey);
+                  changeOrderBy(col.key, e.shiftKey);
                 }
               }}
               on:contextmenu={(e) => {
                 if (col.orderable !== false) {
                   e.preventDefault();
-                  orderBy(col.key, true);
+                  changeOrderBy(col.key, true);
                   window.navigator.vibrate?.(50);
                 }
               }}
               class:orderable={col.orderable !== false}>
               {col.label}
-              {#if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'asc'}
+              {#if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'asc'}
                 <span class="uk-icon" uk-icon="icon: chevron-up" />
-              {:else if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'desc'}
+              {:else if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'desc'}
                 <span class="uk-icon" uk-icon="icon: chevron-down" />
               {:else if col.orderable !== false}
                 <span

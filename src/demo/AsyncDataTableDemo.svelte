@@ -91,18 +91,18 @@ import Select from '../components/form/Select.svelte';
   },];
 
   let callCount = 0;
-  async function dataProvider(query, ordering, recordsPerPage, pageIndex) {
+  async function dataProvider(query, orderBy, recordsPerPage, pageIndex) {
     callCount++;
     let currentCount = callCount;
     console.log('data-provider call #' + currentCount);
     const filtered = data.filter((d) => JSON.stringify(d).includes(query))
       .sort((d1, d2) => {
-        if (ordering.length > 0) {
-          const multiplier = ordering[0].direction === 'asc' ? 1 : -1;
-          if (d1[ordering[0].key] > d2[ordering[0].key]) {
+        if (orderBy.length > 0) {
+          const multiplier = orderBy[0].direction === 'asc' ? 1 : -1;
+          if (d1[orderBy[0].key] > d2[orderBy[0].key]) {
             return multiplier * -1;
           }
-          if (d1[ordering[0].key] < d2[ordering[0].key]) {
+          if (d1[orderBy[0].key] < d2[orderBy[0].key]) {
             return multiplier * 1;
           }
           return 0;
@@ -167,7 +167,7 @@ import Select from '../components/form/Select.svelte';
   {dataProvider}
   {columns}
   numbersPerSide={4}
-  ordering={[{key: 'column1', direction: 'asc'}]}
+  orderBy={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}
   instantSearch

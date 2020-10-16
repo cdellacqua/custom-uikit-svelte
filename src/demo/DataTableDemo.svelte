@@ -59,7 +59,7 @@
 <DataTable
   {columns}
   rows={data}
-  ordering={[{key: 'column1', direction: 'asc'}]}
+  orderBy={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}
   instantSearch={false}
