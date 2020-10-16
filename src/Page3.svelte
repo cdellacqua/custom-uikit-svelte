@@ -11,6 +11,7 @@
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import OrderableListDemo from './demo/OrderableListDemo.svelte';
+	import PaginationDemo from './demo/PaginationDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
@@ -50,7 +51,7 @@ let items = [&lbrace;
 &rbrace;];
 
 &lt;/script&gt;
-&lt;OrderableList &lbrace;items&rbrace;&gt;&lt;/OrderableList&gt;</pre></li>
+&lt;OrderableList &lbrace;items&rbrace; on:move=&lbrace;(&lbrace;detail&rbrace;) =&gt; console.log('move', detail)&rbrace; on:moved=&lbrace;(&lbrace;detail&rbrace;) =&gt; console.log('moved', detail)&rbrace;&gt;&lt;/OrderableList&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -97,6 +98,27 @@ let items = [&lbrace;
 		</table>
 		<h2 class="uk-heading-divider">Pagination</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<PaginationDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Button, NumberInput, Pagination, Switcher &rbrace; from &quot;../main&quot;;
+  
+  let numberOfPages = 0;
+  let numbersPerSide = 1;
+  let pageIndex = 0;
+  
+&lt;/script&gt;
+
+&lt;NumberInput bind:value=&lbrace;numberOfPages&rbrace; label=&lbrace;'Number of pages'&rbrace; /&gt;
+&lt;NumberInput bind:value=&lbrace;numbersPerSide&rbrace; label=&lbrace;'Numbers per side'&rbrace; /&gt;
+&lt;NumberInput bind:value=&lbrace;pageIndex&rbrace; label=&lbrace;'Page index'&rbrace; /&gt;
+
+&lt;Pagination center &lbrace;numberOfPages&rbrace; &lbrace;numbersPerSide&rbrace; &lbrace;pageIndex&rbrace; /&gt;</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>

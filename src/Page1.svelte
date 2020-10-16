@@ -11,6 +11,7 @@
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import OrderableListDemo from './demo/OrderableListDemo.svelte';
+	import PaginationDemo from './demo/PaginationDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
@@ -342,18 +343,18 @@ import Select from '../components/form/Select.svelte';
   &rbrace;,];
 
   let callCount = 0;
-  async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
+  async function dataProvider(query, orderBy, recordsPerPage, pageIndex) &lbrace;
     callCount++;
     let currentCount = callCount;
     console.log('data-provider call #' + currentCount);
     const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
       .sort((d1, d2) =&gt; &lbrace;
-        if (ordering.length &gt; 0) &lbrace;
-          const multiplier = ordering[0].direction === 'asc' ? 1 : -1;
-          if (d1[ordering[0].key] &gt; d2[ordering[0].key]) &lbrace;
+        if (orderBy.length &gt; 0) &lbrace;
+          const multiplier = orderBy[0].direction === 'asc' ? 1 : -1;
+          if (d1[orderBy[0].key] &gt; d2[orderBy[0].key]) &lbrace;
             return multiplier * -1;
           &rbrace;
-          if (d1[ordering[0].key] &lt; d2[ordering[0].key]) &lbrace;
+          if (d1[orderBy[0].key] &lt; d2[orderBy[0].key]) &lbrace;
             return multiplier * 1;
           &rbrace;
           return 0;
@@ -418,7 +419,7 @@ import Select from '../components/form/Select.svelte';
   &lbrace;dataProvider&rbrace;
   &lbrace;columns&rbrace;
   numbersPerSide=&lbrace;4&rbrace;
-  ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
+  orderBy=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch
@@ -503,7 +504,7 @@ import Select from '../components/form/Select.svelte';
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>ordering</td>
+					<td>orderBy</td>
 					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
@@ -1021,7 +1022,7 @@ current page and its href property will be ignored</td>
 &lt;DataTable
   &lbrace;columns&rbrace;
   rows=&lbrace;data&rbrace;
-  ordering=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
+  orderBy=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch=&lbrace;false&rbrace;
@@ -1112,7 +1113,7 @@ current page and its href property will be ignored</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>ordering</td>
+					<td>orderBy</td>
 					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>

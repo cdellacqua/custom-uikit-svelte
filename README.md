@@ -130,7 +130,7 @@ Useful to display content such as blog entries or articles
 |ref|HTMLTableElement|-||
 |instantSearch|boolean|-|@default true|
 |query|string|-||
-|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|orderBy|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
 |horizontalScroll|boolean|-|@default true|
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
@@ -295,7 +295,7 @@ The card component allows you to create nice box layouts
 |ref|HTMLTableElement|-||
 |instantSearch|boolean|-|@default true|
 |query|string|-||
-|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|orderBy|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
 |horizontalScroll|boolean|-|@default true|
 
 &nbsp;
@@ -763,6 +763,8 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|min|string\|undefined|-||
+|max|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
