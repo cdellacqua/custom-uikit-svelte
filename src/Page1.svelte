@@ -339,7 +339,6 @@ import Select from '../components/form/Select.svelte';
     column2: 'D string',
     someNumericValue: 8,
   &rbrace;,];
-  console.log(data.length);
 
   async function dataProvider(query, ordering, recordsPerPage, pageIndex) &lbrace;
     const filtered = data.filter((d) =&gt; JSON.stringify(d).includes(query))
@@ -547,6 +546,12 @@ import Select from '../components/form/Select.svelte';
 				<tr>
 					<td>filtered</td>
 					<td>number</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>loading</td>
+					<td>boolean</td>
 					<td>-</td>
 					<td>@readonly</td>
 				</tr>

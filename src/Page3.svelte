@@ -664,6 +664,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>loading</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Autocomplete</h2>

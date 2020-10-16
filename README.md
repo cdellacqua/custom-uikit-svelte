@@ -138,6 +138,7 @@ Useful to display content such as blog entries or articles
 |pageIndex|number|-||
 |total|number|-|@readonly|
 |filtered|number|-|@readonly|
+|loading|boolean|-|@readonly|
 
 &nbsp;
 &nbsp;
@@ -662,6 +663,7 @@ Create an already styled description list, perfect for describing key-value prop
 |query|string|-||
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
+|loading|boolean|-|@readonly|
 
 &nbsp;
 &nbsp;
