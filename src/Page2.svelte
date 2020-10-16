@@ -2,6 +2,8 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
+	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
@@ -21,6 +23,57 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">Divider</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>withIcon</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>small</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>vertical</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLHRElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Dropdown</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -398,6 +451,57 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				</tr>
 			</tbody>
 		</table>
+		<h2 class="uk-heading-divider">LoaderOverlayScoped</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ratio</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>opacity</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>loading</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">LoaderWrapper</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -673,234 +777,6 @@ function toggleMountState() &lbrace;
 				<tr>
 					<td>side</td>
 					<td>'left'|'right'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Switcher</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<SwitcherDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace; Switcher &rbrace; from &quot;../main&quot;;
-  let status = [];
-
-  let index = 2;
-  function handleTabShow() &lbrace;
-    status = [...status, 'show item, current index ' + index];
-  &rbrace;
-&lt;/script&gt;
-
-&lt;Switcher bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Item 1', 'Item 2', 'Item 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
-  &lt;div&gt;
-    Item 1 Content
-  &lt;/div&gt;
-  &lt;div&gt;
-    Item 2 Content
-  &lt;/div&gt;
-  &lt;div&gt;
-    Item 3 Content
-  &lt;/div&gt;
-&lt;/Switcher&gt;
-&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
-</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>connect</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>toggle</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>animation</td>
-					<td>string|false</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>duration</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>swiping</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>titles</td>
-					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>htmlTitle</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLUListElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>index</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Tab</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<TabDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace; Tab &rbrace; from &quot;../main&quot;;
-  let status = [];
-
-  let index = 2;
-  function handleTabShow() &lbrace;
-    status = [...status, 'show tab, current index ' + index];
-  &rbrace;
-&lt;/script&gt;
-
-&lt;Tab bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Tab 1', 'Tab 2', 'Tab 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
-  &lt;li&gt;
-    Tab 1 Content
-  &lt;/li&gt;
-  &lt;li&gt;
-    Tab 2 Content
-  &lt;/li&gt;
-  &lt;li&gt;
-    Tab 3 Content
-  &lt;/li&gt;
-&lt;/Tab&gt;
-&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
-</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>connect</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>toggle</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>animation</td>
-					<td>string|false</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>duration</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>swiping</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>media</td>
-					<td>number|string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>titles</td>
-					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>htmlTitle</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLDivElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>index</td>
-					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

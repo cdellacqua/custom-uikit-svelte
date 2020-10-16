@@ -7,6 +7,7 @@ Unofficial Svelte Component Library for the UIkit framework
 Components
 - [Alert](#alert)
 - [Article](#article)
+- [AsyncDataTable](#asyncdatatable)
 - [Badge](#badge)
 - [Breadcrumb](#breadcrumb)
 - [Button](#button)
@@ -20,14 +21,17 @@ Components
 - [FormModal](#formmodal)
 - [Loader](#loader)
 - [LoaderOverlay](#loaderoverlay)
+- [LoaderOverlayScoped](#loaderoverlayscoped)
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
 - [Offcanvas](#offcanvas)
+- [Pagination](#pagination)
 - [Switcher](#switcher)
 - [Tab](#tab)
 - [Table](#table)
 - [Accordion](#accordion)
 - [AccordionItem](#accordionitem)
+- [AsyncAutocomplete](#asyncautocomplete)
 - [Autocomplete](#autocomplete)
 - [Checkbox](#checkbox)
 - [DatePicker](#datepicker)
@@ -102,6 +106,39 @@ Useful to display content such as blog entries or articles
 |titleAsHtml|string\|undefined|""|A string that can contain HTML content which represents the title of the article. If omitted, the space dedicated to the title won't be displayed|
 |articleMetaAsHtml|string\|undefined|""|A string that can contain HTML content with meta information about the article. If omitted, the space dedicated to the meta content won't be displayed|
 |ref (readonly)|HTMLElement|-|The HTML reference of the component|
+
+&nbsp;
+&nbsp;
+&nbsp;
+## AsyncDataTable
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|size|undefined\|'small'|-||
+|className|undefined\|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|appearance|'divider'\|'striped'|-||
+|stickyHeader|boolean|-||
+|placeholder|string|-||
+|noResultText|string\|undefined|-||
+|ref|HTMLTableElement|-||
+|instantSearch|boolean|-|@default true|
+|query|string|-||
+|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|horizontalScroll|boolean|-|@default true|
+|dataProvider|DataProvider|-||
+|dataProviderErrorHandler|function|-||
+|recordsPerPage|number|-||
+|numbersPerSide|number|-||
+|pageIndex|number|-||
+|total|number|-|@readonly|
+|filtered|number|-|@readonly|
+|loading|boolean|-|@readonly|
 
 &nbsp;
 &nbsp;
@@ -255,6 +292,9 @@ The card component allows you to create nice box layouts
 |noResultText|string\|undefined|-||
 |ref|HTMLTableElement|-||
 |instantSearch|boolean|-|@default true|
+|query|string|-||
+|ordering|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
+|horizontalScroll|boolean|-|@default true|
 
 &nbsp;
 &nbsp;
@@ -406,6 +446,24 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+## LoaderOverlayScoped
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-||
+|ratio|number|-||
+|style|string\|undefined|-||
+|ref|HTMLDivElement|-||
+|opacity|number|-||
+|loading|boolean|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
 ## LoaderWrapper
 
 &nbsp;
@@ -462,6 +520,24 @@ Create an already styled description list, perfect for describing key-value prop
 |shown|boolean|-|@readonly|
 |ref|HTMLDivElement|-||
 |side|'left'\|'right'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## Pagination
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|className|string\|undefined|-||
+|style|string\|undefined|-||
+|center|boolean|-||
+|pageIndex|number|-||
+|numberOfPages|number|-||
+|numbersPerSide|number|-||
 
 &nbsp;
 &nbsp;
@@ -558,6 +634,36 @@ Create an already styled description list, perfect for describing key-value prop
 
 &nbsp;
 &nbsp;
+
+&nbsp;
+&nbsp;
+&nbsp;
+## AsyncAutocomplete
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string|-||
+|value|any|-|The current selected value or undefined if no value is selected|
+|label|string|-|Label of this component|
+|className|string\|undefined|-|A string containing any additional classes to apply to the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
+|disabled|boolean|-|Control whether the component is disabled or not|
+|tooltip|string\|undefined|-|UIkit tooltip|
+|placeholder|string\|undefined|-|Input placeholder|
+|ref|HTMLDivElement|-|Reference to the div that wraps this component|
+|autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
+|autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
+|autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
+|animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
+|query|string|-||
+|dataProvider|DataProvider|-||
+|dataProviderErrorHandler|function|-||
+|loading|boolean|-|@readonly|
 
 &nbsp;
 &nbsp;

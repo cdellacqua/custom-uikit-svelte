@@ -7,7 +7,7 @@
 
 <li class:uk-open={open} bind:this={ref}>
   <!-- svelte-ignore a11y-missing-attribute -->
-  <a class="uk-accordion-title" role="button">
+  <a class="uk-accordion-title" role="button" tabindex="0">
     {#if isTitleHtml}
       {@html title}
     {:else}{title}{/if}

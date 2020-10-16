@@ -35,7 +35,7 @@
   {style}
   class="uk-margin-small-left uk-margin-small-top uk-margin-small-bottom
     uk-breadcrumb {className ? className : ""}">
-  {#each path.slice(0, -1) as entry}
+  {#each path.slice(0, -1) as entry (entry)}
     <li><a href={entry.href}>{entry.label}</a></li>
   {/each}
   {#if path.length > 0}

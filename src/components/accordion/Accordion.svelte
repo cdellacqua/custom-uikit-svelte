@@ -53,6 +53,6 @@
   on:beforeshow|stopPropagation
   {style}
   bind:this={ref}
-  uk-accordion="multiple: {multi}; collapsible: {collapsible}; duration: {duration}; transition: {transition}; animation: {animation}">
+  uk-accordion="multiple: {multi}; collapsible: {collapsible}; active: false; duration: {duration}; transition: {transition}; animation: {animation}">
   <slot />
 </ul>

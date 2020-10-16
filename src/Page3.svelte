@@ -2,6 +2,8 @@
 	import { Switcher } from "./main";
 	import AccordionDemo from './demo/AccordionDemo.svelte';
 	import AlertDemo from './demo/AlertDemo.svelte';
+	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
+	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
@@ -21,6 +23,285 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">Pagination</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>center</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>pageIndex</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>numberOfPages</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>numbersPerSide</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">Switcher</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<SwitcherDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Switcher &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let index = 2;
+  function handleTabShow() &lbrace;
+    status = [...status, 'show item, current index ' + index];
+  &rbrace;
+&lt;/script&gt;
+
+&lt;Switcher bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Item 1', 'Item 2', 'Item 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
+  &lt;div&gt;
+    Item 1 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Item 2 Content
+  &lt;/div&gt;
+  &lt;div&gt;
+    Item 3 Content
+  &lt;/div&gt;
+&lt;/Switcher&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>connect</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>toggle</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>string|false</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>duration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>swiping</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>titles</td>
+					<td>Array.&lt;string&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>htmlTitle</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLUListElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>index</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">Tab</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<TabDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Tab &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let index = 2;
+  function handleTabShow() &lbrace;
+    status = [...status, 'show tab, current index ' + index];
+  &rbrace;
+&lt;/script&gt;
+
+&lt;Tab bind:index className=&quot;uk-child-width-expand&quot; titles=&lbrace;['Tab 1', 'Tab 2', 'Tab 3']&rbrace; on:show=&lbrace;handleTabShow&rbrace;&gt;
+  &lt;li&gt;
+    Tab 1 Content
+  &lt;/li&gt;
+  &lt;li&gt;
+    Tab 2 Content
+  &lt;/li&gt;
+  &lt;li&gt;
+    Tab 3 Content
+  &lt;/li&gt;
+&lt;/Tab&gt;
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>connect</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>toggle</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animation</td>
+					<td>string|false</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>duration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>swiping</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>media</td>
+					<td>number|string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>titles</td>
+					<td>Array.&lt;string&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>htmlTitle</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>index</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Table</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -119,7 +400,7 @@
   let collapsible = true;
   let duration = 200;
 
-  let index = 2;
+  let index = false;
 
   function increaseDuration() &lbrace;
     duration = Math.min(2500, duration + 50);
@@ -229,6 +510,168 @@
 		</table>
 		<h2 class="uk-heading-divider">AccordionItem</h2>
 		<p></p>
+		<h2 class="uk-heading-divider">AsyncAutocomplete</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AsyncAutocompleteDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&quot;;
+
+  import &lbrace; Autocomplete &rbrace; from &quot;../main&quot;;
+
+  const options = [
+    &lbrace;
+      label: 'Ananas',
+      value: 1
+    &rbrace;,
+    &lbrace;
+      label: 'Banana',
+      value: &lbrace; kg: '3.14' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Bananana',
+      value: &lbrace; kg: '6.28' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Strawberry',
+      value: 'strawberry'
+    &rbrace;,
+  ];
+
+  async function dataProvider(query) &lbrace;
+    await new Promise(res =&gt; setTimeout(res, 200));
+    return options.filter((o) =&gt; o.label.toLowerCase().includes(query.toLowerCase()));
+  &rbrace;
+&lt;/script&gt;
+
+&lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; /&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>any</td>
+					<td>-</td>
+					<td>The current selected value or undefined if no value is selected</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Label of this component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>textIfNoResult</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the applied filter doesn't return any result</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>Control whether the component is disabled or not</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>UIkit tooltip</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>Reference to the div that wraps this component</td>
+				</tr>
+				<tr>
+					<td>autocapitalize</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocapitalize setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocomplete</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocomplete setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocorrect</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocorrect setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>animationDuration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>In/Out fly animation duration (in milliseconds)</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProvider</td>
+					<td>DataProvider</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>dataProviderErrorHandler</td>
+					<td>function</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>loading</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">Autocomplete</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -466,423 +909,6 @@
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">DatePicker</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>placeholder</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">EmailInput</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>placeholder</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocapitalize</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocomplete</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocorrect</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Field</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">FixedPointInput</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<FixedPointInputDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace;
-    Accordion,
-    AccordionItem,
-    Checkbox,
-    Button,
-    FixedPointInput,
-  &rbrace; from &quot;../main&quot;;
-
-  let decimalPlaces = 2;
-  function increasePrecision() &lbrace;
-    decimalPlaces = Math.min(100, decimalPlaces + 1);
-  &rbrace;
-  function decreasePrecision() &lbrace;
-    decimalPlaces = Math.max(decimalPlaces - 1, 0);
-  &rbrace;
-&lt;/script&gt;
-
-&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
-  &lt;Button size=&quot;small&quot; on:click=&lbrace;increasePrecision&rbrace; className=&quot;uk-margin-right&quot;&gt;
-    + precision
-  &lt;/Button&gt;
-  &lt;Button size=&quot;small&quot; on:click=&lbrace;decreasePrecision&rbrace;&gt;- precision&lt;/Button&gt;
-&lt;/div&gt;
-&lt;FixedPointInput &lbrace;decimalPlaces&rbrace; value=&lbrace;10.33&rbrace; /&gt;
-</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>decimalPlaces</td>
-					<td>number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>inhibitDecimalSeparatorKey</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>min</td>
-					<td>string|number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>max</td>
-					<td>string|number</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>icon</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>iconPosition</td>
-					<td>'left'|'right'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">MonthPicker</h2>
 		<p></p>
 		<h3>Props</h3>
 		<table class="uk-table">

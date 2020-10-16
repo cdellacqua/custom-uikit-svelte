@@ -92,7 +92,10 @@
     {inputmode}
     {pattern}
     bind:value
+    on:input
     on:change
+    on:blur
+    on:focus
     class="uk-input"
     class:uk-form-danger={state === 'invalid'}
     class:uk-form-success={state === 'valid'}

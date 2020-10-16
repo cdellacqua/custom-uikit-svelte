@@ -37,7 +37,7 @@
 </script>
 <dl bind:this={ref} {style} class={className ? "uk-description-list " + className : "uk-description-list"} class:uk-description-list-divider={showDivider}>
 	<slot>
-		{#each list as item}
+		{#each list as item (item)}
 			<dt>
 				{#if termsAreHtml}
 					{@html item.term}

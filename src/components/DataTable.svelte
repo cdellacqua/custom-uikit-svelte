@@ -41,6 +41,12 @@
   export let ref = undefined;
   /** @type {boolean} @default true */
   export let instantSearch = true;
+  /** @type {string} */
+  export let query = "";
+  /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
+  export let ordering = [];
+  /** @type {boolean} @default true */
+  export let horizontalScroll = true;
 
   const dispatch = createEventDispatcher();
 
@@ -54,7 +60,6 @@
     return 0;
   }
 
-  let query = "";
   let filteredRows;
   let computedRows;
   $: if (rows) {
@@ -79,9 +84,6 @@
   }
 
   $: dispatch("query", query);
-
-  /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
-  let ordering = [];
 
   function sort() {
     if (ordering.length === 0) {
@@ -143,7 +145,9 @@
         ordering = [];
       }
     }
+  }
 
+  $: if (ordering) {
     sort();
   }
 
@@ -212,7 +216,7 @@
   </form>
 {/if}
 
-<div class="table-hscroll-wrapper">
+<div class:table-hscroll-wrapper={horizontalScroll}>
   <table
     bind:this={ref}
     {style}
@@ -225,7 +229,7 @@
     class:uk-table-small={size === 'small'}>
     <thead>
       <tr>
-        {#each columns as col}
+        {#each columns as col (col)}
           <th
             style="text-align: {col.textAlign || 'left'}"
             class:sticky={stickyHeader}
@@ -244,9 +248,9 @@
             }}
             class:orderable={col.orderable !== false}>
             {col.label}
-            {#if ordering.find((o) => o.key === col.key)?.direction === 'asc'}
+            {#if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'asc'}
               <span class="uk-icon" uk-icon="icon: chevron-up" />
-            {:else if ordering.find((o) => o.key === col.key)?.direction === 'desc'}
+            {:else if col.orderable !== false && ordering.find((o) => o.key === col.key)?.direction === 'desc'}
               <span class="uk-icon" uk-icon="icon: chevron-down" />
             {:else if col.orderable !== false}
               <span
@@ -268,7 +272,7 @@
           </td>
         </tr>
       {:else}
-        {#each computedRows as row}
+        {#each computedRows as row (row)}
           <tr on:click={() => dispatch('row-click', row)}>
             {#each columns as col}
               <td
