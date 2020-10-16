@@ -122,7 +122,7 @@
             }
           } while (providerArgsChanged());
 
-          data = await dataProvider(query, ordering, recordsPerPage, pageIndex);
+          data = await dataProvider(query);
 
           debounce = true;
         } while (providerArgsChanged());
