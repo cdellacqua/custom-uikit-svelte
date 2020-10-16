@@ -16,4 +16,4 @@ let items = [{
 }];
 
 </script>
-<OrderableList {items}></OrderableList>
+<OrderableList {items} on:move={({detail}) => console.log('move', detail)} on:moved={({detail}) => console.log('moved', detail)}></OrderableList>

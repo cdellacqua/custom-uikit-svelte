@@ -1,4 +1,6 @@
 <script>
+	import { createEventDispatcher, tick } from "svelte";
+
 	import { cubicInOut } from "svelte/easing";
 
 	/** @type {Array.<{text: string|undefined, html: string|undefined, props: Record<string, any>|undefined, type: SvelteComponent|undefined}>} */
@@ -8,54 +10,55 @@
 	/** @type {HTMLUListElement} @readonly */
 	export let ref = undefined;
 	/** @type {number} */
-	export let animationDuration = 500;
+	export let animationDuration = 200;
 	/**
 	 * Whether to show or hide the move-to-top and move-to-bottom buttons
 	 * @type {boolean} */
 	export let moveToBoundaries = false;
 
+	const dispatch = createEventDispatcher();
+
 	let foregroundElement = null;
-	function moveItem(previousIndex, delta) {
-		const element = ref.children[previousIndex];
-		foregroundElement = element;
-		const swapElement =
-			element[delta === -1 ? "previousElementSibling" : "nextElementSibling"];
-		if (swapElement) {
-			const tmp = items[previousIndex];
-			items[previousIndex] = items[previousIndex + delta];
-			items[previousIndex + delta] = tmp;
-			items = [...items];
-		}
+	let lastEventDetails = null;
+	function move(prevIndex, newIndex) {
+		foregroundElement = ref.children[prevIndex];
+		const subject = items.splice(prevIndex, 1)[0];
+		items.splice(newIndex, 0, subject);
+		items = [...items];
+
+		lastEventDetails = {
+			old: prevIndex,
+			new: newIndex,
+		};
+		dispatch("move", lastEventDetails);
 	}
+
 	function moveUp(index) {
-		moveItem(index, -1);
+		move(index, index - 1);
 	}
 	function moveDown(index) {
-		moveItem(index, 1);
+		move(index, index + 1);
 	}
 
 	function moveTop(index) {
-		foregroundElement = ref.children[index];
-		const subject = items.splice(index, 1)[0];
-		items = [subject, ...items];
+		move(index, 0);
 	}
 
 	function moveBottom(index) {
-		foregroundElement = ref.children[index];
-		const subject = items.splice(index, 1)[0];
-		items = [...items, subject];
+		move(index, items.length - 1);
 	}
 
-	function animation(node, { from, to }, params) {
+	function animation(node, { from, to }) {
 		const dx = from.left - to.left;
 		const dy = from.top - to.top;
+
+		const isForeground = node === foregroundElement;
 
 		return {
 			delay: 0,
 			duration: animationDuration,
 			easing: cubicInOut,
 			css: (t, u) => {
-				const isForeground = node === foregroundElement;
 				const ratio =
 					1 +
 					(isForeground
@@ -67,6 +70,11 @@
 					z-index: ${isForeground ? "1" : "0"};
 				`;
 			},
+			tick: (t) => {
+				if (t === 1 && isForeground) {
+					dispatch("moved", lastEventDetails);
+				}
+			}
 		};
 	}
 </script>
@@ -125,15 +133,15 @@
 						{@html item.html}
 					{:else if item.text}{item.text}{/if}
 				{:else if item.text}
-					<svelte:component this={item.type || type} {...(item.props || {})}>
+					<svelte:component this={item.type || type} {...item.props || {}}>
 						{item.text}
 					</svelte:component>
 				{:else if item.html}
-					<svelte:component this={item.type || type} {...(item.props || {})}>
+					<svelte:component this={item.type || type} {...item.props || {}}>
 						{@html item.html}
 					</svelte:component>
 				{:else}
-					<svelte:component this={item.type || type} {...(item.props || {})} />
+					<svelte:component this={item.type || type} {...item.props || {}} />
 				{/if}
 			</div>
 		</li>
