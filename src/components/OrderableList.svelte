@@ -3,10 +3,10 @@
 
 	import { cubicInOut } from "svelte/easing";
 
-	/** @type {Array.<{text: string|undefined, html: string|undefined, props: Record<string, any>|undefined, type: SvelteComponent|undefined}>} */
+	/** @type {Array.<{text: string|undefined, html: string|undefined, props: Record<string, any>|undefined, component: SvelteComponent|undefined}>} */
 	export let items = [];
 	/** @type {SvelteComponent|undefined} */
-	export let type = undefined;
+	export let component = undefined;
 	/** @type {HTMLUListElement} @readonly */
 	export let ref = undefined;
 	/** @type {number} */
@@ -128,20 +128,20 @@
 					<hr class="uk-divider-vertical uk-height-1-1" />
 				</div>
 
-				{#if !type && !item.type}
+				{#if !component && !item.component}
 					{#if item.html}
 						{@html item.html}
 					{:else if item.text}{item.text}{/if}
 				{:else if item.text}
-					<svelte:component this={item.type || type} {...item.props || {}}>
+					<svelte:component this={item.component || component} {...item.props || {}}>
 						{item.text}
 					</svelte:component>
 				{:else if item.html}
-					<svelte:component this={item.type || type} {...item.props || {}}>
+					<svelte:component this={item.component || component} {...item.props || {}}>
 						{@html item.html}
 					</svelte:component>
 				{:else}
-					<svelte:component this={item.type || type} {...item.props || {}} />
+					<svelte:component this={item.component || component} {...item.props || {}} />
 				{/if}
 			</div>
 		</li>
