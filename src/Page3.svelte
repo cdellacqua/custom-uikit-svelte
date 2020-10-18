@@ -42,10 +42,10 @@ import &lbrace; OrderableList &rbrace; from &quot;../main&quot;;
 let items = [&lbrace;
 &nbsp;&nbsp;props: &lbrace; variant: 'primary'&rbrace;,
 &nbsp;&nbsp;text: 'Hello.',
-&nbsp;&nbsp;type: Button
+&nbsp;&nbsp;component: Button
 &rbrace;, &lbrace;
 &nbsp;&nbsp;props: &lbrace; list: [&lbrace; term: 'first', details: 'description one'&rbrace;, &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;,  &lbrace; term: 'second', details: 'description two'&rbrace;] &rbrace;,
-&nbsp;&nbsp;type: DescriptionList,
+&nbsp;&nbsp;component: DescriptionList,
 &rbrace;, &lbrace;
 &nbsp;&nbsp;text: &quot;I'm just some plain text&quot;
 &rbrace;];
@@ -66,12 +66,12 @@ let items = [&lbrace;
 			<tbody>
 				<tr>
 					<td>items</td>
-					<td>Array.&lt;&lbrace;text: (string|undefined), html: (string|undefined), props: (Record.&lt;string, any&gt;|undefined), type: (SvelteComponent|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;text: (string|undefined), html: (string|undefined), props: (Record.&lt;string, any&gt;|undefined), component: (SvelteComponent|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
-					<td>type</td>
+					<td>component</td>
 					<td>SvelteComponent|undefined</td>
 					<td>-</td>
 					<td>undefined</td>

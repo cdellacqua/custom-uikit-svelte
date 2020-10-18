@@ -534,8 +534,8 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|items|Array.<{text: (string\|undefined), html: (string\|undefined), props: (Record.<string, any>\|undefined), type: (SvelteComponent\|undefined)}>|-||
-|type|SvelteComponent\|undefined|-||
+|items|Array.<{text: (string\|undefined), html: (string\|undefined), props: (Record.<string, any>\|undefined), component: (SvelteComponent\|undefined)}>|-||
+|component|SvelteComponent\|undefined|-||
 |ref|HTMLUListElement|-|@readonly|
 |animationDuration|number|-||
 |moveToBoundaries|boolean|-|Whether to show or hide the move-to-top and move-to-bottom buttons|
