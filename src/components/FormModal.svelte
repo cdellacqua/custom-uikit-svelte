@@ -92,7 +92,7 @@
   on:show={handleShow}
   on:hide={handleHide}
   on:beforehide={(e) => {
-    if (!externalAssignment && formState === 'loading') {
+    if (formState === 'loading') {
       e.preventDefault();
     }
   }}
