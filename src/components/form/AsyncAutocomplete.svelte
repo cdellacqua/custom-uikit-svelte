@@ -8,7 +8,7 @@
   import { debounce } from "debounce";
   import { generateId } from "../../services/html";
   import { noop } from "../../helpers/lambdas";
-  import { tick, createEventDispatcher } from "svelte";
+  import { tick, createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { dispatchNativeEvent } from "../../helpers/events";
   import Loader from "../Loader.svelte";
@@ -36,6 +36,10 @@
    * @type {string} */
   export let textIfNoResult = "";
   /**
+   * @description Text to show when the field is required but no value has been chosen
+   * @type {string} */
+  export let textIfInvalid = "";
+  /**
    * @description Control whether the component is disabled or not
    * @type {boolean} */
   export let disabled = false;
@@ -47,6 +51,8 @@
    * @description Input placeholder
    * @type {string|undefined} */
   export let placeholder = undefined;
+  /** @type {boolean} */
+  export let optional = false;
   /**
    * @description Reference to the div that wraps this component
    * @type {HTMLDivElement} */
@@ -67,6 +73,8 @@
    * @description In/Out fly animation duration (in milliseconds)
    * @type {number} */
   export let animationDuration = 100;
+  /** @type {'initial'|'valid'|'invalid'} */
+  export let state = "initial";
   /** @type {string} */
   export let query = "";
   /** @type {DataProvider} */
@@ -77,6 +85,8 @@
   export let loading = false;
   /** @type {number} */
   export let debounceMs = 200;
+
+  let searchRef;
 
   let externalAssignment = true;
   $: if (query.length >= 0) {
@@ -161,12 +171,30 @@
     innerClick = false;
   }
 
+
+  let everFocused = false;
+  function updateState() {
+    if (!optional && value === undefined) {
+      searchRef.setCustomValidity(textIfInvalid || 'Field is required');
+    } else {
+      searchRef.setCustomValidity('');
+    }
+    if (everFocused) {
+      state = searchRef.checkValidity() ? 'valid' : 'invalid';
+    }
+  }
+
+  onMount(() => {
+    updateState();
+  });
+
   function handleChangeGenerator(option) {
     return function () {
       if (this.checked) {
         if (value !== option.value) {
           value = option.value;
           query = option.label;
+          updateState();
           dispatch("change", value);
         }
         innerClick = false;
@@ -300,14 +328,17 @@
   class={className}
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
-  <label for={id} class="uk-form-label">{label}</label>
+  <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
   <div style="position: relative">
     <input
+      bind:this={searchRef}
       {autocapitalize}
       {autocomplete}
       {autocorrect}
       {placeholder}
       class="uk-input"
+      class:uk-form-danger={state === 'invalid'}
+      class:uk-form-success={state === 'valid'}
       type="search"
       uk-tooltip={tooltip}
       {id}
@@ -317,7 +348,9 @@
       required={false}
       {disabled}
       on:focus={showSuggestedOptions}
-      on:click={showSuggestedOptions} />
+      on:click={showSuggestedOptions}
+      on:blur={updateState}
+      on:focus={() => (everFocused = true, state = 'initial')} />
     {#if loading && showSuggested}
       <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
     {:else if value !== undefined}
@@ -330,6 +363,7 @@
         on:click={() => {
           value = undefined;
           query = '';
+          updateState();
           dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
@@ -354,8 +388,8 @@
               type="radio"
               name={id + '-radio'}
               checked={option.value === value}
-              on:change={handleChangeGenerator(option)}
-              on:click={handleOptionClickGenerator(option)} />
+              on:change|stopPropagation={handleChangeGenerator(option)}
+              on:click|stopPropagation={handleOptionClickGenerator(option)} />
             {#if option.value === value}
               <span class="uk-icon" uk-icon="icon: check; ratio: .75" />
             {/if}

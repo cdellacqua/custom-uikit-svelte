@@ -28,4 +28,6 @@ import AsyncAutocomplete from "../components/form/AsyncAutocomplete.svelte";
   }
 </script>
 
+<div on:change={(e) => console.log(e)}>
 <AsyncAutocomplete value={1} query={'na'} label={'Search a fruit'} placeholder={'Banana'} textIfNoResult={'No match'} {dataProvider} />
+</div>

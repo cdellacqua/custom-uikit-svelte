@@ -32,6 +32,10 @@
    * @type {string} */
   export let textIfNoResult = "";
   /**
+   * @description Text to show when the field is required but no value has been chosen
+   * @type {string} */
+  export let textIfInvalid = "";
+  /**
    * @description Control whether the component is disabled or not
    * @type {boolean} */
   export let disabled = false;
@@ -43,6 +47,8 @@
    * @description Input placeholder
    * @type {string|undefined} */
   export let placeholder = undefined;
+  /** @type {boolean} */
+  export let optional = false;
   /**
    * @description Reference to the div that wraps this component
    * @type {HTMLDivElement} */
@@ -63,6 +69,10 @@
    * @description In/Out fly animation duration (in milliseconds)
    * @type {number} */
   export let animationDuration = 100;
+  /** @type {'initial'|'valid'|'invalid'} */
+  export let state = "initial";
+
+  let searchRef;
 
   let query = "";
   let showSuggested = false;
@@ -95,11 +105,28 @@
     outlineOptionIndex = 0;
   }
 
+  let everFocused = false;
+  function updateState() {
+    if (!optional && value === undefined) {
+      searchRef.setCustomValidity(textIfInvalid || 'Field is required');
+    } else {
+      searchRef.setCustomValidity('');
+    }
+    if (everFocused) {
+      state = searchRef.checkValidity() ? 'valid' : 'invalid';
+    }
+  }
+
+  onMount(() => {
+    updateState();
+  });
+
   function handleChangeGenerator(option) {
     return function () {
       if (this.checked) {
         if (value !== option.value) {
           value = option.value;
+          updateState();
           dispatch('change', value);
         }
         innerClick = false;
@@ -231,14 +258,17 @@
   class={className}
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
-  <label for={id} class="uk-form-label">{label}</label>
+  <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
   <div style="position: relative">
     <input
+      bind:this={searchRef}
       {autocapitalize}
       {autocomplete}
       {autocorrect}
       {placeholder}
       class="uk-input"
+      class:uk-form-danger={state === 'invalid'}
+      class:uk-form-success={state === 'valid'}
       type="search"
       uk-tooltip={tooltip}
       {id}
@@ -248,7 +278,10 @@
       required={false}
       {disabled}
       on:focus={showSuggestedOptions}
-      on:click={showSuggestedOptions} />
+      on:click={showSuggestedOptions}
+      on:blur={updateState}
+      on:focus={() => (everFocused = true, state = 'initial')}
+    />
     {#if value !== undefined}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
@@ -258,6 +291,7 @@
         uk-icon="icon: close"
         on:click={() => {
           value = undefined;
+          updateState();
           dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
@@ -281,8 +315,8 @@
               type="radio"
               name={id + '-radio'}
               checked={option.value === value}
-              on:change={handleChangeGenerator(option)}
-              on:click={handleOptionClickGenerator(option)} />
+              on:change|stopPropagation={handleChangeGenerator(option)}
+              on:click|stopPropagation={handleOptionClickGenerator(option)} />
             {#if option.value === value}
               <span class="uk-icon" uk-icon="icon: check; ratio: .75" />
             {/if}
