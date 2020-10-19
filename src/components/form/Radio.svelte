@@ -25,6 +25,11 @@
   export let size = undefined;
   /** @type {string|undefined} */
   export let className = undefined;
+  /** 
+   * @default "primary"
+   * @description This property is used to style the button with one of the base uikit classes for button appearance
+   * @type {'primary'|'secondary'|'danger'} */
+  export let variant = "primary";
   /**
    * @description A string specifying custom style properties for the component
    * @type {string|undefined} */
@@ -78,8 +83,10 @@
           class:uk-text-nowrap={true}
           class:uk-width-1-1={true}
           class:uk-height-1-1={true}
+          class:uk-button-primary={option.value === value && variant === 'primary'}
+          class:uk-button-secondary={option.value === value && variant === 'secondary'}
+          class:uk-button-danger={option.value === value && variant === 'danger'}
           class:uk-button-default={option.value !== value}
-          class:uk-button-primary={option.value === value}
           class:uk-button-small={size === 'small'}
           class:uk-button-large={size === 'large'}
           class:uk-button={true}
