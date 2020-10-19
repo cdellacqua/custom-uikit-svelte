@@ -642,8 +642,9 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
   &rbrace;
 &lt;/script&gt;
 
+&lt;div on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;&gt;
 &lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; /&gt;
-</pre></li>
+&lt;/div&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -693,6 +694,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>Text to show when the applied filter doesn't return any result</td>
 				</tr>
 				<tr>
+					<td>textIfInvalid</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the field is required but no value has been chosen</td>
+				</tr>
+				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
 					<td>-</td>
@@ -709,6 +716,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
@@ -739,6 +752,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>number</td>
 					<td>-</td>
 					<td>In/Out fly animation duration (in milliseconds)</td>
+				</tr>
+				<tr>
+					<td>state</td>
+					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>query</td>
@@ -860,6 +879,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>Text to show when the applied filter doesn't return any result</td>
 				</tr>
 				<tr>
+					<td>textIfInvalid</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the field is required but no value has been chosen</td>
+				</tr>
+				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
 					<td>-</td>
@@ -876,6 +901,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
@@ -906,6 +937,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 					<td>number</td>
 					<td>-</td>
 					<td>In/Out fly animation duration (in milliseconds)</td>
+				</tr>
+				<tr>
+					<td>state</td>
+					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>

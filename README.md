@@ -671,14 +671,17 @@ Create an already styled description list, perfect for describing key-value prop
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
+|textIfInvalid|string|-|Text to show when the field is required but no value has been chosen|
 |disabled|boolean|-|Control whether the component is disabled or not|
 |tooltip|string\|undefined|-|UIkit tooltip|
 |placeholder|string\|undefined|-|Input placeholder|
+|optional|boolean|-||
 |ref|HTMLDivElement|-|Reference to the div that wraps this component|
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
+|state|'initial'\|'valid'\|'invalid'|-||
 |query|string|-||
 |dataProvider|DataProvider|-||
 |dataProviderErrorHandler|function|-||
@@ -703,14 +706,17 @@ Create an already styled description list, perfect for describing key-value prop
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |textIfNoResult|string|-|Text to show when the applied filter doesn't return any result|
+|textIfInvalid|string|-|Text to show when the field is required but no value has been chosen|
 |disabled|boolean|-|Control whether the component is disabled or not|
 |tooltip|string\|undefined|-|UIkit tooltip|
 |placeholder|string\|undefined|-|Input placeholder|
+|optional|boolean|-||
 |ref|HTMLDivElement|-|Reference to the div that wraps this component|
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
+|state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
 &nbsp;
