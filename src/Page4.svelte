@@ -931,6 +931,12 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>variant</td>
+					<td>'primary'|'secondary'|'danger'</td>
+					<td>"primary"</td>
+					<td>This property is used to style the button corresponding to the selected value with one of the base uikit classes for button appearance</td>
+				</tr>
+				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
 					<td>-</td>

@@ -969,6 +969,7 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLDivElement|-||
 |size|undefined\|'small'\|'large'|-||
 |className|string\|undefined|-||
+|variant|'primary'\|'secondary'\|'danger'|"primary"|This property is used to style the button corresponding to the selected value with one of the base uikit classes for button appearance|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 
 &nbsp;
