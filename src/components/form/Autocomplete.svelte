@@ -262,7 +262,9 @@
   class={className}
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
-  <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
+  {#if label}
+    <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
+  {/if}
   <div style="position: relative">
     <input
       bind:this={searchRef}
