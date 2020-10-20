@@ -8,6 +8,7 @@
   import { debounce } from "debounce";
   import { generateId } from "../../services/html";
   import { noop } from "../../helpers/lambdas";
+  import { sleep } from "../../helpers/time";
   import { tick, createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { dispatchNativeEvent } from "../../helpers/events";
