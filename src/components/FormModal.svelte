@@ -86,13 +86,15 @@
 
   let noHeader;
   let noFooter;
+
+  let forceHide = false;
 </script>
 
 <div
   on:show={handleShow}
   on:hide={handleHide}
   on:beforehide={(e) => {
-    if (formState === 'loading') {
+    if (!forceHide && formState === 'loading') {
       e.preventDefault();
     }
   }}
@@ -112,7 +114,19 @@
   uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}; stack: ${stack}`}
   class:uk-flex-top={verticallyCentered}>
   <Form
-    submitAsync={formSubmitAsync}
+  submitAsync={async () => {
+      try {
+        await formSubmitAsync();
+      } finally {
+        if (show === false) {
+          if (ref.classList.contains('uk-open')) {
+            forceHide = true;
+            UIkit.modal(ref).hide();
+            forceHide = false;
+          }
+        }
+      }
+    }}
     disabled={formDisabled}
     bind:state={formState}
     bind:valid={formValid}
