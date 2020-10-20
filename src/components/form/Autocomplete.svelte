@@ -326,7 +326,7 @@
       {:else if textIfNoResult}
         <div
           class="uk-text-center uk-text-italic uk-width-1-1"
-          style="padding-top: .5em; padding-bottom: .5em">
+          style="padding-top: .5em; padding-bottom: .5em; cursor: default">
           {textIfNoResult}
         </div>
       {/if}

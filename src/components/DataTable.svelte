@@ -267,7 +267,7 @@
         <tr>
           <td
             colspan={columns.length}
-            style="font-style: italic; text-align: center">
+            style="font-style: italic; text-align: center; cursor: default">
             {noResultText}
           </td>
         </tr>
