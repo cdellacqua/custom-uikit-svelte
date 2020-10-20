@@ -65,7 +65,7 @@
   /**
    * @description Autocomplete setting of the input tag
    * @type {string|undefined} */
-  export let autocomplete = undefined;
+  export let autocomplete = 'off';
   /**
    * @description Autocorrect setting of the input tag
    * @type {string|undefined} */
@@ -174,7 +174,11 @@
 
 
   let everFocused = false;
-  function updateState() {
+  function handleBlur() {
+    if (options.length === 0 && value !== undefined) {
+      value = undefined;
+      dispatch('change', null);
+    }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
     } else {
@@ -186,7 +190,7 @@
   }
 
   onMount(() => {
-    updateState();
+    handleBlur();
   });
 
   function handleChangeGenerator(option) {
@@ -195,7 +199,7 @@
         if (value !== option.value) {
           value = option.value;
           query = option.label;
-          updateState();
+          handleBlur();
           dispatch("change", value);
         }
         innerClick = false;
@@ -350,7 +354,7 @@
       {disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions}
-      on:blur={updateState}
+      on:blur={handleBlur}
       on:focus={() => (everFocused = true, state = 'initial')} />
     {#if loading && showSuggested}
       <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
@@ -364,7 +368,7 @@
         on:click={() => {
           value = undefined;
           query = '';
-          updateState();
+          handleBlur();
           dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}

@@ -60,7 +60,7 @@
   /**
    * @description Autocomplete setting of the input tag
    * @type {string|undefined} */
-  export let autocomplete = undefined;
+  export let autocomplete = 'off';
   /**
    * @description Autocorrect setting of the input tag
    * @type {string|undefined} */
@@ -106,7 +106,11 @@
   }
 
   let everFocused = false;
-  function updateState() {
+  function handleBlur() {
+    if (filteredOptions.length === 0 && value !== undefined) {
+      value = undefined;
+      dispatch('change', null);
+    }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
     } else {
@@ -118,7 +122,7 @@
   }
 
   onMount(() => {
-    updateState();
+    handleBlur();
   });
 
   function handleChangeGenerator(option) {
@@ -126,7 +130,7 @@
       if (this.checked) {
         if (value !== option.value) {
           value = option.value;
-          updateState();
+          handleBlur();
           dispatch('change', value);
         }
         innerClick = false;
@@ -279,7 +283,7 @@
       {disabled}
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions}
-      on:blur={updateState}
+      on:blur={handleBlur}
       on:focus={() => (everFocused = true, state = 'initial')}
     />
     {#if value !== undefined}
@@ -291,7 +295,7 @@
         uk-icon="icon: close"
         on:click={() => {
           value = undefined;
-          updateState();
+          handleBlur();
           dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
