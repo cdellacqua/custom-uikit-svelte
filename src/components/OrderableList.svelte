@@ -127,22 +127,23 @@
 				<div class="uk-margin-small-right">
 					<hr class="uk-divider-vertical uk-height-1-1" />
 				</div>
-
-				{#if !component && !item.component}
-					{#if item.html}
-						{@html item.html}
-					{:else if item.text}{item.text}{/if}
-				{:else if item.text}
-					<svelte:component this={item.component || component} {...item.props || {}}>
-						{item.text}
-					</svelte:component>
-				{:else if item.html}
-					<svelte:component this={item.component || component} {...item.props || {}}>
-						{@html item.html}
-					</svelte:component>
-				{:else}
-					<svelte:component this={item.component || component} {...item.props || {}} />
-				{/if}
+				<div class="uk-width-expand">
+					{#if !component && !item.component}
+						{#if item.html}
+							{@html item.html}
+						{:else if item.text}{item.text}{/if}
+					{:else if item.text}
+						<svelte:component this={item.component || component} {...item.props || {}}>
+							{item.text}
+						</svelte:component>
+					{:else if item.html}
+						<svelte:component this={item.component || component} {...item.props || {}}>
+							{@html item.html}
+						</svelte:component>
+					{:else}
+						<svelte:component this={item.component || component} {...item.props || {}} />
+					{/if}
+				</div>
 			</div>
 		</li>
 	{/each}
