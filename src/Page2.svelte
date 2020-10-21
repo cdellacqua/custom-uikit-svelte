@@ -713,28 +713,36 @@ function toggleMountState() &lbrace;
       label: &quot;Link 3&quot;,
     &rbrace;,
   ];
+
+  let mounted = true;
 &lt;/script&gt;
 
-&lt;Offcanvas
-  bind:show=&lbrace;showSidebar&rbrace;
-  on:show=&lbrace;() =&gt; handleOffcanvasEvent('show')&rbrace;
-  on:hide=&lbrace;() =&gt; handleOffcanvasEvent('hide')&rbrace;
-  on:shown=&lbrace;() =&gt; handleOffcanvasEvent('shown')&rbrace;
-  on:hidden=&lbrace;() =&gt; handleOffcanvasEvent('hidden')&rbrace;
-&gt;
-  &lt;ul class=&quot;uk-nav uk-nav-default sidebar-list&quot;&gt;
-    &lt;li class=&quot;uk-nav-header&quot; /&gt;
-    &lbrace;#each menu as item&rbrace;
-      &lt;li class=&quot;uk-nav-header&quot;&gt;
-        &lt;a
-          href=&lbrace;item.href&rbrace;
-          on:click=&lbrace;() =&gt; (showSidebar = false)&rbrace;&gt;&lbrace;item.label&rbrace;&lt;/a&gt;
-      &lt;/li&gt;
-    &lbrace;/each&rbrace;
-  &lt;/ul&gt;
-&lt;/Offcanvas&gt;
+&lbrace;#if mounted&rbrace;
+  &lt;Offcanvas
+    bind:show=&lbrace;showSidebar&rbrace;
+    on:show=&lbrace;() =&gt; handleOffcanvasEvent('show')&rbrace;
+    on:hide=&lbrace;() =&gt; handleOffcanvasEvent('hide')&rbrace;
+    on:shown=&lbrace;() =&gt; handleOffcanvasEvent('shown')&rbrace;
+    on:hidden=&lbrace;() =&gt; handleOffcanvasEvent('hidden')&rbrace;&gt;
+    &lt;ul class=&quot;uk-nav uk-nav-default sidebar-list&quot;&gt;
+      &lt;li class=&quot;uk-nav-header&quot; /&gt;
+      &lbrace;#each menu as item&rbrace;
+        &lt;li class=&quot;uk-nav-header&quot;&gt;
+          &lt;a
+            href=&lbrace;item.href&rbrace;
+            on:click=&lbrace;() =&gt; (showSidebar = false)&rbrace;&gt;&lbrace;item.label&rbrace;&lt;/a&gt;
+        &lt;/li&gt;
+      &lbrace;/each&rbrace;
+      &lt;!-- svelte-ignore a11y-missing-attribute --&gt;
+      &lt;li&gt;&lt;a role=&quot;button&quot; on:click=&lbrace;() =&gt; (mounted = false)&rbrace;&gt;Unmount&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/Offcanvas&gt;
+&lbrace;/if&rbrace;
 &lt;Button on:click=&lbrace;() =&gt; (showSidebar = !showSidebar)&rbrace; disabled=&lbrace;showSidebar&rbrace;&gt;
   Show offcanvas
+&lt;/Button&gt;
+&lt;Button on:click=&lbrace;() =&gt; (mounted = true)&rbrace; disabled=&lbrace;mounted&rbrace;&gt;
+  Mount offcanvas
 &lt;/Button&gt;
 &lt;div&gt;
   &lbrace;@html status.join('&lt;br /&gt;')&rbrace;
