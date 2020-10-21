@@ -163,6 +163,7 @@
 
   function showSuggestedOptions(e) {
     showSuggested = true;
+    hideOnBlur = true;
   }
 
   function hideSuggested() {
@@ -173,6 +174,7 @@
   }
 
 
+  let hideOnBlur = true;
   let everFocused = false;
   function handleBlur() {
     if (options.length === 0 && value !== undefined) {
@@ -187,6 +189,10 @@
     if (everFocused) {
       state = searchRef.checkValidity() ? 'valid' : 'invalid';
     }
+    if (hideOnBlur) {
+      showSuggested = false;
+    }
+    hideOnBlur = true;
   }
 
   onMount(() => {
@@ -315,6 +321,7 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+    display: none;
   }
 
   .outline {
@@ -325,7 +332,7 @@
   }
 </style>
 
-<svelte:body on:click={hideSuggested} />
+<svelte:body on:click={hideSuggested} on:touchstart={() => hideOnBlur = false} on:mousedown={() => hideOnBlur = false} />
 <div
   bind:this={ref}
   {style}
