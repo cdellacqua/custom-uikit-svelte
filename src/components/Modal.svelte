@@ -1,6 +1,7 @@
 <script>
   import UIkit from "uikit";
   import { createEventDispatcher, onDestroy } from "svelte";
+import { dispatchNativeEvent } from "../helpers/events";
 
   /** @type {string|undefined} */
   export let id = undefined;
@@ -36,14 +37,20 @@
         UIkit.modal(ref).show();
       } else if (!show && ref.classList.contains('uk-open')) {
         UIkit.modal(ref).hide();
+        if (document.querySelectorAll('.uk-modal.uk-open').length <= 1) {
+          document.documentElement.classList.remove('uk-modal-page');
+        }
       }
     }
     externalAssignment = true;
   }
 
   onDestroy(() => {
-    if (show && document.querySelectorAll('.uk-modal.uk-open').length === 1) {
-      document.documentElement.classList.remove('uk-modal-page');
+    if (show) {
+      dispatchNativeEvent(ref, 'hide');
+    }
+    if (shown) {
+      dispatchNativeEvent(ref, 'hidden');
     }
   });
 

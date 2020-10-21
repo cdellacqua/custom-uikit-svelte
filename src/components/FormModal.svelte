@@ -69,8 +69,11 @@
   }
 
   onDestroy(() => {
-    if (show && document.querySelectorAll('.uk-modal.uk-open').length === 1) {
-      document.documentElement.classList.remove('uk-modal-page');
+    if (show) {
+      dispatchNativeEvent(ref, 'hide');
+    }
+    if (shown) {
+      dispatchNativeEvent(ref, 'hidden');
     }
   });
 
@@ -114,7 +117,7 @@
   uk-modal={`esc-close: ${closeable}; bg-close: ${closeable}; stack: ${stack}`}
   class:uk-flex-top={verticallyCentered}>
   <Form
-  submitAsync={async () => {
+    submitAsync={async () => {
       try {
         await formSubmitAsync();
       } finally {

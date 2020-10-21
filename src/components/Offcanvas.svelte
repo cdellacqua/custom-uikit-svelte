@@ -2,6 +2,7 @@
   import UIkit from "uikit";
   import { generateId } from "../services/html";
   import { onDestroy } from "svelte";
+import { dispatchNativeEvent } from "../helpers/events";
 
   /** @type {string} */
   export let id = generateId();
@@ -37,8 +38,11 @@
   }
 
   onDestroy(() => {
-    if (show && document.querySelectorAll('.uk-offcanvas.uk-open').length === 1) {
-      document.documentElement.classList.remove('uk-offcanvas-page');
+    if (show) {
+      dispatchNativeEvent(ref, 'hide');
+    }
+    if (shown) {
+      dispatchNativeEvent(ref, 'hidden');
     }
   });
 
