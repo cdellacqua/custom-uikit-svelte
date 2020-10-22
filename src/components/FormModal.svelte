@@ -2,6 +2,7 @@
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import Form from "./Form.svelte";
   import UIkit from "uikit";
+import { dispatchNativeEvent } from "../helpers/events";
 
   /** @type {string|undefined} */
   export let id = undefined;
