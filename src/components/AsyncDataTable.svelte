@@ -37,6 +37,8 @@
   export let style = undefined;
   /** @type {'divider'|'striped'} */
   export let appearance = "divider";
+  /** @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
+  export let searchButtonVariant = 'default';
   /** @type {boolean} */
   export let stickyHeader = false;
   /** @type {string} */
@@ -258,7 +260,7 @@
       }
       searchInput.blur();
     }}
-    class="uk-flex uk-width-1-1">
+    class="uk-flex uk-width-1-1 custom-uk-data-table-form">
     {#if instantSearch}
       <SearchInput
         className="uk-width-expand"
@@ -282,12 +284,13 @@
       type="search"
       icon="search"
       on:click={() => reload()}
+      variant={searchButtonVariant}
       className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom" />
   </form>
 {/if}
 <svelte:window on:resize={() => updateLoaderTop()} />
 <div style="position: relative">
-  <div class:table-hscroll-wrapper={horizontalScroll}>
+  <div class:table-hscroll-wrapper={horizontalScroll} class="custom-uk-data-table-table-wrapper">
     <table
       class:uk-margin-remove={true}
       bind:this={ref}

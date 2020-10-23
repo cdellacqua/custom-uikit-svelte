@@ -468,6 +468,12 @@ import Select from '../components/form/Select.svelte';
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>searchButtonVariant</td>
+					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>stickyHeader</td>
 					<td>boolean</td>
 					<td>-</td>
@@ -1073,6 +1079,12 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>appearance</td>
 					<td>'divider'|'striped'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>searchButtonVariant</td>
+					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

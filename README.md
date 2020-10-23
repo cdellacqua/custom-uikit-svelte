@@ -124,6 +124,7 @@ Useful to display content such as blog entries or articles
 |className|undefined\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |appearance|'divider'\|'striped'|-||
+|searchButtonVariant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|-||
 |stickyHeader|boolean|-||
 |placeholder|string|-||
 |noResultText|string\|undefined|-||
@@ -289,6 +290,7 @@ The card component allows you to create nice box layouts
 |className|undefined\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |appearance|'divider'\|'striped'|-||
+|searchButtonVariant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'|-||
 |stickyHeader|boolean|-||
 |placeholder|string|-||
 |noResultText|string\|undefined|-||
