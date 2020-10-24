@@ -177,7 +177,7 @@
   let hideOnBlur = true;
   let everFocused = false;
   function handleBlur() {
-    if (options.length === 0 && value !== undefined) {
+    if (everFocused && options.length === 0 && value !== undefined) {
       value = undefined;
       dispatchCustomEvent(searchRef, 'change', null);
       dispatch('change', null);

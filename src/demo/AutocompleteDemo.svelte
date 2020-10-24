@@ -21,4 +21,4 @@
   ];
 </script>
 
-<Autocomplete {options} label={'Search a fruit'} placeholder={'Banana'} textIfNoResult={'No match'} />
+<Autocomplete value="strawberry" {options} label={'Search a fruit'} placeholder={'Banana'} textIfNoResult={'No match'} on:change={(e) => console.log(e)} />
