@@ -644,7 +644,7 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 &lt;/script&gt;
 
 &lt;div on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;&gt;
-&lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; /&gt;
+&lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
 &lt;/div&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
@@ -823,7 +823,7 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
   ];
 &lt;/script&gt;
 
-&lt;Autocomplete &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; /&gt;
+&lt;Autocomplete value=&quot;strawberry&quot; &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
 </pre></li>
 		</Switcher>
 		<h3>Props</h3>
