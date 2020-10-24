@@ -5,6 +5,7 @@
 	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
 	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
+	import BadgeDemo from './demo/BadgeDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
@@ -579,6 +580,19 @@ import Select from '../components/form/Select.svelte';
 		</table>
 		<h2 class="uk-heading-divider">Badge</h2>
 		<p>This component can be used as a notification badge or as a general purpose chip</p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<BadgeDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Badge &rbrace; from &quot;../main&quot;;
+&lt;/script&gt;
+
+&lt;Badge on:click=&lbrace;() =&gt; alert('clicked')&rbrace;&gt;I'm clickable&lt;/Badge&gt;
+</pre></li>
+		</Switcher>
 		<h3>Slots</h3>
 		<table class="uk-table">
 			<thead>

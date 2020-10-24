@@ -5,6 +5,7 @@
 	import AsyncAutocompleteDemo from './demo/AsyncAutocompleteDemo.svelte';
 	import AsyncDataTableDemo from './demo/AsyncDataTableDemo.svelte';
 	import AutocompleteDemo from './demo/AutocompleteDemo.svelte';
+	import BadgeDemo from './demo/BadgeDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
