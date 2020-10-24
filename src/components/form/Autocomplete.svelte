@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher, onMount, tick } from "svelte";
-  import { dispatchNativeEvent } from "../../helpers/events";
+  import { dispatchCustomEvent, dispatchNativeEvent } from "../../helpers/events";
   import { generateId } from "../../services/html";
   import { fly } from "svelte/transition";
   import { filterAndSort } from '../../helpers/filter-sort';
@@ -111,7 +111,7 @@
   function handleBlur() {
     if (filteredOptions.length === 0 && value !== undefined) {
       value = undefined;
-      dispatch('change', null);
+      dispatchCustomEvent(searchRef, 'change', null);
     }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
@@ -137,7 +137,7 @@
         if (value !== option.value) {
           value = option.value;
           handleBlur();
-          dispatch('change', value);
+          dispatchCustomEvent(searchRef, 'change', value);
         }
         innerClick = false;
         hideSuggested();
@@ -305,7 +305,7 @@
         on:click={() => {
           value = undefined;
           handleBlur();
-          dispatch('change', null);
+          dispatchCustomEvent(searchRef, 'change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
   </div>

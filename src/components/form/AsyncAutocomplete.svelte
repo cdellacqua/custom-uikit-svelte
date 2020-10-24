@@ -11,7 +11,7 @@
   import { sleep } from "../../helpers/time";
   import { tick, createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
-  import { dispatchNativeEvent } from "../../helpers/events";
+  import { dispatchCustomEvent, dispatchNativeEvent } from "../../helpers/events";
   import Loader from "../Loader.svelte";
 
   /** @type {string} */
@@ -179,7 +179,7 @@
   function handleBlur() {
     if (options.length === 0 && value !== undefined) {
       value = undefined;
-      dispatch('change', null);
+      dispatchCustomEvent(searchRef, 'change', null);
     }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
@@ -206,7 +206,7 @@
           value = option.value;
           query = option.label;
           handleBlur();
-          dispatch("change", value);
+          dispatchCustomEvent(searchRef, 'change', value);
         }
         innerClick = false;
         hideSuggested();
@@ -378,7 +378,7 @@
           value = undefined;
           query = '';
           handleBlur();
-          dispatch('change', null);
+          dispatchCustomEvent(searchRef, 'change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
   </div>
