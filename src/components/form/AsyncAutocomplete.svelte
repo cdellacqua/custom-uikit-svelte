@@ -180,6 +180,7 @@
     if (options.length === 0 && value !== undefined) {
       value = undefined;
       dispatchCustomEvent(searchRef, 'change', null);
+      dispatch('change', null);
     }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
@@ -207,6 +208,7 @@
           query = option.label;
           handleBlur();
           dispatchCustomEvent(searchRef, 'change', value);
+          dispatch('change', value);
         }
         innerClick = false;
         hideSuggested();
@@ -379,6 +381,7 @@
           query = '';
           handleBlur();
           dispatchCustomEvent(searchRef, 'change', null);
+          dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
   </div>

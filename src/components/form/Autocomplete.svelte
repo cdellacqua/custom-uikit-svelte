@@ -112,6 +112,7 @@
     if (filteredOptions.length === 0 && value !== undefined) {
       value = undefined;
       dispatchCustomEvent(searchRef, 'change', null);
+      dispatch('change', null);
     }
     if (!optional && value === undefined) {
       searchRef.setCustomValidity(textIfInvalid || 'Field is required');
@@ -138,6 +139,7 @@
           value = option.value;
           handleBlur();
           dispatchCustomEvent(searchRef, 'change', value);
+          dispatch('change', value);
         }
         innerClick = false;
         hideSuggested();
@@ -306,6 +308,7 @@
           value = undefined;
           handleBlur();
           dispatchCustomEvent(searchRef, 'change', null);
+          dispatch('change', null);
         }}>&ZeroWidthSpace;</a>
     {/if}
   </div>
