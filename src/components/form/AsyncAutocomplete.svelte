@@ -173,6 +173,20 @@
     innerClick = false;
   }
 
+  function updateValidity(value) {
+    if (searchRef) {
+      if (!optional && value === undefined) {
+        searchRef.setCustomValidity(textIfInvalid || "Field is required");
+      } else {
+        searchRef.setCustomValidity("");
+      }
+    }
+  }
+
+  $: {
+    outlineOptionIndex = 0;
+    updateValidity(value);
+  }
 
   let hideOnBlur = true;
   let everFocused = false;
@@ -182,11 +196,7 @@
       dispatchCustomEvent(searchRef, 'change', null);
       dispatch('change', null);
     }
-    if (!optional && value === undefined) {
-      searchRef.setCustomValidity(textIfInvalid || 'Field is required');
-    } else {
-      searchRef.setCustomValidity('');
-    }
+    updateValidity(value);
     if (everFocused) {
       state = searchRef.checkValidity() ? 'valid' : 'invalid';
     }

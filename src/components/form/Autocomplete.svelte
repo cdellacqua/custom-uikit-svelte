@@ -1,9 +1,12 @@
 <script>
   import { createEventDispatcher, onMount, tick } from "svelte";
-  import { dispatchCustomEvent, dispatchNativeEvent } from "../../helpers/events";
+  import {
+    dispatchCustomEvent,
+    dispatchNativeEvent,
+  } from "../../helpers/events";
   import { generateId } from "../../services/html";
   import { fly } from "svelte/transition";
-  import { filterAndSort } from '../../helpers/filter-sort';
+  import { filterAndSort } from "../../helpers/filter-sort";
 
   /** @type {string} */
   export let id = generateId();
@@ -60,7 +63,7 @@
   /**
    * @description Autocomplete setting of the input tag
    * @type {string|undefined} */
-  export let autocomplete = 'off';
+  export let autocomplete = "off";
   /**
    * @description Autocorrect setting of the input tag
    * @type {string|undefined} */
@@ -92,18 +95,35 @@
   }
 
   let filteredOptions = [];
-  $: {    
-    filteredOptions = filterAndSort(query.toLowerCase(), options, (o) => o.label.toLowerCase());
+  $: {
+    filteredOptions = filterAndSort(query.toLowerCase(), options, (o) =>
+      o.label.toLowerCase()
+    );
     outlineOptionIndex = 0;
   }
 
-  $: {
+  function updateValidity(value) {
+    if (searchRef) {
+      if (!optional && value === undefined) {
+        searchRef.setCustomValidity(textIfInvalid || "Field is required");
+      } else {
+        searchRef.setCustomValidity("");
+      }
+    }
+  }
+
+  function updateQuery(value) {
     if (value !== undefined) {
       query = options.find((o) => o.value === value).label;
     } else {
       query = "";
     }
+  }
+
+  $: {
+    updateQuery(value);
     outlineOptionIndex = 0;
+    updateValidity(value);
   }
 
   let hideOnBlur = true;
@@ -111,16 +131,12 @@
   function handleBlur() {
     if (everFocused && filteredOptions.length === 0 && value !== undefined) {
       value = undefined;
-      dispatchCustomEvent(searchRef, 'change', null);
-      dispatch('change', null);
+      dispatchCustomEvent(searchRef, "change", null);
+      dispatch("change", null);
     }
-    if (!optional && value === undefined) {
-      searchRef.setCustomValidity(textIfInvalid || 'Field is required');
-    } else {
-      searchRef.setCustomValidity('');
-    }
+    updateValidity(value);
     if (everFocused) {
-      state = searchRef.checkValidity() ? 'valid' : 'invalid';
+      state = searchRef.checkValidity() ? "valid" : "invalid";
     }
     if (hideOnBlur) {
       showSuggested = false;
@@ -138,8 +154,8 @@
         if (value !== option.value) {
           value = option.value;
           handleBlur();
-          dispatchCustomEvent(searchRef, 'change', value);
-          dispatch('change', value);
+          dispatchCustomEvent(searchRef, "change", value);
+          dispatch("change", value);
         }
         innerClick = false;
         hideSuggested();
@@ -263,7 +279,10 @@
   }
 </style>
 
-<svelte:body on:click={hideSuggested} on:touchstart={() => hideOnBlur = false} on:mousedown={() => hideOnBlur = false} />
+<svelte:body
+  on:click={hideSuggested}
+  on:touchstart={() => (hideOnBlur = false)}
+  on:mousedown={() => (hideOnBlur = false)} />
 <div
   bind:this={ref}
   {style}
@@ -295,8 +314,7 @@
       on:focus={showSuggestedOptions}
       on:click={showSuggestedOptions}
       on:blur={handleBlur}
-      on:focus={() => (everFocused = true, state = 'initial')}
-    />
+      on:focus={() => ((everFocused = true), (state = 'initial'))} />
     {#if value !== undefined}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
