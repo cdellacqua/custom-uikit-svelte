@@ -374,7 +374,7 @@ Create an already styled description list, perfect for describing key-value prop
 |submitAsync|SubmitCallback|-||
 |disabled|boolean|-||
 |state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
-|valid|boolean|-||
+|valid|boolean|-|Indicates the validity of this form. Its value is updated using formRef.checkValdity(), that gets called each time an element inside this form triggers a bubbling 'change' event|
 |ref|HTMLFormElement|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |className|string\|undefined|-||

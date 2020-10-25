@@ -157,7 +157,8 @@
 					<td>valid</td>
 					<td>boolean</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>Indicates the validity of this form. Its value is updated using formRef.checkValdity(), that gets called
+each time an element inside this form triggers a bubbling 'change' event</td>
 				</tr>
 				<tr>
 					<td>ref</td>
