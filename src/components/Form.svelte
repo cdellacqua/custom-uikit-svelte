@@ -14,7 +14,10 @@
   export let disabled = false;
   /** @type {'initial'|'invalid'|'valid'|'loading'|'error'|'success'} */
   export let state = "initial";
-  /** @type {boolean} */
+  /**
+   * @description Indicates the validity of this form. Its value is updated using formRef.checkValdity(), that gets called
+   * each time an element inside this form triggers a bubbling 'change' event
+   * @type {boolean} @readonly */
   export let valid = true;
   /** @type {HTMLFormElement} */
   export let ref = undefined;
@@ -82,7 +85,7 @@
   class:uk-form-stacked={variant === 'stacked'}
   bind:this={ref}
   on:change={() => (valid = ref.checkValidity())}
-  on:submit|preventDefault={valid ? handleSubmit : noop}
+  on:submit|preventDefault={handleSubmit}
   class:disabled={state === 'loading' || disabled}>
   <slot />
 </form>
