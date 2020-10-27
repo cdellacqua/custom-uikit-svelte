@@ -11,13 +11,21 @@
    */
 
   /**
+   * @callback SearchCallback
+   * @param query
+   * @param columnValue
+   * @param row
+   * @return {boolean}
+   */
+
+  /**
    * @callback Renderer
    * @param value
    * @param row
    * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function, textContent: string|undefined}}
    */
 
-  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
+  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|SearchCallback|undefined, render: Renderer|undefined}>} */
   export let columns = [];
   /** @type {Array<Record<string, any>>} */
   export let rows = [];
@@ -69,6 +77,9 @@
       columns.some((col) => {
         if (col.searchable === false) {
           return query.length === 0;
+        }
+        if (typeof col.searchable === "function") {
+          return col.searchable(query, row[col.key], row);
         }
         if (!col.render) {
           return String(row[col.key])

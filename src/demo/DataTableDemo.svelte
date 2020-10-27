@@ -26,7 +26,10 @@
 		},
 		{
 			label: 'Column 2',
-			key: 'column2',
+      key: 'column2',
+      searchable: (query, col, row) => {
+        return [row.column1.toLocaleString(), col].join(' ').toLowerCase().includes(query.toLowerCase());
+      }
 		},
 		{
 			label: 'Nullable numeric value',
