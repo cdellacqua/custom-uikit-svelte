@@ -151,6 +151,9 @@
   function handleChangeGenerator(option) {
     return function () {
       if (this.checked) {
+        if (query !== option.label) {
+          query = option.label;
+        }
         if (value !== option.value) {
           value = option.value;
           handleBlur();
@@ -240,6 +243,9 @@
           dispatchNativeEvent(input, "change");
           break;
       }
+    } else if (e.key === 'Enter' && filteredOptions.length === 0) {
+      hideOnBlur = false;
+      handleBlur();
     }
   }
 </script>
@@ -322,6 +328,16 @@
         tabindex="0"
         class="uk-form-icon uk-form-icon-flip"
         uk-icon="icon: close"
+        on:keydown={(e) => {
+          if (e.key === 'Enter') {
+            value = undefined;
+            query = '';
+            handleBlur();
+            dispatchCustomEvent(searchRef, 'change', null);
+            dispatch('change', null);
+            searchRef.focus();
+          }
+        }}
         on:click={() => {
           value = undefined;
           handleBlur();

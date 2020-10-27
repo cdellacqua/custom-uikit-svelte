@@ -1,5 +1,5 @@
 <script>
-  import { Autocomplete } from "../main";
+  import { Autocomplete, Form } from "../main";
 
   const options = [
     {
@@ -19,6 +19,9 @@
       value: 'strawberry'
     },
   ];
+  let value = "strawberry";
 </script>
 
-<Autocomplete value="strawberry" {options} label={'Search a fruit'} placeholder={'Banana'} textIfNoResult={'No match'} on:change={(e) => console.log(e)} />
+<Form submitAsync={() => alert(value)}>
+  <Autocomplete bind:value {options} label={'Search a fruit'} placeholder={'Banana'} textIfNoResult={'No match'} on:change={(e) => console.log(e)} />
+</Form>
