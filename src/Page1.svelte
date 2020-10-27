@@ -1009,7 +1009,10 @@ current page and its href property will be ignored</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column2',
+      key: 'column2',
+      searchable: (query, col, row) =&gt; &lbrace;
+        return [row.column1.toLocaleString(), col].join(' ').toLowerCase().includes(query.toLowerCase());
+      &rbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Nullable numeric value',
@@ -1062,7 +1065,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>columns</td>
-					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|Comparator|undefined), searchable: (boolean|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|Comparator|undefined), searchable: (boolean|SearchCallback|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

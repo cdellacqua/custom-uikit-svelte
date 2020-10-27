@@ -284,7 +284,7 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|SearchCallback\|undefined), render: (Renderer\|undefined)}>|-||
 |rows|Array.<Record.<string, any>>|-||
 |size|undefined\|'small'|-||
 |className|undefined\|string|-||
