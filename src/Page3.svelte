@@ -614,38 +614,52 @@ let items = [&lbrace;
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&quot;;
+  import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&quot;;
 
-  import &lbrace; Autocomplete &rbrace; from &quot;../main&quot;;
+  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
 
   const options = [
     &lbrace;
-      label: 'Ananas',
-      value: 1
+      label: &quot;Ananas&quot;,
+      value: 1,
     &rbrace;,
     &lbrace;
-      label: 'Banana',
-      value: &lbrace; kg: '3.14' &rbrace;
+      label: &quot;Banana&quot;,
+      value: &lbrace; kg: &quot;3.14&quot; &rbrace;,
     &rbrace;,
     &lbrace;
-      label: 'Bananana',
-      value: &lbrace; kg: '6.28' &rbrace;
+      label: &quot;Bananana&quot;,
+      value: &lbrace; kg: &quot;6.28&quot; &rbrace;,
     &rbrace;,
     &lbrace;
-      label: 'Strawberry',
-      value: 'strawberry'
+      label: &quot;Strawberry&quot;,
+      value: &quot;strawberry&quot;,
     &rbrace;,
   ];
 
   async function dataProvider(query) &lbrace;
-    await new Promise(res =&gt; setTimeout(res, 200));
-    return options.filter((o) =&gt; o.label.toLowerCase().includes(query.toLowerCase()));
+    await new Promise((res) =&gt; setTimeout(res, 200));
+    return options.filter((o) =&gt;
+      o.label.toLowerCase().includes(query.toLowerCase())
+    );
   &rbrace;
+
+  let value = 1;
 &lt;/script&gt;
 
 &lt;div on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;&gt;
-&lt;AsyncAutocomplete value=&lbrace;1&rbrace; query=&lbrace;'na'&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; &lbrace;dataProvider&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
-&lt;/div&gt;</pre></li>
+  &lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
+    &lt;AsyncAutocomplete
+      bind:value
+      query=&lbrace;'na'&rbrace;
+      label=&lbrace;'Search a fruit'&rbrace;
+      placeholder=&lbrace;'Banana'&rbrace;
+      textIfNoResult=&lbrace;'No match'&rbrace;
+      &lbrace;dataProvider&rbrace;
+      on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
+  &lt;/Form&gt;
+&lt;/div&gt;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -801,7 +815,7 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Autocomplete &rbrace; from &quot;../main&quot;;
+  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
 
   const options = [
     &lbrace;
@@ -821,10 +835,12 @@ import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&
       value: 'strawberry'
     &rbrace;,
   ];
+  let value = &quot;strawberry&quot;;
 &lt;/script&gt;
 
-&lt;Autocomplete value=&quot;strawberry&quot; &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
-</pre></li>
+&lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
+  &lt;Autocomplete bind:value &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
+&lt;/Form&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
