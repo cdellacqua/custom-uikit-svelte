@@ -15,9 +15,9 @@
    * @type {Array<{label: string, value: any}>} */
   export let options = [];
   /**
-   * The current selected value or undefined if no value is selected
+   * The current selected value or null if no value is selected
    * @type {any} */
-  export let value = undefined;
+  export let value = null;
   /**
    * Label of this component
    * @type {string} */
@@ -104,7 +104,7 @@
 
   function updateValidity(value) {
     if (searchRef) {
-      if (!optional && value === undefined) {
+      if (!optional && (value === null || value === undefined)) {
         searchRef.setCustomValidity(textIfInvalid || "Field is required");
       } else {
         searchRef.setCustomValidity("");
@@ -113,7 +113,7 @@
   }
 
   function updateQuery(value) {
-    if (value !== undefined) {
+    if (value !== null && value !== undefined) {
       query = options.find((o) => o.value === value).label;
     } else {
       query = "";
@@ -129,8 +129,8 @@
   let hideOnBlur = true;
   let everFocused = false;
   function handleBlur() {
-    if (everFocused && filteredOptions.length === 0 && value !== undefined) {
-      value = undefined;
+    if (everFocused && filteredOptions.length === 0 && value !== null && value !== undefined) {
+      value = null;
       dispatchCustomEvent(searchRef, "change", null);
       dispatch("change", null);
     }
@@ -321,7 +321,7 @@
       on:click={showSuggestedOptions}
       on:blur={handleBlur}
       on:focus={() => ((everFocused = true), (state = 'initial'))} />
-    {#if value !== undefined}
+    {#if value !== null && value !== undefined}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         role="button"
@@ -330,7 +330,8 @@
         uk-icon="icon: close"
         on:keydown={(e) => {
           if (e.key === 'Enter') {
-            value = undefined;
+            e.preventDefault();
+            value = null;
             query = '';
             handleBlur();
             dispatchCustomEvent(searchRef, 'change', null);
@@ -339,7 +340,7 @@
           }
         }}
         on:click={() => {
-          value = undefined;
+          value = null;
           handleBlur();
           dispatchCustomEvent(searchRef, 'change', null);
           dispatch('change', null);
