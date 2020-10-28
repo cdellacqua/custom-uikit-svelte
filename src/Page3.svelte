@@ -682,7 +682,7 @@ let items = [&lbrace;
 					<td>value</td>
 					<td>any</td>
 					<td>-</td>
-					<td>The current selected value or undefined if no value is selected</td>
+					<td>The current selected value or null if no value is selected</td>
 				</tr>
 				<tr>
 					<td>label</td>
@@ -869,7 +869,7 @@ let items = [&lbrace;
 					<td>value</td>
 					<td>any</td>
 					<td>-</td>
-					<td>The current selected value or undefined if no value is selected</td>
+					<td>The current selected value or null if no value is selected</td>
 				</tr>
 				<tr>
 					<td>label</td>

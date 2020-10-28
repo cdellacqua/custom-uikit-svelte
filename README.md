@@ -668,7 +668,7 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |id|string|-||
-|value|any|-|The current selected value or undefined if no value is selected|
+|value|any|-|The current selected value or null if no value is selected|
 |label|string|-|Label of this component|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -703,7 +703,7 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |id|string|-||
 |options|Array.<{label: string, value: any}>|-|Autocomplete options, the value must be unique|
-|value|any|-|The current selected value or undefined if no value is selected|
+|value|any|-|The current selected value or null if no value is selected|
 |label|string|-|Label of this component|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
