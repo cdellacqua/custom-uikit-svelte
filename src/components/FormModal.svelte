@@ -123,7 +123,7 @@ import { dispatchNativeEvent } from "../helpers/events";
         await formSubmitAsync();
       } finally {
         if (show === false) {
-          if (ref.classList.contains('uk-open')) {
+          if (ref && ref.classList.contains('uk-open')) {
             forceHide = true;
             UIkit.modal(ref).hide();
             forceHide = false;
