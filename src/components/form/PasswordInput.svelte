@@ -40,6 +40,10 @@
   export let autocorrect = undefined;
   /** @type {string|undefined} */
   export let spellcheck = undefined;
+  /** @type {number|undefined} */
+  export let minlength = undefined;
+  /** @type {string|undefined} */
+  export let maxlength = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -56,6 +60,8 @@
   {helperText}
   {optional}>
   <input
+    {minlength}
+    {maxlength}
     {autocapitalize}
     {autocomplete}
     {autocorrect}

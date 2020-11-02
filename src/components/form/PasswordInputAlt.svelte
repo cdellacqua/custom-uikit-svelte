@@ -40,6 +40,10 @@
   export let autocorrect = "off";
   /** @type {string|undefined} @default "off" */
   export let spellcheck = "off";
+  /** @type {number|undefined} */
+  export let minlength = undefined;
+  /** @type {string|undefined} */
+  export let maxlength = undefined;
 
   let refPassword;
   let refText;
@@ -50,6 +54,17 @@
 
   export let show = false;
 </script>
+
+<style>
+  .uk-form-icon.right {
+    right: 0;
+    left: auto;
+  }
+
+  .paddingRight {
+    padding-right: 4ch !important;
+  }
+</style>
 
 <Field
   hasIcon={true}
@@ -64,6 +79,9 @@
   {optional}>
   {#if !show}
     <input
+      class:paddingRight={true}
+      {minlength}
+      {maxlength}
       {autocapitalize}
       {autocomplete}
       {autocorrect}
@@ -87,6 +105,9 @@
       on:focus={() => (state = 'initial')} />
   {:else}
     <input
+      class:paddingRight={true}
+      {minlength}
+      {maxlength}
       {autocapitalize}
       {autocomplete}
       {autocorrect}
@@ -110,5 +131,5 @@
       on:focus={() => (state = 'initial')} />
   {/if}
   <!-- svelte-ignore a11y-missing-attribute -->
-  <a role="button" on:click={() => show = !show} class="uk-form-icon uk-form-icon-flip" uk-icon="icon: {show ? 'unlock' : 'lock'}">&ZeroWidthSpace;</a>
+  <a role="button" on:click={() => show = !show} class="uk-form-icon right" uk-icon="icon: {show ? 'unlock' : 'lock'}">&ZeroWidthSpace;</a>
 </Field>

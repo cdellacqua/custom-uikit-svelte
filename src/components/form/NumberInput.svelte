@@ -62,7 +62,7 @@
   }
 
   .paddingRight {
-    padding-right: 40px !important;
+    padding-right: 4ch !important;
   }
 </style>
 
