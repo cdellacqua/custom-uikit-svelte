@@ -36,6 +36,7 @@ export { default as FixedPointInput } from "./components/form/FixedPointInput.sv
 export { default as MonthPicker } from "./components/form/MonthPicker.svelte";
 export { default as NumberInput } from "./components/form/NumberInput.svelte";
 export { default as PasswordInput } from "./components/form/PasswordInput.svelte";
+export { default as PasswordInputAlt } from "./components/form/PasswordInputAlt.svelte";
 export { default as PercentageInput } from "./components/form/PercentageInput.svelte";
 export { default as Radio } from "./components/form/Radio.svelte";
 export { default as SearchInput } from "./components/form/SearchInput.svelte";

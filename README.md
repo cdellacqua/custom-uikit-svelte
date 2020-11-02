@@ -42,6 +42,7 @@ Components
 - [MonthPicker](#monthpicker)
 - [NumberInput](#numberinput)
 - [PasswordInput](#passwordinput)
+- [PasswordInputAlt](#passwordinputalt)
 - [PercentageInput](#percentageinput)
 - [Radio](#radio)
 - [SearchInput](#searchinput)
@@ -684,6 +685,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
+|spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
 |query|string|-||
@@ -719,6 +721,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-|Autocapitalize setting of the input tag|
 |autocomplete|string\|undefined|-|Autocomplete setting of the input tag|
 |autocorrect|string\|undefined|-|Autocorrect setting of the input tag|
+|spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
 
@@ -775,6 +778,10 @@ Create an already styled description list, perfect for describing key-value prop
 |tooltip|string\|undefined|-||
 |min|string\|undefined|-||
 |max|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -805,6 +812,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-||
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -877,6 +885,10 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -909,6 +921,10 @@ Create an already styled description list, perfect for describing key-value prop
 |tooltip|string\|undefined|-||
 |icon|string\|undefined|-||
 |iconPosition|'left'\|'right'|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -936,6 +952,41 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
+|state|'initial'\|'valid'\|'invalid'|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## PasswordInputAlt
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|id|string|-||
+|label|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|name|string\|undefined|-||
+|textIfInvalid|string\|undefined|-||
+|textIfValid|string\|undefined|-||
+|helperText|string\|undefined|-||
+|placeholder|string|-||
+|optional|boolean|-||
+|value|string|-||
+|ref|HTMLInputElement|-||
+|disabled|boolean|-||
+|tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -950,6 +1001,10 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 
 &nbsp;
 &nbsp;
@@ -1008,6 +1063,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-||
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1065,6 +1121,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-||
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1099,6 +1156,7 @@ Create an already styled description list, perfect for describing key-value prop
 |autocapitalize|string\|undefined|-||
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1127,6 +1185,10 @@ Create an already styled description list, perfect for describing key-value prop
 |rows|number|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1154,6 +1216,10 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1181,4 +1247,8 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|autocapitalize|string\|undefined|-||
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
+|spellcheck|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||

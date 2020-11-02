@@ -13,6 +13,7 @@
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
 	import OrderableListDemo from './demo/OrderableListDemo.svelte';
 	import PaginationDemo from './demo/PaginationDemo.svelte';
+	import PasswordInputAltDemo from './demo/PasswordInputAltDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
