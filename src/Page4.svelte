@@ -1019,25 +1019,25 @@ let password = &quot;hello1234&quot;;
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>state</td>

@@ -983,10 +983,10 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
-|autocapitalize|string\|undefined|-||
-|autocomplete|string\|undefined|-||
-|autocorrect|string\|undefined|-||
-|spellcheck|string\|undefined|-||
+|autocapitalize|string\|undefined|-|@default "off"|
+|autocomplete|string\|undefined|-|@default "off"|
+|autocorrect|string\|undefined|-|@default "off"|
+|spellcheck|string\|undefined|-|@default "off"|
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
