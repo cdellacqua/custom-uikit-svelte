@@ -1,7 +1,13 @@
 <script>
   import Button from "./Button.svelte";
 
-  /** @type {string} */
+  /** 
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+  export let style = undefined;
+  /** @type {string|undefined} */
+  export let className = undefined;
+  /** @type {'click'|'hover'} */
   export let mode = "hover";
   /** @type {string} */
   export let label = "";
@@ -19,6 +25,8 @@
   {:else}{label}{/if}
 </Button>
 <div
+  {style}
+  class={className}
   on:toggle|stopPropagation
   on:beforeshow|stopPropagation
   on:show|stopPropagation
