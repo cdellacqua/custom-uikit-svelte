@@ -896,6 +896,18 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>minlength</td>
+					<td>number|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>maxlength</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
 					<td>-</td>
@@ -1038,6 +1050,18 @@ let password = &quot;hello1234&quot;;
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>@default "off"</td>
+				</tr>
+				<tr>
+					<td>minlength</td>
+					<td>number|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>maxlength</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
