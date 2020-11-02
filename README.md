@@ -984,8 +984,8 @@ Create an already styled description list, perfect for describing key-value prop
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
 |autocapitalize|string\|undefined|-|@default "off"|
-|autocomplete|string\|undefined|-|@default "off"|
-|autocorrect|string\|undefined|-|@default "off"|
+|autocomplete|string\|undefined|-||
+|autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-|@default "off"|
 |state|'initial'\|'valid'\|'invalid'|-||
 

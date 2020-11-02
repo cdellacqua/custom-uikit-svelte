@@ -1025,13 +1025,13 @@ let password = &quot;hello1234&quot;;
 					<td>autocomplete</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>@default "off"</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>@default "off"</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
