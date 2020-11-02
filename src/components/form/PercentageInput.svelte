@@ -20,9 +20,21 @@
   export let disabled = false;
   export let tooltip = undefined;
   export let step = undefined;
+  /** @type {string|undefined} */
+  export let autocapitalize = undefined;
+  /** @type {string|undefined} */
+  export let autocomplete = undefined;
+  /** @type {string|undefined} */
+  export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
 </script>
 
 <NumberInput
+  {autocapitalize}
+  {autocomplete}
+  {autocorrect}
+  {spellcheck}
   {tooltip}
   {disabled}
   {id}

@@ -42,6 +42,14 @@
   export let icon = undefined;
   /** @type {'left'|'right'} */
   export let iconPosition = "left";
+  /** @type {string|undefined} */
+  export let autocapitalize = undefined;
+  /** @type {string|undefined} */
+  export let autocomplete = undefined;
+  /** @type {string|undefined} */
+  export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -59,7 +67,7 @@
 </style>
 
 <Field
-  hasIcon={icon}
+  hasIcon={!!icon}
   inputId={id}
   {label}
   {state}
@@ -73,6 +81,10 @@
     {#if icon}<span class="uk-form-icon" uk-icon="icon: {icon}" />{/if}
   {/if}
   <input
+    {autocapitalize}
+    {autocomplete}
+    {autocorrect}
+    {spellcheck}
     {id}
     {name}
     {min}

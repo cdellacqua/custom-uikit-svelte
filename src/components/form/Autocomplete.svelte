@@ -68,6 +68,8 @@
    * @description Autocorrect setting of the input tag
    * @type {string|undefined} */
   export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
   /**
    * @description In/Out fly animation duration (in milliseconds)
    * @type {number} */
@@ -305,6 +307,7 @@
       {autocapitalize}
       {autocomplete}
       {autocorrect}
+      {spellcheck}
       {placeholder}
       class="uk-input"
       class:uk-form-danger={state === 'invalid'}

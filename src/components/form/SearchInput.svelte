@@ -46,6 +46,8 @@
   export let autocomplete = undefined;
   /** @type {string|undefined} */
   export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -80,6 +82,7 @@
     {autocapitalize}
     {autocomplete}
     {autocorrect}
+    {spellcheck}
     {id}
     {name}
     {disabled}

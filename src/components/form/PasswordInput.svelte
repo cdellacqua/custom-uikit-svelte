@@ -32,6 +32,14 @@
   export let disabled = false;
   /** @type {string|undefined} */
   export let tooltip = undefined;
+  /** @type {string|undefined} */
+  export let autocapitalize = undefined;
+  /** @type {string|undefined} */
+  export let autocomplete = undefined;
+  /** @type {string|undefined} */
+  export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -48,6 +56,10 @@
   {helperText}
   {optional}>
   <input
+    {autocapitalize}
+    {autocomplete}
+    {autocorrect}
+    {spellcheck}
     {id}
     {name}
     bind:this={ref}

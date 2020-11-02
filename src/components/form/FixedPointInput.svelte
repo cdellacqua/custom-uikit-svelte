@@ -206,6 +206,10 @@ import { createEventDispatcher, onMount } from "svelte";
 </script>
 
 <TextInput
+  autocapitalize="off"
+  autocomplete="off"
+  autocorrect="off"
+  spellcheck="false"
   {id}
   {icon}
   {iconPosition}

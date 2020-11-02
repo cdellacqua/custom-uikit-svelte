@@ -36,6 +36,14 @@
   export let min = undefined;
   /** @type {string|undefined} */
   export let max = undefined;
+  /** @type {string|undefined} */
+  export let autocapitalize = undefined;
+  /** @type {string|undefined} */
+  export let autocomplete = undefined;
+  /** @type {string|undefined} */
+  export let autocorrect = undefined;
+  /** @type {string|undefined} */
+  export let spellcheck = undefined;
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -52,6 +60,10 @@
   {helperText}
   {optional}>
   <input
+    {autocapitalize}
+    {autocomplete}
+    {autocorrect}
+    {spellcheck}
     {id}
     {name}
     uk-tooltip={tooltip}
