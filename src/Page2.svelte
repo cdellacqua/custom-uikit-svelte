@@ -91,8 +91,20 @@
 			</thead>
 			<tbody>
 				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>mode</td>
-					<td>string</td>
+					<td>'click'|'hover'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -110,9 +122,9 @@
 				</tr>
 				<tr>
 					<td>variant</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
+					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'|null</td>
+					<td>"default"</td>
+					<td>This property is used to style the button with one of the base uikit classes for button appearance. Setting this to null will hide the button</td>
 				</tr>
 				<tr>
 					<td>ref</td>

@@ -13,17 +13,22 @@
   export let label = "";
   /** @type {boolean} */
   export let isLabelHtml = false;
-  /** @type {string} */
+  /** 
+   * @default "default"
+   * @description This property is used to style the button with one of the base uikit classes for button appearance. Setting this to null will hide the button
+   * @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'|null} */
   export let variant = "default";
   /** @type {HTMLDivElement} */
   export let ref = undefined;
 </script>
 
-<Button type="button" {variant}>
-  {#if isLabelHtml}
-    {@html label}
-  {:else}{label}{/if}
-</Button>
+{#if variant}
+  <Button type="button" {variant}>
+    {#if isLabelHtml}
+      {@html label}
+    {:else}{label}{/if}
+  </Button>
+{/if}
 <div
   {style}
   class={className}

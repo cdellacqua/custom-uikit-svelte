@@ -354,10 +354,12 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|mode|string|-||
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|-||
+|mode|'click'\|'hover'|-||
 |label|string|-||
 |isLabelHtml|boolean|-||
-|variant|string|-||
+|variant|'default'\|'primary'\|'secondary'\|'danger'\|'text'\|'link'\|null|"default"|This property is used to style the button with one of the base uikit classes for button appearance. Setting this to null will hide the button|
 |ref|HTMLDivElement|-||
 
 &nbsp;
