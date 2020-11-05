@@ -6,10 +6,6 @@ export function createNativeEvent(eventName) {
 	return e;
 }
 
-export function dispatchNativeEvent(element, eventName) {
-	element.dispatchEvent(createNativeEvent(eventName));
-}
-
 export function dispatchCustomEvent(element, eventName, detail) {
 	element.dispatchEvent(new CustomEvent(eventName, {
 		bubbles: true,

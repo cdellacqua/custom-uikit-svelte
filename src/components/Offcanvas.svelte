@@ -2,7 +2,7 @@
   import UIkit from "uikit";
   import { generateId } from "../services/html";
   import { onDestroy } from "svelte";
-import { dispatchNativeEvent } from "../helpers/events";
+import { dispatchCustomEvent } from "../helpers/events";
 
   /** @type {string} */
   export let id = generateId();
@@ -39,10 +39,10 @@ import { dispatchNativeEvent } from "../helpers/events";
 
   onDestroy(() => {
     if (show) {
-      dispatchNativeEvent(ref, 'hide');
+      dispatchCustomEvent(ref, 'hide');
     }
     if (shown) {
-      dispatchNativeEvent(ref, 'hidden');
+      dispatchCustomEvent(ref, 'hidden');
     }
   });
 

@@ -2,7 +2,6 @@
   import { createEventDispatcher, onMount, tick } from "svelte";
   import {
     dispatchCustomEvent,
-    dispatchNativeEvent,
   } from "../../helpers/events";
   import { generateId } from "../../services/html";
   import { fly } from "svelte/transition";
@@ -242,7 +241,7 @@
             outlineOptionIndex
           ];
           input.checked = true;
-          dispatchNativeEvent(input, "change");
+          dispatchCustomEvent(input, "change");
           break;
       }
     } else if (e.key === 'Enter' && filteredOptions.length === 0) {

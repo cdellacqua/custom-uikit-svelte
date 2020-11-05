@@ -11,7 +11,7 @@
   import { sleep } from "../../helpers/time";
   import { tick, createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
-  import { dispatchCustomEvent, dispatchNativeEvent } from "../../helpers/events";
+  import { dispatchCustomEvent } from "../../helpers/events";
   import Loader from "../Loader.svelte";
 
   /** @type {string} */
@@ -306,7 +306,7 @@
             outlineOptionIndex
           ];
           input.checked = true;
-          dispatchNativeEvent(input, "change");
+          dispatchCustomEvent(input, "change");
           break;
       }
     } else if (e.key === 'Enter' && options.length === 0) {

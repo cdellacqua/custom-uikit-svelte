@@ -1,7 +1,7 @@
 <script>
   import UIkit from "uikit";
   import { createEventDispatcher, onDestroy } from "svelte";
-import { dispatchNativeEvent } from "../helpers/events";
+import { dispatchCustomEvent } from "../helpers/events";
 
   /** @type {string|undefined} */
   export let id = undefined;
@@ -47,10 +47,10 @@ import { dispatchNativeEvent } from "../helpers/events";
 
   onDestroy(() => {
     if (show) {
-      dispatchNativeEvent(ref, 'hide');
+      dispatchCustomEvent(ref, 'hide');
     }
     if (shown) {
-      dispatchNativeEvent(ref, 'hidden');
+      dispatchCustomEvent(ref, 'hidden');
     }
   });
 
