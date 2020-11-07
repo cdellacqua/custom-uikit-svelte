@@ -1,4 +1,6 @@
 <script>
+import { onDestroy } from "svelte";
+
   import Loader from "./Loader.svelte";
 
   /** @type {string|undefined} */
@@ -24,6 +26,13 @@
       originalWrapperRef.appendChild(ref);
     }
   }
+
+  onDestroy(() => {
+    if (ref.parentElement === document.body) {
+      document.body.removeChild(ref);
+      originalWrapperRef.appendChild(ref);
+    }
+  });
 </script>
 
 <style lang="scss">
