@@ -34,7 +34,7 @@ import { onDestroy } from "svelte";
   }
 
   onDestroy(() => {
-    if (ref.parentElement === document.body) {
+    if (ref && ref.parentElement === document.body) {
       document.body.removeChild(ref);
       originalWrapperRef.appendChild(ref);
     }
