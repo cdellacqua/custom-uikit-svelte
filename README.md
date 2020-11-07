@@ -449,6 +449,9 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLDivElement|-||
 |opacity|number|-||
 |loading|boolean|-||
+|background|'default'\|'muted'\|'primary'\|'secondary'|-||
+|backgroundClassName|string\|undefined|-||
+|backgroundStyle|string\|undefined|-||
 
 &nbsp;
 &nbsp;
@@ -467,6 +470,9 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLDivElement|-||
 |opacity|number|-||
 |loading|boolean|-||
+|background|'default'\|'muted'\|'primary'\|'secondary'|-||
+|backgroundClassName|string\|undefined|-||
+|backgroundStyle|string\|undefined|-||
 
 &nbsp;
 &nbsp;

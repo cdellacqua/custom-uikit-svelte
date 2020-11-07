@@ -466,6 +466,24 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>background</td>
+					<td>'default'|'muted'|'primary'|'secondary'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>backgroundClassName</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>backgroundStyle</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">LoaderOverlayScoped</h2>
@@ -514,6 +532,24 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>background</td>
+					<td>'default'|'muted'|'primary'|'secondary'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>backgroundClassName</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>backgroundStyle</td>
+					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
