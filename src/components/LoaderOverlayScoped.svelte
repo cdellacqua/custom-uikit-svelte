@@ -13,6 +13,12 @@
   export let opacity = 0.8;
   /** @type {boolean} */
   export let loading = true;
+  /** @type {'default'|'muted'|'primary'|'secondary'} */
+  export let background = 'default';
+  /** @type {string|undefined} */
+  export let backgroundClassName = undefined;
+  /** @type {string|undefined} */
+  export let backgroundStyle = undefined;
 </script>
 
 <style lang="scss">
@@ -39,7 +45,14 @@
     bind:this={ref}
     {className}
     {style}>
-    <div class="uk-background-muted" style="opacity: {opacity}"></div>
+    <div
+      style="opacity: {opacity}; {backgroundStyle || ''}"
+      class:uk-background-muted={background === 'muted'}
+      class:uk-background-default={background === 'default'}
+      class:uk-background-primary={background === 'primary'}
+      class:uk-background-secondary={background === 'secondary'}
+      class={backgroundClassName}
+    ></div>
     <div class="uk-flex uk-flex-middle uk-flex-center">
       <Loader {ratio} />
     </div>
