@@ -55,6 +55,7 @@
     ></div>
     <div class="uk-flex uk-flex-middle uk-flex-center">
       <Loader {ratio} />
+      <slot />
     </div>
   </div>
 {/if}

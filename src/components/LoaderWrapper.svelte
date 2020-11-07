@@ -18,6 +18,7 @@ import Loader from "./Loader.svelte";
 {#if loading}
   <div class:uk-flex={center} class:uk-flex-center={center}>
     <Loader {className} {ratio} {style} bind:ref />
+    <slot />
   </div>
 {:else}
   <slot />
