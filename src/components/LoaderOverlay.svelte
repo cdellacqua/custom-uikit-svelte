@@ -1,5 +1,5 @@
 <script>
-import { onDestroy } from "svelte";
+  import { onDestroy } from "svelte";
 
   import Loader from "./Loader.svelte";
 
@@ -16,11 +16,13 @@ import { onDestroy } from "svelte";
   /** @type {boolean} */
   export let loading = true;
   /** @type {'default'|'muted'|'primary'|'secondary'} */
-  export let background = 'default';
+  export let background = "default";
   /** @type {string|undefined} */
   export let backgroundClassName = undefined;
   /** @type {string|undefined} */
   export let backgroundStyle = undefined;
+  /** @type {'bottom'|'right'|'top'|'left'} @default 'bottom' */
+  export let slotPosition = "bottom";
 
   let originalWrapperRef;
   $: if (originalWrapperRef) {
@@ -61,22 +63,24 @@ import { onDestroy } from "svelte";
 
 {#if loading}
   <div bind:this={originalWrapperRef}>
-    <div
-      class="overlay"
-      bind:this={ref}
-      {className}
-      {style}>
+    <div class="overlay" bind:this={ref} {className} {style}>
       <div
         style="opacity: {opacity}; {backgroundStyle || ''}"
         class:uk-background-muted={background === 'muted'}
         class:uk-background-default={background === 'default'}
         class:uk-background-primary={background === 'primary'}
         class:uk-background-secondary={background === 'secondary'}
-        class={backgroundClassName}
-      ></div>
-      <div class="uk-flex uk-flex-middle uk-flex-center">
-        <Loader {ratio} />
+        class={backgroundClassName} />
+      <div
+        class="uk-flex uk-flex-middle uk-flex-center uk-flex-wrap"
+        class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}>
+        {#if slotPosition === 'bottom' || slotPosition === 'right'}
+          <Loader {ratio} />
+        {/if}
         <slot />
+        {#if slotPosition === 'top' || slotPosition === 'left'}
+          <Loader {ratio} />
+        {/if}
       </div>
     </div>
   </div>

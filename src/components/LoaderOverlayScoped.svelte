@@ -19,6 +19,8 @@
   export let backgroundClassName = undefined;
   /** @type {string|undefined} */
   export let backgroundStyle = undefined;
+  /** @type {'bottom'|'right'|'top'|'left'} @default 'bottom' */
+  export let slotPosition = "bottom";
 </script>
 
 <style lang="scss">
@@ -53,9 +55,16 @@
       class:uk-background-secondary={background === 'secondary'}
       class={backgroundClassName}
     ></div>
-    <div class="uk-flex uk-flex-middle uk-flex-center">
-      <Loader {ratio} />
-      <slot />
-    </div>
+    <div
+        class="uk-flex uk-flex-middle uk-flex-center uk-flex-wrap"
+        class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}>
+        {#if slotPosition === 'bottom' || slotPosition === 'right'}
+          <Loader {ratio} />
+        {/if}
+        <slot />
+        {#if slotPosition === 'top' || slotPosition === 'left'}
+          <Loader {ratio} />
+        {/if}
+      </div>
   </div>
 {/if}

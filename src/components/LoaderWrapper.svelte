@@ -13,12 +13,26 @@ import Loader from "./Loader.svelte";
   export let ref = undefined;
   /** @type {boolean} */
   export let center = true;
+  /** @type {'bottom'|'right'|'top'|'left'} @default 'bottom' */
+  export let slotPosition = "bottom";
+
+  let refTopLeft;
+  let refBottomRight;
+  $: ref = refTopLeft || refBottomRight;
 </script>
 
 {#if loading}
-  <div class:uk-flex={center} class:uk-flex-center={center}>
-    <Loader {className} {ratio} {style} bind:ref />
+  <div
+    class:uk-flex={center} class:uk-flex-middle={center} class:uk-flex-center={center} class:uk-flex-wrap={center}
+    class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}
+  >
+    {#if slotPosition === 'bottom' || slotPosition === 'right'}
+      <Loader {className} {ratio} {style} bind:ref={refTopLeft} />
+    {/if}
     <slot />
+    {#if slotPosition === 'top' || slotPosition === 'left'}
+      <Loader {className} {ratio} {style} bind:ref={refBottomRight} />
+    {/if}
   </div>
 {:else}
   <slot />
