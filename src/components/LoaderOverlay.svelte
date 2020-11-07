@@ -72,7 +72,7 @@
         class:uk-background-secondary={background === 'secondary'}
         class={backgroundClassName} />
       <div
-        class="uk-flex uk-flex-middle uk-flex-center uk-flex-wrap"
+        class="uk-flex uk-flex-middle uk-flex-center"
         class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}>
         {#if slotPosition === 'bottom' || slotPosition === 'right'}
           <Loader {ratio} />

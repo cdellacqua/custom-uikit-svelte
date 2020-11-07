@@ -56,7 +56,7 @@
       class={backgroundClassName}
     ></div>
     <div
-        class="uk-flex uk-flex-middle uk-flex-center uk-flex-wrap"
+        class="uk-flex uk-flex-middle uk-flex-center uk-flex"
         class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}>
         {#if slotPosition === 'bottom' || slotPosition === 'right'}
           <Loader {ratio} />

@@ -23,7 +23,7 @@ import Loader from "./Loader.svelte";
 
 {#if loading}
   <div
-    class:uk-flex={center} class:uk-flex-middle={center} class:uk-flex-center={center} class:uk-flex-wrap={center}
+    class:uk-flex={center} class:uk-flex-middle={center} class:uk-flex-center={center}
     class:uk-flex-column={slotPosition === 'bottom' || slotPosition === 'top'}
   >
     {#if slotPosition === 'bottom' || slotPosition === 'right'}
