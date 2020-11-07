@@ -29,7 +29,7 @@ import Loader from "./Loader.svelte";
     {#if slotPosition === 'bottom' || slotPosition === 'right'}
       <Loader {className} {ratio} {style} bind:ref={refTopLeft} />
     {/if}
-    <slot />
+    <slot name="loading" />
     {#if slotPosition === 'top' || slotPosition === 'left'}
       <Loader {className} {ratio} {style} bind:ref={refBottomRight} />
     {/if}
