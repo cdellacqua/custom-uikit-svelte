@@ -484,6 +484,12 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>slotPosition</td>
+					<td>'bottom'|'right'|'top'|'left'</td>
+					<td>-</td>
+					<td>@default 'bottom'</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">LoaderOverlayScoped</h2>
@@ -553,6 +559,12 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>slotPosition</td>
+					<td>'bottom'|'right'|'top'|'left'</td>
+					<td>-</td>
+					<td>@default 'bottom'</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">LoaderWrapper</h2>
@@ -603,6 +615,12 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 					<td>boolean</td>
 					<td>-</td>
 					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>slotPosition</td>
+					<td>'bottom'|'right'|'top'|'left'</td>
+					<td>-</td>
+					<td>@default 'bottom'</td>
 				</tr>
 			</tbody>
 		</table>

@@ -452,6 +452,7 @@ Create an already styled description list, perfect for describing key-value prop
 |background|'default'\|'muted'\|'primary'\|'secondary'|-||
 |backgroundClassName|string\|undefined|-||
 |backgroundStyle|string\|undefined|-||
+|slotPosition|'bottom'\|'right'\|'top'\|'left'|-|@default 'bottom'|
 
 &nbsp;
 &nbsp;
@@ -473,6 +474,7 @@ Create an already styled description list, perfect for describing key-value prop
 |background|'default'\|'muted'\|'primary'\|'secondary'|-||
 |backgroundClassName|string\|undefined|-||
 |backgroundStyle|string\|undefined|-||
+|slotPosition|'bottom'\|'right'\|'top'\|'left'|-|@default 'bottom'|
 
 &nbsp;
 &nbsp;
@@ -491,6 +493,7 @@ Create an already styled description list, perfect for describing key-value prop
 |style|string\|undefined|-||
 |ref|HTMLDivElement|-||
 |center|boolean|-||
+|slotPosition|'bottom'\|'right'\|'top'\|'left'|-|@default 'bottom'|
 
 &nbsp;
 &nbsp;
