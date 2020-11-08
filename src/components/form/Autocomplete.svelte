@@ -291,6 +291,7 @@
   on:touchstart={() => (hideOnBlur = false)}
   on:mousedown={() => (hideOnBlur = false)} />
 <div
+  class:custom-uk-autocomplete-wrapper={true}
   bind:this={ref}
   {style}
   class:text-wrapper={true}
@@ -302,6 +303,7 @@
   {/if}
   <div style="position: relative">
     <input
+      class:custom-uk-autocomplete-input={true}
       bind:this={searchRef}
       {autocapitalize}
       {autocomplete}
@@ -351,6 +353,7 @@
   </div>
   {#if showSuggested && !disabled}
     <div
+      class:custom-uk-autocomplete-suggested={true}
       in:fly={{ y: 50, duration: animationDuration }}
       class="uk-grid-small uk-box-shadow-small suggested uk-background-default
         uk-margin-remove-top uk-margin-remove-left uk-grid"
