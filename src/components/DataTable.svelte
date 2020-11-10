@@ -245,12 +245,21 @@
       <tr>
         {#each columns as col (col)}
           <th
+            tabindex="0"
             style="text-align: {col.textAlign || 'left'}"
             class:sticky={stickyHeader}
             class:descending={Object.keys(orderBy).some((key) => key === col.key && orderBy[key] === -1)}
             on:click={(e) => {
               if (col.orderable !== false) {
                 changeOrderBy(col.key, e.shiftKey);
+              }
+            }}
+            on:keyup={(e) => {
+              if (e.code === 'Space') {
+                e.preventDefault();
+                if (col.orderable !== false) {
+                  changeOrderBy(col.key, e.shiftKey);
+                }
               }
             }}
             on:contextmenu={(e) => {
