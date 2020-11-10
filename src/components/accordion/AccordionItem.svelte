@@ -7,7 +7,7 @@
 
 <li class:uk-open={open} bind:this={ref}>
   <!-- svelte-ignore a11y-missing-attribute -->
-  <a class="uk-accordion-title" role="button" tabindex="0">
+  <a class="uk-accordion-title" role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && (open = !open)}>
     {#if isTitleHtml}
       {@html title}
     {:else}{title}{/if}

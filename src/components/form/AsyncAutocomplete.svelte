@@ -397,7 +397,7 @@
         class="uk-form-icon uk-form-icon-flip"
         uk-icon="icon: close"
         on:keydown={(e) => {
-          if (e.key === 'Enter') {
+          if (['Enter'].includes(e.code)) {
             e.preventDefault();
             value = null;
             query = '';

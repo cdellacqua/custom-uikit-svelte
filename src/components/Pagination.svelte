@@ -24,7 +24,7 @@ import { createEventDispatcher } from "svelte";
 <ul class={className} class:uk-pagination={true} class:uk-margin={true} class:uk-flex-center={center} {style}>
 	{#if pageIndex > 0}
 		<!-- svelte-ignore a11y-missing-attribute -->
-		<li><a role="button" tabindex="0" on:click={() => goToIndex(pageIndex - 1)}><span uk-pagination-previous></span></a></li>
+		<li><a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && goToIndex(pageIndex - 1)} on:click={() => goToIndex(pageIndex - 1)}><span uk-pagination-previous></span></a></li>
 	{:else}
 		<li class="uk-disabled"><span><span uk-pagination-previous></span></span></li>
 	{/if}
@@ -33,7 +33,7 @@ import { createEventDispatcher } from "svelte";
 			<li class="uk-active"><span>{index + 1}</span></li>
 		{:else}
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<li><a role="button" tabindex="0" on:click={() => goToIndex(index)}>{index + 1}</a></li>
+			<li><a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && goToIndex(index)} on:click={() => goToIndex(index)}>{index + 1}</a></li>
 		{/if}
 	{/each}
 	{#if numberOfPages > numbersPerSide * 2}
@@ -54,12 +54,12 @@ import { createEventDispatcher } from "svelte";
 			<li class="uk-active"><span>{offset + index + 1}</span></li>
 		{:else}
 			<!-- svelte-ignore a11y-missing-attribute -->
-			<li><a role="button" tabindex="0" on:click={() => goToIndex(offset + index)}>{offset + index + 1}</a></li>
+			<li><a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && goToIndex(offset + index)} on:click={() => goToIndex(offset + index)}>{offset + index + 1}</a></li>
 		{/if}
 	{/each}
 	{#if pageIndex + 1 < numberOfPages}
 		<!-- svelte-ignore a11y-missing-attribute -->
-		<li><a role="button" tabindex="0" on:click={() => goToIndex(pageIndex + 1)}><span uk-pagination-next></span></a></li>
+		<li><a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && goToIndex(pageIndex + 1)} on:click={() => goToIndex(pageIndex + 1)}><span uk-pagination-next></span></a></li>
 	{:else}
 		<li class="uk-disabled"><span><span uk-pagination-next></span></span></li>
 	{/if}

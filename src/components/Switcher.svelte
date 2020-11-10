@@ -28,7 +28,6 @@
   export let index = 0;
   
   let switcherRef = undefined;
-  const dispatch = createEventDispatcher();
 
   let externalAssignment = true;
   $: if (ref) {
@@ -51,10 +50,10 @@
   class:uk-subnav={true}
   class:uk-subnav-pill={true}
   uk-switcher={`connect: ${connect}; toggle: ${toggle}; animation: ${animation}; duration: ${duration}; swiping: ${swiping}`}>
-  {#each titles as title (title)}
+  {#each titles as title, i (title)}
     <li>
       <!-- svelte-ignore a11y-missing-attribute -->
-      <a role="button" tabindex="0">
+      <a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && (externalAssignment = false, index = i, UIkit.switcher(ref).show(index))}>
         {#if htmlTitle}
           {@html title}
         {:else}{title}{/if}

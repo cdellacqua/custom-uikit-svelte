@@ -41,11 +41,11 @@
         </li>
       {/each}
       <!-- svelte-ignore a11y-missing-attribute -->
-      <li><a role="button" on:click={() => (mounted = false)}>Unmount</a></li>
+      <li><a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && (mounted = false)} on:click={() => (mounted = false)}>Unmount</a></li>
     </ul>
   </Offcanvas>
 {/if}
-<Button on:click={() => (showSidebar = !showSidebar)} disabled={showSidebar}>
+<Button on:click={() => (showSidebar = !showSidebar)}>
   Show offcanvas
 </Button>
 <Button on:click={() => (mounted = true)} disabled={mounted}>

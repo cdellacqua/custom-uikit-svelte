@@ -88,6 +88,19 @@ import { dispatchCustomEvent } from "../helpers/events";
     show = false;
   }
 
+  let previouslyFocusedRef;
+  function handleShown() {
+    shown = true;
+    previouslyFocusedRef = document.activeElement;
+    ref && ref.focus();
+  }
+
+  async function handleHidden() {
+    shown = false;
+    await tick();
+    previouslyFocusedRef && previouslyFocusedRef.focus();
+  }
+
   let noHeader;
   let noFooter;
 
@@ -95,6 +108,7 @@ import { dispatchCustomEvent } from "../helpers/events";
 </script>
 
 <div
+  tabindex="0"
   on:show={handleShow}
   on:hide={handleHide}
   on:beforehide={(e) => {
@@ -102,8 +116,8 @@ import { dispatchCustomEvent } from "../helpers/events";
       e.preventDefault();
     }
   }}
-  on:shown={() => (shown = true)}
-  on:hidden={() => (shown = false)}
+  on:shown={handleShown}
+  on:hidden={handleHidden}
   on:show|stopPropagation
   on:hide|stopPropagation
   on:shown|stopPropagation

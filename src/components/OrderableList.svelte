@@ -19,9 +19,11 @@
 	const dispatch = createEventDispatcher();
 
 	let foregroundElement = null;
+	let focusOnMoved = null;
 	let lastEventDetails = null;
 	function move(prevIndex, newIndex) {
 		foregroundElement = ref.children[prevIndex];
+		focusOnMoved = document.activeElement;
 		const subject = items.splice(prevIndex, 1)[0];
 		items.splice(newIndex, 0, subject);
 		items = [...items];
@@ -73,8 +75,11 @@
 			tick: (t) => {
 				if (t === 1 && isForeground) {
 					dispatch("moved", lastEventDetails);
+					tick().then(() => {
+						focusOnMoved && focusOnMoved.focus();
+					});
 				}
-			}
+			},
 		};
 	}
 </script>
@@ -97,31 +102,39 @@
 						<span
 							uk-icon="icon: chevron-double-up; ratio: 1.2"
 							role="button"
+							tabindex="0"
 							class:cursor-pointer={index > 0}
 							disabled={index === 0}
-							on:click={() => index > 0 && moveTop(index)} />
+							on:click={() => index > 0 && moveTop(index)}
+							on:keyup={(e) => ['Enter'].includes(e.code) && index > 0 && moveTop(index)} />
 					{/if}
 
 					<span
 						uk-icon="icon: chevron-up; ratio: 1.2"
 						role="button"
+						tabindex="0"
 						class:cursor-pointer={index > 0}
 						disabled={index === 0}
-						on:click={() => index > 0 && moveUp(index)} />
+						on:click={() => index > 0 && moveUp(index)}
+						on:keyup={(e) => ['Enter'].includes(e.code) && index > 0 && moveUp(index)} />
 
 					<span
 						uk-icon="icon: chevron-down; ratio: 1.2"
 						role="button"
+						tabindex="0"
 						class:cursor-pointer={index < items.length - 1}
 						disabled={index >= items.length - 1}
-						on:click={() => index < items.length - 1 && moveDown(index)} />
+						on:click={() => index < items.length - 1 && moveDown(index)}
+						on:keyup={(e) => ['Enter'].includes(e.code) && index < items.length - 1 && moveDown(index)} />
 					{#if moveToBoundaries}
 						<span
 							uk-icon="icon: chevron-double-down; ratio: 1.2"
 							role="button"
+							tabindex="0"
 							class:cursor-pointer={index < items.length - 1}
 							disabled={index >= items.length - 1}
-							on:click={() => index < items.length - 1 && moveBottom(index)} />
+							on:click={() => index < items.length - 1 && moveBottom(index)}
+							on:keyup={(e) => ['Enter'].includes(e.code) && index < items.length - 1 && moveBottom(index)} />
 					{/if}
 				</div>
 				<div class="uk-margin-small-right">
@@ -133,15 +146,21 @@
 							{@html item.html}
 						{:else if item.text}{item.text}{/if}
 					{:else if item.text}
-						<svelte:component this={item.component || component} {...item.props || {}}>
+						<svelte:component
+							this={item.component || component}
+							{...item.props || {}}>
 							{item.text}
 						</svelte:component>
 					{:else if item.html}
-						<svelte:component this={item.component || component} {...item.props || {}}>
+						<svelte:component
+							this={item.component || component}
+							{...item.props || {}}>
 							{@html item.html}
 						</svelte:component>
 					{:else}
-						<svelte:component this={item.component || component} {...item.props || {}} />
+						<svelte:component
+							this={item.component || component}
+							{...item.props || {}} />
 					{/if}
 				</div>
 			</div>

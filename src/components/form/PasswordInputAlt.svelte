@@ -131,5 +131,5 @@
       on:focus={() => (state = 'initial')} />
   {/if}
   <!-- svelte-ignore a11y-missing-attribute -->
-  <a role="button" on:click={() => show = !show} class="uk-form-icon right" uk-icon="icon: {show ? 'unlock' : 'lock'}">&ZeroWidthSpace;</a>
+  <a role="button" tabindex="0" on:keyup={(e) => ['Enter'].includes(e.code) && (show = !show)} on:click={() => show = !show} class="uk-form-icon right" uk-icon="icon: {show ? 'unlock' : 'lock'}">&ZeroWidthSpace;</a>
 </Field>
