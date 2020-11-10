@@ -803,11 +803,11 @@ function toggleMountState() &lbrace;
         &lt;/li&gt;
       &lbrace;/each&rbrace;
       &lt;!-- svelte-ignore a11y-missing-attribute --&gt;
-      &lt;li&gt;&lt;a role=&quot;button&quot; on:click=&lbrace;() =&gt; (mounted = false)&rbrace;&gt;Unmount&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a role=&quot;button&quot; tabindex=&quot;0&quot; on:keyup=&lbrace;(e) =&gt; ['Enter'].includes(e.code) &amp;&amp; (mounted = false)&rbrace; on:click=&lbrace;() =&gt; (mounted = false)&rbrace;&gt;Unmount&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/Offcanvas&gt;
 &lbrace;/if&rbrace;
-&lt;Button on:click=&lbrace;() =&gt; (showSidebar = !showSidebar)&rbrace; disabled=&lbrace;showSidebar&rbrace;&gt;
+&lt;Button on:click=&lbrace;() =&gt; (showSidebar = !showSidebar)&rbrace;&gt;
   Show offcanvas
 &lt;/Button&gt;
 &lt;Button on:click=&lbrace;() =&gt; (mounted = true)&rbrace; disabled=&lbrace;mounted&rbrace;&gt;

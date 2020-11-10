@@ -1,5 +1,5 @@
 <script>
-  import { createEventDispatcher, onDestroy, onMount } from "svelte";
+  import { createEventDispatcher, onDestroy, onMount, tick } from "svelte";
   import Form from "./Form.svelte";
   import UIkit from "uikit";
 import { dispatchCustomEvent } from "../helpers/events";

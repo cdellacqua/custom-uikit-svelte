@@ -1,7 +1,7 @@
 <script>
   import UIkit from "uikit";
   import { generateId } from "../services/html";
-  import { onDestroy } from "svelte";
+  import { onDestroy, tick } from "svelte";
 import { dispatchCustomEvent } from "../helpers/events";
 
   /** @type {string} */
