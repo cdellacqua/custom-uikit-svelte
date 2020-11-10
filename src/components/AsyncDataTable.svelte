@@ -316,8 +316,7 @@
                 }
               }}
               on:keyup={(e) => {
-                if (e.code === 'Space') {
-                  e.preventDefault();
+                if (e.code === 'Space' || e.code === 'Enter') {
                   if (col.orderable !== false) {
                     changeOrderBy(col.key, e.shiftKey);
                   }
@@ -361,7 +360,14 @@
           </tr>
         {:else}
           {#each rows as row (row)}
-            <tr on:click={() => dispatch('row-click', row)}>
+            <tr
+              tabindex="0"
+              on:keyup={(e) => {
+                if (e.code === 'Space' || e.code === 'Enter') {
+                  dispatch('row-click', row);
+                }
+              }}
+              on:click={() => dispatch('row-click', row)}>
               {#each columns as col (col)}
                 <td
                   class={col.className}
