@@ -96,6 +96,18 @@ let items = [&lbrace;
 					<td>-</td>
 					<td>Whether to show or hide the move-to-top and move-to-bottom buttons</td>
 				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>undefined</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>undefined</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Pagination</h2>

@@ -553,6 +553,8 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLUListElement|-|@readonly|
 |animationDuration|number|-||
 |moveToBoundaries|boolean|-|Whether to show or hide the move-to-top and move-to-bottom buttons|
+|style|string\|undefined|undefined|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 
 &nbsp;
 &nbsp;
