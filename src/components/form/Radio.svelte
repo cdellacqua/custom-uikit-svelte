@@ -61,6 +61,7 @@
   {style}
   class={className}
   class:uk-margin-bottom={true}
+  class:custom-uk-radio-wrapper={true}
   class:radio-wrapper={true}>
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>
@@ -83,6 +84,7 @@
           class:uk-text-nowrap={true}
           class:uk-width-1-1={true}
           class:uk-height-1-1={true}
+          class:custom-uk-active={option.value === value}
           class:uk-button-primary={option.value === value && variant === 'primary'}
           class:uk-button-secondary={option.value === value && variant === 'secondary'}
           class:uk-button-danger={option.value === value && variant === 'danger'}
