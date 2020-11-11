@@ -15,6 +15,16 @@
 	 * Whether to show or hide the move-to-top and move-to-bottom buttons
 	 * @type {boolean} */
 	export let moveToBoundaries = false;
+	/** 
+	 * @default undefined
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
+	/** 
+	 * @default undefined
+	 * @description A string containing any additional classes to apply to the component
+	 * @type {string|undefined} */
+	export let className = undefined;
 
 	const dispatch = createEventDispatcher();
 
@@ -90,7 +100,7 @@
 	}
 </style>
 
-<ul class="uk-list" bind:this={ref}>
+<ul class:uk-list={true} bind:this={ref} class={className} {style}>
 	{#each items as item, index (item)}
 		<li
 			animate:animation
