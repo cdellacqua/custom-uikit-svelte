@@ -70,7 +70,6 @@
 <style>
   .disabled {
     pointer-events: none;
-    opacity: .8;
   }
 
   form {
