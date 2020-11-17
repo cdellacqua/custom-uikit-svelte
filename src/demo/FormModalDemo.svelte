@@ -1,14 +1,13 @@
 <script>
+  import { sleep } from "../helpers/time";
+
 import { Button, FormModal, TextInput, Modal } from "../main";
   let showModal = false;
   let showOther = false;
   let shownModal = false;
   async function handleSubmit() {
-    await new Promise(res => setTimeout(res, 1000));
+    await sleep(1000);
     showOther = true;
-    await new Promise(res => setTimeout(res, 5000));
-    showOther = false;
-    showModal = false;
   }
 </script>
 
@@ -23,7 +22,7 @@ import { Button, FormModal, TextInput, Modal } from "../main";
     <Button type="submit">Submit</Button>
   </div>
 </FormModal>
-<FormModal bind:show={showOther} formSubmitAsync={handleSubmit}>
+<FormModal bind:show={showOther} formSubmitAsync={() => sleep(5000)}>
   Example of stacked modal
   <div slot="footer">
     <Button type="submit">Submit</Button>

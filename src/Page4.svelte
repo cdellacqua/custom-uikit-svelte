@@ -8,6 +8,7 @@
 	import BadgeDemo from './demo/BadgeDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
+	import FormDemo from './demo/FormDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';

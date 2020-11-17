@@ -8,6 +8,7 @@
 	import BadgeDemo from './demo/BadgeDemo.svelte';
 	import DataTableDemo from './demo/DataTableDemo.svelte';
 	import FixedPointInputDemo from './demo/FixedPointInputDemo.svelte';
+	import FormDemo from './demo/FormDemo.svelte';
 	import FormModalDemo from './demo/FormModalDemo.svelte';
 	import ModalDemo from './demo/ModalDemo.svelte';
 	import OffcanvasDemo from './demo/OffcanvasDemo.svelte';
@@ -137,6 +138,39 @@
 		</table>
 		<h2 class="uk-heading-divider">Form</h2>
 		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<FormDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; sleep &rbrace; from &quot;../helpers/time&quot;;
+
+  import &lbrace; Button, Form, TextInput &rbrace; from &quot;../main&quot;;
+  async function handleSubmit() &lbrace;
+    await sleep(1000);
+  &rbrace;
+
+  let status = [];
+
+  let formState;
+  $: status = [...status, formState];
+&lt;/script&gt;
+
+&lt;Form
+  bind:state=&lbrace;formState&rbrace;
+  submitAsync=&lbrace;handleSubmit&rbrace;&gt;
+  &lt;TextInput placeholder=&quot;I'm required&quot; /&gt;
+  &lt;div slot=&quot;footer&quot;&gt;
+    &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
+  &lt;/div&gt;
+&lt;/Form&gt;
+
+&lt;div&gt;&lbrace;@html status.join('&lt;br /&gt;')&rbrace;&lt;/div&gt;
+
+</pre></li>
+		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
 			<thead>
@@ -208,16 +242,15 @@ each time an element inside this form triggers a bubbling 'change' event</td>
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
+  import &lbrace; sleep &rbrace; from &quot;../helpers/time&quot;;
+
 import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&quot;;
   let showModal = false;
   let showOther = false;
   let shownModal = false;
   async function handleSubmit() &lbrace;
-    await new Promise(res =&gt; setTimeout(res, 1000));
+    await sleep(1000);
     showOther = true;
-    await new Promise(res =&gt; setTimeout(res, 5000));
-    showOther = false;
-    showModal = false;
   &rbrace;
 &lt;/script&gt;
 
@@ -232,7 +265,7 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
   &lt;/div&gt;
 &lt;/FormModal&gt;
-&lt;FormModal bind:show=&lbrace;showOther&rbrace; formSubmitAsync=&lbrace;handleSubmit&rbrace;&gt;
+&lt;FormModal bind:show=&lbrace;showOther&rbrace; formSubmitAsync=&lbrace;() =&gt; sleep(5000)&rbrace;&gt;
   Example of stacked modal
   &lt;div slot=&quot;footer&quot;&gt;
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
