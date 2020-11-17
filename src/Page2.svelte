@@ -162,7 +162,7 @@
   bind:state=&lbrace;formState&rbrace;
   submitAsync=&lbrace;handleSubmit&rbrace;&gt;
   &lt;TextInput placeholder=&quot;I'm required&quot; /&gt;
-  &lt;div slot=&quot;footer&quot;&gt;
+  &lt;div&gt;
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
   &lt;/div&gt;
 &lt;/Form&gt;
