@@ -49,10 +49,8 @@ export default [{
 	},
 	plugins: [
 		replace({
-			process: JSON.stringify({
-				env: {
-					NODE_ENV: production ? "production" : "development"
-				}
+			'process.env': JSON.stringify({
+				NODE_ENV: production ? "production" : "development"
 			})
 		}),
 		svelte({
