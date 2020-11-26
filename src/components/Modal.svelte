@@ -103,8 +103,7 @@ import { dispatchCustomEvent } from "../helpers/events";
   <div
     class="uk-modal-dialog"
     class:uk-modal-container={expand}
-    class:uk-margin-auto-vertical={verticallyCentered}
-    uk-overflow-auto>
+    class:uk-margin-auto-vertical={verticallyCentered}>
     {#if closeable && closeButton}
       <button
         class:uk-modal-close-default={closeButton === 'default'}
@@ -124,7 +123,7 @@ import { dispatchCustomEvent } from "../helpers/events";
         </slot>
       </div>
     {/if}
-    <div class="uk-modal-body">
+    <div class="uk-modal-body" uk-overflow-auto>
       <slot />
     </div>
     <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''}>
