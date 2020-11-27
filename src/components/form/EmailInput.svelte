@@ -33,13 +33,13 @@
   /** @type {string|undefined} */
   export let tooltip = undefined;
   /** @type {string|undefined} */
-  export let autocapitalize = undefined;
+  export let autocapitalize = 'off';
   /** @type {string|undefined} */
   export let autocomplete = undefined;
-  /** @type {string|undefined} */
-  export let autocorrect = undefined;
-  /** @type {string|undefined} */
-  export let spellcheck = undefined;
+  /** @type {string|undefined} @default "off" */
+  export let autocorrect = 'off';
+  /** @type {string|undefined} @default "off" */
+  export let spellcheck = 'off';
 
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";

@@ -32,14 +32,14 @@
   export let disabled = false;
   /** @type {string|undefined} */
   export let tooltip = undefined;
-  /** @type {string|undefined} */
-  export let autocapitalize = undefined;
+  /** @type {string|undefined} @default "off" */
+  export let autocapitalize = "off";
   /** @type {string|undefined} */
   export let autocomplete = undefined;
-  /** @type {string|undefined} */
-  export let autocorrect = undefined;
-  /** @type {string|undefined} */
-  export let spellcheck = undefined;
+  /** @type {string|undefined} @default "off" */
+  export let autocorrect = "off";
+  /** @type {string|undefined} @default "off" */
+  export let spellcheck = "off";
   /** @type {number|undefined} */
   export let minlength = undefined;
   /** @type {string|undefined} */
