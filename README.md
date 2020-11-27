@@ -822,8 +822,8 @@ Create an already styled description list, perfect for describing key-value prop
 |tooltip|string\|undefined|-||
 |autocapitalize|string\|undefined|-||
 |autocomplete|string\|undefined|-||
-|autocorrect|string\|undefined|-||
-|spellcheck|string\|undefined|-||
+|autocorrect|string\|undefined|-|@default "off"|
+|spellcheck|string\|undefined|-|@default "off"|
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -963,10 +963,10 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
-|autocapitalize|string\|undefined|-||
+|autocapitalize|string\|undefined|-|@default "off"|
 |autocomplete|string\|undefined|-||
-|autocorrect|string\|undefined|-||
-|spellcheck|string\|undefined|-||
+|autocorrect|string\|undefined|-|@default "off"|
+|spellcheck|string\|undefined|-|@default "off"|
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
@@ -998,7 +998,7 @@ Create an already styled description list, perfect for describing key-value prop
 |tooltip|string\|undefined|-||
 |autocapitalize|string\|undefined|-|@default "off"|
 |autocomplete|string\|undefined|-||
-|autocorrect|string\|undefined|-||
+|autocorrect|string\|undefined|-|@default "off"|
 |spellcheck|string\|undefined|-|@default "off"|
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||

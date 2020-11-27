@@ -282,13 +282,13 @@
 					<td>autocorrect</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>state</td>
@@ -876,7 +876,7 @@
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
@@ -888,13 +888,13 @@
 					<td>autocorrect</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>minlength</td>
@@ -1044,7 +1044,7 @@ let password = &quot;hello1234&quot;;
 					<td>autocorrect</td>
 					<td>string|undefined</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>@default "off"</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
