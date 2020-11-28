@@ -5,6 +5,7 @@ import { Button, FormModal, TextInput, Modal } from "../main";
   let showModal = false;
   let showOther = false;
   let shownModal = false;
+  let fullScreen = false;
   async function handleSubmit() {
     await sleep(1000);
     showOther = true;
@@ -14,9 +15,10 @@ import { Button, FormModal, TextInput, Modal } from "../main";
 <Button on:click={() => (showModal = true)} disabled={showModal}>
   Show modal
 </Button>
+<Button on:click={() => fullScreen = !fullScreen} disabled={showModal}>Toggle fullScreen ({fullScreen ? 'on' : 'off'})</Button>
 <p>Status: {!showModal ? 'Closed' : 'Open'}</p>
 <p>Status (including animation time): {!shownModal ? 'Closed' : 'Open'}</p>
-<FormModal bind:show={showModal} bind:shown={shownModal} formSubmitAsync={handleSubmit}>
+<FormModal bind:show={showModal} bind:shown={shownModal} formSubmitAsync={handleSubmit} {fullScreen} title="Modal title">
   <TextInput placeholder="I'm required"></TextInput>
   <div slot="footer">
     <Button type="submit">Submit</Button>

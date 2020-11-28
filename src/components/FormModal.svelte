@@ -53,7 +53,7 @@ import { dispatchCustomEvent } from "../helpers/events";
    * @type {string|undefined} */
   export let formStyle = undefined;
   /** @type {string|undefined} */
-  export let formClassName = undefined;
+  export let formClassName = '';
   /** @type {'stacked'|'horizontal'} */
   export let formVariant = "stacked";
 
@@ -107,6 +107,17 @@ import { dispatchCustomEvent } from "../helpers/events";
   let forceHide = false;
 </script>
 
+<style>
+  :global(form.fullscreen-dialog-6554ef564e5f4e5r4g6er4ger4g8ergwe65r) {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+  }
+  .fullscreen-footer {
+    margin-top: auto;
+  }
+</style>
+
 <div
   tabindex="0"
   on:show={handleShow}
@@ -150,7 +161,7 @@ import { dispatchCustomEvent } from "../helpers/events";
     bind:valid={formValid}
     bind:ref={formRef}
     style={formStyle}
-    className="uk-modal-dialog {expand ? 'uk-modal-container' : ''} {verticallyCentered ? 'uk-margin-auto-vertical' : ''} {formClassName}"
+    className="uk-modal-dialog {expand ? 'uk-modal-container' : ''} {verticallyCentered ? 'uk-margin-auto-vertical' : ''} {fullScreen ? 'fullscreen-dialog-6554ef564e5f4e5r4g6er4ger4g8ergwe65r' : ''} {formClassName}"
     variant={formVariant}>
     {#if closeable && closeButton}
       <button
@@ -171,10 +182,16 @@ import { dispatchCustomEvent } from "../helpers/events";
         </slot>
       </div>
     {/if}
-    <div class="uk-modal-body" uk-overflow-auto>
-      <slot />
-    </div>
-    <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''}>
+    {#if !fullScreen}
+      <div class="uk-modal-body" uk-overflow-auto>
+        <slot />
+      </div>
+    {:else}
+      <div class="uk-modal-body">
+        <slot />
+      </div>
+    {/if}
+    <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''} class:fullscreen-footer={fullScreen}>
       <slot name="footer">
         <div bind:this={noFooter} />
       </slot>

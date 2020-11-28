@@ -81,6 +81,17 @@ import { dispatchCustomEvent } from "../helpers/events";
   let noFooter;
 </script>
 
+<style>
+  .fullscreen-dialog {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+  }
+  .fullscreen-footer {
+    margin-top: auto;
+  }
+</style>
+
 <div
   tabindex="0"
   on:show={handleShow}
@@ -102,6 +113,7 @@ import { dispatchCustomEvent } from "../helpers/events";
   class:uk-flex-top={verticallyCentered}>
   <div
     class="uk-modal-dialog"
+    class:fullscreen-dialog={fullScreen}
     class:uk-modal-container={expand}
     class:uk-margin-auto-vertical={verticallyCentered}>
     {#if closeable && closeButton}
@@ -123,10 +135,16 @@ import { dispatchCustomEvent } from "../helpers/events";
         </slot>
       </div>
     {/if}
-    <div class="uk-modal-body" uk-overflow-auto>
-      <slot />
-    </div>
-    <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''}>
+    {#if !fullScreen}
+      <div class="uk-modal-body" uk-overflow-auto>
+        <slot />
+      </div>
+    {:else}
+      <div class="uk-modal-body">
+        <slot />
+      </div>
+    {/if}
+    <div class="uk-modal-footer" style={noFooter ? 'display: none' : ''} class:fullscreen-footer={fullScreen}>
       <slot name="footer">
         <div bind:this={noFooter} />
       </slot>
