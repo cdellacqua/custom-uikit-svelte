@@ -248,6 +248,7 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
   let showModal = false;
   let showOther = false;
   let shownModal = false;
+  let fullScreen = false;
   async function handleSubmit() &lbrace;
     await sleep(1000);
     showOther = true;
@@ -257,9 +258,10 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 &lt;Button on:click=&lbrace;() =&gt; (showModal = true)&rbrace; disabled=&lbrace;showModal&rbrace;&gt;
   Show modal
 &lt;/Button&gt;
+&lt;Button on:click=&lbrace;() =&gt; fullScreen = !fullScreen&rbrace; disabled=&lbrace;showModal&rbrace;&gt;Toggle fullScreen (&lbrace;fullScreen ? 'on' : 'off'&rbrace;)&lt;/Button&gt;
 &lt;p&gt;Status: &lbrace;!showModal ? 'Closed' : 'Open'&rbrace;&lt;/p&gt;
 &lt;p&gt;Status (including animation time): &lbrace;!shownModal ? 'Closed' : 'Open'&rbrace;&lt;/p&gt;
-&lt;FormModal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace; formSubmitAsync=&lbrace;handleSubmit&rbrace;&gt;
+&lt;FormModal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace; formSubmitAsync=&lbrace;handleSubmit&rbrace; &lbrace;fullScreen&rbrace; title=&quot;Modal title&quot;&gt;
   &lt;TextInput placeholder=&quot;I'm required&quot;&gt;&lt;/TextInput&gt;
   &lt;div slot=&quot;footer&quot;&gt;
     &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
@@ -670,12 +672,14 @@ import &lbrace; Button, Modal &rbrace; from &quot;../main&quot;;
 let showModal = false;
 let shownModal = false;
 let mounted = true;
+let fullScreen = false;
 function toggleMountState() &lbrace;
   mounted = !mounted;
 &rbrace;
 &lt;/script&gt;
 
 &lt;Button on:click=&lbrace;() =&gt; showModal = true&rbrace; disabled=&lbrace;showModal&rbrace;&gt;Show modal&lt;/Button&gt;
+&lt;Button on:click=&lbrace;() =&gt; fullScreen = !fullScreen&rbrace; disabled=&lbrace;showModal&rbrace;&gt;Toggle fullScreen (&lbrace;fullScreen ? 'on' : 'off'&rbrace;)&lt;/Button&gt;
 &lt;Button on:click=&lbrace;() =&gt; mounted = true&rbrace; disabled=&lbrace;mounted&rbrace;&gt;Mount modal&lt;/Button&gt;
 &lt;p&gt;
   Status: &lbrace;!showModal ? 'Closed' : 'Open'&rbrace;
@@ -684,12 +688,15 @@ function toggleMountState() &lbrace;
   Status (including animation time): &lbrace;!shownModal ? 'Closed' : 'Open'&rbrace;
 &lt;/p&gt;
 &lbrace;#if mounted&rbrace;
-  &lt;Modal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace;&gt;
+  &lt;Modal bind:show=&lbrace;showModal&rbrace; bind:shown=&lbrace;shownModal&rbrace; &lbrace;fullScreen&rbrace; title=&quot;Example&quot;&gt;
     Example!
     &lt;div&gt;
       A modal can safely be unmounted from the document
     &lt;/div&gt;
     &lt;Button on:click=&lbrace;() =&gt; toggleMountState()&rbrace;&gt;Unmount modal&lt;/Button&gt;
+    &lt;div slot=&quot;footer&quot;&gt;
+      footer
+    &lt;/div&gt;
   &lt;/Modal&gt;
 &lbrace;/if&rbrace;
 </pre></li>
