@@ -77,6 +77,7 @@
     {placeholder}
     bind:value
     {rows}
+    on:input
     on:change
     on:blur
     on:focus

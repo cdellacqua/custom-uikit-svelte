@@ -98,6 +98,7 @@
     type="number"
     class:paddingRight={iconPosition === 'right'}
     bind:value
+    on:input
     on:change
     class="uk-input"
     class:uk-form-danger={state === 'invalid'}

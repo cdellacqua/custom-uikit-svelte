@@ -69,6 +69,7 @@
     type="week"
     {disabled}
     bind:value
+    on:input
     on:change
     on:blur
     on:focus

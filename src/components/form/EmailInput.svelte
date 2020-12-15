@@ -68,6 +68,7 @@
     {placeholder}
     type="email"
     bind:value
+    on:input
     on:change
     {disabled}
     on:blur

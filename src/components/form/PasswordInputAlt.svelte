@@ -95,6 +95,7 @@
       bind:value
       {disabled}
       uk-tooltip={tooltip}
+      on:input
       on:change
       on:blur
       on:focus
@@ -121,6 +122,7 @@
       bind:value
       {disabled}
       uk-tooltip={tooltip}
+      on:input
       on:change
       on:blur
       on:focus

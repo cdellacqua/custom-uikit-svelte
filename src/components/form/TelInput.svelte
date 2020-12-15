@@ -74,6 +74,7 @@
     {placeholder}
     type="tel"
     bind:value
+    on:input
     on:change
     {disabled}
     on:blur

@@ -75,6 +75,7 @@
     bind:value
     {min}
     {max}
+    on:input
     on:change
     on:blur
     on:focus
