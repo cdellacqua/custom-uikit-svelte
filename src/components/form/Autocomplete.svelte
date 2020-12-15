@@ -325,7 +325,7 @@
       on:click={showSuggestedOptions}
       on:blur={handleBlur}
       on:focus={() => ((everFocused = true), (state = 'initial'))} />
-    {#if value !== null && value !== undefined}
+    {#if value !== null && value !== undefined && !disabled}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         role="button"

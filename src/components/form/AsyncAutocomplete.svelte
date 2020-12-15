@@ -389,7 +389,7 @@
       on:focus={() => (everFocused = true, state = 'initial')} />
     {#if loading && showSuggested}
       <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
-    {:else if value !== null && value !== undefined}
+    {:else if value !== null && value !== undefined && !disabled}
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         role="button"
