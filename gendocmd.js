@@ -8,7 +8,27 @@ const docLines = [
 	`Unofficial Svelte Component Library for the UIkit framework`,
 	``,
 	`&nbsp;`,
+	'### Install from npm',
+	``,
+	'```npm i custom-uikit-svelte```',
+	'',
+	'You can find the published package [here](https://www.npmjs.com/package/custom-uikit-svelte)',
+	'',
 	`&nbsp;`,
+	'',
+	'### Run the demo',
+	'',
+	'The demo included in this repo shows some components in action with examples',
+	``,
+	`\`\`\`
+git clone git@github.com:cdellacqua/custom-uikit-svelte.git
+cd custom-uikit-svelte
+npm i
+npm run dev
+\`\`\``,
+	'',
+	`&nbsp;`,
+	``,
 	`Components`
 ];
 
