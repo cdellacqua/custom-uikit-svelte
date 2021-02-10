@@ -43,9 +43,9 @@
 
 {#if loading}
   <div
-    class="overlay"
+    class:overlay={true}
     bind:this={ref}
-    {className}
+    class={className}
     {style}>
     <div
       style="opacity: {opacity}; {backgroundStyle || ''}"
