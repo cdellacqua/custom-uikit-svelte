@@ -63,7 +63,7 @@
 
 {#if loading}
   <div bind:this={originalWrapperRef}>
-    <div class="overlay" bind:this={ref} {className} {style}>
+    <div class={className} class:overlay={true} bind:this={ref} {style}>
       <div
         style="opacity: {opacity}; {backgroundStyle || ''}"
         class:uk-background-muted={background === 'muted'}
