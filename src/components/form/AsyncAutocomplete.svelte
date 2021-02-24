@@ -256,11 +256,16 @@
       options.length - 1,
       Math.max(0, outlineOptionIndex)
     );
-    if (options.length > 0 && suggestedRef) {
-      if (suggestedRef.querySelector("label")) {
-        suggestedRef.style.maxHeight =
-          suggestedRef.querySelector("label").offsetHeight * 5 + "px";
-      }
+  }
+
+  let optionsRenderedRef;
+  $: optionsRendered = Boolean(optionsRenderedRef);
+  $: if (optionsRendered) {
+    updateSuggestedMaxHeight();
+  }
+  function updateSuggestedMaxHeight() {
+    if (suggestedRef && suggestedRef.querySelector("label")) {
+      suggestedRef.style.maxHeight = suggestedRef.querySelector("label").offsetHeight * 5 + "px";
     }
   }
 
@@ -424,6 +429,7 @@
         uk-margin-remove-top uk-margin-remove-left uk-grid"
       bind:this={suggestedRef}>
       {#if options.length > 0}
+        <div bind:this={optionsRenderedRef} style="display:none" />
         {#each options as option, i (option)}
           <label
             in:fly={{ y: -10, duration: animationDuration }}

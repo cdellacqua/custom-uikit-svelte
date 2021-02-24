@@ -194,11 +194,16 @@
       filteredOptions.length - 1,
       Math.max(0, outlineOptionIndex)
     );
-    if (filteredOptions.length > 0 && suggestedRef) {
-      if (suggestedRef.querySelector("label")) {
-        suggestedRef.style.maxHeight =
-          suggestedRef.querySelector("label").offsetHeight * 5 + "px";
-      }
+  }
+
+  let optionsRenderedRef;
+  $: optionsRendered = Boolean(optionsRenderedRef);
+  $: if (optionsRendered) {
+    updateSuggestedMaxHeight();
+  }
+  function updateSuggestedMaxHeight() {
+    if (suggestedRef && suggestedRef.querySelector("label")) {
+      suggestedRef.style.maxHeight = suggestedRef.querySelector("label").offsetHeight * 5 + "px";
     }
   }
 
@@ -359,6 +364,7 @@
         uk-margin-remove-top uk-margin-remove-left uk-grid"
       bind:this={suggestedRef}>
       {#if filteredOptions.length > 0}
+        <div bind:this={optionsRenderedRef} style="display:none" />
         {#each filteredOptions as option, i (option)}
           <label
             class="uk-width-1-1"
