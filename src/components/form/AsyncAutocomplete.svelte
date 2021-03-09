@@ -83,7 +83,7 @@
   /** @type {DataProvider} */
   export let dataProvider;
   /** @type {Function} */
-  export let dataProviderErrorHandler = noop;
+  export let dataProviderErrorHandler = (err) => console.error(err);
   /** @type {boolean} @readonly */
   export let loading = false;
   /** @type {number} */

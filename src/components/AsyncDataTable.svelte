@@ -58,7 +58,7 @@
   /** @type {DataProvider} */
   export let dataProvider;
   /** @type {Function} */
-  export let dataProviderErrorHandler = noop;
+  export let dataProviderErrorHandler = (err) => console.error(err);
   /** @type {number} */
   export let recordsPerPage = 25;
   /** @type {number} */
