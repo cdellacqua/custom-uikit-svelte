@@ -1052,6 +1052,7 @@ current page and its href property will be ignored</td>
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   instantSearch=&lbrace;false&rbrace;
   on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+  on:row-dblclick=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log('dbl-click')&rbrace;
 /&gt;</pre></li>
 		</Switcher>
 		<h3>Props</h3>
