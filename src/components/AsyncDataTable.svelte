@@ -363,6 +363,7 @@
             <tr
               tabindex="0"
               on:keyup={(e) => ['Enter'].includes(e.code) && dispatch('row-click', row)}
+              on:dblclick={() => dispatch('row-dblclick', row)}
               on:click={() => dispatch('row-click', row)}>
               {#each columns as col (col)}
                 <td

@@ -67,4 +67,5 @@
   on:sort={({ detail }) => console.log(detail)}
   instantSearch={false}
   on:row-click={({ detail }) => console.log(detail)}
+  on:row-dblclick={({ detail }) => console.log('dbl-click')}
 />
