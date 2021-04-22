@@ -6,6 +6,7 @@
   import { generateId } from "../../services/html";
   import { fly } from "svelte/transition";
   import { filterAndSort } from "../../helpers/filter-sort";
+  import { globalOptionalMarker, globalRequiredMarker } from '../../stores/markers';
 
   /** @type {string} */
   export let id = generateId();
@@ -75,6 +76,26 @@
   export let animationDuration = 100;
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
+
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
+  let suffix = '';
+  function updateLabelSuffix() {
+    if (optional) {
+      suffix = typeof optionalMarker === 'string'
+        ? optionalMarker
+        : $globalOptionalMarker;
+    } else {
+      suffix = typeof requiredMarker === 'string'
+        ? requiredMarker
+        : $globalRequiredMarker
+    }
+  }
+
+  $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
 
   let searchRef;
 
@@ -304,7 +325,7 @@
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
   {#if label}
-    <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
+    <label for={id} class="uk-form-label">{label} {suffix}</label>
   {/if}
   <div style="position: relative">
     <input

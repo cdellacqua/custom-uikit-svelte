@@ -2,6 +2,7 @@
   import { createEventDispatcher } from "svelte";
 
   import { generateId } from "../../services/html";
+  import { globalOptionalMarker, globalRequiredMarker } from '../../stores/markers';
 
   /** @type {string} */
   export let id = generateId();
@@ -35,6 +36,26 @@
    * @type {string|undefined} */
   export let style = undefined;
 
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
+  let suffix = '';
+  function updateLabelSuffix() {
+    if (optional) {
+      suffix = typeof optionalMarker === 'string'
+        ? optionalMarker
+        : $globalOptionalMarker;
+    } else {
+      suffix = typeof requiredMarker === 'string'
+        ? requiredMarker
+        : $globalRequiredMarker
+    }
+  }
+
+  $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
+
   const dispatch = createEventDispatcher();
 </script>
 
@@ -66,7 +87,7 @@
   {#if label}
     <label class="uk-form-label" class:disabled for={id}>
       {label}
-      {!optional ? '*' : ''}
+      {suffix}
     </label>
   {/if}
   <div

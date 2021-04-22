@@ -1,4 +1,6 @@
 <script>
+  import { globalOptionalMarker, globalRequiredMarker } from '../../stores/markers';
+
   export let inputId;
   export let hasIcon = false;
   export let label = "";
@@ -15,6 +17,26 @@
   export let state = "initial";
   export let labelWrap = false;
   export let ref = undefined;
+
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
+  let suffix = '';
+  function updateLabelSuffix() {
+    if (optional) {
+      suffix = typeof optionalMarker === 'string'
+        ? optionalMarker
+        : $globalOptionalMarker;
+    } else {
+      suffix = typeof requiredMarker === 'string'
+        ? requiredMarker
+        : $globalRequiredMarker
+    }
+  }
+
+  $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
 </script>
 
 <style lang="scss">
@@ -37,14 +59,14 @@
       <label for={inputId} class="uk-form-label">
         <slot />
         {label}
-        {!optional ? '*' : ''}
+        {suffix}
       </label>
     </div>
   {:else}
     {#if label}
       <label class="uk-form-label" for={inputId}>
         {label}
-        {!optional ? '*' : ''}
+        {suffix}
       </label>
     {/if}
     <div class:relative={hasIcon} class="uk-form-controls">

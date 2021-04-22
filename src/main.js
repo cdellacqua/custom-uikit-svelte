@@ -1,4 +1,5 @@
 import './init';
+export { globalRequiredMarker, globalOptionalMarker } from './stores/markers';
 export { default as Alert } from "./components/Alert.svelte";
 export { default as Article } from "./components/Article.svelte";
 export { default as AsyncDataTable } from "./components/AsyncDataTable.svelte";

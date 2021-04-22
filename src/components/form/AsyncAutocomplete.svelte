@@ -7,12 +7,12 @@
 
   import { debounce } from "debounce";
   import { generateId } from "../../services/html";
-  import { noop } from "../../helpers/lambdas";
   import { sleep } from "../../helpers/time";
   import { tick, createEventDispatcher, onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { dispatchCustomEvent } from "../../helpers/events";
   import Loader from "../Loader.svelte";
+  import { globalOptionalMarker, globalRequiredMarker } from '../../stores/markers';
 
   /** @type {string} */
   export let id = generateId();
@@ -88,6 +88,26 @@
   export let loading = false;
   /** @type {number} */
   export let debounceMs = 200;
+
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
+  let suffix = '';
+  function updateLabelSuffix() {
+    if (optional) {
+      suffix = typeof optionalMarker === 'string'
+        ? optionalMarker
+        : $globalOptionalMarker;
+    } else {
+      suffix = typeof requiredMarker === 'string'
+        ? requiredMarker
+        : $globalRequiredMarker
+    }
+  }
+
+  $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
 
   let searchRef;
 
@@ -366,7 +386,7 @@
   class:uk-margin-bottom={true}
   on:click={() => (innerClick = true)}>
   {#if label}
-    <label for={id} class="uk-form-label">{label} {!optional ? '*' : ''}</label>
+    <label for={id} class="uk-form-label">{label} {suffix}</label>
   {/if}
   <div style="position: relative">
     <input
