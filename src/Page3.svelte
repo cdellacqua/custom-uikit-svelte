@@ -824,6 +824,18 @@ let items = [&lbrace;
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">Autocomplete</h2>
@@ -984,6 +996,18 @@ let items = [&lbrace;
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

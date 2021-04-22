@@ -323,6 +323,18 @@
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
 			</tbody>
 		</table>
 		<h2 class="uk-heading-divider">FixedPointInput</h2>
@@ -1238,6 +1250,18 @@ let password = &quot;hello1234&quot;;
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>

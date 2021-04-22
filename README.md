@@ -724,6 +724,8 @@ Create an already styled description list, perfect for describing key-value prop
 |dataProviderErrorHandler|function|-||
 |loading|boolean|-|@readonly|
 |debounceMs|number|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 
 &nbsp;
 &nbsp;
@@ -755,6 +757,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 
 &nbsp;
 &nbsp;
@@ -859,6 +863,8 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
 |state|'initial'\|'valid'\|'invalid'|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 
 &nbsp;
 &nbsp;
@@ -1065,6 +1071,8 @@ Create an already styled description list, perfect for describing key-value prop
 |className|string\|undefined|-||
 |variant|'primary'\|'secondary'\|'danger'|"primary"|This property is used to style the button corresponding to the selected value with one of the base uikit classes for button appearance|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 
 &nbsp;
 &nbsp;
