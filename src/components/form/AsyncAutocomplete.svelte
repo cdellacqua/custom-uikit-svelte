@@ -154,7 +154,7 @@
 
   export function reload() {
     forceUpdate = true;
-    _reload();
+    return _reload();
   }
 
   const debouncedRefresh = debounce(refresh, debounceMs);
