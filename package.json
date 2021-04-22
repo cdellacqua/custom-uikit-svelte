@@ -22,6 +22,7 @@
     "src/services",
     "src/init.js",
     "src/main.js",
+    "src/stores",
     "dist"
   ],
   "peerDependencies": {
