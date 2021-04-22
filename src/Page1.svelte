@@ -1027,6 +1027,7 @@ current page and its href property will be ignored</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+      render: (n) =&gt; n,
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Button',
