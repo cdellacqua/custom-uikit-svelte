@@ -31,6 +31,11 @@
   /** @type {string|undefined} */
   export let tooltip = undefined;
 
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
 </script>
@@ -38,6 +43,8 @@
 <Field
   inputId={id}
   labelWrap
+  {requiredMarker}
+  {optionalMarker}
   {label}
   {state}
   {className}

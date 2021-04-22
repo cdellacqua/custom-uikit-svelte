@@ -35,6 +35,11 @@ import { createEventDispatcher } from "svelte";
   /** @type {string|undefined} */
   export let tooltip = undefined;
 
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
 
@@ -46,6 +51,8 @@ import { createEventDispatcher } from "svelte";
 
 <Field
   inputId={id}
+  {requiredMarker}
+  {optionalMarker}
   {label}
   {state}
   {className}

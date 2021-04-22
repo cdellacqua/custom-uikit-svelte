@@ -41,12 +41,19 @@
   /** @type {string|undefined} @default "off" */
   export let spellcheck = 'off';
 
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
 </script>
 
 <Field
   inputId={id}
+  {requiredMarker}
+  {optionalMarker}
   {label}
   {state}
   {style}

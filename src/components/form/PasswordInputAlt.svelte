@@ -45,6 +45,11 @@
   /** @type {string|undefined} */
   export let maxlength = undefined;
 
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
+
   let refPassword;
   let refText;
   $: ref = refPassword || refText;
@@ -69,6 +74,8 @@
 <Field
   hasIcon={true}
   inputId={id}
+  {requiredMarker}
+  {optionalMarker}
   {label}
   {state}
   {style}

@@ -52,6 +52,11 @@
   export let minlength = undefined;
   /** @type {string|undefined} */
   export let maxlength = undefined;
+
+  /** @type {string|undefined} */
+  export let requiredMarker = undefined;
+  /** @type {string|undefined} */
+  export let optionalMarker = undefined;
   
   /** @type {'initial'|'valid'|'invalid'} */
   export let state = "initial";
@@ -71,6 +76,8 @@
 <Field
   hasIcon={!!icon}
   inputId={id}
+  {requiredMarker}
+  {optionalMarker}
   {label}
   {state}
   {className}
