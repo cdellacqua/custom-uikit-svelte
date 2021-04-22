@@ -784,6 +784,8 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLInputElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -817,6 +819,8 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -848,6 +852,8 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-|@default "off"|
 |spellcheck|string\|undefined|-|@default "off"|
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -926,6 +932,8 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -962,6 +970,8 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -995,6 +1005,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-|@default "off"|
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1028,6 +1040,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-|@default "off"|
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1109,6 +1123,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1136,6 +1152,8 @@ Create an already styled description list, perfect for describing key-value prop
 |ref|HTMLSelectElement|-||
 |disabled|boolean|-||
 |tooltip|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1169,6 +1187,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1206,6 +1226,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1240,6 +1262,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |minlength|number\|undefined|-||
 |maxlength|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1271,6 +1295,8 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||
 
 &nbsp;
@@ -1302,4 +1328,6 @@ Create an already styled description list, perfect for describing key-value prop
 |autocomplete|string\|undefined|-||
 |autocorrect|string\|undefined|-||
 |spellcheck|string\|undefined|-||
+|requiredMarker|string\|undefined|-||
+|optionalMarker|string\|undefined|-||
 |state|'initial'\|'valid'\|'invalid'|-||

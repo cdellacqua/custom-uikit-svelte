@@ -162,6 +162,18 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
 					<td>-</td>
@@ -289,6 +301,18 @@
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>@default "off"</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
@@ -621,6 +645,18 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
 					<td>-</td>
@@ -780,6 +816,18 @@
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
 					<td>-</td>
@@ -916,6 +964,18 @@
 				</tr>
 				<tr>
 					<td>maxlength</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
@@ -1072,6 +1132,18 @@ let password = &quot;hello1234&quot;;
 				</tr>
 				<tr>
 					<td>maxlength</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
 					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
