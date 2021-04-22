@@ -365,26 +365,29 @@
               on:keyup={(e) => ['Enter'].includes(e.code) && dispatch('row-click', row)}
               on:dblclick={() => dispatch('row-dblclick', row)}
               on:click={() => dispatch('row-click', row)}>
-              {#each columns as col (col)}
+              {#each columns.map((col) => ({
+                ...col,
+                rendered: col.render && col.render(row[col.key], row)
+              })) as col (col)}
                 <td
                   class={col.className}
                   style="text-align: {col.textAlign || 'left'}">
                   {#if !col.render}
                     {row[col.key]}
-                  {:else if typeof col.render(row[col.key], row) === 'object'}
+                  {:else if col.rendered && typeof col.rendered === 'object'}
                     <svelte:component
-                      this={col.render(row[col.key], row).component}
-                      {...col.render(row[col.key], row).props || {}}
+                      this={col.rendered.component}
+                      {...(col.rendered.props || {})}
                       on:click={(e) => {
-                        const onClick = col.render(row[col.key], row).onClick;
+                        const onClick = col.rendered.onClick;
                         if (onClick) {
                           e.stopPropagation();
                           onClick(e);
                         }
                       }}>
-                      {col.render(row[col.key], row).textContent || ''}
+                      {col.rendered.textContent || ''}
                     </svelte:component>
-                  {:else}{col.render(row[col.key], row)}{/if}
+                  {:else}{col.rendered || ''}{/if}
                 </td>
               {/each}
             </tr>

@@ -42,6 +42,7 @@
 				if (v2) return 1;
 				return 0;
 			},
+      render: (n) => n,
 		},
 		{
 			label: 'Button',

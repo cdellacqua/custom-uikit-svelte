@@ -300,28 +300,30 @@
             on:keyup={(e) => ['Enter'].includes(e.code) && dispatch('row-click', row)}
             on:dblclick={() => dispatch('row-dblclick', row)}
             on:click={() => dispatch('row-click', row)}>
-            {#each columns as col}
+            {#each columns.map((col) => ({
+              ...col,
+              rendered: col.render && col.render(row[col.key], row)
+            })) as col (col)}
               <td
-                class={col.className}
-                style="text-align: {col.textAlign || 'left'}">
-                {#if !col.render}
-                  {row[col.key]}
-                {:else if typeof col.render(row[col.key], row) === 'object'}
-                  <svelte:component
-                    this={col.render(row[col.key], row).component}
-                    {...(col.render(row[col.key], row).props || {})}
-                    on:click={(e) => {
-                      const onClick = col.render(row[col.key], row).onClick;
-                      if (onClick) {
-                        e.stopPropagation();
-                        onClick(e);
-                      }
-                    }}
-                  >
-                    {col.render(row[col.key], row).textContent || ''}
-                  </svelte:component>
-                {:else}{col.render(row[col.key], row)}{/if}
-              </td>
+                  class={col.className}
+                  style="text-align: {col.textAlign || 'left'}">
+                  {#if !col.render}
+                    {row[col.key]}
+                  {:else if col.rendered && typeof col.rendered === 'object'}
+                    <svelte:component
+                      this={col.rendered.component}
+                      {...(col.rendered.props || {})}
+                      on:click={(e) => {
+                        const onClick = col.rendered.onClick;
+                        if (onClick) {
+                          e.stopPropagation();
+                          onClick(e);
+                        }
+                      }}>
+                      {col.rendered.textContent || ''}
+                    </svelte:component>
+                  {:else}{col.rendered || ''}{/if}
+                </td>
             {/each}
           </tr>
         {/each}
