@@ -67,7 +67,7 @@
 			oldY = newY;
 		});
 	}
-	$: $scrollY, updateNavbar();
+	$: $scrollY, ref && updateNavbar();
 
 	/** @type {ResizeObserver} */
 	let observer = null;
