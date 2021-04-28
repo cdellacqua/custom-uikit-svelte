@@ -8,7 +8,7 @@
 <div bind:this={ref}>
 	<i>Scroll past this element to enable the scrollable nav and then scroll up to see it</i>
 </div>
-{#if ref && $scrollY < ref.offsetTop}
+{#if ref && $scrollY > ref.offsetTop}
 	<ScrollableNav spacer={false}>
 		<div class="uk-navbar-left">
 			<ul class="uk-navbar-nav">

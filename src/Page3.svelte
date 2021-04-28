@@ -311,7 +311,7 @@ let items = [&lbrace;
 &lt;div bind:this=&lbrace;ref&rbrace;&gt;
 &nbsp;&nbsp;&lt;i&gt;Scroll past this element to enable the scrollable nav and then scroll up to see it&lt;/i&gt;
 &lt;/div&gt;
-&lbrace;#if ref &amp;&amp; $scrollY &lt; ref.offsetTop&rbrace;
+&lbrace;#if ref &amp;&amp; $scrollY &gt; ref.offsetTop&rbrace;
 &nbsp;&nbsp;&lt;ScrollableNav spacer=&lbrace;false&rbrace;&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;uk-navbar-left&quot;&gt;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class=&quot;uk-navbar-nav&quot;&gt;
