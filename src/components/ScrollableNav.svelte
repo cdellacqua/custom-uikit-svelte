@@ -1,4 +1,6 @@
 <script>
+	import { onDestroy, onMount } from "svelte";
+
 	import { scrollY } from "../stores/responsive";
 	import Nav from "./Nav.svelte";
 
@@ -66,10 +68,28 @@
 		});
 	}
 	$: $scrollY, updateNavbar();
+
+	/** @type {ResizeObserver} */
+	let observer = null;
+	onMount(() => {
+		if (window.ResizeObserver) {
+			observer = new ResizeObserver(() => {
+				if (ref) {
+					height = ref.offsetHeight;
+				}
+			});
+			observer.observe(ref);
+		}
+	});
+	onDestroy(() => {
+		if (observer) {
+			observer.disconnect();
+			observer = null;
+		}
+	});
 </script>
 
 <div
-	bind:offsetHeight={height}
 	bind:this={ref}
 	class={className}
 	style="position:absolute;top:0;left:0;width:100%;z-index:980;{style || ''}"
