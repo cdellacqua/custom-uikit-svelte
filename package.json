@@ -25,15 +25,6 @@
     "src/stores",
     "dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/module.js",
-      "browser": "./dist/index.js"
-    },
-    "./stores": "./src/stores",
-    "./helpers": "./src/helpers",
-    "./package.json": "./package.json"
-  },
   "peerDependencies": {
     "svelte": "^3.0.0",
     "uikit": "^3.5.6"
