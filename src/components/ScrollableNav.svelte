@@ -3,6 +3,26 @@
 	import Nav from "./Nav.svelte";
 
 	/**
+	 * @description A string specifying custom style properties for the component
+	 * @type {string|undefined} */
+	export let style = undefined;
+	/**
+	 * @default undefined
+	 * @description A string containing any additional classes to apply to the component
+	 * @type {string|undefined} */
+	export let className = undefined;
+
+	/**
+	 * @description A string specifying custom style properties for the contained Nav component
+	 * @type {string|undefined} */
+	export let navStyle = undefined;
+	/**
+	 * @default undefined
+	 * @description A string containing any additional classes to apply to the contained Nav component
+	 * @type {string|undefined} */
+	export let navClassName = undefined;
+
+	/**
 	 * @readonly
 	 * @description The HTML reference of the component
 	 * @type {HTMLDivElement} */
@@ -51,9 +71,10 @@
 <div
 	bind:offsetHeight={height}
 	bind:this={ref}
-	style="position:absolute;top:0;left:0;width:100%;z-index:980;"
+	class={className}
+	style="position:absolute;top:0;left:0;width:100%;z-index:980;{style || ''}"
 >
-	<Nav bind:ref={scrollableNav}>
+	<Nav bind:ref={scrollableNav} style={navStyle} className={navClassName}>
 		<slot />
 	</Nav>
 </div>

@@ -812,6 +812,18 @@ function toggleMountState() &lbrace;
 					<td>-</td>
 					<td>The HTML reference of the component</td>
 				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>undefined</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

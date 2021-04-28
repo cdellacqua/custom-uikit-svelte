@@ -334,6 +334,30 @@ let items = [&lbrace;
 			</thead>
 			<tbody>
 				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>undefined</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
+				<tr>
+					<td>navStyle</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the contained Nav component</td>
+				</tr>
+				<tr>
+					<td>navClassName</td>
+					<td>string|undefined</td>
+					<td>undefined</td>
+					<td>A string containing any additional classes to apply to the contained Nav component</td>
+				</tr>
+				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDivElement</td>
 					<td>-</td>

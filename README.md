@@ -554,6 +554,8 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
 
 &nbsp;
 &nbsp;
@@ -620,6 +622,10 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
+|style|string\|undefined|-|A string specifying custom style properties for the component|
+|className|string\|undefined|undefined|A string containing any additional classes to apply to the component|
+|navStyle|string\|undefined|-|A string specifying custom style properties for the contained Nav component|
+|navClassName|string\|undefined|undefined|A string containing any additional classes to apply to the contained Nav component|
 |ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
 |height (readonly)|number|-|The current height of this component|
 |spacer|boolean|true|Whether to add a spacer underneath this component or not|
