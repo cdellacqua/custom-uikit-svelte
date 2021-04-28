@@ -18,6 +18,7 @@ fs.writeFileSync(
 	path.join('src', 'main.js'),
 	"import './init';\n" +
 	"export { globalRequiredMarker, globalOptionalMarker } from './stores/markers';\n" +
+	"export { generateId } from './services/html';\n" +
 	readdirFilesRecursiveSync(path.join('src', 'components'))
 		.filter((entry) => !entry.endsWith('.preview.svelte'))
 		.map((entry) => './' + entry.substring('src/'.length))
