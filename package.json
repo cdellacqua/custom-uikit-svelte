@@ -26,8 +26,15 @@
     "dist"
   ],
   "exports": {
+		".": {
+      "import": "./dist/module.js",
+      "browser": "./dist/index.js"
+    },
+    
     "./stores": "./src/stores",
-    "./helpers": "./src/helpers"
+    "./helpers": "./src/helpers",
+		
+    "./package.json": "./package.json"
   },
   "peerDependencies": {
     "svelte": "^3.0.0",
