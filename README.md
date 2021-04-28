@@ -44,9 +44,11 @@ Components
 - [LoaderOverlayScoped](#loaderoverlayscoped)
 - [LoaderWrapper](#loaderwrapper)
 - [Modal](#modal)
+- [Nav](#nav)
 - [Offcanvas](#offcanvas)
 - [OrderableList](#orderablelist)
 - [Pagination](#pagination)
+- [ScrollableNav](#scrollablenav)
 - [Switcher](#switcher)
 - [Tab](#tab)
 - [Table](#table)
@@ -543,6 +545,19 @@ Create an already styled description list, perfect for describing key-value prop
 &nbsp;
 &nbsp;
 &nbsp;
+## Nav
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
+
+&nbsp;
+&nbsp;
+&nbsp;
 ## Offcanvas
 
 &nbsp;
@@ -593,6 +608,21 @@ Create an already styled description list, perfect for describing key-value prop
 |pageIndex|number|-||
 |numberOfPages|number|-||
 |numbersPerSide|number|-||
+
+&nbsp;
+&nbsp;
+&nbsp;
+## ScrollableNav
+
+&nbsp;
+&nbsp;
+&nbsp;
+### Props
+|name|type|default|description|
+|--|--|--|--|
+|ref (readonly)|HTMLDivElement|-|The HTML reference of the component|
+|height (readonly)|number|-|The current height of this component|
+|spacer|boolean|true|Whether to add a spacer underneath this component or not|
 
 &nbsp;
 &nbsp;

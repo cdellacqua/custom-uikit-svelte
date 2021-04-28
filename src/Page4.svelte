@@ -16,6 +16,7 @@
 	import PaginationDemo from './demo/PaginationDemo.svelte';
 	import PasswordInputAltDemo from './demo/PasswordInputAltDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
+	import ScrollableNavDemo from './demo/ScrollableNavDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
@@ -28,6 +29,292 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">Autocomplete</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<AutocompleteDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
+
+  const options = [
+    &lbrace;
+      label: 'Ananas',
+      value: 1
+    &rbrace;,
+    &lbrace;
+      label: 'Banana',
+      value: &lbrace; kg: '3.14' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Bananana',
+      value: &lbrace; kg: '6.28' &rbrace;
+    &rbrace;,
+    &lbrace;
+      label: 'Strawberry',
+      value: 'strawberry'
+    &rbrace;,
+  ];
+  let value = &quot;strawberry&quot;;
+&lt;/script&gt;
+
+&lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
+  &lt;Autocomplete bind:value &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
+&lt;/Form&gt;</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>options</td>
+					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
+					<td>-</td>
+					<td>Autocomplete options, the value must be unique</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>any</td>
+					<td>-</td>
+					<td>The current selected value or null if no value is selected</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Label of this component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string containing any additional classes to apply to the component</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>textIfNoResult</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the applied filter doesn't return any result</td>
+				</tr>
+				<tr>
+					<td>textIfInvalid</td>
+					<td>string</td>
+					<td>-</td>
+					<td>Text to show when the field is required but no value has been chosen</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>Control whether the component is disabled or not</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>UIkit tooltip</td>
+				</tr>
+				<tr>
+					<td>placeholder</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Input placeholder</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>Reference to the div that wraps this component</td>
+				</tr>
+				<tr>
+					<td>autocapitalize</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocapitalize setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocomplete</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocomplete setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>autocorrect</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>Autocorrect setting of the input tag</td>
+				</tr>
+				<tr>
+					<td>spellcheck</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>animationDuration</td>
+					<td>number</td>
+					<td>-</td>
+					<td>In/Out fly animation duration (in milliseconds)</td>
+				</tr>
+				<tr>
+					<td>state</td>
+					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">Checkbox</h2>
+		<p></p>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>label</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>style</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>A string specifying custom style properties for the component</td>
+				</tr>
+				<tr>
+					<td>className</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>name</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfInvalid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>textIfValid</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>helperText</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optional</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>value</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLInputElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>disabled</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>tooltip</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>requiredMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>optionalMarker</td>
+					<td>string|undefined</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>state</td>
+					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">DatePicker</h2>
 		<p></p>
 		<h3>Props</h3>
@@ -1151,187 +1438,6 @@ let password = &quot;hello1234&quot;;
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">PercentageInput</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>autocapitalize</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocomplete</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>autocorrect</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>spellcheck</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Radio</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<RadioDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace; Radio, Form, Button &rbrace; from &quot;../main&quot;;
-
-  let status = [];
-  let obj = '';
-
-  function handleSubmit() &lbrace;
-    console.log(obj);
-  &rbrace;
-&lt;/script&gt;
-
-&lt;Form submitAsync=&lbrace;handleSubmit&rbrace;&gt;
-  &lt;Radio
-    bind:value=&lbrace;obj&rbrace;
-    options=&lbrace;[&lbrace; label: 'Label 1', value: 1, disabled: true &rbrace;, &lbrace; label: 'Label 2 with a long text', value: 0, disabled: false &rbrace;, &lbrace; label: 'Label 3', value: '' &rbrace;, &lbrace; label: 'Label obj', value: &lbrace; prop: 2 &rbrace; &rbrace;, &lbrace; label: 'Label true', value: true &rbrace;, &lbrace; label: 'Label false', value: false &rbrace;]&rbrace;
-    on:change=&lbrace;(&lbrace; detail &rbrace;) =&gt; &lbrace;
-      status = [...status, 'Change: ' + JSON.stringify(detail)];
-    &rbrace;&rbrace; /&gt;
-  &lt;Button type=&quot;submit&quot;&gt;Submit&lt;/Button&gt;
-  &lt;div&gt;
-    &lbrace;@html status.join('&lt;br /&gt;')&rbrace;
-  &lt;/div&gt;
-&lt;/Form&gt;
-</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>any|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>options</td>
-					<td>Array.&lt;&lbrace;value: any, label: string, disabled: (boolean|undefined)&rbrace;&gt;</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLDivElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>size</td>
-					<td>undefined|'small'|'large'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>variant</td>
-					<td>'primary'|'secondary'|'danger'</td>
-					<td>"primary"</td>
-					<td>This property is used to style the button corresponding to the selected value with one of the base uikit classes for button appearance</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>requiredMarker</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optionalMarker</td>
-					<td>string|undefined</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

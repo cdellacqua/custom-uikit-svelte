@@ -16,6 +16,7 @@
 	import PaginationDemo from './demo/PaginationDemo.svelte';
 	import PasswordInputAltDemo from './demo/PasswordInputAltDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
+	import ScrollableNavDemo from './demo/ScrollableNavDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';

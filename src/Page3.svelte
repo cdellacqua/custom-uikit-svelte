@@ -16,6 +16,7 @@
 	import PaginationDemo from './demo/PaginationDemo.svelte';
 	import PasswordInputAltDemo from './demo/PasswordInputAltDemo.svelte';
 	import RadioDemo from './demo/RadioDemo.svelte';
+	import ScrollableNavDemo from './demo/ScrollableNavDemo.svelte';
 	import SelectDemo from './demo/SelectDemo.svelte';
 	import SwitcherDemo from './demo/SwitcherDemo.svelte';
 	import TabDemo from './demo/TabDemo.svelte';
@@ -28,6 +29,115 @@
 </style>
 <div uk-grid class="uk-flex-center uk-padding-small">
 	<div class="uk-width-3-5@l uk-width-2-3@m uk-width-5-6@s uk-width-1-1">
+		<h2 class="uk-heading-divider">Offcanvas</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<OffcanvasDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+  import &lbrace; Offcanvas, Button &rbrace; from &quot;../main&quot;;
+  let status = [];
+
+  let showSidebar = false;
+  function handleOffcanvasEvent(eventName) &lbrace;
+    status = [...status, eventName];
+  &rbrace;
+  const menu = [
+    &lbrace;
+      href: &quot;/#_1&quot;,
+      label: &quot;Link 1&quot;,
+    &rbrace;,
+    &lbrace;
+      href: &quot;/#_2&quot;,
+      label: &quot;Link 2&quot;,
+    &rbrace;,
+    &lbrace;
+      href: &quot;/#_3&quot;,
+      label: &quot;Link 3&quot;,
+    &rbrace;,
+  ];
+
+  let mounted = true;
+&lt;/script&gt;
+
+&lbrace;#if mounted&rbrace;
+  &lt;Offcanvas
+    bind:show=&lbrace;showSidebar&rbrace;
+    on:show=&lbrace;() =&gt; handleOffcanvasEvent('show')&rbrace;
+    on:hide=&lbrace;() =&gt; handleOffcanvasEvent('hide')&rbrace;
+    on:shown=&lbrace;() =&gt; handleOffcanvasEvent('shown')&rbrace;
+    on:hidden=&lbrace;() =&gt; handleOffcanvasEvent('hidden')&rbrace;&gt;
+    &lt;ul class=&quot;uk-nav uk-nav-default sidebar-list&quot;&gt;
+      &lt;li class=&quot;uk-nav-header&quot; /&gt;
+      &lbrace;#each menu as item&rbrace;
+        &lt;li class=&quot;uk-nav-header&quot;&gt;
+          &lt;a
+            href=&lbrace;item.href&rbrace;
+            on:click=&lbrace;() =&gt; (showSidebar = false)&rbrace;&gt;&lbrace;item.label&rbrace;&lt;/a&gt;
+        &lt;/li&gt;
+      &lbrace;/each&rbrace;
+      &lt;!-- svelte-ignore a11y-missing-attribute --&gt;
+      &lt;li&gt;&lt;a role=&quot;button&quot; tabindex=&quot;0&quot; on:keyup=&lbrace;(e) =&gt; ['Enter'].includes(e.code) &amp;&amp; (mounted = false)&rbrace; on:click=&lbrace;() =&gt; (mounted = false)&rbrace;&gt;Unmount&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/Offcanvas&gt;
+&lbrace;/if&rbrace;
+&lt;Button on:click=&lbrace;() =&gt; (showSidebar = !showSidebar)&rbrace;&gt;
+  Show offcanvas
+&lt;/Button&gt;
+&lt;Button on:click=&lbrace;() =&gt; (mounted = true)&rbrace; disabled=&lbrace;mounted&rbrace;&gt;
+  Mount offcanvas
+&lt;/Button&gt;
+&lt;div&gt;
+  &lbrace;@html status.join('&lt;br /&gt;')&rbrace;
+&lt;/div&gt;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>id</td>
+					<td>string</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>show</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>shown</td>
+					<td>boolean</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>ref</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>side</td>
+					<td>'left'|'right'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
 		<h2 class="uk-heading-divider">OrderableList</h2>
 		<p></p>
 		<Switcher titles={['Output', 'Code']}>
@@ -180,6 +290,66 @@ let items = [&lbrace;
 					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 class="uk-heading-divider">ScrollableNav</h2>
+		<p></p>
+		<Switcher titles={['Output', 'Code']}>
+			<li>
+				<hr class="uk-divider-icon">
+				<ScrollableNavDemo />
+				<hr class="uk-divider-icon">
+			</li>
+			<li><pre>&lt;script&gt;
+&nbsp;&nbsp;import &lbrace; ScrollableNav &rbrace; from &quot;../main&quot;;
+&nbsp;&nbsp;import &lbrace; scrollY &rbrace; from &quot;../stores/responsive&quot;;
+
+&nbsp;&nbsp;let ref;
+&lt;/script&gt;
+
+&lt;div bind:this=&lbrace;ref&rbrace;&gt;
+&nbsp;&nbsp;&lt;i&gt;Scroll past this element to enable the scrollable nav and then scroll up to see it&lt;/i&gt;
+&lt;/div&gt;
+&lbrace;#if ref &amp;&amp; $scrollY &lt; ref.offsetTop&rbrace;
+&nbsp;&nbsp;&lt;ScrollableNav spacer=&lbrace;false&rbrace;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;uk-navbar-left&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class=&quot;uk-navbar-nav&quot;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class=&quot;uk-active&quot;&gt;&lt;a href=&quot;/#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&lt;/ScrollableNav&gt;
+&lbrace;/if&rbrace;
+</pre></li>
+		</Switcher>
+		<h3>Props</h3>
+		<table class="uk-table">
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>ref (readonly)</td>
+					<td>HTMLDivElement</td>
+					<td>-</td>
+					<td>The HTML reference of the component</td>
+				</tr>
+				<tr>
+					<td>height (readonly)</td>
+					<td>number</td>
+					<td>-</td>
+					<td>The current height of this component</td>
+				</tr>
+				<tr>
+					<td>spacer</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Whether to add a spacer underneath this component or not</td>
 				</tr>
 			</tbody>
 		</table>
@@ -833,292 +1003,6 @@ let items = [&lbrace;
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Autocomplete</h2>
-		<p></p>
-		<Switcher titles={['Output', 'Code']}>
-			<li>
-				<hr class="uk-divider-icon">
-				<AutocompleteDemo />
-				<hr class="uk-divider-icon">
-			</li>
-			<li><pre>&lt;script&gt;
-  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
-
-  const options = [
-    &lbrace;
-      label: 'Ananas',
-      value: 1
-    &rbrace;,
-    &lbrace;
-      label: 'Banana',
-      value: &lbrace; kg: '3.14' &rbrace;
-    &rbrace;,
-    &lbrace;
-      label: 'Bananana',
-      value: &lbrace; kg: '6.28' &rbrace;
-    &rbrace;,
-    &lbrace;
-      label: 'Strawberry',
-      value: 'strawberry'
-    &rbrace;,
-  ];
-  let value = &quot;strawberry&quot;;
-&lt;/script&gt;
-
-&lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
-  &lt;Autocomplete bind:value &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
-&lt;/Form&gt;</pre></li>
-		</Switcher>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>options</td>
-					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
-					<td>-</td>
-					<td>Autocomplete options, the value must be unique</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>any</td>
-					<td>-</td>
-					<td>The current selected value or null if no value is selected</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>Label of this component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string containing any additional classes to apply to the component</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>textIfNoResult</td>
-					<td>string</td>
-					<td>-</td>
-					<td>Text to show when the applied filter doesn't return any result</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string</td>
-					<td>-</td>
-					<td>Text to show when the field is required but no value has been chosen</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>Control whether the component is disabled or not</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>UIkit tooltip</td>
-				</tr>
-				<tr>
-					<td>placeholder</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>Input placeholder</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLDivElement</td>
-					<td>-</td>
-					<td>Reference to the div that wraps this component</td>
-				</tr>
-				<tr>
-					<td>autocapitalize</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>Autocapitalize setting of the input tag</td>
-				</tr>
-				<tr>
-					<td>autocomplete</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>Autocomplete setting of the input tag</td>
-				</tr>
-				<tr>
-					<td>autocorrect</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>Autocorrect setting of the input tag</td>
-				</tr>
-				<tr>
-					<td>spellcheck</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>animationDuration</td>
-					<td>number</td>
-					<td>-</td>
-					<td>In/Out fly animation duration (in milliseconds)</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>requiredMarker</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optionalMarker</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-			</tbody>
-		</table>
-		<h2 class="uk-heading-divider">Checkbox</h2>
-		<p></p>
-		<h3>Props</h3>
-		<table class="uk-table">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>type</th>
-					<th>default</th>
-					<th>description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>id</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>label</td>
-					<td>string</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>style</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>A string specifying custom style properties for the component</td>
-				</tr>
-				<tr>
-					<td>className</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>name</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfInvalid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>textIfValid</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>helperText</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optional</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>value</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>ref</td>
-					<td>HTMLInputElement</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>disabled</td>
-					<td>boolean</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>tooltip</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>requiredMarker</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>optionalMarker</td>
-					<td>string|undefined</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
-				<tr>
-					<td>state</td>
-					<td>'initial'|'valid'|'invalid'</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
