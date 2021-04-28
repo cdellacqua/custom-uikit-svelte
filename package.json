@@ -25,6 +25,10 @@
     "src/stores",
     "dist"
   ],
+  "exports": {
+    "./stores": "./src/stores",
+    "./helpers": "./src/helpers"
+  },
   "peerDependencies": {
     "svelte": "^3.0.0",
     "uikit": "^3.5.6"
