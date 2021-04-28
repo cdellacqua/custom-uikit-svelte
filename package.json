@@ -1,6 +1,6 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "description": "Unofficial Svelte Component Library for the UIkit framework",
   "main": "dist/index.js",
   "module": "dist/module.js",
@@ -26,14 +26,12 @@
     "dist"
   ],
   "exports": {
-		".": {
+    ".": {
       "import": "./dist/module.js",
       "browser": "./dist/index.js"
     },
-    
     "./stores": "./src/stores",
     "./helpers": "./src/helpers",
-		
     "./package.json": "./package.json"
   },
   "peerDependencies": {
