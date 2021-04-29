@@ -59,6 +59,8 @@
     &rbrace;,
   ];
   let value = &quot;strawberry&quot;;
+
+  $: console.log(value);
 &lt;/script&gt;
 
 &lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
@@ -187,6 +189,12 @@
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>query</td>
+					<td>string</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

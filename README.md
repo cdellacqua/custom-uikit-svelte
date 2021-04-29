@@ -310,6 +310,7 @@ The card component allows you to create nice box layouts
 |--|--|--|--|
 |columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|SearchCallback\|undefined), render: (Renderer\|undefined)}>|-||
 |rows|Array.<Record.<string, any>>|-||
+|visibleRows|Array.<Record.<string, any>>|-||
 |size|undefined\|'small'|-||
 |className|undefined\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -323,6 +324,11 @@ The card component allows you to create nice box layouts
 |query|string|-||
 |orderBy|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
 |horizontalScroll|boolean|-|@default true|
+|recordsPerPage|number|-||
+|numbersPerSide|number|-||
+|pageIndex|number|-||
+|total|number|-|@readonly|
+|filtered|number|-|@readonly|
 
 &nbsp;
 &nbsp;
@@ -794,6 +800,7 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
+|query|string|-||
 |requiredMarker|string\|undefined|-||
 |optionalMarker|string\|undefined|-||
 

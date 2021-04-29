@@ -1060,6 +1060,7 @@ current page and its href property will be ignored</td>
 &lt;DataTable
   &lbrace;columns&rbrace;
   rows=&lbrace;data&rbrace;
+  recordsPerPage=&lbrace;2&rbrace;
   orderBy=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
   on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
@@ -1087,6 +1088,12 @@ current page and its href property will be ignored</td>
 				</tr>
 				<tr>
 					<td>rows</td>
+					<td>Array.&lt;Record.&lt;string, any&gt;&gt;</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>visibleRows</td>
 					<td>Array.&lt;Record.&lt;string, any&gt;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
@@ -1168,6 +1175,36 @@ current page and its href property will be ignored</td>
 					<td>boolean</td>
 					<td>-</td>
 					<td>@default true</td>
+				</tr>
+				<tr>
+					<td>recordsPerPage</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>numbersPerSide</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>pageIndex</td>
+					<td>number</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>total</td>
+					<td>number</td>
+					<td>-</td>
+					<td>@readonly</td>
+				</tr>
+				<tr>
+					<td>filtered</td>
+					<td>number</td>
+					<td>-</td>
+					<td>@readonly</td>
 				</tr>
 			</tbody>
 		</table>
