@@ -42,19 +42,19 @@
 
 	let scrollableNav;
 	let animationFrameId = null;
-	let oldY = 0;
+	let oldY = $scrollY;
 	let accumulatorY = 0;
 	function updateNavbar() {
 		if (animationFrameId) {
 			window.cancelAnimationFrame(animationFrameId);
 		}
+		const newY = $scrollY;
 		animationFrameId = window.requestAnimationFrame(() => {
-			const newY = window.scrollY;
 			accumulatorY = Math.min(
 				0,
 				Math.max(-ref.offsetHeight, accumulatorY - (newY - oldY))
 			);
-			if (window.scrollY < 0) {
+			if (newY < 0) {
 				accumulatorY = 0;
 			}
 			if (accumulatorY === 0) {
@@ -62,12 +62,13 @@
 				ref.style.top = "0";
 			} else {
 				ref.style.position = "absolute";
-				ref.style.top = accumulatorY + window.scrollY + "px";
+				ref.style.top = accumulatorY + newY + "px";
 			}
 			oldY = newY;
 		});
 	}
-	$: $scrollY, ref && updateNavbar();
+	$: ready = Boolean(ref);
+	$: $scrollY, ready && updateNavbar();
 
 	/** @type {ResizeObserver} */
 	let observer = null;
