@@ -20,6 +20,8 @@
     },
   ];
   let value = "strawberry";
+
+  $: console.log(value);
 </script>
 
 <Form submitAsync={() => alert(value)}>
