@@ -154,6 +154,10 @@ import Select from '../components/form/Select.svelte';
       }),
     }];
     let recordsPerPage = 5;
+
+    let rows;
+
+    $: console.log(rows);
 </script>
 <Select
   options={new Array(5).fill(0).map((_, i) => ({
@@ -166,6 +170,7 @@ import Select from '../components/form/Select.svelte';
   {recordsPerPage}
   {dataProvider}
   {columns}
+  bind:rows
   numbersPerSide={4}
   orderBy={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
