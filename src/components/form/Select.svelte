@@ -51,7 +51,7 @@ import { createEventDispatcher } from "svelte";
   let referenceValue;
   function handleValueChange() {
     referenceValue = value;
-    if (value === undefined && placeholder) {
+    if (value === undefined && ref) {
       ref.selectedIndex = 0;
     }
   }
