@@ -2,10 +2,8 @@
   import { createEventDispatcher, onMount } from "svelte";
   import Button from "./Button.svelte";
   import SearchInput from "./form/SearchInput.svelte";
-  import Loader from "./Loader.svelte";
   import LoaderOverlayScoped from "./LoaderOverlayScoped.svelte";
   import { debounce } from "debounce";
-  import { noop } from "../helpers/lambdas";
   import Pagination from "./Pagination.svelte";
   import { sleep } from "../helpers/time";
 
