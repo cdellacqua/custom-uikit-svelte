@@ -478,9 +478,10 @@
 				</tr>
 				<tr>
 					<td>value</td>
-					<td>string</td>
+					<td>any</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>Current value of the select. Setting it to undefined sets the selected index to 0,
+choosing the first option, whether it's disabled, the placeholder, or a valid option</td>
 				</tr>
 				<tr>
 					<td>options</td>

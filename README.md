@@ -1183,7 +1183,7 @@ Create an already styled description list, perfect for describing key-value prop
 |helperText|string\|undefined|-||
 |placeholder|string|-||
 |optional|boolean|-||
-|value|string|-||
+|value|any|-|Current value of the select. Setting it to undefined sets the selected index to 0, choosing the first option, whether it's disabled, the placeholder, or a valid option|
 |options|Array.<{label: string, value: any, disabled: (boolean\|undefined)}>|-||
 |ref|HTMLSelectElement|-||
 |disabled|boolean|-||

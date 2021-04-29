@@ -24,7 +24,10 @@ import { createEventDispatcher } from "svelte";
   export let placeholder = "";
   /** @type {boolean} */
   export let optional = false;
-  /** @type {string} */
+  /**
+   * @description Current value of the select. Setting it to undefined sets the selected index to 0,
+   * choosing the first option, whether it's disabled, the placeholder, or a valid option
+   * @type {any} */
   export let value;
   /** @type {Array<{label: string, value: any, disabled: boolean|undefined}>} */
   export let options = [];
@@ -46,7 +49,14 @@ import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
   let referenceValue;
-  $: referenceValue = value;
+  function handleValueChange() {
+    referenceValue = value;
+    if (value === undefined && placeholder) {
+      ref.selectedIndex = 0;
+    }
+  }
+
+  $: value, handleValueChange();
 </script>
 
 <Field
