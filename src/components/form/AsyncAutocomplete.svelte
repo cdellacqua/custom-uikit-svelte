@@ -12,7 +12,10 @@
   import { fly } from "svelte/transition";
   import { dispatchCustomEvent } from "../../helpers/events";
   import Loader from "../Loader.svelte";
-  import { globalOptionalMarker, globalRequiredMarker } from '../../stores/markers';
+  import {
+    globalOptionalMarker,
+    globalRequiredMarker,
+  } from "../../stores/markers";
 
   /** @type {string} */
   export let id = generateId();
@@ -65,7 +68,7 @@
   /**
    * @description Autocomplete setting of the input tag
    * @type {string|undefined} */
-  export let autocomplete = 'off';
+  export let autocomplete = "off";
   /**
    * @description Autocorrect setting of the input tag
    * @type {string|undefined} */
@@ -94,28 +97,40 @@
   /** @type {string|undefined} */
   export let optionalMarker = undefined;
 
-  let suffix = '';
+  let suffix = "";
   function updateLabelSuffix() {
     if (optional) {
-      suffix = typeof optionalMarker === 'string'
-        ? optionalMarker
-        : $globalOptionalMarker;
+      suffix =
+        typeof optionalMarker === "string"
+          ? optionalMarker
+          : $globalOptionalMarker;
     } else {
-      suffix = typeof requiredMarker === 'string'
-        ? requiredMarker
-        : $globalRequiredMarker
+      suffix =
+        typeof requiredMarker === "string"
+          ? requiredMarker
+          : $globalRequiredMarker;
     }
   }
 
-  $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
+  $: optional,
+    requiredMarker,
+    optionalMarker,
+    $globalRequiredMarker,
+    $globalOptionalMarker,
+    updateLabelSuffix();
 
   let searchRef;
 
   let externalAssignment = true;
+  function handleExternalAssignment() {
+    if (debouncedRefresh.clear) {
+      debouncedRefresh.clear();
+    }
+    debouncedRefresh();
+  }
   $: if (query.length >= 0) {
     if (externalAssignment) {
-      debouncedRefresh.clear();
-      debouncedRefresh();
+      handleExternalAssignment();
     }
     externalAssignment = true;
   }
@@ -140,17 +155,14 @@
         }
 
         function providerArgsChanged() {
-          return (
-            providerQuery !== query ||
-            forceUpdate
-          );
+          return providerQuery !== query || forceUpdate;
         }
 
         do {
           do {
             forceUpdate = false;
             updateProviderArgs();
-            if (debounce) {
+            if (debounce && debounceMs > 0) {
               await sleep(debounceMs);
             }
           } while (providerArgsChanged());
@@ -177,7 +189,8 @@
     return _reload();
   }
 
-  const debouncedRefresh = debounce(refresh, debounceMs);
+  const debouncedRefresh =
+    debounceMs > 0 ? debounce(refresh, debounceMs) : refresh;
 
   let showSuggested = false;
   let innerClick = false;
@@ -213,14 +226,19 @@
   let hideOnBlur = true;
   let everFocused = false;
   function handleBlur() {
-    if (everFocused && options.length === 0 && value !== null && value !== undefined) {
+    if (
+      everFocused &&
+      options.length === 0 &&
+      value !== null &&
+      value !== undefined
+    ) {
       value = null;
-      dispatchCustomEvent(searchRef, 'change', null);
-      dispatch('change', null);
+      dispatchCustomEvent(searchRef, "change", null);
+      dispatch("change", null);
     }
     updateValidity(value);
     if (everFocused) {
-      state = searchRef.checkValidity() ? 'valid' : 'invalid';
+      state = searchRef.checkValidity() ? "valid" : "invalid";
     }
     if (hideOnBlur) {
       showSuggested = false;
@@ -241,8 +259,8 @@
         if (value !== option.value) {
           value = option.value;
           handleBlur();
-          dispatchCustomEvent(searchRef, 'change', value);
-          dispatch('change', value);
+          dispatchCustomEvent(searchRef, "change", value);
+          dispatch("change", value);
         }
         innerClick = false;
         hideSuggested();
@@ -285,7 +303,8 @@
   }
   function updateSuggestedMaxHeight() {
     if (suggestedRef && suggestedRef.querySelector("label")) {
-      suggestedRef.style.maxHeight = suggestedRef.querySelector("label").offsetHeight * 5 + "px";
+      suggestedRef.style.maxHeight =
+        suggestedRef.querySelector("label").offsetHeight * 5 + "px";
     }
   }
 
@@ -334,12 +353,128 @@
           dispatchCustomEvent(input, "change");
           break;
       }
-    } else if (e.key === 'Enter' && options.length === 0) {
+    } else if (e.key === "Enter" && options.length === 0) {
       hideOnBlur = false;
       handleBlur();
     }
   }
 </script>
+
+<svelte:body
+  on:click={hideSuggested}
+  on:touchstart={() => (hideOnBlur = false)}
+  on:mousedown={() => (hideOnBlur = false)} />
+<div
+  class:custom-uk-autocomplete-wrapper={true}
+  bind:this={ref}
+  {style}
+  class:text-wrapper={true}
+  class={className}
+  class:uk-margin-bottom={true}
+  on:click={() => (innerClick = true)}
+>
+  {#if label}
+    <label for={id} class="uk-form-label">{label} {suffix}</label>
+  {/if}
+  <div style="position: relative">
+    <input
+      class:custom-uk-autocomplete-input={true}
+      bind:this={searchRef}
+      {autocapitalize}
+      {autocomplete}
+      {autocorrect}
+      {spellcheck}
+      {placeholder}
+      class="uk-input"
+      class:uk-form-danger={state === "invalid"}
+      class:uk-form-success={state === "valid"}
+      type="search"
+      uk-tooltip={tooltip}
+      {id}
+      value={query}
+      on:input={handleInput}
+      on:keydown={handleKeydown}
+      required={false}
+      {disabled}
+      on:focus={showSuggestedOptions}
+      on:click={showSuggestedOptions}
+      on:blur={handleBlur}
+      on:focus={() => ((everFocused = true), (state = "initial"))}
+    />
+    {#if loading && showSuggested}
+      <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
+    {:else if value !== null && value !== undefined && !disabled}
+      <!-- svelte-ignore a11y-missing-attribute -->
+      <a
+        role="button"
+        tabindex="0"
+        class="uk-form-icon uk-form-icon-flip"
+        uk-icon="icon: close"
+        on:keydown={(e) => {
+          if (["Enter"].includes(e.code)) {
+            e.preventDefault();
+            value = null;
+            query = "";
+            handleBlur();
+            dispatchCustomEvent(searchRef, "change", null);
+            dispatch("change", null);
+            searchRef.focus();
+          }
+        }}
+        on:click={() => {
+          value = null;
+          query = "";
+          handleBlur();
+          dispatchCustomEvent(searchRef, "change", null);
+          dispatch("change", null);
+        }}>&ZeroWidthSpace;</a
+      >
+    {/if}
+  </div>
+  {#if showSuggested && !disabled}
+    <div
+      class:custom-uk-autocomplete-suggested={true}
+      in:fly={{ y: 50, duration: animationDuration }}
+      class="uk-grid-small uk-box-shadow-small suggested uk-background-default
+        uk-margin-remove-top uk-margin-remove-left uk-grid"
+      bind:this={suggestedRef}
+    >
+      {#if options.length > 0}
+        <div bind:this={optionsRenderedRef} style="display:none" />
+        {#each options as option, i (option)}
+          <label
+            in:fly={{ y: -10, duration: animationDuration }}
+            class="uk-width-1-1"
+            class:uk-background-muted={i === outlineOptionIndex}
+            class:outline={i === outlineOptionIndex}
+            class:uk-background-default={i !== outlineOptionIndex}
+            class:no-outline={i !== outlineOptionIndex}
+          >
+            <input
+              class="uk-radio interactive-hidden"
+              type="radio"
+              name={id + "-radio"}
+              checked={option.value === value}
+              on:change|stopPropagation={handleChangeGenerator(option)}
+              on:click|stopPropagation={handleOptionClickGenerator(option)}
+            />
+            {#if option.value === value}
+              <span class="uk-icon" uk-icon="icon: check; ratio: .75" />
+            {/if}
+            {option.label}
+          </label>
+        {/each}
+      {:else if textIfNoResult}
+        <div
+          class="uk-text-center uk-text-italic uk-width-1-1"
+          style="padding-top: .5em; padding-bottom: .5em; cursor: default"
+        >
+          {textIfNoResult}
+        </div>
+      {/if}
+    </div>
+  {/if}
+</div>
 
 <style lang="scss">
   .text-wrapper {
@@ -375,109 +510,3 @@
     border: 1px solid transparent;
   }
 </style>
-
-<svelte:body on:click={hideSuggested} on:touchstart={() => hideOnBlur = false} on:mousedown={() => hideOnBlur = false} />
-<div
-  class:custom-uk-autocomplete-wrapper={true}
-  bind:this={ref}
-  {style}
-  class:text-wrapper={true}
-  class={className}
-  class:uk-margin-bottom={true}
-  on:click={() => (innerClick = true)}>
-  {#if label}
-    <label for={id} class="uk-form-label">{label} {suffix}</label>
-  {/if}
-  <div style="position: relative">
-    <input
-      class:custom-uk-autocomplete-input={true}
-      bind:this={searchRef}
-      {autocapitalize}
-      {autocomplete}
-      {autocorrect}
-      {spellcheck}
-      {placeholder}
-      class="uk-input"
-      class:uk-form-danger={state === 'invalid'}
-      class:uk-form-success={state === 'valid'}
-      type="search"
-      uk-tooltip={tooltip}
-      {id}
-      value={query}
-      on:input={handleInput}
-      on:keydown={handleKeydown}
-      required={false}
-      {disabled}
-      on:focus={showSuggestedOptions}
-      on:click={showSuggestedOptions}
-      on:blur={handleBlur}
-      on:focus={() => (everFocused = true, state = 'initial')} />
-    {#if loading && showSuggested}
-      <Loader className="uk-form-icon uk-form-icon-flip" ratio={0.4} />
-    {:else if value !== null && value !== undefined && !disabled}
-      <!-- svelte-ignore a11y-missing-attribute -->
-      <a
-        role="button"
-        tabindex="0"
-        class="uk-form-icon uk-form-icon-flip"
-        uk-icon="icon: close"
-        on:keydown={(e) => {
-          if (['Enter'].includes(e.code)) {
-            e.preventDefault();
-            value = null;
-            query = '';
-            handleBlur();
-            dispatchCustomEvent(searchRef, 'change', null);
-            dispatch('change', null);
-            searchRef.focus();
-          }
-        }}
-        on:click={() => {
-          value = null;
-          query = '';
-          handleBlur();
-          dispatchCustomEvent(searchRef, 'change', null);
-          dispatch('change', null);
-        }}>&ZeroWidthSpace;</a>
-    {/if}
-  </div>
-  {#if showSuggested && !disabled}
-    <div
-      class:custom-uk-autocomplete-suggested={true}
-      in:fly={{ y: 50, duration: animationDuration }}
-      class="uk-grid-small uk-box-shadow-small suggested uk-background-default
-        uk-margin-remove-top uk-margin-remove-left uk-grid"
-      bind:this={suggestedRef}>
-      {#if options.length > 0}
-        <div bind:this={optionsRenderedRef} style="display:none" />
-        {#each options as option, i (option)}
-          <label
-            in:fly={{ y: -10, duration: animationDuration }}
-            class="uk-width-1-1"
-            class:uk-background-muted={i === outlineOptionIndex}
-            class:outline={i === outlineOptionIndex}
-            class:uk-background-default={i !== outlineOptionIndex}
-            class:no-outline={i !== outlineOptionIndex}>
-            <input
-              class="uk-radio interactive-hidden"
-              type="radio"
-              name={id + '-radio'}
-              checked={option.value === value}
-              on:change|stopPropagation={handleChangeGenerator(option)}
-              on:click|stopPropagation={handleOptionClickGenerator(option)} />
-            {#if option.value === value}
-              <span class="uk-icon" uk-icon="icon: check; ratio: .75" />
-            {/if}
-            {option.label}
-          </label>
-        {/each}
-      {:else if textIfNoResult}
-        <div
-          class="uk-text-center uk-text-italic uk-width-1-1"
-          style="padding-top: .5em; padding-bottom: .5em; cursor: default">
-          {textIfNoResult}
-        </div>
-      {/if}
-    </div>
-  {/if}
-</div>
