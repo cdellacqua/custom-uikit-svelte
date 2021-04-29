@@ -30,6 +30,9 @@
   }
 
   let value = 1;
+
+
+  $: console.log(value);
 </script>
 
 <div on:change={(e) => console.log(e)}>

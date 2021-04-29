@@ -208,7 +208,7 @@
     innerClick = false;
   }
 
-  function updateValidity(value) {
+  function updateValidity() {
     if (searchRef) {
       if (!optional && (value === null || value === undefined)) {
         searchRef.setCustomValidity(textIfInvalid || "Field is required");
@@ -220,7 +220,7 @@
 
   $: {
     outlineOptionIndex = 0;
-    updateValidity(value);
+    updateValidity();
   }
 
   let hideOnBlur = true;
@@ -236,7 +236,7 @@
       dispatchCustomEvent(searchRef, "change", null);
       dispatch("change", null);
     }
-    updateValidity(value);
+    updateValidity();
     if (everFocused) {
       state = searchRef.checkValidity() ? "valid" : "invalid";
     }
