@@ -853,6 +853,9 @@ let items = [&lbrace;
   &rbrace;
 
   let value = 1;
+
+
+  $: console.log(value);
 &lt;/script&gt;
 
 &lt;div on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;&gt;
