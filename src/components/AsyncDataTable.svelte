@@ -17,10 +17,10 @@
   /**
    * @callback DataProvider
    * @param {string} query
-   * @param {Array.<{key: string, direction: 'asc'|'desc'}>} orderBy
+   * @param {Array<{key: string, direction: 'asc'|'desc'}>} orderBy
    * @param {number} recordsPerPage
    * @param {number} pageIndex
-   * @return {Promise.<{total: number, filtered: number, records: Array.<Record.<string, any>>}>}
+   * @return {Promise.<{total: number, filtered: number, records: Array<Record.<string, any>>}>}
    */
 
   /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
@@ -36,7 +36,7 @@
   /** @type {'divider'|'striped'} */
   export let appearance = "divider";
   /** @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
-  export let searchButtonVariant = 'default';
+  export let searchButtonVariant = "default";
   /** @type {boolean} */
   export let stickyHeader = false;
   /** @type {string} */
@@ -49,7 +49,7 @@
   export let instantSearch = true;
   /** @type {string} */
   export let query = "";
-  /** @type {Array.<{key: string, direction: 'desc'|'asc'}>} */
+  /** @type {Array<{key: string, direction: 'desc'|'asc'}>} */
   export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
@@ -73,7 +73,7 @@
   export let debounceMs = 200;
   /**
    * @description Contains the current visible rows
-   * @type {Array.<Record.<string, any>>|null}
+   * @type {Array<Record.<string, any>>|null}
    * @default null */
   export let rows = null;
 
@@ -110,10 +110,15 @@
   }
 
   let externalAssignment = true;
+  function handleExternalAssignment() {
+    if (debouncedRefresh.clear) {
+      debouncedRefresh.clear();
+    }
+    debouncedRefresh();
+  }
   $: if (orderBy || pageIndex >= 0 || recordsPerPage >= 0) {
     if (externalAssignment) {
-      debouncedRefresh.clear();
-      debouncedRefresh();
+      handleExternalAssignment();
     }
     externalAssignment = true;
   }
@@ -171,7 +176,7 @@
 
             forceUpdate = false;
             updateProviderArgs();
-            if (debounce) {
+            if (debounce && debounceMs > 0) {
               await sleep(debounceMs);
             }
           } while (providerArgsChanged());
@@ -204,7 +209,8 @@
     return _reload();
   }
 
-  const debouncedRefresh = debounce(_reload, debounceMs);
+  const debouncedRefresh =
+    debounceMs > 0 ? debounce(_reload, debounceMs) : _reload;
 
   /** @type {HTMLInputElement} */
   let searchInput;
@@ -213,12 +219,193 @@
   let loaderHeight = 0;
 
   function updateLoaderTop() {
-    loaderTop = ref.querySelector('th').offsetHeight;
+    loaderTop = ref.querySelector("th").offsetHeight;
   }
   onMount(() => {
     updateLoaderTop();
   });
 </script>
+
+{#if columns.some((c) => c.searchable !== false)}
+  <form
+    on:submit|preventDefault={() => {
+      if (debouncedRefresh.clear) {
+        debouncedRefresh.clear();
+      }
+      query = searchInput.value;
+      searchInput.blur();
+      debouncedRefresh();
+    }}
+    class="uk-flex uk-width-1-1 custom-uk-data-table-form"
+  >
+    {#if instantSearch}
+      <SearchInput
+        className="uk-width-expand"
+        bind:ref={searchInput}
+        {placeholder}
+        bind:value={query}
+        on:input={() => {
+          if (debouncedRefresh.clear) {
+            debouncedRefresh.clear();
+          }
+          debouncedRefresh();
+        }}
+        optional
+      />
+    {:else}
+      <SearchInput
+        className="uk-width-expand"
+        bind:ref={searchInput}
+        {placeholder}
+        value={query}
+        optional
+      />
+    {/if}
+    <Button
+      type="search"
+      icon="search"
+      on:click={() => reload()}
+      variant={searchButtonVariant}
+      className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom"
+    />
+  </form>
+{/if}
+<svelte:window on:resize={() => updateLoaderTop()} />
+<div style="position: relative">
+  <div
+    class:table-hscroll-wrapper={horizontalScroll}
+    class="custom-uk-data-table-table-wrapper"
+  >
+    <table
+      class:uk-margin-remove={true}
+      bind:this={ref}
+      {style}
+      class:uk-table={true}
+      class:uk-table-middle={true}
+      class:uk-table-hover={true}
+      class={className}
+      class:uk-table-striped={appearance === "striped"}
+      class:uk-table-divider={appearance === "divider"}
+      class:uk-table-small={size === "small"}
+    >
+      <thead>
+        <tr>
+          {#each columns as col (col)}
+            <th
+              tabindex="0"
+              style="text-align: {col.textAlign || 'left'}"
+              class:sticky={stickyHeader}
+              class:descending={Object.keys(orderBy).some(
+                (key) => key === col.key && orderBy[key] === -1
+              )}
+              on:click={(e) => {
+                if (col.orderable !== false) {
+                  changeOrderBy(col.key, e.shiftKey);
+                }
+              }}
+              on:keyup={(e) => {
+                if (e.code === "Enter") {
+                  if (col.orderable !== false) {
+                    changeOrderBy(col.key, e.shiftKey);
+                  }
+                }
+              }}
+              on:contextmenu={(e) => {
+                if (col.orderable !== false) {
+                  e.preventDefault();
+                  changeOrderBy(col.key, true);
+                  window.navigator.vibrate?.(50);
+                }
+              }}
+              class:orderable={col.orderable !== false}
+            >
+              {col.label}
+              {#if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === "asc"}
+                <span class="uk-icon" uk-icon="icon: chevron-up" />
+              {:else if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === "desc"}
+                <span class="uk-icon" uk-icon="icon: chevron-down" />
+              {:else if col.orderable !== false}
+                <span
+                  style="visibility: hidden"
+                  class="uk-icon"
+                  uk-icon="icon: chevron-down"
+                />
+              {/if}
+            </th>
+          {/each}
+        </tr>
+      </thead>
+      <tbody class:inhibit={loading} bind:offsetHeight={loaderHeight}>
+        {#if !rows}
+          <tr>
+            <td colspan={columns.length} class:uk-text-center={true} />
+          </tr>
+        {:else if rows.length === 0 && noResultText}
+          <tr>
+            <td
+              colspan={columns.length}
+              style="font-style: italic; text-align: center"
+            >
+              {noResultText}
+            </td>
+          </tr>
+        {:else}
+          {#each rows as row (row)}
+            <tr
+              tabindex="0"
+              on:keyup={(e) =>
+                ["Enter"].includes(e.code) && dispatch("row-click", row)}
+              on:dblclick={() => dispatch("row-dblclick", row)}
+              on:click={() => dispatch("row-click", row)}
+            >
+              {#each columns.map((col) => ({
+                ...col,
+                rendered: col.render && col.render(row[col.key], row),
+              })) as col (col)}
+                <td
+                  class={col.className}
+                  style="text-align: {col.textAlign || 'left'}"
+                >
+                  {#if !col.render}
+                    {row[col.key]}
+                  {:else if col.rendered && typeof col.rendered === "object"}
+                    <svelte:component
+                      this={col.rendered.component}
+                      {...col.rendered.props || {}}
+                      on:click={(e) => {
+                        const onClick = col.rendered.onClick;
+                        if (onClick) {
+                          e.stopPropagation();
+                          onClick(e);
+                        }
+                      }}
+                    >
+                      {col.rendered.textContent || ""}
+                    </svelte:component>
+                  {:else}{col.rendered || ""}{/if}
+                </td>
+              {/each}
+            </tr>
+          {/each}
+        {/if}
+      </tbody>
+    </table>
+    {#if loading}
+      <div
+        style={`position: absolute; left: 0; right: 0; height: ${loaderHeight}px; top: ${loaderTop}px; z-index: 999999`}
+      >
+        <LoaderOverlayScoped opacity={0.2} />
+      </div>
+    {/if}
+  </div>
+  <Pagination
+    center
+    numberOfPages={Math.ceil(filtered / recordsPerPage)}
+    {pageIndex}
+    {numbersPerSide}
+    on:page-click={({ detail }) => (pageIndex = detail)}
+  />
+</div>
 
 <style>
   th {
@@ -253,160 +440,3 @@
     pointer-events: none;
   }
 </style>
-
-{#if columns.some((c) => c.searchable !== false)}
-  <form
-    on:submit|preventDefault={() => {
-      if (!instantSearch) {
-        query = searchInput.value;
-      }
-      searchInput.blur();
-    }}
-    class="uk-flex uk-width-1-1 custom-uk-data-table-form">
-    {#if instantSearch}
-      <SearchInput
-        className="uk-width-expand"
-        bind:ref={searchInput}
-        {placeholder}
-        bind:value={query}
-        on:input={() => {
-          debouncedRefresh.clear();
-          debouncedRefresh();
-        }}
-        optional />
-    {:else}
-      <SearchInput
-        className="uk-width-expand"
-        bind:ref={searchInput}
-        {placeholder}
-        value={query}
-        optional />
-    {/if}
-    <Button
-      type="search"
-      icon="search"
-      on:click={() => reload()}
-      variant={searchButtonVariant}
-      className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom" />
-  </form>
-{/if}
-<svelte:window on:resize={() => updateLoaderTop()} />
-<div style="position: relative">
-  <div class:table-hscroll-wrapper={horizontalScroll} class="custom-uk-data-table-table-wrapper">
-    <table
-      class:uk-margin-remove={true}
-      bind:this={ref}
-      {style}
-      class:uk-table={true}
-      class:uk-table-middle={true}
-      class:uk-table-hover={true}
-      class={className}
-      class:uk-table-striped={appearance === 'striped'}
-      class:uk-table-divider={appearance === 'divider'}
-      class:uk-table-small={size === 'small'}>
-      <thead>
-        <tr>
-          {#each columns as col (col)}
-            <th
-              tabindex="0"
-              style="text-align: {col.textAlign || 'left'}"
-              class:sticky={stickyHeader}
-              class:descending={Object.keys(orderBy).some((key) => key === col.key && orderBy[key] === -1)}
-              on:click={(e) => {
-                if (col.orderable !== false) {
-                  changeOrderBy(col.key, e.shiftKey);
-                }
-              }}
-              on:keyup={(e) => {
-                if (e.code === 'Enter') {
-                  if (col.orderable !== false) {
-                    changeOrderBy(col.key, e.shiftKey);
-                  }
-                }
-              }}
-              on:contextmenu={(e) => {
-                if (col.orderable !== false) {
-                  e.preventDefault();
-                  changeOrderBy(col.key, true);
-                  window.navigator.vibrate?.(50);
-                }
-              }}
-              class:orderable={col.orderable !== false}>
-              {col.label}
-              {#if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'asc'}
-                <span class="uk-icon" uk-icon="icon: chevron-up" />
-              {:else if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'desc'}
-                <span class="uk-icon" uk-icon="icon: chevron-down" />
-              {:else if col.orderable !== false}
-                <span
-                  style="visibility: hidden"
-                  class="uk-icon"
-                  uk-icon="icon: chevron-down" />
-              {/if}
-            </th>
-          {/each}
-        </tr>
-      </thead>
-      <tbody class:inhibit={loading} bind:offsetHeight={loaderHeight}>
-        {#if !rows}
-          <tr>
-            <td colspan={columns.length} class:uk-text-center={true} />
-          </tr>
-        {:else if rows.length === 0 && noResultText}
-          <tr>
-            <td
-              colspan={columns.length}
-              style="font-style: italic; text-align: center">
-              {noResultText}
-            </td>
-          </tr>
-        {:else}
-          {#each rows as row (row)}
-            <tr
-              tabindex="0"
-              on:keyup={(e) => ['Enter'].includes(e.code) && dispatch('row-click', row)}
-              on:dblclick={() => dispatch('row-dblclick', row)}
-              on:click={() => dispatch('row-click', row)}>
-              {#each columns.map((col) => ({
-                ...col,
-                rendered: col.render && col.render(row[col.key], row)
-              })) as col (col)}
-                <td
-                  class={col.className}
-                  style="text-align: {col.textAlign || 'left'}">
-                  {#if !col.render}
-                    {row[col.key]}
-                  {:else if col.rendered && typeof col.rendered === 'object'}
-                    <svelte:component
-                      this={col.rendered.component}
-                      {...(col.rendered.props || {})}
-                      on:click={(e) => {
-                        const onClick = col.rendered.onClick;
-                        if (onClick) {
-                          e.stopPropagation();
-                          onClick(e);
-                        }
-                      }}>
-                      {col.rendered.textContent || ''}
-                    </svelte:component>
-                  {:else}{col.rendered || ''}{/if}
-                </td>
-              {/each}
-            </tr>
-          {/each}
-        {/if}
-      </tbody>
-    </table>
-    {#if loading}
-      <div style={`position: absolute; left: 0; right: 0; height: ${loaderHeight}px; top: ${loaderTop}px; z-index: 999999`}>
-        <LoaderOverlayScoped opacity={0.2} />
-      </div>
-    {/if}
-  </div>
-  <Pagination
-    center
-    numberOfPages={Math.ceil(filtered / recordsPerPage)}
-    {pageIndex}
-    {numbersPerSide}
-    on:page-click={({ detail }) => (pageIndex = detail)} />
-</div>
