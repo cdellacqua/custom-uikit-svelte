@@ -51,7 +51,7 @@
   export let instantSearch = true;
   /** @type {string} */
   export let query = "";
-  /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
+  /** @type {Array.<{key: string, direction: 'desc'|'asc'}>} */
   export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
@@ -73,6 +73,11 @@
   export let loading = false;
   /** @type {number} */
   export let debounceMs = 200;
+  /**
+   * @description Contains the current visible rows
+   * @type {Array.<Record.<string, any>>|null}
+   * @default null */
+  export let rows = null;
 
   const dispatch = createEventDispatcher();
 
@@ -115,7 +120,6 @@
     externalAssignment = true;
   }
 
-  let rows = null;
   let lastQuery = null;
   let lastOrderBy = null;
   let lastRecordsPerPage = null;
