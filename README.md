@@ -165,6 +165,7 @@ Useful to display content such as blog entries or articles
 |filtered|number|-|@readonly|
 |loading|boolean|-|@readonly|
 |debounceMs|number|-||
+|rows|Array.<Record.<string, any>>\|null|null|Contains the current visible rows|
 
 &nbsp;
 &nbsp;

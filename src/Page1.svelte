@@ -410,6 +410,10 @@ import Select from '../components/form/Select.svelte';
       &rbrace;),
     &rbrace;];
     let recordsPerPage = 5;
+
+    let rows;
+
+    $: console.log(rows);
 &lt;/script&gt;
 &lt;Select
   options=&lbrace;new Array(5).fill(0).map((_, i) =&gt; (&lbrace;
@@ -422,6 +426,7 @@ import Select from '../components/form/Select.svelte';
   &lbrace;recordsPerPage&rbrace;
   &lbrace;dataProvider&rbrace;
   &lbrace;columns&rbrace;
+  bind:rows
   numbersPerSide=&lbrace;4&rbrace;
   orderBy=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
   on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
@@ -578,6 +583,12 @@ import Select from '../components/form/Select.svelte';
 					<td>number</td>
 					<td>-</td>
 					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>rows</td>
+					<td>Array.&lt;Record.&lt;string, any&gt;&gt;|null</td>
+					<td>null</td>
+					<td>Contains the current visible rows</td>
 				</tr>
 			</tbody>
 		</table>
