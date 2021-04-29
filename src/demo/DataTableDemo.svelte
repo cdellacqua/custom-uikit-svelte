@@ -63,6 +63,7 @@
 <DataTable
   {columns}
   rows={data}
+  recordsPerPage={2}
   orderBy={[{key: 'column1', direction: 'asc'}]}
   on:query={({ detail }) => console.log(detail)}
   on:sort={({ detail }) => console.log(detail)}

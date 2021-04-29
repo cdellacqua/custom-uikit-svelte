@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import Button from "./Button.svelte";
-  import SearchInput from "./form/SearchInput.svelte";
+  import { noop } from "../helpers/lambdas";
+  import AsyncDataTable from "./AsyncDataTable.svelte";
 
   /**
    * @callback Comparator
@@ -29,6 +29,8 @@
   export let columns = [];
   /** @type {Array<Record<string, any>>} */
   export let rows = [];
+  /** @type {Array<Record<string, any>>} */
+  export let visibleRows = [];
   /** @type {undefined|'small'} */
   export let size = undefined;
   /** @type {undefined|string} */
@@ -40,7 +42,7 @@
   /** @type {'divider'|'striped'} */
   export let appearance = "divider";
   /** @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'} */
-  export let searchButtonVariant = 'default';
+  export let searchButtonVariant = "default";
   /** @type {boolean} */
   export let stickyHeader = false;
   /** @type {string} */
@@ -53,10 +55,20 @@
   export let instantSearch = true;
   /** @type {string} */
   export let query = "";
-  /** @type Array.<{key: string, direction: 'desc'|'asc'}> */
+  /** @type {Array<{key: string, direction: 'desc'|'asc'}>} */
   export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
+  /** @type {number} */
+  export let recordsPerPage = 25;
+  /** @type {number} */
+  export let numbersPerSide = 4;
+  /** @type {number} */
+  export let pageIndex = 0;
+  /** @type {number} @readonly */
+  export let total = 0;
+  /** @type {number} @readonly */
+  export let filtered = 0;
 
   const dispatch = createEventDispatcher();
 
@@ -70,10 +82,8 @@
     return 0;
   }
 
-  let filteredRows;
-  let computedRows;
-  $: if (rows) {
-    filteredRows = rows.filter((row) =>
+  function dataProvider(query, orderBy, recordsPerPage, pageIndex) {
+    const filteredRows = rows.filter((row) =>
       columns.some((col) => {
         if (col.searchable === false) {
           return query.length === 0;
@@ -93,21 +103,13 @@
         return false;
       })
     );
-    computedRows = [...filteredRows];
-  }
 
-  $: dispatch("query", query);
-
-  function sort() {
-    if (orderBy.length === 0) {
-      computedRows = [...filteredRows];
-    } else {
-      const orderedRows = [...filteredRows];
+    if (orderBy.length > 0) {
       const columnsByKey = columns.reduce((a, c) => {
         a[c.key] = c;
         return a;
       }, {});
-      orderedRows.sort((r1, r2) => {
+      filteredRows.sort((r1, r2) => {
         for (const columnSort of orderBy) {
           let comparison = 0;
           if (typeof columnsByKey[columnSort.key].orderable === "function") {
@@ -127,207 +129,47 @@
         }
         return 0;
       });
-      computedRows = orderedRows;
     }
-    dispatch("sort", orderBy);
-  }
-
-  function changeOrderBy(key, append) {
-    if (append) {
-      const existingSortIndex = orderBy.findIndex((o) => o.key === key);
-      if (existingSortIndex > -1) {
-        if (orderBy[existingSortIndex].direction === "asc") {
-          orderBy[existingSortIndex].direction = "desc";
-        } else {
-          orderBy.splice(existingSortIndex, 1);
-          orderBy = [...orderBy];
-        }
-      } else {
-        orderBy = [...orderBy, { key: key, direction: "asc" }];
-      }
-    } else {
-      if (
-        orderBy.length === 0 ||
-        orderBy.length > 1 ||
-        orderBy[0].key !== key
-      ) {
-        orderBy = [{ key: key, direction: "asc" }];
-      } else if (orderBy[0].direction === "asc") {
-        orderBy = [{ key: key, direction: "desc" }];
-      } else {
-        orderBy = [];
-      }
-    }
+    return {
+      total: rows.length,
+      filtered: filteredRows.length,
+      records: filteredRows.slice(
+        pageIndex * recordsPerPage,
+        (pageIndex + 1) * recordsPerPage
+      ),
+    };
   }
 
   $: if (orderBy) {
-    sort();
+    dispatch("sort", orderBy);
   }
-
-  /** @type {HTMLInputElement} */
-  let searchInput;
 </script>
 
-<style>
-  th {
-    white-space: nowrap;
-  }
-  th.sticky {
-    top: 0;
-    position: sticky;
-    background-color: #fff;
-  }
-
-  .orderable {
-    cursor: row-resize;
-  }
-
-  .table-hscroll-wrapper {
-    max-width: 100%;
-    overflow-x: auto;
-  }
-
-  th .uk-icon {
-    width: 20px;
-  }
-
-  th {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-</style>
-
-{#if columns.some((c) => c.searchable !== false)}
-  <form
-    on:submit|preventDefault={() => {
-      if (!instantSearch) {
-        query = searchInput.value;
-      }
-      searchInput.blur();
-    }}
-    class="uk-flex uk-width-1-1 custom-uk-data-table-form">
-    {#if instantSearch}
-      <SearchInput
-        className="uk-width-expand"
-        bind:ref={searchInput}
-        {placeholder}
-        bind:value={query}
-        optional />
-    {:else}
-      <SearchInput
-        className="uk-width-expand"
-        bind:ref={searchInput}
-        {placeholder}
-        value={query}
-        optional />
-    {/if}
-    <Button
-      type="search"
-      icon="search"
-      variant={searchButtonVariant}
-      className="uk-padding-small uk-padding-remove-vertical uk-margin-bottom" />
-  </form>
-{/if}
-
-<div class:table-hscroll-wrapper={horizontalScroll} class="custom-uk-data-table-table-wrapper">
-  <table
-    bind:this={ref}
-    {style}
-    class:uk-table={true}
-    class:uk-table-middle={true}
-    class:uk-table-hover={true}
-    class={className}
-    class:uk-table-striped={appearance === 'striped'}
-    class:uk-table-divider={appearance === 'divider'}
-    class:uk-table-small={size === 'small'}>
-    <thead>
-      <tr>
-        {#each columns as col (col)}
-          <th
-            tabindex="0"
-            style="text-align: {col.textAlign || 'left'}"
-            class:sticky={stickyHeader}
-            class:descending={Object.keys(orderBy).some((key) => key === col.key && orderBy[key] === -1)}
-            on:click={(e) => {
-              if (col.orderable !== false) {
-                changeOrderBy(col.key, e.shiftKey);
-              }
-            }}
-            on:keyup={(e) => {
-              if (e.code === 'Enter') {
-                if (col.orderable !== false) {
-                  changeOrderBy(col.key, e.shiftKey);
-                }
-              }
-            }}
-            on:contextmenu={(e) => {
-              if (col.orderable !== false) {
-                e.preventDefault();
-                changeOrderBy(col.key, true);
-                window.navigator.vibrate?.(50);
-              }
-            }}
-            class:orderable={col.orderable !== false}>
-            {col.label}
-            {#if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'asc'}
-              <span class="uk-icon" uk-icon="icon: chevron-up" />
-            {:else if col.orderable !== false && orderBy.find((o) => o.key === col.key)?.direction === 'desc'}
-              <span class="uk-icon" uk-icon="icon: chevron-down" />
-            {:else if col.orderable !== false}
-              <span
-                style="visibility: hidden"
-                class="uk-icon"
-                uk-icon="icon: chevron-down" />
-            {/if}
-          </th>
-        {/each}
-      </tr>
-    </thead>
-    <tbody>
-      {#if computedRows.length === 0 && noResultText}
-        <tr>
-          <td
-            colspan={columns.length}
-            style="font-style: italic; text-align: center; cursor: default">
-            {noResultText}
-          </td>
-        </tr>
-      {:else}
-        {#each computedRows as row (row)}
-          <tr
-            tabindex="0"
-            on:keyup={(e) => ['Enter'].includes(e.code) && dispatch('row-click', row)}
-            on:dblclick={() => dispatch('row-dblclick', row)}
-            on:click={() => dispatch('row-click', row)}>
-            {#each columns.map((col) => ({
-              ...col,
-              rendered: col.render && col.render(row[col.key], row)
-            })) as col (col)}
-              <td
-                  class={col.className}
-                  style="text-align: {col.textAlign || 'left'}">
-                  {#if !col.render}
-                    {row[col.key]}
-                  {:else if col.rendered && typeof col.rendered === 'object'}
-                    <svelte:component
-                      this={col.rendered.component}
-                      {...(col.rendered.props || {})}
-                      on:click={(e) => {
-                        const onClick = col.rendered.onClick;
-                        if (onClick) {
-                          e.stopPropagation();
-                          onClick(e);
-                        }
-                      }}>
-                      {col.rendered.textContent || ''}
-                    </svelte:component>
-                  {:else}{col.rendered || ''}{/if}
-                </td>
-            {/each}
-          </tr>
-        {/each}
-      {/if}
-    </tbody>
-  </table>
-</div>
+<AsyncDataTable
+  {appearance}
+  on:query
+  on:row-click
+  on:row-dblclick
+  {className}
+  {columns}
+  {dataProvider}
+  debounceMs={0}
+  bind:filtered
+  {horizontalScroll}
+  {instantSearch}
+  dataProviderErrorHandler={noop}
+  {noResultText}
+  {numbersPerSide}
+  bind:orderBy
+  bind:pageIndex
+  {placeholder}
+  bind:query
+  {recordsPerPage}
+  bind:ref
+  bind:rows={visibleRows}
+  {searchButtonVariant}
+  {size}
+  {stickyHeader}
+  {style}
+  bind:total
+/>
