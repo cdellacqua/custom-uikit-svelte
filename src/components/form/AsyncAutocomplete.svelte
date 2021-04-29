@@ -2,7 +2,7 @@
   /**
    * @callback DataProvider
    * @param {string} query
-   * @return {Promise.<Array.<{label: string, value: any}>>}
+   * @return {Promise.<Array<{label: string, value: any}>>}
    */
 
   import { debounce } from "debounce";

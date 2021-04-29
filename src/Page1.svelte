@@ -121,12 +121,12 @@ function showAlert() &lbrace;
 			<tbody>
 				<tr>
 					<td>hide</td>
-					<td>Array.&lt;UIkitComponent&gt;</td>
+					<td>Array&lt;UIkitComponent&gt;</td>
 					<td>Fires after the alert is hidden</td>
 				</tr>
 				<tr>
 					<td>beforehide</td>
-					<td>Array.&lt;UIkitComponent&gt;</td>
+					<td>Array&lt;UIkitComponent&gt;</td>
 					<td>Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden</td>
 				</tr>
 			</tbody>

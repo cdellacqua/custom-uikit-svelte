@@ -2,8 +2,8 @@
 	/** 
 	 * @component This alert can be used to display success, warning and error messages
 	 * @slot {"default": "The content of the alert"}
-	 * @dispatch {"hide": {"type": "Array.<UIkitComponent>", "description": "Fires after the alert is hidden"}, 
-	 * 						"beforehide": {"type": "Array.<UIkitComponent>", "description": "Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden"}} 
+	 * @dispatch {"hide": {"type": "Array<UIkitComponent>", "description": "Fires after the alert is hidden"}, 
+	 * 						"beforehide": {"type": "Array<UIkitComponent>", "description": "Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden"}} 
 	 * @forward {} */
 
 	/** 

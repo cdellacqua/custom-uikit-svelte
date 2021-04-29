@@ -1,5 +1,5 @@
 <script>
-  /** @type {Array.<string|{label: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined}>} */
+  /** @type {Array<string|{label: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined}>} */
   export let heading = [];
   /** @type {'small'|undefined} */
   export let size = undefined;

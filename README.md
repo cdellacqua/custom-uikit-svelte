@@ -93,8 +93,8 @@ This alert can be used to display success, warning and error messages
 ### Custom Events
 |name|type|description|
 |--|--|--|
-|hide|Array.<UIkitComponent>|Fires after the alert is hidden|
-|beforehide|Array.<UIkitComponent>|Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden|
+|hide|Array<UIkitComponent>|Fires after the alert is hidden|
+|beforehide|Array<UIkitComponent>|Fires before hiding the alert. If preventDefault is called on this event, the alert will not be hidden|
 
 &nbsp;
 ### Props

@@ -3,7 +3,7 @@
 
 	import { cubicInOut } from "svelte/easing";
 
-	/** @type {Array.<{text: string|undefined, html: string|undefined, props: Record<string, any>|undefined, component: SvelteComponent|undefined}>} */
+	/** @type {Array<{text: string|undefined, html: string|undefined, props: Record<string, any>|undefined, component: SvelteComponent|undefined}>} */
 	export let items = [];
 	/** @type {SvelteComponent|undefined} */
 	export let component = undefined;

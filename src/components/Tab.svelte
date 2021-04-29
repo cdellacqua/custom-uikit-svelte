@@ -22,7 +22,7 @@
 	export let style = undefined;
   /** @type {string|undefined} */
   export let className = undefined;
-  /** @type {Array.<string>} */
+  /** @type {Array<string>} */
   export let titles = [];
   /** @type {boolean} */
   export let htmlTitle = false;
