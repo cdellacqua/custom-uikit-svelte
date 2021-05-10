@@ -136,10 +136,12 @@
             }
             break;
           default:
-            digits.push(key);
-            
-            if (Number(digitsToValue()).toFixed(decimalPlaces).slice(-1) !== key) { // Over maximum admitted value by the Number type
-              digits.pop();
+            if ([0,1,2,3,4,5,6,7,8,9].includes(key)) {
+              digits.push(key);
+              
+              if (Number(digitsToValue()).toFixed(decimalPlaces).slice(-1) !== key) { // Over maximum admitted value by the Number type
+                digits.pop();
+              }
             }
             break;
         }
