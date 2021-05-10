@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cache:components-data": "node export-components-data.js",
-    "build": "npx browserslist@latest --update-db && npm run build:doc && rimraf dist && node export.js && rollup -c && node gentypes.js",
+    "build": "npm run build:doc && rimraf dist && node export.js && rollup -c && node gentypes.js",
     "build:doc": "npm run cache:components-data && node gendocmd.js && node gendocsvelte.js",
     "build:preview": "rimraf public/build && rollup --config rollup.preview.config.js",
     "prepublishOnly": "npm run build && npm run build:doc",
