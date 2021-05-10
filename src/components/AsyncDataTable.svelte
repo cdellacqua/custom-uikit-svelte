@@ -219,7 +219,8 @@
   let loaderHeight = 0;
 
   function updateLoaderTop() {
-    loaderTop = ref ? ref.querySelector("th").offsetHeight : 0;
+    const th = ref && ref.querySelector("th");
+    loaderTop = th ? th.offsetHeight : 0;
   }
   onMount(() => {
     updateLoaderTop();
