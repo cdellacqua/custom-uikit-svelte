@@ -88,15 +88,11 @@
 
 
   function updateQuery() {
-    if (!value) {
+    const candidate = options.find((o) => o.value === value);
+    if (!candidate) {
       query = '';
     } else {
-      const candidate = options.find((o) => o.value === value);
-      if (!candidate) {
-        query = '';
-      } else {
-        query = candidate.label;
-      }
+      query = candidate.label;
     }
   }
   $: value, updateQuery();
