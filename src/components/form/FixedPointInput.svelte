@@ -136,7 +136,7 @@
             }
             break;
           default:
-            if ([0,1,2,3,4,5,6,7,8,9].includes(key)) {
+            if ([0,1,2,3,4,5,6,7,8,9].map((x) => String(x)).includes(key)) {
               digits.push(key);
               
               if (Number(digitsToValue()).toFixed(decimalPlaces).slice(-1) !== key) { // Over maximum admitted value by the Number type
