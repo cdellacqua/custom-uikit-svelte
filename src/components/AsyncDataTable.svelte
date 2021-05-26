@@ -7,23 +7,7 @@
   import Pagination from "./Pagination.svelte";
   import { sleep } from "../helpers/time";
 
-  /**
-   * @callback AsyncDataTableRenderer
-   * @param value
-   * @param row
-   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function, textContent: string|undefined}}
-   */
-
-  /**
-   * @callback AsyncDataTableDataProvider
-   * @param {string} query
-   * @param {Array<{key: string, direction: 'asc'|'desc'}>} orderBy
-   * @param {number} recordsPerPage
-   * @param {number} pageIndex
-   * @return {Promise<{total: number, filtered: number, records: Array<Record<string, any>>}>}
-   */
-
-  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|undefined, searchable: boolean|undefined, render: AsyncDataTableRenderer|undefined}>} */
+  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|undefined, searchable: boolean|undefined, render: DataTableRenderer|undefined}>} */
   export let columns = [];
   /** @type {undefined|'small'} */
   export let size = undefined;
@@ -55,7 +39,7 @@
   export let horizontalScroll = true;
   /** @type {AsyncDataTableDataProvider} */
   export let dataProvider;
-  /** @type {Function} */
+  /** @type {CallableFunction} */
   export let dataProviderErrorHandler = (err) => console.error(err);
   /** @type {number} */
   export let recordsPerPage = 25;

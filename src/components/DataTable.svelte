@@ -3,29 +3,7 @@
   import { noop } from "../helpers/lambdas";
   import AsyncDataTable from "./AsyncDataTable.svelte";
 
-  /**
-   * @callback DataTableComparator
-   * @param v1
-   * @param v2
-   * @return {number}
-   */
-
-  /**
-   * @callback DataTableSearchCallback
-   * @param query
-   * @param columnValue
-   * @param row
-   * @return {boolean}
-   */
-
-  /**
-   * @callback DataTableRenderer
-   * @param value
-   * @param row
-   * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function, textContent: string|undefined}}
-   */
-
-  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|DataTableComparator|undefined, searchable: boolean|DataTableSearchCallback|undefined, render: DataTableRenderer|undefined}>} */
+  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|Comparator|undefined, searchable: boolean|DataTableSearchCallback|undefined, render: DataTableRenderer|undefined}>} */
   export let columns = [];
   /** @type {Array<Record<string, any>>} */
   export let rows = [];

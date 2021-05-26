@@ -1063,7 +1063,7 @@ let items = [&lbrace;
 				</tr>
 				<tr>
 					<td>dataProviderErrorHandler</td>
-					<td>function</td>
+					<td>CallableFunction</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

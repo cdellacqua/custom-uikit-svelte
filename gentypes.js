@@ -3,13 +3,13 @@ const fs = require('fs');
 const components = require('./components-data.json');
 
 let output = [
+	...fs.readFileSync('./extra-types.d.ts').toString().split('\n'),
 	`export class SvelteComponent {`,
 	`\t$$prop_def: {};`,
 	`\t$$slot_def: {};`,
 	``,
 	`\t$on(event: string, handler: (e: CustomEvent) => any): () => void;`,
 	`}`,
-	...components.flatMap(({otherAnnotations}) => otherAnnotations),
 ];
 
 components.forEach((component) => {

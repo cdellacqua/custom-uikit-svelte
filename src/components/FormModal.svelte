@@ -33,12 +33,7 @@ import { dispatchCustomEvent } from "../helpers/events";
 
   // FORM PROPS
 
-  /**
-   * @callback FormModalSubmitCallback
-   * @return {Promise}
-   */
-
-  /** @type {FormModalSubmitCallback} */
+  /** @type {FormSubmitCallback} */
   export let formSubmitAsync;
   /** @type {boolean} */
   export let formDisabled = false;

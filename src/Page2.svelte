@@ -366,7 +366,7 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				</tr>
 				<tr>
 					<td>formSubmitAsync</td>
-					<td>FormModalSubmitCallback</td>
+					<td>FormSubmitCallback</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

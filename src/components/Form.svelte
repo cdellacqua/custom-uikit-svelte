@@ -3,11 +3,6 @@
   import { readable } from "svelte/store";
   import { noop } from "../helpers/lambdas";
 
-  /**
-   * @callback FormSubmitCallback
-   * @return {Promise}
-   */
-
   /** @type {FormSubmitCallback} */
   export let submitAsync;
   /** @type {boolean} */

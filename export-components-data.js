@@ -28,7 +28,6 @@ for (const entry of componentFiles) {
 		slots: {},
 		dispatch: {},
 		forward: {},
-		otherAnnotations: [],
 	};
 
 	let content = (fs.readFileSync(entry).toString().match(/<script>(.*)<\/script>/s) || [])[1];
@@ -55,9 +54,6 @@ for (const entry of componentFiles) {
 			componentData.forward = JSON.parse(forwardTag.text);
 		}
 	}
-
-	const otherAnnotations = content.match(/(\s*\/\*\*[^@]+(@callback|@typedef).*?\*\/)/sg);
-	componentData.otherAnnotations = otherAnnotations || [];
 	
 	const commentBlocks = jsdocApi.explainSync({
 		source: content,

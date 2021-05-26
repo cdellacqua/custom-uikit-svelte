@@ -100,7 +100,7 @@ This alert can be used to display success, warning and error messages
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|closable|boolean|true|Whether the alert is dismissable|
+|closable|boolean|true|Whether the alert is dismissible|
 |variant|'primary'\|'success'\|'danger'\|'warning'\|undefined|undefined|Specifies the look of the component|
 |animation|boolean\|string|true|Fade out or use the uikit Animation component|
 |animationDuration|number|150|Animation duration in milliseconds|
@@ -142,7 +142,7 @@ Useful to display content such as blog entries or articles
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (AsyncDataTableRenderer\|undefined)}>|-||
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (DataTableRenderer\|undefined)}>|-||
 |size|undefined\|'small'|-||
 |className|undefined\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -157,7 +157,7 @@ Useful to display content such as blog entries or articles
 |orderBy|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
 |horizontalScroll|boolean|-|@default true|
 |dataProvider|AsyncDataTableDataProvider|-||
-|dataProviderErrorHandler|function|-||
+|dataProviderErrorHandler|CallableFunction|-||
 |recordsPerPage|number|-||
 |numbersPerSide|number|-||
 |pageIndex|number|-||
@@ -308,7 +308,7 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|DataTableComparator\|undefined), searchable: (boolean\|DataTableSearchCallback\|undefined), render: (DataTableRenderer\|undefined)}>|-||
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|DataTableSearchCallback\|undefined), render: (DataTableRenderer\|undefined)}>|-||
 |rows|Array.<Record.<string, any>>|-||
 |visibleRows|Array.<Record.<string, any>>|-||
 |size|undefined\|'small'|-||
@@ -436,7 +436,7 @@ Create an already styled description list, perfect for describing key-value prop
 |show|boolean|-||
 |shown|boolean|-|@readonly|
 |stack|boolean|-||
-|formSubmitAsync|FormModalSubmitCallback|-||
+|formSubmitAsync|FormSubmitCallback|-||
 |formDisabled|boolean|-||
 |formState|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
 |formValid|boolean|-||
@@ -764,7 +764,7 @@ Create an already styled description list, perfect for describing key-value prop
 |state|'initial'\|'valid'\|'invalid'|-||
 |query|string|-||
 |dataProvider|AsyncAutocompleteDataProvider|-||
-|dataProviderErrorHandler|function|-||
+|dataProviderErrorHandler|CallableFunction|-||
 |loading|boolean|-|@readonly|
 |debounceMs|number|-||
 |requiredMarker|string\|undefined|-||

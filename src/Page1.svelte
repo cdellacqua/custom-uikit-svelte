@@ -146,7 +146,7 @@ function showAlert() &lbrace;
 					<td>closable</td>
 					<td>boolean</td>
 					<td>true</td>
-					<td>Whether the alert is dismissable</td>
+					<td>Whether the alert is dismissible</td>
 				</tr>
 				<tr>
 					<td>variant</td>
@@ -448,7 +448,7 @@ import Select from '../components/form/Select.svelte';
 			<tbody>
 				<tr>
 					<td>columns</td>
-					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (AsyncDataTableRenderer|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -538,7 +538,7 @@ import Select from '../components/form/Select.svelte';
 				</tr>
 				<tr>
 					<td>dataProviderErrorHandler</td>
-					<td>function</td>
+					<td>CallableFunction</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1082,7 +1082,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>columns</td>
-					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|DataTableComparator|undefined), searchable: (boolean|DataTableSearchCallback|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|Comparator|undefined), searchable: (boolean|DataTableSearchCallback|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
