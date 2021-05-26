@@ -142,7 +142,7 @@ Useful to display content such as blog entries or articles
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (Renderer\|undefined)}>|-||
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|undefined), searchable: (boolean\|undefined), render: (AsyncDataTableRenderer\|undefined)}>|-||
 |size|undefined\|'small'|-||
 |className|undefined\|string|-||
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -156,7 +156,7 @@ Useful to display content such as blog entries or articles
 |query|string|-||
 |orderBy|Array.<{key: string, direction: ('desc'\|'asc')}>|-||
 |horizontalScroll|boolean|-|@default true|
-|dataProvider|DataProvider|-||
+|dataProvider|AsyncDataTableDataProvider|-||
 |dataProviderErrorHandler|function|-||
 |recordsPerPage|number|-||
 |numbersPerSide|number|-||
@@ -308,7 +308,7 @@ The card component allows you to create nice box layouts
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|Comparator\|undefined), searchable: (boolean\|SearchCallback\|undefined), render: (Renderer\|undefined)}>|-||
+|columns|Array.<{label: string, key: string, className: (string\|undefined), textAlign: ('center'\|'right'\|'left'\|undefined), orderable: (boolean\|DataTableComparator\|undefined), searchable: (boolean\|DataTableSearchCallback\|undefined), render: (DataTableRenderer\|undefined)}>|-||
 |rows|Array.<Record.<string, any>>|-||
 |visibleRows|Array.<Record.<string, any>>|-||
 |size|undefined\|'small'|-||
@@ -403,7 +403,7 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|submitAsync|SubmitCallback|-||
+|submitAsync|FormSubmitCallback|-||
 |disabled|boolean|-||
 |state|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
 |valid|boolean|-|Indicates the validity of this form. Its value is updated using formRef.checkValdity(), that gets called each time an element inside this form triggers a bubbling 'change' event|
@@ -436,7 +436,7 @@ Create an already styled description list, perfect for describing key-value prop
 |show|boolean|-||
 |shown|boolean|-|@readonly|
 |stack|boolean|-||
-|formSubmitAsync|SubmitCallback|-||
+|formSubmitAsync|FormModalSubmitCallback|-||
 |formDisabled|boolean|-||
 |formState|'initial'\|'invalid'\|'valid'\|'loading'\|'error'\|'success'|-||
 |formValid|boolean|-||
@@ -763,7 +763,7 @@ Create an already styled description list, perfect for describing key-value prop
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
 |query|string|-||
-|dataProvider|DataProvider|-||
+|dataProvider|AsyncAutocompleteDataProvider|-||
 |dataProviderErrorHandler|function|-||
 |loading|boolean|-|@readonly|
 |debounceMs|number|-||

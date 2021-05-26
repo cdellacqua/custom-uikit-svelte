@@ -1,8 +1,8 @@
 <script>
   /**
-   * @callback DataProvider
+   * @callback AsyncAutocompleteDataProvider
    * @param {string} query
-   * @return {Promise.<Array<{label: string, value: any}>>}
+   * @return {Promise<Array<{label: string, value: any}>>}
    */
 
   import { debounce } from "debounce";
@@ -83,7 +83,7 @@
   export let state = "initial";
   /** @type {string} */
   export let query = "";
-  /** @type {DataProvider} */
+  /** @type {AsyncAutocompleteDataProvider} */
   export let dataProvider;
   /** @type {Function} */
   export let dataProviderErrorHandler = (err) => console.error(err);

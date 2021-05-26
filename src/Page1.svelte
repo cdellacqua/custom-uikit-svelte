@@ -448,7 +448,7 @@ import Select from '../components/form/Select.svelte';
 			<tbody>
 				<tr>
 					<td>columns</td>
-					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (AsyncDataTableRenderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -532,7 +532,7 @@ import Select from '../components/form/Select.svelte';
 				</tr>
 				<tr>
 					<td>dataProvider</td>
-					<td>DataProvider</td>
+					<td>AsyncDataTableDataProvider</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -1082,7 +1082,7 @@ current page and its href property will be ignored</td>
 			<tbody>
 				<tr>
 					<td>columns</td>
-					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|Comparator|undefined), searchable: (boolean|SearchCallback|undefined), render: (Renderer|undefined)&rbrace;&gt;</td>
+					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|DataTableComparator|undefined), searchable: (boolean|DataTableSearchCallback|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

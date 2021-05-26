@@ -1057,7 +1057,7 @@ let items = [&lbrace;
 				</tr>
 				<tr>
 					<td>dataProvider</td>
-					<td>DataProvider</td>
+					<td>AsyncAutocompleteDataProvider</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

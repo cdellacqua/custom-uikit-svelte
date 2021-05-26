@@ -185,7 +185,7 @@
 			<tbody>
 				<tr>
 					<td>submitAsync</td>
-					<td>SubmitCallback</td>
+					<td>FormSubmitCallback</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
@@ -366,7 +366,7 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				</tr>
 				<tr>
 					<td>formSubmitAsync</td>
-					<td>SubmitCallback</td>
+					<td>FormModalSubmitCallback</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>

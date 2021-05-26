@@ -8,7 +8,8 @@ let output = [
 	`\t$$slot_def: {};`,
 	``,
 	`\t$on(event: string, handler: (e: CustomEvent) => any): () => void;`,
-	`}`
+	`}`,
+	...components.flatMap(({otherAnnotations}) => otherAnnotations),
 ];
 
 components.forEach((component) => {
@@ -51,6 +52,7 @@ components.forEach((component) => {
 			`\t${$on}`
 		);
 	}
+
 	output.push(`}`);
 });
 

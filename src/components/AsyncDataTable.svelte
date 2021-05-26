@@ -8,22 +8,22 @@
   import { sleep } from "../helpers/time";
 
   /**
-   * @callback Renderer
+   * @callback AsyncDataTableRenderer
    * @param value
    * @param row
    * @return {string|{ component: SvelteComponent, props: Record<string, any>|undefined, onClick: Function, textContent: string|undefined}}
    */
 
   /**
-   * @callback DataProvider
+   * @callback AsyncDataTableDataProvider
    * @param {string} query
    * @param {Array<{key: string, direction: 'asc'|'desc'}>} orderBy
    * @param {number} recordsPerPage
    * @param {number} pageIndex
-   * @return {Promise.<{total: number, filtered: number, records: Array<Record.<string, any>>}>}
+   * @return {Promise<{total: number, filtered: number, records: Array<Record<string, any>>}>}
    */
 
-  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|undefined, searchable: boolean|undefined, render: Renderer|undefined}>} */
+  /** @type {Array<{label: string, key: string, className: string|undefined, textAlign: 'center'|'right'|'left'|undefined, orderable: boolean|undefined, searchable: boolean|undefined, render: AsyncDataTableRenderer|undefined}>} */
   export let columns = [];
   /** @type {undefined|'small'} */
   export let size = undefined;
@@ -53,7 +53,7 @@
   export let orderBy = [];
   /** @type {boolean} @default true */
   export let horizontalScroll = true;
-  /** @type {DataProvider} */
+  /** @type {AsyncDataTableDataProvider} */
   export let dataProvider;
   /** @type {Function} */
   export let dataProviderErrorHandler = (err) => console.error(err);
@@ -73,7 +73,7 @@
   export let debounceMs = 200;
   /**
    * @description Contains the current visible rows
-   * @type {Array<Record.<string, any>>|null}
+   * @type {Array<Record<string, any>>|null}
    * @default null */
   export let rows = null;
 

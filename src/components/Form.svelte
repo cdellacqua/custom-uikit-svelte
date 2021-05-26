@@ -4,11 +4,11 @@
   import { noop } from "../helpers/lambdas";
 
   /**
-   * @callback SubmitCallback
+   * @callback FormSubmitCallback
    * @return {Promise}
    */
 
-  /** @type {SubmitCallback} */
+  /** @type {FormSubmitCallback} */
   export let submitAsync;
   /** @type {boolean} */
   export let disabled = false;

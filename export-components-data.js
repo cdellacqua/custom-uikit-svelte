@@ -27,39 +27,42 @@ for (const entry of componentFiles) {
 		description: '',
 		slots: {},
 		dispatch: {},
-		forward: {}
+		forward: {},
+		otherAnnotations: [],
 	};
 
 	let content = (fs.readFileSync(entry).toString().match(/<script>(.*)<\/script>/s) || [])[1];
-	const componentDescription = content.match(/(\s*\/\*\*[^@]+@component.*?\*\/)/s);
+	const componentDescription = content.match(/(\s*\/\*\*[^@]+@component.*?\*\/)/sg)?.[0];
 	if (componentDescription) {
-		content = content.replace(/(\s*\/\*\*[^@]+@component.*?\*\/)/s, '$&\nlet __3242423__234234__2312;');
-	}
-	const commentBlocks = jsdocApi.explainSync({
-		source: content,
-	}).filter(c => Boolean(c.comment));
+		const commentBlock = jsdocApi.explainSync({
+			source: componentDescription + '\nlet __component_description;',
+		})[0];
 	
-	
-	if (componentDescription) {
-	
-		componentData.description = commentBlocks[0].tags.find(t => t.originalTitle === 'component').value;
+		componentData.description = commentBlock.tags.find(t => t.originalTitle === 'component').value;
 		
-		const slotTag = commentBlocks[0].tags.find(t => t.originalTitle === 'slot');
+		const slotTag = commentBlock.tags.find(t => t.originalTitle === 'slot');
 		if (slotTag) {
 			componentData.slots = JSON.parse(slotTag.text);
 		}
 
-		const dispatchTag = commentBlocks[0].tags.find(t => t.originalTitle === 'dispatch');
+		const dispatchTag = commentBlock.tags.find(t => t.originalTitle === 'dispatch');
 		if (dispatchTag) {
 			componentData.dispatch = JSON.parse(dispatchTag.text);
 		}
 
-		const forwardTag = commentBlocks[0].tags.find(t => t.originalTitle === 'forward');
+		const forwardTag = commentBlock.tags.find(t => t.originalTitle === 'forward');
 		if (forwardTag) {
 			componentData.forward = JSON.parse(forwardTag.text);
 		}
-		commentBlocks.splice(0, 1);
 	}
+
+	const otherAnnotations = content.match(/(\s*\/\*\*[^@]+(@callback|@typedef).*?\*\/)/sg);
+	componentData.otherAnnotations = otherAnnotations || [];
+	
+	const commentBlocks = jsdocApi.explainSync({
+		source: content,
+	}).filter(c => Boolean(c.comment));
+	
 	componentData.exports = [];
 	for (const block of commentBlocks) {
 		if (block.meta && block.meta.code && block.meta.code && block.meta.code.name && block.meta.code.name.startsWith('exports.')) {
