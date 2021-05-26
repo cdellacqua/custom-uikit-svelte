@@ -715,11 +715,11 @@ Create an already styled description list, perfect for describing key-value prop
 ### Props
 |name|type|default|description|
 |--|--|--|--|
-|index|number\|false|-||
 |animation|boolean|-||
 |collapsible|boolean|-||
 |duration|number|-||
 |multi|boolean|-||
+|index|number\|false\|Array.<number>|-||
 |transition|string|-||
 |ref|HTMLUListElement|-||
 |className|string\|undefined|-||

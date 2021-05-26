@@ -698,12 +698,13 @@ let items = [&lbrace;
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
+  import NumberInput from &quot;../components/form/NumberInput.svelte&quot;;
   import &lbrace; Accordion, AccordionItem, Checkbox, Button &rbrace; from &quot;../main&quot;;
-  let multi = false;
   let collapsible = true;
   let duration = 200;
 
   let index = false;
+  let indices = [];
 
   function increaseDuration() &lbrace;
     duration = Math.min(2500, duration + 50);
@@ -715,21 +716,42 @@ let items = [&lbrace;
 
 &lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
   &lt;Checkbox
-    bind:value=&lbrace;multi&rbrace;
-    label=&quot;Multi&quot;
-    optional
-    className=&quot;uk-margin-right uk-margin-remove-bottom&quot; /&gt;
-  &lt;Checkbox
     bind:value=&lbrace;collapsible&rbrace;
     label=&quot;Collapsible&quot;
     className=&quot;uk-margin-right uk-margin-remove-bottom&quot;
-    optional /&gt;
+    optional
+  /&gt;
   &lt;Button size=&quot;small&quot; on:click=&lbrace;increaseDuration&rbrace; className=&quot;uk-margin-right&quot;&gt;
     + duration
   &lt;/Button&gt;
   &lt;Button size=&quot;small&quot; on:click=&lbrace;decreaseDuration&rbrace;&gt;- duration&lt;/Button&gt;
 &lt;/div&gt;
-&lt;Accordion &lbrace;multi&rbrace; &lbrace;collapsible&rbrace; &lbrace;duration&rbrace; bind:index on:show=&lbrace;() =&gt; console.log(index)&rbrace;&gt;
+&lt;p&gt;Simple Accordion&lt;/p&gt;
+&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
+  &lt;Checkbox
+    optional
+    className=&quot;uk-margin-right uk-margin-top&quot;
+    label=&quot;Toggle open&quot;
+    value=&lbrace;index !== false&rbrace;
+    on:change=&lbrace;(&lbrace; target &rbrace;) =&gt; (target.checked ? (index = 0) : (index = false))&rbrace;
+  /&gt;
+  &lt;NumberInput
+    optional
+    label=&quot;Open index&quot;
+    min=&lbrace;0&rbrace;
+    max=&lbrace;2&rbrace;
+    step=&lbrace;1&rbrace;
+    value=&lbrace;index === false ? &quot;&quot; : index&rbrace;
+    on:change=&lbrace;(&lbrace; target &rbrace;) =&gt;
+      (index = target.value ? Number(target.value) : false)&rbrace;
+  /&gt;
+&lt;/div&gt;
+&lt;Accordion
+  &lbrace;collapsible&rbrace;
+  &lbrace;duration&rbrace;
+  bind:index
+  on:show=&lbrace;() =&gt; console.log(index)&rbrace;
+&gt;
   &lt;AccordionItem title=&quot;First&quot;&gt;
     &lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;
   &lt;/AccordionItem&gt;
@@ -738,7 +760,43 @@ let items = [&lbrace;
   &lt;/AccordionItem&gt;
   &lt;AccordionItem
     title=&quot;Title &lt;span class='uk-text-primary'&gt;with &lt;i&gt;HTML&lt;/i&gt;&lt;/span&gt;&quot;
-    isTitleHtml&gt;
+    isTitleHtml
+  &gt;
+    &lt;p&gt;Other content&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;
+
+&lt;p&gt;Multi Accordion&lt;/p&gt;
+&lt;div class=&quot;uk-flex uk-flex-middle&quot;&gt;
+  &lbrace;#each [0, 1, 2] as itemIndex&rbrace;
+    &lt;Checkbox
+      optional
+      label=&lbrace;&quot;open index &quot; + itemIndex&rbrace;
+      value=&lbrace;indices.includes(itemIndex)&rbrace;
+      on:change=&lbrace;(&lbrace; target &rbrace;) =&gt;
+        target.checked
+          ? (indices = [...indices, itemIndex])
+          : (indices = indices.filter((i) =&gt; itemIndex !== i))&rbrace;
+    /&gt;
+  &lbrace;/each&rbrace;
+&lt;/div&gt;
+&lt;Accordion
+  multi
+  &lbrace;collapsible&rbrace;
+  &lbrace;duration&rbrace;
+  bind:index=&lbrace;indices&rbrace;
+  on:show=&lbrace;() =&gt; console.log(indices)&rbrace;
+&gt;
+  &lt;AccordionItem title=&quot;First&quot;&gt;
+    &lt;p&gt;Use the options above to see how the accordion can be customized.&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+  &lt;AccordionItem title=&quot;Second&quot;&gt;
+    &lt;p&gt;Some content&lt;/p&gt;
+  &lt;/AccordionItem&gt;
+  &lt;AccordionItem
+    title=&quot;Title &lt;span class='uk-text-primary'&gt;with &lt;i&gt;HTML&lt;/i&gt;&lt;/span&gt;&quot;
+    isTitleHtml
+  &gt;
     &lt;p&gt;Other content&lt;/p&gt;
   &lt;/AccordionItem&gt;
 &lt;/Accordion&gt;
@@ -755,12 +813,6 @@ let items = [&lbrace;
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>index</td>
-					<td>number|false</td>
-					<td>-</td>
-					<td>undefined</td>
-				</tr>
 				<tr>
 					<td>animation</td>
 					<td>boolean</td>
@@ -782,6 +834,12 @@ let items = [&lbrace;
 				<tr>
 					<td>multi</td>
 					<td>boolean</td>
+					<td>-</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>index</td>
+					<td>number|false|Array.&lt;number&gt;</td>
 					<td>-</td>
 					<td>undefined</td>
 				</tr>
