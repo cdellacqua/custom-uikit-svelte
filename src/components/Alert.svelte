@@ -8,7 +8,7 @@
 
 	/** 
 	 * @default true
-	 * @description Whether the alert is dismissable
+	 * @description Whether the alert is dismissible
 	 * @type {boolean} */
 	export let closable = true;
 	/** 
