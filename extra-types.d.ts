@@ -16,9 +16,9 @@ export type AsyncDataTableDataProvider =
 	(query: string, orderBy: Array<{ key: string, direction: 'asc' | 'desc' }>, recordsPerPage: number, pageIndex: number) => Promise<AsyncDataTableDataProviderResult>;
 
 export interface AsyncDataTableDataProviderResult {
-	/** the number of available records */
-	total: number,
-	/** the number of records, filtered by the given query */
+	/** (optional) the number of available records */
+	total: number|undefined,
+	/** the number of records, filtered by the given query. This is used to create the pagination buttons of the table */
 	filtered: number,
 	/** the chunk of records to display */
 	records: Array<Record<string, any>>

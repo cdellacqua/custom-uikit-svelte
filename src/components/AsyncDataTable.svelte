@@ -171,8 +171,8 @@
         } while (providerArgsChanged());
 
         rows = data.records;
-        total = data.total;
         filtered = data.filtered;
+        total = data.total || data.filtered;
 
         lastQuery = query;
         lastRecordsPerPage = recordsPerPage;
