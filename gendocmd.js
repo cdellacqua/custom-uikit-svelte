@@ -115,4 +115,14 @@ for (const component of components) {
 	docLines.push('');
 }
 
+docLines.push(
+	`&nbsp;`,
+	`## Special Types`,
+	``,
+	``,
+	'```typescript',
+	...fs.readFileSync('./extra-types.d.ts').toString().split('\n'),
+	'```'
+)
+
 fs.writeFileSync(path.join('README.md'), docLines.join('\n'));
