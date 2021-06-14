@@ -996,41 +996,50 @@ current page and its href property will be ignored</td>
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Button, DataTable &rbrace; from '../main';
+&nbsp;&nbsp;import &lbrace; Button, DataTable &rbrace; from &quot;../main&quot;;
 
-  let data = [&lbrace;
-    column1: new Date(),
-    column2: 'A string',
-    someNumericValue: 10.1,
-  &rbrace;,&lbrace;
-    column1: new Date(&quot;2020-07-06&quot;),
-    column2: 'C string',
-    someNumericValue: null,
-  &rbrace;,&lbrace;
-    column1: new Date(&quot;2020-05-01&quot;),
-    column2: 'C string',
-    someNumericValue: null,
-  &rbrace;,&lbrace;
-    column1: new Date(&quot;2020-01-11&quot;),
-    column2: 'D string',
-    someNumericValue: 8,
-  &rbrace;,]
-
-  let columns = [&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 1',
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'column1',
-      render: (data) =&gt; data.toLocaleString(),
+&nbsp;&nbsp;let data = [
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;A string&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: 10.1,
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Column 2',
-      key: 'column2',
-      searchable: (query, col, row) =&gt; &lbrace;
-        return [row.column1.toLocaleString(), col].join(' ').toLowerCase().includes(query.toLowerCase());
-      &rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(&quot;2020-07-06&quot;),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;C string&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: null,
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Nullable numeric value',
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(&quot;2020-05-01&quot;),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;C string&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: null,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(&quot;2020-01-11&quot;),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;D string&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: 8,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;];
+
+&nbsp;&nbsp;let columns = [
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Column 1&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: &quot;column1&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render: (data) =&gt; data.toLocaleString(),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Column 2&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: &quot;column2&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;searchable: (query, col, row) =&gt; &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [row.column1.toLocaleString(), col]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.join(&quot; &quot;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.toLowerCase()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.includes(query.toLowerCase());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Nullable numeric value&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: &quot;someNumericValue&quot;,
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: (v1, v2) =&gt; &lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v1 &amp;&amp; v2) &lbrace;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return v1 - v2;
@@ -1039,35 +1048,47 @@ current page and its href property will be ignored</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (v2) return 1;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
-      render: (n) =&gt; n,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render: (n) =&gt; n,
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: 'Button',
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 'someNumericValue',
-      orderable: false,
-      searchable: false,
-      render: (n) =&gt; (&lbrace;
-        component: Button,
-        props: &lbrace;
-          variant: 'primary',
-        &rbrace;,
-        onClick: () =&gt; alert(n),
-        textContent: 'I\'m a button',
-      &rbrace;),
-&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;];
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Button&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: &quot;someNumericValue&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orderable: false,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;searchable: false,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;render: (n) =&gt; (&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component: Button,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;props: &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant: &quot;primary&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick: () =&gt; alert(n),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textContent: &quot;I'm a button&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;),
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;];
+
+&nbsp;&nbsp;setTimeout(() =&gt; &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;data = [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(&quot;2020-01-11&quot;),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;D string&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: 8,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;];
+&nbsp;&nbsp;&rbrace;, 10000);
 &lt;/script&gt;
 
 &lt;DataTable
-  &lbrace;columns&rbrace;
-  rows=&lbrace;data&rbrace;
-  recordsPerPage=&lbrace;2&rbrace;
-  orderBy=&lbrace;[&lbrace;key: 'column1', direction: 'asc'&rbrace;]&rbrace;
-  on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
-  on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
-  instantSearch=&lbrace;false&rbrace;
-  on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
-  on:row-dblclick=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log('dbl-click')&rbrace;
-/&gt;</pre></li>
+&nbsp;&nbsp;&lbrace;columns&rbrace;
+&nbsp;&nbsp;rows=&lbrace;data&rbrace;
+&nbsp;&nbsp;recordsPerPage=&lbrace;2&rbrace;
+&nbsp;&nbsp;orderBy=&lbrace;[&lbrace; key: &quot;column1&quot;, direction: &quot;asc&quot; &rbrace;]&rbrace;
+&nbsp;&nbsp;on:query=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+&nbsp;&nbsp;on:sort=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+&nbsp;&nbsp;instantSearch=&lbrace;false&rbrace;
+&nbsp;&nbsp;on:row-click=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(detail)&rbrace;
+&nbsp;&nbsp;on:row-dblclick=&lbrace;(&lbrace; detail &rbrace;) =&gt; console.log(&quot;dbl-click&quot;)&rbrace;
+/&gt;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
