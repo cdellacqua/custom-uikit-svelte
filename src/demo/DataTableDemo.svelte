@@ -69,17 +69,16 @@
 		},
 	];
 
-	setTimeout(() => {
-		data = [
-			{
-				column1: new Date("2020-01-11"),
-				column2: "D string",
-				someNumericValue: 8,
-			},
-		];
-	}, 10000);
+	function updateRows() {
+		data = new Array(10).fill(0).map(() => ({
+			column1: new Date(),
+			column2: `${String.fromCharCode(Math.floor(Math.random() * 26) + 65)} string`,
+			someNumericValue: Math.random() * 10,
+		}));
+	}
 </script>
 
+<Button on:click={updateRows}>Click me to update the rows</Button>
 <DataTable
 	{columns}
 	rows={data}
