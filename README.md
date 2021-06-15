@@ -11,16 +11,13 @@ You can find the published package [here](https://www.npmjs.com/package/custom-u
 
 &nbsp;
 
-### Run the demo
+### Demo with examples
 
 The demo included in this repo shows some components in action with examples
 
-```
-git clone git@github.com:cdellacqua/custom-uikit-svelte.git
-cd custom-uikit-svelte
-npm i
-npm run dev
-```
+You can have a look at it here: [custom-uikit-svelte demo](https://cdellacqua.github.io/custom-uikit-svelte/)
+
+The demo files can be found in [src/](https://github.com/cdellacqua/custom-uikit-svelte/blob/master/src/)
 
 &nbsp;
 
@@ -745,7 +742,8 @@ Create an already styled description list, perfect for describing key-value prop
 |name|type|default|description|
 |--|--|--|--|
 |id|string|-||
-|value|any|-|The current selected value or null if no value is selected|
+|multi|boolean|false|Whether or not the autocomplete supports multiple values selected at the same time|
+|value|any\|null\|Array.<any>|-|If not in multi-mode (default): the current selected value or null if no value is selected Else: the list of currently selected values|
 |label|string|-|Label of this component|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -762,7 +760,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
-|query|string|-||
+|query|string|-|The current search string|
+|selectedOptions|Array.<{label: string, value: any}>|-|Currently selected options|
 |dataProvider|AsyncAutocompleteDataProvider|-||
 |dataProviderErrorHandler|CallableFunction|-||
 |loading|boolean|-|@readonly|
@@ -783,7 +782,8 @@ Create an already styled description list, perfect for describing key-value prop
 |--|--|--|--|
 |id|string|-||
 |options|Array.<{label: string, value: any}>|-|Autocomplete options, the value must be unique|
-|value|any|-|The current selected value or null if no value is selected|
+|multi|boolean|false|Whether or not the autocomplete supports multiple values selected at the same time|
+|value|any\|null\|Array.<any>|-|If not in multi-mode (default): the current selected value or null if no value is selected Else: the list of currently selected values|
 |label|string|-|Label of this component|
 |className|string\|undefined|-|A string containing any additional classes to apply to the component|
 |style|string\|undefined|-|A string specifying custom style properties for the component|
@@ -800,7 +800,8 @@ Create an already styled description list, perfect for describing key-value prop
 |spellcheck|string\|undefined|-||
 |animationDuration|number|-|In/Out fly animation duration (in milliseconds)|
 |state|'initial'\|'valid'\|'invalid'|-||
-|query|string|-||
+|query|string|-|The current search string|
+|selectedOptions|Array.<{label: string, value: any}>|-|Currently selected options|
 |requiredMarker|string\|undefined|-||
 |optionalMarker|string\|undefined|-||
 

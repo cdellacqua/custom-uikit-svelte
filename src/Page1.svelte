@@ -1066,17 +1066,16 @@ current page and its href property will be ignored</td>
 &nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
 &nbsp;&nbsp;];
 
-&nbsp;&nbsp;setTimeout(() =&gt; &lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;data = [
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(&quot;2020-01-11&quot;),
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: &quot;D string&quot;,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: 8,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
-&nbsp;&nbsp;&nbsp;&nbsp;];
-&nbsp;&nbsp;&rbrace;, 10000);
+&nbsp;&nbsp;function updateRows() &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;data = new Array(10).fill(0).map(() =&gt; (&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column1: new Date(),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;column2: `$&lbrace;String.fromCharCode(Math.floor(Math.random() * 26) + 65)&rbrace; string`,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;someNumericValue: Math.random() * 10,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;));
+&nbsp;&nbsp;&rbrace;
 &lt;/script&gt;
 
+&lt;Button on:click=&lbrace;updateRows&rbrace;&gt;Click me to update the rows&lt;/Button&gt;
 &lt;DataTable
 &nbsp;&nbsp;&lbrace;columns&rbrace;
 &nbsp;&nbsp;rows=&lbrace;data&rbrace;

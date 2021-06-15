@@ -880,53 +880,68 @@ let items = [&lbrace;
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import AsyncAutocomplete from &quot;../components/form/AsyncAutocomplete.svelte&quot;;
+&nbsp;&nbsp;import &lbrace; tick &rbrace; from &quot;svelte&quot;;
 
-  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
+&nbsp;&nbsp;import &lbrace; AsyncAutocomplete, Form, Checkbox &rbrace; from &quot;../main&quot;;
 
-  const options = [
-    &lbrace;
-      label: &quot;Ananas&quot;,
-      value: 1,
-    &rbrace;,
-    &lbrace;
-      label: &quot;Banana&quot;,
-      value: &lbrace; kg: &quot;3.14&quot; &rbrace;,
-    &rbrace;,
-    &lbrace;
-      label: &quot;Bananana&quot;,
-      value: &lbrace; kg: &quot;6.28&quot; &rbrace;,
-    &rbrace;,
-    &lbrace;
-      label: &quot;Strawberry&quot;,
-      value: &quot;strawberry&quot;,
-    &rbrace;,
-  ];
+&nbsp;&nbsp;const options = [
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Ananas&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Banana&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &lbrace; kg: &quot;3.14&quot; &rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Bananana&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &lbrace; kg: &quot;6.28&quot; &rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &quot;strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;];
 
-  async function dataProvider(query) &lbrace;
-    await new Promise((res) =&gt; setTimeout(res, 200));
-    return options.filter((o) =&gt;
-      o.label.toLowerCase().includes(query.toLowerCase())
-    );
-  &rbrace;
+&nbsp;&nbsp;async function dataProvider(query) &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;await new Promise((res) =&gt; setTimeout(res, 200));
+&nbsp;&nbsp;&nbsp;&nbsp;return options.filter((o) =&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o.label.toLowerCase().includes(query.toLowerCase())
+&nbsp;&nbsp;&nbsp;&nbsp;);
+&nbsp;&nbsp;&rbrace;
 
-  let value = 1;
+&nbsp;&nbsp;$: console.log(value);
 
-
-  $: console.log(value);
+&nbsp;&nbsp;let multi = false;
+&nbsp;&nbsp;let value;
+&nbsp;&nbsp;let selectedOptions = [];
+&nbsp;&nbsp;function handleMultiChange() &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;value = multi ? [&quot;strawberry&quot;] : &quot;strawberry&quot;;
+&nbsp;&nbsp;&nbsp;&nbsp;selectedOptions = [
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &quot;strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;];
+&nbsp;&nbsp;&rbrace;
+&nbsp;&nbsp;$: multi, tick().then(() =&gt; handleMultiChange());
 &lt;/script&gt;
 
 &lt;div on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;&gt;
-  &lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
-    &lt;AsyncAutocomplete
-      bind:value
-      query=&lbrace;'na'&rbrace;
-      label=&lbrace;'Search a fruit'&rbrace;
-      placeholder=&lbrace;'Banana'&rbrace;
-      textIfNoResult=&lbrace;'No match'&rbrace;
-      &lbrace;dataProvider&rbrace;
-      on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
-  &lt;/Form&gt;
+&nbsp;&nbsp;&lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;Checkbox bind:value=&lbrace;multi&rbrace; label=&quot;Enable multiple value selection&quot; /&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;AsyncAutocomplete
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;multi&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;selectedOptions&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bind:value
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query=&lbrace;&quot;na&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label=&lbrace;&quot;Search a fruit&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;placeholder=&lbrace;&quot;Banana&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;textIfNoResult=&lbrace;&quot;No match&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;dataProvider&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;/&gt;
+&nbsp;&nbsp;&lt;/Form&gt;
 &lt;/div&gt;
 </pre></li>
 		</Switcher>
@@ -948,10 +963,17 @@ let items = [&lbrace;
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>multi</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Whether or not the autocomplete supports multiple values selected at the same time</td>
+				</tr>
+				<tr>
 					<td>value</td>
-					<td>any</td>
+					<td>any|null|Array.&lt;any&gt;</td>
 					<td>-</td>
-					<td>The current selected value or null if no value is selected</td>
+					<td>If not in multi-mode (default): the current selected value or null if no value is selected
+Else: the list of currently selected values</td>
 				</tr>
 				<tr>
 					<td>label</td>
@@ -1053,7 +1075,13 @@ let items = [&lbrace;
 					<td>query</td>
 					<td>string</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>The current search string</td>
+				</tr>
+				<tr>
+					<td>selectedOptions</td>
+					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
+					<td>-</td>
+					<td>Currently selected options</td>
 				</tr>
 				<tr>
 					<td>dataProvider</td>

@@ -38,34 +38,52 @@
 				<hr class="uk-divider-icon">
 			</li>
 			<li><pre>&lt;script&gt;
-  import &lbrace; Autocomplete, Form &rbrace; from &quot;../main&quot;;
+&nbsp;&nbsp;import &lbrace; tick &rbrace; from &quot;svelte&quot;;
 
-  const options = [
-    &lbrace;
-      label: 'Ananas',
-      value: 1
-    &rbrace;,
-    &lbrace;
-      label: 'Banana',
-      value: &lbrace; kg: '3.14' &rbrace;
-    &rbrace;,
-    &lbrace;
-      label: 'Bananana',
-      value: &lbrace; kg: '6.28' &rbrace;
-    &rbrace;,
-    &lbrace;
-      label: 'Strawberry',
-      value: 'strawberry'
-    &rbrace;,
-  ];
-  let value = &quot;strawberry&quot;;
+&nbsp;&nbsp;import &lbrace; Autocomplete, Checkbox, Form &rbrace; from &quot;../main&quot;;
 
-  $: console.log(value);
+&nbsp;&nbsp;const options = [
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Ananas&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: 1,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Banana&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &lbrace; kg: &quot;3.14&quot; &rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Bananana&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &lbrace; kg: &quot;6.28&quot; &rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label: &quot;Strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: &quot;strawberry&quot;,
+&nbsp;&nbsp;&nbsp;&nbsp;&rbrace;,
+&nbsp;&nbsp;];
+
+&nbsp;&nbsp;$: console.log(value);
+
+&nbsp;&nbsp;let multi = false;
+&nbsp;&nbsp;let value;
+&nbsp;&nbsp;function handleMultiChange() &lbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;value = multi ? [&quot;strawberry&quot;] : &quot;strawberry&quot;;
+&nbsp;&nbsp;&rbrace;
+&nbsp;&nbsp;$: multi, tick().then(() =&gt; handleMultiChange());
 &lt;/script&gt;
 
+&lt;Checkbox bind:value=&lbrace;multi&rbrace; label=&quot;Enable multiple value selection&quot; /&gt;
 &lt;Form submitAsync=&lbrace;() =&gt; alert(value)&rbrace;&gt;
-  &lt;Autocomplete bind:value &lbrace;options&rbrace; label=&lbrace;'Search a fruit'&rbrace; placeholder=&lbrace;'Banana'&rbrace; textIfNoResult=&lbrace;'No match'&rbrace; on:change=&lbrace;(e) =&gt; console.log(e)&rbrace; /&gt;
-&lt;/Form&gt;</pre></li>
+&nbsp;&nbsp;&lt;Autocomplete
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;multi&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;bind:value
+&nbsp;&nbsp;&nbsp;&nbsp;&lbrace;options&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;label=&lbrace;&quot;Search a fruit&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;placeholder=&lbrace;&quot;Banana&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;textIfNoResult=&lbrace;&quot;No match&quot;&rbrace;
+&nbsp;&nbsp;&nbsp;&nbsp;on:change=&lbrace;(e) =&gt; console.log(e)&rbrace;
+&nbsp;&nbsp;/&gt;
+&lt;/Form&gt;
+</pre></li>
 		</Switcher>
 		<h3>Props</h3>
 		<table class="uk-table">
@@ -91,10 +109,17 @@
 					<td>Autocomplete options, the value must be unique</td>
 				</tr>
 				<tr>
+					<td>multi</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Whether or not the autocomplete supports multiple values selected at the same time</td>
+				</tr>
+				<tr>
 					<td>value</td>
-					<td>any</td>
+					<td>any|null|Array.&lt;any&gt;</td>
 					<td>-</td>
-					<td>The current selected value or null if no value is selected</td>
+					<td>If not in multi-mode (default): the current selected value or null if no value is selected
+Else: the list of currently selected values</td>
 				</tr>
 				<tr>
 					<td>label</td>
@@ -196,7 +221,13 @@
 					<td>query</td>
 					<td>string</td>
 					<td>-</td>
-					<td>undefined</td>
+					<td>The current search string</td>
+				</tr>
+				<tr>
+					<td>selectedOptions</td>
+					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
+					<td>-</td>
+					<td>Currently selected options</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
