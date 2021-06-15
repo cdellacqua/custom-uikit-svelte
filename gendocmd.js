@@ -2,35 +2,30 @@ const path = require('path');
 const fs = require('fs');
 const components = require('./components-data.json');
 
-const docLines = [
-	`# custom-uikit-svelte`,
-	``,
-	`Unofficial Svelte Component Library for the UIkit framework`,
-	``,
-	`&nbsp;`,
-	'### Install from npm',
-	``,
-	'```npm i custom-uikit-svelte```',
-	'',
-	'You can find the published package [here](https://www.npmjs.com/package/custom-uikit-svelte)',
-	'',
-	`&nbsp;`,
-	'',
-	'### Run the demo',
-	'',
-	'The demo included in this repo shows some components in action with examples',
-	``,
-	`\`\`\`
-git clone git@github.com:cdellacqua/custom-uikit-svelte.git
-cd custom-uikit-svelte
-npm i
-npm run dev
-\`\`\``,
-	'',
-	`&nbsp;`,
-	``,
-	`Components`
-];
+const docLines = `# custom-uikit-svelte
+
+Unofficial Svelte Component Library for the UIkit framework
+
+&nbsp;
+### Install from npm
+
+\`\`\`npm i custom-uikit-svelte\`\`\`
+
+You can find the published package [here](https://www.npmjs.com/package/custom-uikit-svelte)
+
+&nbsp;
+
+### Demo with examples
+
+The demo included in this repo shows some components in action with examples
+
+You can have a look at it here: [custom-uikit-svelte demo](https://cdellacqua.github.io/custom-uikit-svelte/)
+
+The demo files can be found in [src/](https://github.com/cdellacqua/custom-uikit-svelte/blob/master/src/)
+
+&nbsp;
+
+Components`.split('\n');
 
 for (const component of components) {
 	docLines.push(

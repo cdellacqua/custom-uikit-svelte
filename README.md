@@ -11,16 +11,13 @@ You can find the published package [here](https://www.npmjs.com/package/custom-u
 
 &nbsp;
 
-### Run the demo
+### Demo with examples
 
 The demo included in this repo shows some components in action with examples
 
-```
-git clone git@github.com:cdellacqua/custom-uikit-svelte.git
-cd custom-uikit-svelte
-npm i
-npm run dev
-```
+You can have a look at it here: [custom-uikit-svelte demo](https://cdellacqua.github.io/custom-uikit-svelte/)
+
+The demo files can be found in [src/](https://github.com/cdellacqua/custom-uikit-svelte/blob/master/src/)
 
 &nbsp;
 
