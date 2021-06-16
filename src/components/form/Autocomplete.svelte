@@ -114,10 +114,21 @@
 			selectedOptions = value.map((v) => options.find((o) => o.value === v));
 		}
 	}
+
 	$: value, handleValueChange();
+	
+	let asyncAutocomplete;
+	function reload() {
+		if (!asyncAutocomplete) {
+			return;
+		}
+		asyncAutocomplete.reload();
+	}
+	$: options, reload();
 </script>
 
 <AsyncAutocomplete
+	bind:this={asyncAutocomplete}
 	on:change
 	on:query
 	bind:selectedOptions
