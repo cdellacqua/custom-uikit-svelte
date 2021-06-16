@@ -423,30 +423,6 @@
 	{#if label}
 		<label for={id} class="uk-form-label">{label} {suffix}</label>
 	{/if}
-	{#if multi && selectedOptions.length > 0}
-		<div class="uk-margin-small-bottom">
-			{#each selectedOptions as option (option)}
-				<span class="uk-badge uk-margin-small-right"
-					>{option.label}
-					<!-- svelte-ignore a11y-missing-attribute -->
-					<a
-						role="button"
-						tabindex="0"
-						uk-icon="icon: close"
-						on:keydown={(e) => {
-							if (["Enter"].includes(e.code)) {
-								e.preventDefault();
-								toggleOption(option, false);
-							}
-						}}
-						on:click={() => {
-							toggleOption(option, false);
-						}}>&ZeroWidthSpace;</a
-					>
-				</span>
-			{/each}
-		</div>
-	{/if}
 	<div style="position: relative">
 		<input
 			class:custom-uk-autocomplete-input={true}
@@ -500,6 +476,31 @@
 			>
 		{/if}
 	</div>
+	{#if multi && selectedOptions.length > 0}
+		<div class="uk-margin-small-top">
+			{#each selectedOptions as option (option)}
+				<span class="uk-badge uk-margin-small-right uk-margin-small-bottom"
+					>{option.label}
+					&nbsp;
+					<!-- svelte-ignore a11y-missing-attribute -->
+					<a
+						role="button"
+						tabindex="0"
+						uk-icon="icon: close"
+						on:keydown={(e) => {
+							if (["Enter"].includes(e.code)) {
+								e.preventDefault();
+								toggleOption(option, false);
+							}
+						}}
+						on:click={() => {
+							toggleOption(option, false);
+						}}>&ZeroWidthSpace;</a
+					>
+				</span>
+			{/each}
+		</div>
+	{/if}
 	{#if showSuggested && !disabled}
 		<div
 			class:custom-uk-autocomplete-suggested={true}
