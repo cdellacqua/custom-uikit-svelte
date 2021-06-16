@@ -133,7 +133,7 @@
 	let options = [];
 	let lastQuery = null;
 	let forceUpdate = false;
-	async function refresh() {
+	async function _reload() {
 		if (!loading && (forceUpdate || query !== lastQuery)) {
 			loading = true;
 			try {
@@ -180,8 +180,8 @@
 		return _reload();
 	}
 
-	const debouncedRefresh =
-		debounceMs > 0 ? debounce(refresh, debounceMs) : refresh;
+	const debouncedReload =
+		debounceMs > 0 ? debounce(_reload, debounceMs) : _reload;
 
 	let showSuggested = false;
 	let innerClick = false;
@@ -399,10 +399,10 @@
 	$: multi, options, updateFilteredOptions();
 
 	function scheduleDataProviderCall() {
-		if (debouncedRefresh.clear) {
-			debouncedRefresh.clear();
+		if (debouncedReload.clear) {
+			debouncedReload.clear();
 		}
-		debouncedRefresh();
+		debouncedReload();
 	}
 	$: query, scheduleDataProviderCall();
 </script>

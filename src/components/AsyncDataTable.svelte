@@ -95,10 +95,10 @@
 
   let externalAssignment = true;
   function handleExternalAssignment() {
-    if (debouncedRefresh.clear) {
-      debouncedRefresh.clear();
+    if (debouncedReload.clear) {
+      debouncedReload.clear();
     }
-    debouncedRefresh();
+    debouncedReload();
   }
   $: if (orderBy || pageIndex >= 0 || recordsPerPage >= 0) {
     if (externalAssignment) {
@@ -193,7 +193,7 @@
     return _reload();
   }
 
-  const debouncedRefresh =
+  const debouncedReload =
     debounceMs > 0 ? debounce(_reload, debounceMs) : _reload;
 
   /** @type {HTMLInputElement} */
@@ -214,12 +214,12 @@
 {#if columns.some((c) => c.searchable !== false)}
   <form
     on:submit|preventDefault={() => {
-      if (debouncedRefresh.clear) {
-        debouncedRefresh.clear();
+      if (debouncedReload.clear) {
+        debouncedReload.clear();
       }
       query = searchInput.value;
       searchInput.blur();
-      debouncedRefresh();
+      debouncedReload();
     }}
     class="uk-flex uk-width-1-1 custom-uk-data-table-form"
   >
@@ -230,10 +230,10 @@
         {placeholder}
         bind:value={query}
         on:input={() => {
-          if (debouncedRefresh.clear) {
-            debouncedRefresh.clear();
+          if (debouncedReload.clear) {
+            debouncedReload.clear();
           }
-          debouncedRefresh();
+          debouncedReload();
         }}
         optional
       />
