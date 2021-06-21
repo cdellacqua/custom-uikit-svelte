@@ -118,7 +118,7 @@
 	$: value, handleValueChange();
 	
 	let asyncAutocomplete;
-	function reload() {
+	export function reload() {
 		if (!asyncAutocomplete) {
 			return;
 		}

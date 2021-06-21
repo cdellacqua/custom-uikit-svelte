@@ -123,7 +123,7 @@
 	}
 
 	let asyncDataTable;
-	function reload() {
+	export function reload() {
 		if (!asyncDataTable) {
 			return;
 		}
