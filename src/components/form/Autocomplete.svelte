@@ -118,11 +118,11 @@
 	$: value, handleValueChange();
 	
 	let asyncAutocomplete;
-	export function reload() {
+	export async function reload() {
 		if (!asyncAutocomplete) {
 			return;
 		}
-		asyncAutocomplete.reload();
+		return asyncAutocomplete.reload();
 	}
 	$: options, reload();
 </script>
