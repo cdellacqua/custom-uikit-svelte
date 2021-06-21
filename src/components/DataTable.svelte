@@ -123,11 +123,11 @@
 	}
 
 	let asyncDataTable;
-	export function reload() {
+	export async function reload() {
 		if (!asyncDataTable) {
 			return;
 		}
-		asyncDataTable.reload();
+		return asyncDataTable.reload();
 	}
 	$: rows, reload();
 </script>
