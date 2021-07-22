@@ -109,31 +109,31 @@
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>show</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>shown</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>side</td>
 					<td>'left'|'right'</td>
-					<td>-</td>
+					<td>"left"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -180,31 +180,31 @@ let items = [&lbrace;
 				<tr>
 					<td>items</td>
 					<td>Array.&lt;&lbrace;text: (string|undefined), html: (string|undefined), props: (Record.&lt;string, any&gt;|undefined), component: (SvelteComponent|undefined)&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>component</td>
 					<td>SvelteComponent|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLUListElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>animationDuration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>moveToBoundaries</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Whether to show or hide the move-to-top and move-to-bottom buttons</td>
 				</tr>
 				<tr>
@@ -258,37 +258,37 @@ let items = [&lbrace;
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>center</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>pageIndex</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>numberOfPages</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>numbersPerSide</td>
 					<td>number</td>
-					<td>-</td>
+					<td>4</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -336,7 +336,7 @@ let items = [&lbrace;
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
@@ -348,7 +348,7 @@ let items = [&lbrace;
 				<tr>
 					<td>navStyle</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the contained Nav component</td>
 				</tr>
 				<tr>
@@ -360,13 +360,13 @@ let items = [&lbrace;
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 				<tr>
 					<td>height (readonly)</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>The current height of this component</td>
 				</tr>
 				<tr>
@@ -423,67 +423,67 @@ let items = [&lbrace;
 				<tr>
 					<td>connect</td>
 					<td>string</td>
-					<td>-</td>
+					<td>"~.uk-switcher"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>toggle</td>
 					<td>string</td>
-					<td>-</td>
+					<td>"> * > :first-child"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>animation</td>
 					<td>string|false</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>duration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>swiping</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>titles</td>
 					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>htmlTitle</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLUListElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>index</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -534,73 +534,73 @@ let items = [&lbrace;
 				<tr>
 					<td>connect</td>
 					<td>string</td>
-					<td>-</td>
+					<td>"~.uk-switcher"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>toggle</td>
 					<td>string</td>
-					<td>-</td>
+					<td>"> *"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>animation</td>
 					<td>string|false</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>duration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>swiping</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>media</td>
 					<td>number|string</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>titles</td>
 					<td>Array.&lt;string&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>htmlTitle</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>index</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -642,49 +642,49 @@ let items = [&lbrace;
 				<tr>
 					<td>heading</td>
 					<td>Array.&lt;(string|&lbrace;label: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined)&rbrace;)&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>'small'|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>appearance</td>
 					<td>'divider'|'striped'|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>stickyHeader</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLTableElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>caption</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -816,55 +816,55 @@ let items = [&lbrace;
 				<tr>
 					<td>animation</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>collapsible</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>duration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>multi</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>index</td>
 					<td>number|false|Array.&lt;number&gt;</td>
-					<td>-</td>
+					<td>multi ? [] : false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>transition</td>
 					<td>string</td>
-					<td>-</td>
+					<td>"ease"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLUListElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -959,7 +959,7 @@ let items = [&lbrace;
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -971,116 +971,116 @@ let items = [&lbrace;
 				<tr>
 					<td>value</td>
 					<td>any|null|Array.&lt;any&gt;</td>
-					<td>-</td>
+					<td>!multi ? null : []</td>
 					<td>If not in multi-mode (default): the current selected value or null if no value is selected
 Else: the list of currently selected values</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>Label of this component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>textIfNoResult</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>Text to show when the applied filter doesn't return any result</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>Text to show when the field is required but no value has been chosen</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Control whether the component is disabled or not</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>UIkit tooltip</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Input placeholder</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Reference to the div that wraps this component</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Autocapitalize setting of the input tag</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>"off"</td>
 					<td>Autocomplete setting of the input tag</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>Autocorrect setting of the input tag</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>animationDuration</td>
 					<td>number</td>
-					<td>-</td>
+					<td>100</td>
 					<td>In/Out fly animation duration (in milliseconds)</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>query</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>The current search string</td>
 				</tr>
 				<tr>
 					<td>selectedOptions</td>
 					<td>Array.&lt;&lbrace;label: string, value: any&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>Currently selected options</td>
 				</tr>
 				<tr>
@@ -1092,31 +1092,31 @@ Else: the list of currently selected values</td>
 				<tr>
 					<td>dataProviderErrorHandler</td>
 					<td>CallableFunction</td>
-					<td>-</td>
+					<td>(err) => console.error(err)</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>debounceMs</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
