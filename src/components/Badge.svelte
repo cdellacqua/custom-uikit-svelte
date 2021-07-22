@@ -6,12 +6,10 @@
 	 * @forward {"click": "HTMLSpanElement"} */
 
 	/** 
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
 	export let className = undefined;
 	/** 
-	 * @default undefined
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
 	export let style = undefined;

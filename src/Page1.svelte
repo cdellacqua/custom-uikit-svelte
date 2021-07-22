@@ -181,7 +181,7 @@ function showAlert() &lbrace;
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -241,7 +241,7 @@ function showAlert() &lbrace;
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -449,86 +449,86 @@ import Select from '../components/form/Select.svelte';
 				<tr>
 					<td>columns</td>
 					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|undefined), searchable: (boolean|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>undefined|'small'</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>undefined|string</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>appearance</td>
 					<td>'divider'|'striped'</td>
-					<td>-</td>
+					<td>"divider"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>searchButtonVariant</td>
 					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>stickyHeader</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>noResultText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLTableElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>instantSearch</td>
 					<td>boolean</td>
-					<td>-</td>
-					<td>@default true</td>
+					<td>true</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>query</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>orderBy</td>
 					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>horizontalScroll</td>
 					<td>boolean</td>
-					<td>-</td>
-					<td>@default true</td>
+					<td>true</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>dataProvider</td>
@@ -539,49 +539,49 @@ import Select from '../components/form/Select.svelte';
 				<tr>
 					<td>dataProviderErrorHandler</td>
 					<td>CallableFunction</td>
-					<td>-</td>
+					<td>(err) => console.error(err)</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>recordsPerPage</td>
 					<td>number</td>
-					<td>-</td>
+					<td>25</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>numbersPerSide</td>
 					<td>number</td>
-					<td>-</td>
+					<td>4</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>pageIndex</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>total</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>filtered</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>debounceMs</td>
 					<td>number</td>
-					<td>-</td>
+					<td>200</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -663,7 +663,7 @@ import Select from '../components/form/Select.svelte';
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLSpanElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -755,7 +755,7 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>id</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -791,19 +791,19 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>variant</td>
 					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
-					<td>"default"</td>
+					<td>type === "submit" ? "primary" : "default"</td>
 					<td>This property is used to style the button with one of the base uikit classes for button appearance</td>
 				</tr>
 				<tr>
 					<td>icon</td>
 					<td>string|undefined</td>
-					<td>undefined</td>
+					<td>type === "submit" ? "newline" : undefined</td>
 					<td>If present, the uikit icon with the given name will be added next to the text of the button</td>
 				</tr>
 				<tr>
 					<td>iconPosition</td>
 					<td>'right'|'left'</td>
-					<td>"right"</td>
+					<td>'right'</td>
 					<td>If the icon is set, this property let you decide its position, left or right</td>
 				</tr>
 				<tr>
@@ -821,7 +821,7 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLButtonElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -919,7 +919,7 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 			</tbody>
@@ -970,7 +970,7 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 				<tr>
@@ -1103,127 +1103,127 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>columns</td>
 					<td>Array.&lt;&lbrace;label: string, key: string, className: (string|undefined), textAlign: ('center'|'right'|'left'|undefined), orderable: (boolean|Comparator|undefined), searchable: (boolean|DataTableSearchCallback|undefined), render: (DataTableRenderer|undefined)&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>rows</td>
 					<td>Array.&lt;Record.&lt;string, any&gt;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>visibleRows</td>
 					<td>Array.&lt;Record.&lt;string, any&gt;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>undefined|'small'</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>undefined|string</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>appearance</td>
 					<td>'divider'|'striped'</td>
-					<td>-</td>
+					<td>"divider"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>searchButtonVariant</td>
 					<td>'default'|'primary'|'secondary'|'danger'|'text'|'link'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>stickyHeader</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>noResultText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLTableElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>instantSearch</td>
 					<td>boolean</td>
-					<td>-</td>
-					<td>@default true</td>
+					<td>true</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>query</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>orderBy</td>
 					<td>Array.&lt;&lbrace;key: string, direction: ('desc'|'asc')&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>horizontalScroll</td>
 					<td>boolean</td>
-					<td>-</td>
-					<td>@default true</td>
+					<td>true</td>
+					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>recordsPerPage</td>
 					<td>number</td>
-					<td>-</td>
+					<td>25</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>numbersPerSide</td>
 					<td>number</td>
-					<td>-</td>
+					<td>4</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>pageIndex</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>total</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>filtered</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0</td>
 					<td>@readonly</td>
 				</tr>
 			</tbody>
@@ -1259,43 +1259,43 @@ current page and its href property will be ignored</td>
 				<tr>
 					<td>showDivider</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>If true a divider will be shown between two items</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string containing any additional classes to apply to the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDListElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 				<tr>
 					<td>termsAreHtml</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Whether the terms of your list should be treated as HTML</td>
 				</tr>
 				<tr>
 					<td>detailsAreHtml</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>Whether the details of your list should be treated as HTML</td>
 				</tr>
 				<tr>
 					<td>list</td>
 					<td>Array.&lt;&lbrace;term: string, details: string&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>An array containing the term-details pairs of the description list. Can be text only or html</td>
 				</tr>
 			</tbody>

@@ -45,37 +45,37 @@
 				<tr>
 					<td>withIcon</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>small</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>vertical</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLHRElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -96,31 +96,31 @@
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>mode</td>
 					<td>'click'|'hover'</td>
-					<td>-</td>
+					<td>"hover"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>isLabelHtml</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -132,7 +132,7 @@
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -192,44 +192,44 @@
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'invalid'|'valid'|'loading'|'error'|'success'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>valid</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>Indicates the validity of this form. Its value is updated using formRef.checkValdity(), that gets called
 each time an element inside this form triggers a bubbling 'change' event</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLFormElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>variant</td>
 					<td>'stacked'|'horizontal'</td>
-					<td>-</td>
+					<td>"stacked"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -289,79 +289,79 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>id</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>title</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>expand</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>fullScreen</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>closeable</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>closeButton</td>
 					<td>'default'|'outside'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>verticallyCentered</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>show</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>shown</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>stack</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -373,43 +373,43 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>formDisabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>formState</td>
 					<td>'initial'|'invalid'|'valid'|'loading'|'error'|'success'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>formValid</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>formRef</td>
 					<td>HTMLFormElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>formStyle</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>formClassName</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>''</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>formVariant</td>
 					<td>'stacked'|'horizontal'</td>
-					<td>-</td>
+					<td>"stacked"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -430,25 +430,25 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ratio</td>
 					<td>number</td>
-					<td>-</td>
+					<td>1</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -469,62 +469,62 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ratio</td>
 					<td>number</td>
-					<td>-</td>
+					<td>1</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>opacity</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0.8</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>background</td>
 					<td>'default'|'muted'|'primary'|'secondary'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>backgroundClassName</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>backgroundStyle</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>slotPosition</td>
 					<td>'bottom'|'right'|'top'|'left'</td>
-					<td>-</td>
-					<td>@default 'bottom'</td>
+					<td>"bottom"</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>
@@ -544,62 +544,62 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ratio</td>
 					<td>number</td>
-					<td>-</td>
+					<td>1</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>opacity</td>
 					<td>number</td>
-					<td>-</td>
+					<td>0.8</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>background</td>
 					<td>'default'|'muted'|'primary'|'secondary'</td>
-					<td>-</td>
+					<td>'default'</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>backgroundClassName</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>backgroundStyle</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>slotPosition</td>
 					<td>'bottom'|'right'|'top'|'left'</td>
-					<td>-</td>
-					<td>@default 'bottom'</td>
+					<td>"bottom"</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>
@@ -619,44 +619,44 @@ import &lbrace; Button, FormModal, TextInput, Modal &rbrace; from &quot;../main&
 				<tr>
 					<td>loading</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ratio</td>
 					<td>number</td>
-					<td>-</td>
+					<td>1</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>center</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>slotPosition</td>
 					<td>'bottom'|'right'|'top'|'left'</td>
-					<td>-</td>
-					<td>@default 'bottom'</td>
+					<td>"bottom"</td>
+					<td>undefined</td>
 				</tr>
 			</tbody>
 		</table>
@@ -716,79 +716,79 @@ function toggleMountState() &lbrace;
 				<tr>
 					<td>id</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>title</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>expand</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>fullScreen</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>closeable</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>closeButton</td>
 					<td>'default'|'outside'</td>
-					<td>-</td>
+					<td>"default"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>verticallyCentered</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>show</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>shown</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>@readonly</td>
 				</tr>
 				<tr>
 					<td>stack</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>true</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -809,13 +809,13 @@ function toggleMountState() &lbrace;
 				<tr>
 					<td>ref (readonly)</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>The HTML reference of the component</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>

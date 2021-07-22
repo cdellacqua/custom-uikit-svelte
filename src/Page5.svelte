@@ -45,31 +45,31 @@
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -121,67 +121,67 @@
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>value</td>
 					<td>any|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;value: any, label: string, disabled: (boolean|undefined)&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLDivElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>size</td>
 					<td>undefined|'small'|'large'</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -193,19 +193,19 @@
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -226,61 +226,61 @@
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -292,97 +292,97 @@
 				<tr>
 					<td>ref</td>
 					<td>HTMLInputElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>icon</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>iconPosition</td>
 					<td>'left'|'right'</td>
-					<td>-</td>
+					<td>"left"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>inputmode</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>pattern</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>minlength</td>
 					<td>number|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>maxlength</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -425,55 +425,55 @@
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -486,43 +486,43 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>options</td>
 					<td>Array.&lt;&lbrace;label: string, value: any, disabled: (boolean|undefined)&rbrace;&gt;</td>
-					<td>-</td>
+					<td>[]</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>ref</td>
 					<td>HTMLSelectElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -543,61 +543,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -609,73 +609,73 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>ref</td>
 					<td>HTMLInputElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>minlength</td>
 					<td>number|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>maxlength</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -696,61 +696,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -762,97 +762,97 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>ref</td>
 					<td>HTMLInputElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>icon</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>iconPosition</td>
 					<td>'left'|'right'</td>
-					<td>-</td>
+					<td>"left"</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>inputmode</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>pattern</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>minlength</td>
 					<td>number|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>maxlength</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -873,61 +873,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -939,79 +939,79 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>ref</td>
 					<td>HTMLTextAreaElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>rows</td>
 					<td>number</td>
-					<td>-</td>
+					<td>5</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>minlength</td>
 					<td>number|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>maxlength</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -1032,61 +1032,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -1098,61 +1098,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>ref</td>
 					<td>HTMLInputElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>
@@ -1173,61 +1173,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>id</td>
 					<td>string</td>
-					<td>-</td>
+					<td>generateId()</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>label</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>style</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>A string specifying custom style properties for the component</td>
 				</tr>
 				<tr>
 					<td>className</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>name</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfInvalid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>textIfValid</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>helperText</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>placeholder</td>
 					<td>string</td>
-					<td>-</td>
+					<td>""</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optional</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
@@ -1239,61 +1239,61 @@ choosing the first option, whether it's disabled, the placeholder, or a valid op
 				<tr>
 					<td>ref</td>
 					<td>HTMLInputElement</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>disabled</td>
 					<td>boolean</td>
-					<td>-</td>
+					<td>false</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>tooltip</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocapitalize</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocomplete</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>autocorrect</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>spellcheck</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>optionalMarker</td>
 					<td>string|undefined</td>
-					<td>-</td>
+					<td>undefined</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
 					<td>state</td>
 					<td>'initial'|'valid'|'invalid'</td>
-					<td>-</td>
+					<td>"initial"</td>
 					<td>undefined</td>
 				</tr>
 			</tbody>

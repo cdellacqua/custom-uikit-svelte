@@ -32,7 +32,7 @@ components.forEach((component) => {
 		}
 
 		$$prop_def.push("\t\t */");
-		$$prop_def.push(`\t\t${prop.name}: ${prop.type.replace(/\.</g, '<') || 'any'};`);
+		$$prop_def.push(`\t\t${prop.name}${prop.default !== undefined || prop.readonly ? '?' : ''}: ${prop.type.replace(/\.</g, '<') || 'any'};`);
 	});
 
 	if (Object.keys(component.dispatch).length > 0) {

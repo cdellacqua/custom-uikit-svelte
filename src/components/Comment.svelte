@@ -10,27 +10,22 @@
 	 * @forward {} */
 
 	/**
-	 * @default undefined
 	 * @description The path to the avatar that will be added to the comment. For optimal results, use a square image. Only specify this property if you are not using a custom header, otherwise it will be ignored
 	 * @type {string|undefined} */
 	export let avatarSource = undefined;
 	/**
-	 * @default 80
 	 * @description Change the size of the avatar.
 	 * @type {number} */
 	export let avatarSize = 80;
 	/**
-	 * @default ""
 	 * @description The alt property of the avatar image
 	 * @type {string} */
 	export let avatarAlt = "";
 	/**
-	 * @default ""
 	 * @description The title of the comment that will be added to the header. It can contain HTML tags. Do not use this property if you are specifying a custom header 
 	 * @type {string} */
 	export let commentTitleAsHtml = "";
 	/**
-	 * @default false
 	 * @description True to add a different style to this comment (e.g. if it's made by the author)
 	 * @type {boolean} */
 	export let primary = false;
@@ -40,12 +35,10 @@
 	 * @type {HTMLElement} */
 	export let ref = undefined;
 	/** 
-	 * @default undefined
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
 	 export let style = undefined;
 	/** 
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
 	 export let className = undefined;

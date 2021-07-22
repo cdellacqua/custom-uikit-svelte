@@ -14,37 +14,30 @@
 	 * @forward {} */
 
 	/** 
-	 * @default "default"
 	 * @description Used to style the card. If set to hover, the card will appear flat unless it's being hovered
 	 * @type {'default'|'primary'|'secondary'|'hover'} */
 	export let variant = "default";
 	/** 
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
 	export let className = undefined;
 	/**
-	 * @default false
 	 * @description Add a hover animation to the card
 	 * @type {boolean} */
 	export let hover = false;
 	/** 
-	 * @default undefined
 	 * @description Defines the padding of the card. In undefined, default values will be applied
 	 * @type {'small'|'large'|undefined} */
 	export let size = undefined;
 	/**
-	 * @default undefined
 	 * @description The title of the card. This will be represented inside the body of the card. If you have defined a custom header slot, you should manually specify the title inside it and not use this property
 	 * @type {string|undefined} */ 
 	export let title = undefined;
 	/** 
-	 * @default undefined
 	 * @description The text content of the card badge, which is displayed in the top right angle of the card. If undefined no badge will be added
 	 * @type {string|undefined} */
 	export let badge = undefined;
 	/** 
-	 * @default undefined
 	 * @description A string specifying custom style properties for the component
 	 * @type {string|undefined} */
 	export let style = undefined;

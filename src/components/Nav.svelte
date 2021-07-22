@@ -9,7 +9,6 @@
 	 * @type {string|undefined} */
 	export let style = undefined;
 	/**
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
 	export let className = undefined;

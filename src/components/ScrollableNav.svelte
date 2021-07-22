@@ -9,7 +9,6 @@
 	 * @type {string|undefined} */
 	export let style = undefined;
 	/**
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the component
 	 * @type {string|undefined} */
 	export let className = undefined;
@@ -19,7 +18,6 @@
 	 * @type {string|undefined} */
 	export let navStyle = undefined;
 	/**
-	 * @default undefined
 	 * @description A string containing any additional classes to apply to the contained Nav component
 	 * @type {string|undefined} */
 	export let navClassName = undefined;
@@ -35,7 +33,7 @@
 	 * @readonly */
 	export let height = 0;
 	/**
-	 * @default true
+
 	 * @description Whether to add a spacer underneath this component or not
 	 * @type {boolean} */
 	export let spacer = true;

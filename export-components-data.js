@@ -62,11 +62,12 @@ for (const entry of componentFiles) {
 	componentData.exports = [];
 	for (const block of commentBlocks) {
 		if (block.meta && block.meta.code && block.meta.code && block.meta.code.name && block.meta.code.name.startsWith('exports.')) {
+			const defaultValue = content.slice(block.meta.range[0], block.meta.range[1]).match(/=\s?(.*?);?$/)?.[1];
 			componentData.exports.push({
 				readonly: !!block.readonly,
 				name: block.name,
 				type: block.type.names.join('|'),
-				default: block.defaultvalue,
+				default: defaultValue,
 				description: block.description
 			});
 		}
