@@ -27,7 +27,6 @@
   /** @type {string|undefined} */
   export let className = undefined;
   /** 
-   * @default "primary"
    * @description This property is used to style the button corresponding to the selected value with one of the base uikit classes for button appearance
    * @type {'primary'|'secondary'|'danger'} */
   export let variant = "primary";

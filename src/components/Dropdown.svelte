@@ -14,7 +14,6 @@
   /** @type {boolean} */
   export let isLabelHtml = false;
   /** 
-   * @default "default"
    * @description This property is used to style the button with one of the base uikit classes for button appearance. Setting this to null will hide the button
    * @type {'default'|'primary'|'secondary'|'danger'|'text'|'link'|null} */
   export let variant = "default";

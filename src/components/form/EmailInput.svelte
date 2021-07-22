@@ -36,9 +36,9 @@
   export let autocapitalize = 'off';
   /** @type {string|undefined} */
   export let autocomplete = undefined;
-  /** @type {string|undefined} @default "off" */
+  /** @type {string|undefined} */
   export let autocorrect = 'off';
-  /** @type {string|undefined} @default "off" */
+  /** @type {string|undefined} */
   export let spellcheck = 'off';
 
   /** @type {string|undefined} */

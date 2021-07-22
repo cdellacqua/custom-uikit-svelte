@@ -13,7 +13,7 @@
 	/**
 	 * Whether or not the autocomplete supports multiple values selected at the same time
 	 * @type {boolean}
-	 * @default false */
+	 */
 	export let multi = false;
 	/**
 	 * If not in multi-mode (default): the current selected value or null if no value is selected

@@ -13,7 +13,7 @@ import Loader from "./Loader.svelte";
   export let ref = undefined;
   /** @type {boolean} */
   export let center = true;
-  /** @type {'bottom'|'right'|'top'|'left'} @default 'bottom' */
+  /** @type {'bottom'|'right'|'top'|'left'} */
   export let slotPosition = "bottom";
 
   let refTopLeft;

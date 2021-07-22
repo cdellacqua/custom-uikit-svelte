@@ -21,7 +21,7 @@
   export let backgroundClassName = undefined;
   /** @type {string|undefined} */
   export let backgroundStyle = undefined;
-  /** @type {'bottom'|'right'|'top'|'left'} @default 'bottom' */
+  /** @type {'bottom'|'right'|'top'|'left'} */
   export let slotPosition = "bottom";
 
   let originalWrapperRef;

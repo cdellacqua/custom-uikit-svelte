@@ -29,13 +29,13 @@
 	export let noResultText = undefined;
 	/** @type {HTMLTableElement} */
 	export let ref = undefined;
-	/** @type {boolean} @default true */
+	/** @type {boolean} */
 	export let instantSearch = true;
 	/** @type {string} */
 	export let query = "";
 	/** @type {Array<{key: string, direction: 'desc'|'asc'}>} */
 	export let orderBy = [];
-	/** @type {boolean} @default true */
+	/** @type {boolean} */
 	export let horizontalScroll = true;
 	/** @type {number} */
 	export let recordsPerPage = 25;
