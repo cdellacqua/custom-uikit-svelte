@@ -214,6 +214,7 @@
 	}
 
 	$: {
+		value;
 		outlineOptionIndex = 0;
 		updateValidity();
 	}

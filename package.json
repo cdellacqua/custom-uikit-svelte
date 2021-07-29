@@ -1,6 +1,6 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "Unofficial Svelte Component Library for the UIkit framework",
   "main": "dist/index.js",
   "module": "dist/module.js",
