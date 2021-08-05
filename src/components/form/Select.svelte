@@ -72,6 +72,7 @@ import { createEventDispatcher } from "svelte";
   {helperText}
   {optional}>
   <select
+    required={!optional}
     bind:this={ref}
     on:change={(e) => {
       value = options[Number(e.target.value)].value;
