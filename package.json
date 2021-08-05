@@ -1,11 +1,11 @@
 {
   "name": "custom-uikit-svelte",
-  "version": "2.3.10",
+  "version": "2.4.0",
   "description": "Unofficial Svelte Component Library for the UIkit framework",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-	"svelte": "src/index.js",
-	"types": "dist/index.d.ts",
+  "svelte": "src/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cache:components-data": "node export-components-data.js",
@@ -25,13 +25,13 @@
     "src/stores",
     "dist"
   ],
-	"exports": {
-		".": {
-			"import": "./dist/index.esm.js",
-			"require": "./dist/index.cjs.js"
-		},
-		"./package.json": "./package.json"
-	},
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
   "peerDependencies": {
     "svelte": "^3.0.0",
     "uikit": "^3.5.6"
