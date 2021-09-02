@@ -766,6 +766,7 @@ Create an already styled description list, perfect for describing key-value prop
 |dataProviderErrorHandler|CallableFunction|(err) => console.error(err)||
 |loading|boolean|false|@readonly|
 |debounceMs|number|200||
+|maxSuggestions|number|5||
 |requiredMarker|string\|undefined|undefined||
 |optionalMarker|string\|undefined|undefined||
 

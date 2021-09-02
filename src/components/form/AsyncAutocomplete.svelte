@@ -97,6 +97,8 @@
 	export let loading = false;
 	/** @type {number} */
 	export let debounceMs = 200;
+	/** @type {number} */
+	export let maxSuggestions = 5;
 
 	/** @type {string|undefined} */
 	export let requiredMarker = undefined;
@@ -298,6 +300,10 @@
 
 	let outlineOptionIndex = 0;
 
+	$: if (options) {
+		outlineOptionIndex = 0;
+	}
+
 	$: if (suggestedRef) {
 		if (options.length === 0) {
 			suggestedRef.scrollTop = 0;
@@ -309,13 +315,6 @@
 		}
 	}
 
-	$: if (options) {
-		outlineOptionIndex = Math.min(
-			options.length - 1,
-			Math.max(0, outlineOptionIndex)
-		);
-	}
-
 	let optionsRenderedRef;
 	$: optionsRendered = Boolean(optionsRenderedRef);
 	$: if (optionsRendered) {
@@ -324,7 +323,7 @@
 	function updateSuggestedMaxHeight() {
 		if (suggestedRef && suggestedRef.querySelector("label")) {
 			suggestedRef.style.maxHeight =
-				suggestedRef.querySelector("label").offsetHeight * 5 + "px";
+				suggestedRef.querySelector("label").offsetHeight * maxSuggestions + "px";
 		}
 	}
 
@@ -344,23 +343,21 @@
 		} else if (
 			suggestedRef &&
 			options.length > 0 &&
-			["ArrowUp", "ArrowDown", "Enter"].includes(e.key)
+			["ArrowUp", "ArrowDown", "Enter", "PageUp", "PageDown"].includes(e.key)
 		) {
 			e.preventDefault();
 			switch (e.key) {
 				case "ArrowUp":
-					if (outlineOptionIndex === 0) {
-						outlineOptionIndex = options.length - 1;
-					} else {
-						outlineOptionIndex--;
-					}
+					outlineOptionIndex = Math.max(0, outlineOptionIndex - 1);
 					break;
 				case "ArrowDown":
-					if (outlineOptionIndex === options.length - 1) {
-						outlineOptionIndex = 0;
-					} else {
-						outlineOptionIndex++;
-					}
+					outlineOptionIndex = Math.min(options.length - 1, outlineOptionIndex + 1);
+					break;
+				case "PageUp":
+					outlineOptionIndex = Math.max(0, outlineOptionIndex - maxSuggestions);
+					break;
+				case "PageDown":
+					outlineOptionIndex = Math.min(options.length - 1, outlineOptionIndex + maxSuggestions);
 					break;
 				case "Enter":
 					const input =
