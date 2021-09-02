@@ -1108,6 +1108,12 @@ Else: the list of currently selected values</td>
 					<td>undefined</td>
 				</tr>
 				<tr>
+					<td>maxSuggestions</td>
+					<td>number</td>
+					<td>5</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
 					<td>requiredMarker</td>
 					<td>string|undefined</td>
 					<td>undefined</td>
