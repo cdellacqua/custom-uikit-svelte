@@ -1,7 +1,9 @@
 import leven from 'leven';
 
 function matchDistance(str, search) {
-	return leven(str, search) - Math.max(0, str.length - search.length);
+	const levenDst = leven(str, search);
+	const compensation = -Math.max(0, str.length - search.length);
+	return levenDst + compensation;
 }
 
 /**
@@ -20,6 +22,14 @@ export function filterAndSort(search, objects, stringExtractor) {
 		.filter((d) => d.distance < d.value.length)
 		.sort((a, b) => {
 			if (a.distance - b.distance === 0) {
+				const aHasSubstring = a.value.indexOf(search) !== -1;
+				const bHasSubstring = b.value.indexOf(search) !== -1;
+				if (aHasSubstring && !bHasSubstring) {
+					return -1
+				}
+				if (!aHasSubstring && bHasSubstring) {
+					return 1;
+				}
 				return a.value.localeCompare(b.value);
 			}
 			return a.distance - b.distance;
