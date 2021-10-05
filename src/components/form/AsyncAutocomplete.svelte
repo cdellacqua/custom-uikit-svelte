@@ -544,24 +544,24 @@
 	{/if}
 </div>
 
-<style lang="scss">
+<style>
 	.text-wrapper {
 		position: relative;
-		.suggested {
-			z-index: 10;
-			position: absolute;
-			width: 100%;
-			cursor: pointer;
-			font-size: 0.9em;
-			overflow-y: auto;
-			label {
-				padding: 10px;
-				cursor: pointer;
-				&:hover {
-					border: 1px solid currentColor;
-				}
-			}
-		}
+	}
+	.text-wrapper .suggested {
+		z-index: 10;
+		position: absolute;
+		width: 100%;
+		cursor: pointer;
+		font-size: 0.9em;
+		overflow-y: auto;
+	}
+	.text-wrapper .suggested label {
+		padding: 10px;
+		cursor: pointer;
+	}
+	.text-wrapper .suggested label:hover {
+		border: 1px solid currentColor;
 	}
 
 	.interactive-hidden {

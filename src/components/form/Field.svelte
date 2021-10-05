@@ -39,7 +39,7 @@
   $: optional, requiredMarker, optionalMarker, $globalRequiredMarker, $globalOptionalMarker, updateLabelSuffix();
 </script>
 
-<style lang="scss">
+<style>
   .helper-text,
   .valid-text,
   .invalid-text {
@@ -48,7 +48,6 @@
   .relative {
     position: relative;
   }
-
 </style>
 
 <div {style} class={className} class:uk-margin-bottom={true} bind:this={ref}>

@@ -23,7 +23,7 @@
   export let slotPosition = "bottom";
 </script>
 
-<style lang="scss">
+<style>
   .overlay {
     position: absolute;
     top: 0;
@@ -31,14 +31,14 @@
     right: 0;
     bottom: 0;
     z-index: 999999999;
-    > div {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
-  }
+	}
+	.overlay > div {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
 </style>
 
 {#if loading}
