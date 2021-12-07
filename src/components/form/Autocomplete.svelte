@@ -111,7 +111,7 @@
 		} else {
 			query = "";
 			// Keeps the selection order
-			selectedOptions = value.map((v) => options.find((o) => o.value === v));
+			selectedOptions = value.map((v) => options.find((o) => o.value === v)).filter(o => o !== undefined);
 		}
 	}
 
